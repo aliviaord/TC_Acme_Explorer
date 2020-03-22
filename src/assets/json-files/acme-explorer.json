@@ -1,0 +1,26 @@
+{
+    "trips": [
+        {
+            "title": "Oxytocin",
+            "description": "Discover the oranges paradise",
+            "price": "1000",
+            "requirements": "You need to love Maialen",
+            "startDate": "22/04/2020",
+            "endDate": "25/04/2020",
+            "publicationtDate": "22/03/2020",
+            "manager": "12345",
+            "stages": [
+                {
+                    "title": "Beach",
+                    "description": "You can get some coconuts",
+                    "price": "500"
+                },
+                {
+                    "title": "Alicia's Home",
+                    "description": "You can pray for Alicia",
+                    "price": "500"
+                }
+            ]
+        }
+    ]
+}
