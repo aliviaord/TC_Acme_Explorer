@@ -23,7 +23,8 @@ export class TripService {
     trip.requirements = 'You must be 18 or older to join this trip. Don\'t forget to bring your shovel.';
     trip.startDate = new Date('2020-05-20');
     trip.endDate = new Date('2020-05-27');
-    trip.pictures = ['../../../assets/mystfalls_1.jpg', '../../../assets/mystfalls_2.jpg'];
+    trip.pictures = ['../../../assets/pictures/mystfalls_1.jpg', '../../../assets/pictures/mystfalls_2.jpg',
+      '../../../assets/pictures/mystfalls_3.jpg'];
     trip.publicationDate = new Date('2020-03-21');
     trip.cancelReason = null;
     trips.push(trip);
@@ -37,8 +38,8 @@ export class TripService {
     trip.requirements = 'Buy lover by Taylor Swift on iTunes.';
     trip.startDate = new Date('2020-03-10');
     trip.endDate = new Date('2020-04-10');
-    trip.pictures = ['../../../assets/cornelia_1.jpg', '../../../assets/cornelia_2.jpg',
-      '../../../assets/cornelia_3.jpg', '../../../assets/cornelia_4.jpg'];
+    trip.pictures = ['../../../assets/pictures/cornelia_1.jpg', '../../../assets/pictures/cornelia_2.jpg',
+      '../../../assets/pictures/cornelia_3.jpg', '../../../assets/pictures/cornelia_4.jpg'];
     trip.publicationDate = new Date('2020-02-10');
     trip.cancelReason = null;
     trips.push(trip);
@@ -52,7 +53,7 @@ export class TripService {
     trip.requirements = 'You must know how to swim.';
     trip.startDate = new Date('2020-05-28');
     trip.endDate = new Date('2020-06-05');
-    trip.pictures = [];
+    trip.pictures = ['../../../assets/pictures/pirates_1.jpg'];
     trip.publicationDate = new Date('2020-03-10');
     trip.cancelReason = 'Public gatherings have been banned because of Coronavirus.';
     trips.push(trip);
@@ -66,7 +67,8 @@ export class TripService {
     trip.requirements = 'Some patience!';
     trip.startDate = new Date('2020-07-16');
     trip.endDate = new Date('2020-07-26');
-    trip.pictures = [];
+    trip.pictures = ['../../../assets/pictures/flowers_1.jpg', '../../../assets/pictures/flowers_2.jpg',
+      '../../../assets/pictures/flowers_3.jpg', '../../../assets/pictures/flowers_4.jpg'];
     trip.publicationDate = new Date('2020-03-10');
     trip.cancelReason = null;
     trips.push(trip);
@@ -80,7 +82,8 @@ export class TripService {
     trip.requirements = 'You must love Maialen';
     trip.startDate = new Date('2020-05-27');
     trip.endDate = new Date('2020-06-27');
-    trip.pictures = ['../../../assets/oxytocin_1.jpg'];
+    trip.pictures = ['../../../assets/pictures/oxytocin_1.jpg', '../../../assets/pictures/oxytocin_2.jpg',
+      '../../../assets/pictures/oxytocin_3.jpg'];
     trip.publicationDate = new Date('2020-03-15');
     trip.cancelReason = null;
     trips.push(trip);

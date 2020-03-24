@@ -23,7 +23,8 @@ export class TripDisplayComponent extends TranslatableComponent implements OnIni
     this.trip.requirements = 'You must be 18 or older to join this trip. Don\'t forget to bring your shovel.';
     this.trip.startDate = new Date('2020-05-20');
     this.trip.endDate = new Date('2020-05-27');
-    this.trip.pictures = ['../../../assets/mystfalls_1.jpg', '../../../assets/mystfalls_2.jpg'];
+    this.trip.pictures = ['../../../assets/pictures/mystfalls_1.jpg', '../../../assets/pictures/mystfalls_2.jpg',
+      '../../../assets/pictures/mystfalls_3.jpg'];
     this.trip.publicationDate = new Date('2020-03-21');
     this.trip.cancelReason = null;
   }
