@@ -1,4 +1,6 @@
-export class Actor {
+import {Entity} from './entity.model';
+
+export class Actor extends Entity {
     name: string;
     surname: string;
     phoneNumber: string;
@@ -7,4 +9,8 @@ export class Actor {
     address: string;
     banned: string;
     actorType: string;
+
+    constructor() {
+        super();
+    }
 }

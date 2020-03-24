@@ -1,0 +1,32 @@
+{
+    "actor": {
+        "email": "Correo electrónico",
+        "password": "Contraseña",
+        "name": "Nombre",
+        "surname": "Apellido",
+        "phone": "Teléfono",
+        "address": "Dirección",
+        "role": "Rol",
+        "register": "Registrar",
+        "update": "Actualizar",
+        "register.title": "Registro de un actor",
+        "email.placeholder": "Introduzca el correo electrónico",
+        "password.placeholder": "Introduzca la contraseña"
+    },
+    "footer": {
+        "terms": "Términos y condiciones",
+        "visitors": "Visitantes"
+    },
+    "header": {
+        "menu": "Menú"
+    },
+    "security": {
+        "login": "Entrar",
+        "logout": "Salir",
+        "register": "Registrarse"
+    },
+    "trip": {
+        "display": "Mostrar viaje",
+        "list": "Lista de viajes"
+    }
+}

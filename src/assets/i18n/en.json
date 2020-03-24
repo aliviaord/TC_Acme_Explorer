@@ -1,0 +1,32 @@
+{
+    "actor": {
+        "email": "Email",
+        "password": "Password",
+        "name": "Name",
+        "surname": "Surname",
+        "phone": "Phone",
+        "address": "Address",
+        "role": "Role",
+        "register": "Register",
+        "update": "Update",
+        "register.title": "Register a new actor",
+        "email.placeholder": "Enter email",
+        "password.placeholder": "Enter password"
+    },
+    "footer": {
+        "terms": "Terms and conditions",
+        "visitors": "Visitors"
+    },
+    "header": {
+        "menu": "Menu"
+    },
+    "security": {
+        "login": "Login",
+        "logout": "Logout",
+        "register": "Register"
+    },
+    "trip": {
+        "display": "Display trip",
+        "list": "Trip list"
+    }
+}

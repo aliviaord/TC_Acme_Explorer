@@ -7,7 +7,8 @@ import { HttpHeaders, HttpClient } from '@angular/common/http';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
-}
+};
+
 @Injectable({
   providedIn: 'root'
 })
@@ -27,16 +28,37 @@ export class AuthService {
           .then(res => {
             resolve(res);
           }, err => {
-            reject(err)
+            reject(err);
           });
       }).catch(err => {
         reject(err);
-      })
-    })
+      });
+    });
   }
 
   getRoles(): string[] {
-    return ['MANAGER', 'ADMINISTRATOR', 'EXPLORER', 'SPONSOR']
+    return ['MANAGER', 'ADMINISTRATOR', 'EXPLORER', 'SPONSOR'];
   }
 
+  login(email: string, password: string) {
+    return new Promise<any>((resolve, reject) => {
+      this.fireAuth.auth.signInWithEmailAndPassword(email, password)
+        .then(_ => {
+          resolve();
+        }).catch(error => {
+          reject(error);
+        });
+    });
+  }
+
+  logout() {
+    return new Promise<any>((resolve, reject) => {
+      this.fireAuth.auth.signOut()
+        .then(_ => {
+          resolve();
+        }).catch(error => {
+          reject(error);
+        });
+    });
+  }
 }

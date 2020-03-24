@@ -1,24 +1,215 @@
 {
+    "actors": [
+        {
+            "id": "5e78bbd524b1296d559096fb",
+            "version": 0,
+            "name": "Maialen",
+            "surname": "Gurbindo",
+            "email": "chicasobresalto@murphy.com",
+            "password": "ot2020",
+            "phoneNumber": "627629862",
+            "address": "C/ Marina, Nº6",
+            "banned": false,
+            "actorType": [
+                "MANAGER"
+            ]
+        },
+
+        {
+            "id": "5e78bccd99d6d25a34fc6959",
+            "version": 0,
+            "name": "Ana Julieta",
+            "surname": "Calavia",
+            "email": "anawho@palomitas.com",
+            "password": "ot2020",
+            "phoneNumber": "678624789",
+            "banned": false,
+            "actorType": [
+                "MANAGER"
+            ]
+        },
+
+        {
+            "id": "5e78bd7713b68995265511a5",
+            "version": 0,
+            "name": "Samantha",
+            "surname": "Gilabert",
+            "email": "sam@estara.com",
+            "password": "ot2020",
+            "banned": false,
+            "actorType": [
+                "MANAGER"
+            ]
+        }
+    ],
+
     "trips": [
         {
-            "title": "Oxytocin",
-            "description": "Discover the oranges paradise",
-            "price": "1000",
-            "requirements": "You need to love Maialen",
-            "startDate": "22/04/2020",
-            "endDate": "25/04/2020",
-            "publicationtDate": "22/03/2020",
-            "manager": "12345",
+            "id": "5e78ac3cf6f9577fd149c9ba",
+            "version": 0,
+            "ticker": "200321-QYUW",
+            "title": "Trip to Myst Falls",
+            "description": "Visit this magic and desert island with your closest friends. There you can find and have a taste of its famous world-known fruit: apples.",
+            "price": 650,
+            "requirements": "You must be 18 or older to join this trip. Don't forget to bring your shovel.",
+            "startDate": "2020-05-20 16:50:00.000Z",
+            "endDate": "2020-05-27 10:10:00.000Z",
+            "pictures": [
+                "../../../assets/mystfalls_1.jpg",
+                "../../../assets/mystfalls_2.jpg"
+            ],
+            "publicationDate": "2020-03-21 22:00:00.000Z",
+            "cancelReason": null,
+            "manager": null,
+            "stages": [
+                {
+                    "title": "Into the woods",
+                    "description": "You can get some apples.",
+                    "price": 200,
+                    "order": 1
+                },
+                {
+                    "title": "Bulletin Board",
+                    "description": "Leave a message for future visitors.",
+                    "price": 150,
+                    "order": 2
+                },
+                {
+                    "title": "Mia's Home",
+                    "description": "Get to know the mayor.",
+                    "price": 300,
+                    "order": 3
+                }
+            ]
+        },
+
+        {
+            "id": "5e78b29a52a97bcf87ed3e20",
+            "version": 0,
+            "ticker": "200321-AJSF",
+            "title": "Visit Cornelia!",
+            "description": "Thinking about new beginnings? Cornelia might be your place. You'll get mystified by how this city screams your name.",
+            "price": 2530,
+            "requirements": "Buy lover by Taylor Swift on iTunes.",
+            "startDate": "2020-03-10 07:10:00.000Z",
+            "endDate": "2020-04-10 07:30:00.000Z",
+            "pictures": [
+                "../../../assets/cornelia_1.jpg",
+                "../../../assets/cornelia_2.jpg",
+                "../../../assets/cornelia_3.jpg",
+                "../../../assets/cornelia_4.jpg"
+            ],
+            "publicationDate": "2020-02-10 19:35:00.000Z",
+            "cancelReason": null,
+            "manager": null,
+            "stages": [
+                {
+                    "title": "Socrate's Museum",
+                    "description": "Get to know everything about insects, fish and fossils.",
+                    "price": 2330,
+                    "order": 1
+                },
+                {
+                    "title": "Walk by the river",
+                    "description": "One of the most wonderful views of the city.",
+                    "price": 200,
+                    "order": 2
+                }
+            ]
+        },
+
+        {
+            "id": "5e78b3a2c202dac10dc78e55",
+            "version": 0,
+            "ticker": "200209-HAHL",
+            "title": "Boaters and pirates",
+            "description": "Come to enjoy the sea and its mindblowing beaches. We tie the capes and you drive in this sea that's full of lights.",
+            "price": 425,
+            "requirements": "You must know how to swim.",
+            "startDate": "2020-05-28 09:10:00.000Z",
+            "endDate": "2020-06-05 19:10:00.000Z",
+            "pictures": [
+
+            ],
+            "publicationDate": "2020-03-10 20:40:00.000Z",
+            "cancelReason": "Public gatherings have been banned because of Coronavirus.",
+            "manager": "5e78bbd524b1296d559096fb",
+            "stages": [
+                {
+                    "title": "Go fishing!",
+                    "decription": "A fishing competition will be held during this trip.",
+                    "price": 425,
+                    "order": 1
+                }
+            ]
+        },
+
+        {
+            "id": "5e78b4abd54f14f0beb474e6",
+            "version": 0,
+            "ticker": "200106-CCYW",
+            "title": "Tell the gardener I bring flowers",
+            "description": "Tired of living in a crowded city? In this trip you can enjoy of some relaxing gardening courses far from all the noises.",
+            "price": 305,
+            "requirements": "Some patience!",
+            "startDate": "2020-07-16 01:40:00.000Z",
+            "endDate": "2020-07-26 14:05:00.000Z",
+            "pictures": [
+
+            ],
+            "publicationDate": "2020-03-10 17:30:00.000Z",
+            "cancelReason": null,
+            "manager": "5e78bbd524b1296d559096fb",
+            "stages": [
+                {
+                    "title": "Flowers and love",
+                    "description": "This gardening lesson will be focused on roses.",
+                    "price": 100,
+                    "order": 1
+                },
+                {
+                    "title": "Flower power",
+                    "description": "In this session we will learn about multiple types of flowers.",
+                    "price": 150,
+                    "order": 2
+                },
+                {
+                    "title": "Trees matter",
+                    "description": "Planting trees is also a great choice for the environment and we will focus on it.",
+                    "price": 55,
+                    "order": 3
+                }
+            ]
+        },
+
+        {
+            "id": "5e78b57774fbc89346a17500",
+            "version": 0,
+            "ticker": "200322-UIWE",
+            "title": "Oxytocin island",
+            "description": "Discover the food paradise: oranges, madeleines, sardines, broccoli... Everything a foodaholic can dream about.",
+            "price": 500,
+            "requirements": "You must love Maialen.",
+            "startDate": "2020-05-27 10:10:00.000Z",
+            "endDate": "2020-06-27 12:20:00.000Z",
+            "pictures": [
+                "../../../assets/oxytocin_1.jpg"
+            ],
+            "publicationtDate": "2020-03-15 22:25:00.000Z",
+            "cancelReason": null,
+            "manager": "5e78bbd524b1296d559096fb",
             "stages": [
                 {
                     "title": "Beach",
-                    "description": "You can get some coconuts",
-                    "price": "500"
+                    "description": "You can get some coconuts.",
+                    "price": 200,
+                    "order": 1
                 },
                 {
                     "title": "Alicia's Home",
-                    "description": "You can pray for Alicia",
-                    "price": "500"
+                    "description": "You can pray for Alicia.",
+                    "price": 300,
+                    "order": 2
                 }
             ]
         }

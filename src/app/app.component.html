@@ -1,9 +1,17 @@
-<div class="container xl">
-  <div class="flex mb-4">
-    <div class="w-full bg-gray-500 h-12">
-      <app-header></app-header>
-      <app-register></app-register>
-      <!-- <app-trip-display></app-trip-display> --> -->
+<html>
+  <head>
+    <title>acme-explorer</title>
+  </head>
+  <body>
+    <app-header></app-header>
+    <br/><br/>
+    <div class="container xl">
+      <div class="flex mb-4">
+        <div class="w-full bg-gray-500 h-12">
+          <router-outlet></router-outlet>
+        </div>
+      </div>
     </div>
-  </div>
-</div>
+    <app-footer></app-footer>
+  </body>
+</html>
