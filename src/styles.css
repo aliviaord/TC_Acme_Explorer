@@ -1,1 +1,10 @@
 /* You can add global styles to this file, and also import other style files */
+
+/* Following tailwind syntax but adding c char to the end of custom styles */
+.w-48c {
+    width: 48rem;
+}
+
+body {
+    font-family: 'Mali', cursive;
+}
