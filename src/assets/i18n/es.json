@@ -23,7 +23,12 @@
     "security": {
         "login": "Entrar",
         "logout": "Salir",
-        "register": "Registrarse"
+        "register": "Registrarse",
+        "signin": "Registrarse"
+    },
+    "titles": {
+        "register": "Registro",
+        "login": "Iniciar sesión"
     },
     "trip": {
         "display": "Mostrar viaje",
