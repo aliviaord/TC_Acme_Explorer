@@ -5,12 +5,14 @@ import { LoginComponent } from './components/security/login/login.component';
 import { RegisterComponent } from './components/security/register/register.component';
 import { TripListComponent } from './components/trip/trip-list/trip-list.component';
 import { TripDisplayComponent } from './components/trip/trip-display/trip-display.component';
+import { MainComponent } from './components/master/main/main.component';
 
 const appRoutes: Routes = [
   {path: 'login', component: LoginComponent},
   {path: 'register', component: RegisterComponent},
   {path: 'trip-list', component: TripListComponent},
-  {path: 'trip-display', component: TripDisplayComponent}
+  {path: 'trip-display', component: TripDisplayComponent},
+  {path: '', component: MainComponent}
 ];
 
 @NgModule({

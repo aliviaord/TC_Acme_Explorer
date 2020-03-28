@@ -19,6 +19,7 @@ import { TranslatableComponent } from './components/shared/translatable/translat
 import { FooterComponent } from './components/master/footer/footer.component';
 import { LocalizedDataPipe } from './components/shared/localized-data.pipe';
 import { AppRoutingModule } from './app-routing.module';
+import { MainComponent } from './components/master/main/main.component';
 
 export const firebaseConfig = {
   apiKey: 'AIzaSyBeyK3jw-oLh1MyZMHrydSJwy0WTxWDZ-0',
@@ -47,7 +48,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     LoginComponent,
     TranslatableComponent,
     FooterComponent,
-    LocalizedDataPipe
+    LocalizedDataPipe,
+    MainComponent
   ],
   imports: [
     BrowserModule,
