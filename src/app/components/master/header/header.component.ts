@@ -32,4 +32,8 @@ export class HeaderComponent extends TranslatableComponent implements OnInit {
       });
   }
 
+  expandNavBar() {
+    const target = document.getElementById('main-nav');
+    target.classList.toggle('hidden');
+  }
 }

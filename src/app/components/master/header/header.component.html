@@ -1,35 +1,35 @@
-<nav class="flex items-center justify-between flex-wrap bg-teal-500 p-6">
+<nav class="flex items-center justify-between flex-wrap bg-green-300 p-4">
   <div class="flex items-center flex-shrink-0 text-white mr-6">
-    <img class="object-scale-down h-12" src="../../../assets/logo.png">
+    <a href="/">
+      <img class="fill-current h-8 w-36 mr-2" src="../../../assets/logo.png">
+    </a>
   </div>
   <div class="block lg:hidden">
-    <button class="flex items-center px-3 py-2 border rounded text-teal-200 border-teal-400 hover:text-white hover:border-white">
+    <button (click)="expandNavBar()" class="flex items-center px-3 py-2 border-2 rounded text-green-100 border-green-200 hover:text-white hover:border-white">
       <svg class="fill-current h-3 w-3" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><title>{{ 'header.menu' | translate }}</title><path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z"/></svg>
     </button>
   </div>
-  <div class="w-full block flex-grow lg:flex lg:items-center lg:w-auto">
+  <div id="main-nav" class="w-full hidden text-center lg:block flex-grow lg:flex lg:items-center lg:w-auto lg:text-justify">
     <div class="text-sm lg:flex-grow">
-      <li class="nav-item active">
-        <button (click)="changeLanguage('en')" class="btn-sm btn-primary mr-1">EN</button>
-        <button (click)="changeLanguage('es')" class="btn-sm btn-primary mr-1">SP</button>
-      </li>
-    </div>
-    <div class="text-sm lg:flex-grow">
-      <a routerLink="/trip-list" class="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4">
+      <a routerLink="/trip-list" class="block mt-4 font-bold text-xl px-4 py-2 border-2 rounded border-green-300 lg:inline-block lg:mt-0 text-green-100 hover:text-green-400 hover:border-green-200 hover:bg-green-200 mr-4">
         {{ 'trip.list' | translate }}
       </a>
-      <a routerLink="/trip-display" class="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4">
-        {{ 'trip.display' | translate }}
-      </a>
-      <a routerLink="/register" class="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white">
+    </div>
+    <div class="text-sm lg:flex-grow-0">
+      <a routerLink="/register" class="block mt-4 font-bold text-xl px-4 py-2 border-2 rounded border-green-300 lg:inline-block lg:mt-0 text-green-100 hover:text-green-400 hover:border-green-200 hover:bg-green-200 mr-4">
         {{ 'security.register' | translate }}
       </a>
-      <a routerLink="/login" class="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white">
+      <a routerLink="/login" class="block mt-4 font-bold text-xl px-4 py-2 border-2 rounded border-green-300 lg:inline-block lg:mt-0 text-green-100 hover:text-green-400 hover:border-green-200 hover:bg-green-200 mr-4">
         {{ 'security.login' | translate }}
       </a>
-      <a href="/logout" class="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white" (click)="logout()">
+      <a href="/logout" class="block mt-4 font-bold text-xl px-4 py-2 border-2 rounded border-green-300 lg:inline-block lg:mt-0 text-green-100 hover:text-green-400 hover:border-green-200 hover:bg-green-200 mr-4">
         {{ 'security.logout' | translate }}
       </a>
+    </div>
+    <div>
+      <button (click)="changeLanguage('en')" class="inline-block font-bold text-xl px-4 py-2 leading-none border-2 rounded text-white border-white hover:border-transparent hover:text-green-300 hover:bg-white mt-4 lg:mt-0">EN</button>
+      &nbsp;
+      <button (click)="changeLanguage('es')" class="inline-block font-bold text-xl px-4 py-2 leading-none border-2 rounded text-white border-white hover:border-transparent hover:text-green-300 hover:bg-white mt-4 lg:mt-0">SP</button>
     </div>
   </div>
 </nav>

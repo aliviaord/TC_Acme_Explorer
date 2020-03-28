@@ -1,8 +1,10 @@
-  <h3>Acme<span>Explorer</span></h3>
-  <p class="footer-links">
-    <a routerLink="/terms-and-conditions">{{ 'footer.terms' | translate }}</a>
-  </p>
-  <p class="footer-company-name">Acme-Explorer &copy; {{ today | date }}</p>
-  <span class="text-muted">
-    <b>{{ 'footer.visitors' | translate }}: </b>{{ numClients | number }}
-  </span>
+<div class="flex justify-center flex-wrap bg-green-200 p-6 grid-cols-2 col-gap-4">
+  <div class="text-right px-4 w-1/2">
+    <p><b>&copy;2020 Acme Corp. All rights reserved.</b></p>
+    <a routerLink="/terms-and-conditions" class="hover:underline">{{ 'footer.terms' | translate }}</a>
+  </div>
+  <div class="text-left px-4 w-1/2">
+    <span><b>{{ 'footer.visitors' | translate }}: </b>{{ numClients | number }}</span>
+    <p>{{ today | date }}</p>
+  </div>
+</div>
