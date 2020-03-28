@@ -23,7 +23,12 @@
     "security": {
         "login": "Login",
         "logout": "Logout",
-        "register": "Register"
+        "register": "Register",
+        "signin": "Sign In"
+    },
+    "titles": {
+        "register": "Register",
+        "login": "Log In"
     },
     "trip": {
         "display": "Display trip",

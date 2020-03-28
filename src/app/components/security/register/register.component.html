@@ -1,58 +1,57 @@
 <div class="w-48c content-center text-center">
   <form [formGroup]="registrationForm" (ngSubmit)="onRegister()" class="text-base bg-white shadow-2xl rounded px-8 pt-6 pb-8">
-    <h1>Register</h1><br/>
+    <h1>{{'titles.register' | translate}}</h1><br/>
     <div class="mb-4">
       <label class="block text-gray-700 text-md font-bold mb-2" for="name">
-        Name
+        {{'actor.name' | translate}}
       </label>
-      <input class="appearance-none border-2 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="name" formControlName="name" type="text" placeholder="Name">
+      <input class="appearance-none border-2 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="name" formControlName="name" type="text" placeholder="{{'actor.name' | translate}}">
     </div>
 
     <div class="mb-4">
       <label class="block text-gray-700 text-md font-bold mb-2" for="surname">
-        Surname
+        {{'actor.surname' | translate}}
       </label>
-      <input class="appearance-none border-2 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="surname" formControlName="surname" type="text" placeholder="Surname">
+      <input class="appearance-none border-2 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="surname" formControlName="surname" type="text" placeholder="{{'actor.surname' | translate}}">
     </div>
 
     <div class="mb-4">
       <label class="block text-gray-700 text-md font-bold mb-2" for="email">
-        Email
+        {{'actor.email' | translate}}
       </label>
-      <input class="appearance-none border-2 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="email" formControlName="email" type="text" placeholder="Email">
+      <input class="appearance-none border-2 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="email" formControlName="email" type="text" placeholder="{{'actor.email' | translate}}">
     </div>
 
     <div class="mb-4">
       <label class="block text-gray-700 text-md font-bold mb-2" for="phone">
-        Phone
+        {{'actor.phone' | translate}}
       </label>
-      <input class="appearance-none border-2 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="phone" formControlName="phone" type="text" placeholder="Phone">
+      <input class="appearance-none border-2 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="phone" formControlName="phone" type="text" placeholder="{{'actor.phone' | translate}}">
     </div>
 
     <div class="mb-4">
       <label class="block text-gray-700 text-md font-bold mb-2" for="address">
-        Address
+        {{'actor.address' | translate}}
       </label>
-      <input class="appearance-none border-2 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="address" formControlName="address" type="text" placeholder="Address">
+      <input class="appearance-none border-2 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="address" formControlName="address" type="text" placeholder="{{'actor.address' | translate}}">
     </div>
 
     <div class="mb-4">
       <label class="block text-gray-700 text-md font-bold mb-2" for="role">
-        Role
+        {{'actor.role' | translate}}
       </label>
-      <input class="appearance-none border-2 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="role" formControlName="role" type="text" placeholder="Role">
+      <input class="appearance-none border-2 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="role" formControlName="role" type="text" placeholder="{{'actor.role' | translate}}">
     </div>
 
     <div class="mb-6">
       <label class="block text-gray-700 text-md font-bold mb-2" for="password">
-        Password
+        {{'actor.password' | translate}}
       </label>
-      <input class="appearance-none border-2 border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" id="password" formControlName="password" type="password" placeholder="******************">
-      <p class="text-red-500 text-xs italic">Please choose a password.</p>
+      <input class="appearance-none border-2 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" id="password" formControlName="password" type="password" placeholder="{{'actor.password' | translate}}">
     </div>
     <div class="flex items-center justify-center">
       <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit">
-        Sign In
+        {{'security.signin' | translate}}
       </button>
       <!-- <a class="inline-block align-baseline font-bold text-md text-blue-500 hover:text-blue-800" href="#">
         Forgot Password?
