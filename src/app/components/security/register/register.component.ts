@@ -17,7 +17,7 @@ export class RegisterComponent extends TranslatableComponent implements OnInit {
   registrationForm: FormGroup;
   roleList: string[];
 
-  constructor(private authService: AuthService, private fb: FormBuilder, private translateService: TranslateService) {
+  constructor(private router: Router, private authService: AuthService, private fb: FormBuilder, private translateService: TranslateService) {
     super(translateService);
     this.roleList = this.authService.getRoles();
     this.createForm();
@@ -41,7 +41,8 @@ export class RegisterComponent extends TranslatableComponent implements OnInit {
   onRegister() {
     this.authService.registerUser(this.registrationForm.value)
     .then(res => {
-      console.log(res);
+      console.log(res); 
+      this.router.navigate(['/login']);
     }, err => {
       console.log(err);
     });
