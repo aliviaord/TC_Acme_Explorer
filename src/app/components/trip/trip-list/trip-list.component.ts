@@ -12,22 +12,34 @@ import { TranslatableComponent } from '../../shared/translatable/translatable.co
 })
 export class TripListComponent extends TranslatableComponent implements OnInit {
   private trips: Trip[];
+  today: number;
 
   constructor(private tripService: TripService,
     private translateService: TranslateService) {
       super(translateService);
-      this.trips = tripService.createTrips();
   }
 
   getPictures(index: number) {
     return this.trips[index].pictures;
   }
 
+  getPublicationDate(index: number) {
+    return new Date(this.trips[index].publicationDate);
+  }
+
   getTrips() {
-    return this.trips;
+    return this.tripService.getTrips();
   }
 
   ngOnInit() {
+    this.today = Date.now();
+
+    this.getTrips()
+      .then((response: Trip[]) => {
+        this.trips = <Trip[]>response;
+      }).catch(error => {
+        console.error(error);
+      });
   }
 
 }

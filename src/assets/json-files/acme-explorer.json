@@ -55,9 +55,9 @@
             "startDate": "2020-05-20 16:50:00.000Z",
             "endDate": "2020-05-27 10:10:00.000Z",
             "pictures": [
-                "../../../assets/mystfalls_1.jpg",
-                "../../../assets/mystfalls_2.jpg",
-                "../../../assets/mystfalls_3.jpg"
+                "../../../assets/pictures/mystfalls_1.jpg", 
+                "../../../assets/pictures/mystfalls_2.jpg",
+                "../../../assets/pictures/mystfalls_3.jpg"
             ],
             "publicationDate": "2020-03-21 22:00:00.000Z",
             "cancelReason": null,
@@ -95,10 +95,10 @@
             "startDate": "2020-03-10 07:10:00.000Z",
             "endDate": "2020-04-10 07:30:00.000Z",
             "pictures": [
-                "../../../assets/cornelia_1.jpg",
-                "../../../assets/cornelia_2.jpg",
-                "../../../assets/cornelia_3.jpg",
-                "../../../assets/cornelia_4.jpg"
+                "../../../assets/pictures/cornelia_1.jpg", 
+                "../../../assets/pictures/cornelia_2.jpg",
+                "../../../assets/pictures/cornelia_3.jpg", 
+                "../../../assets/pictures/cornelia_4.jpg"
             ],
             "publicationDate": "2020-02-10 19:35:00.000Z",
             "cancelReason": null,
@@ -130,7 +130,7 @@
             "startDate": "2020-05-28 09:10:00.000Z",
             "endDate": "2020-06-05 19:10:00.000Z",
             "pictures": [
-
+                "../../../assets/pictures/pirates_1.jpg"
             ],
             "publicationDate": "2020-03-10 20:40:00.000Z",
             "cancelReason": "Public gatherings have been banned because of Coronavirus.",
@@ -156,7 +156,10 @@
             "startDate": "2020-07-16 01:40:00.000Z",
             "endDate": "2020-07-26 14:05:00.000Z",
             "pictures": [
-
+                "../../../assets/pictures/flowers_1.jpg", 
+                "../../../assets/pictures/flowers_2.jpg",
+                "../../../assets/pictures/flowers_3.jpg", 
+                "../../../assets/pictures/flowers_4.jpg"
             ],
             "publicationDate": "2020-03-10 17:30:00.000Z",
             "cancelReason": null,
@@ -194,7 +197,9 @@
             "startDate": "2020-05-27 10:10:00.000Z",
             "endDate": "2020-06-27 12:20:00.000Z",
             "pictures": [
-                "../../../assets/oxytocin_1.jpg"
+                "../../../assets/pictures/oxytocin_1.jpg", 
+                "../../../assets/pictures/oxytocin_2.jpg",
+                "../../../assets/pictures/oxytocin_3.jpg"
             ],
             "publicationtDate": "2020-03-15 22:25:00.000Z",
             "cancelReason": null,

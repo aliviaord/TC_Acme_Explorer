@@ -11,7 +11,7 @@ const appRoutes: Routes = [
   {path: 'login', component: LoginComponent},
   {path: 'register', component: RegisterComponent},
   {path: 'trip-list', component: TripListComponent},
-  {path: 'trip-display', component: TripDisplayComponent},
+  {path: 'trip-display/:id', component: TripDisplayComponent},
   {path: '', component: MainComponent}
 ];
 

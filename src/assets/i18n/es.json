@@ -32,7 +32,15 @@
     },
     "trip": {
         "display": "Mostrar viaje",
-        "list": "Lista de viajes"
+        "list": "Lista de viajes",
+        "ticker": "Identificador",
+        "title": "Título",
+        "price": "Precio",
+        "startDate": "Fecha de Inicio",
+        "endDate": "Fecha de Fin",
+        "details": "Detalles",
+        "image": "Imagen",
+        "cancelled": "CANCELADO"
     },
     "main": {
         "title1": "¿Listo para descubrir?",

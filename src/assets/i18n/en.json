@@ -32,7 +32,15 @@
     },
     "trip": {
         "display": "Display trip",
-        "list": "Trip list"
+        "list": "Trip list",
+        "ticker": "Ticker",
+        "title": "Title",
+        "price": "Price",
+        "startDate": "Starting Date",
+        "endDate": "Ending Date",
+        "details": "Details",
+        "image": "Image",
+        "cancelled": "CANCELLED"
     },
     "main": {
         "title1": "Ready to discover?",

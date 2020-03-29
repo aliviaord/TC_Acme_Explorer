@@ -1,32 +1,29 @@
-<table class="table table-hover">
+<h1 class="text-center font-bold text-4xl py-2">{{'trip.list' | translate}}</h1>
+<table class="table-auto">
   <thead>
     <tr>
-      <th scope="col">#</th>
-      <th scope="col">Ticker</th>
-      <th scope="col">Title</th>
-      <th scope="col">Description</th>
-      <th scope="col">Price</th>
-      <th scope="col">Requirements</th>
-      <th scope="col">Starting Date</th>
-      <th scope="col">Ending Date</th>
-      <th scope="col">Pictures</th>
-      <th scope="col">Publication Date</th>
-      <th scope="col">Cancelation Reason</th>
+      <th class="px-4 py-2"></th>
+      <th class="px-4 py-2">{{'trip.ticker' | translate}}</th>
+      <th class="px-4 py-2">{{'trip.image' | translate}}</th>
+      <th class="px-4 py-2">{{'trip.title' | translate}}</th>
+      <th class="px-4 py-2">{{'trip.price' | translate}}</th>
+      <th class="px-4 py-2">{{'trip.startDate' | translate}}</th>
+      <th class="px-4 py-2">{{'trip.endDate' | translate}}</th>
+      <th class="px-4 py-2"></th>
     </tr>
   </thead>
   <tbody *ngFor="let t of trips; let i = index">
-    <tr>
-      <th scope="row">{{i + 1}}</th>
-      <td>{{t.ticker}}</td>
-      <td>{{t.title}}</td>
-      <td>{{t.description}}</td>
-      <td>{{t.price}}</td>
-      <td>{{t.requirements}}</td>
-      <td>{{t.startDate}}</td>
-      <td>{{t.endDate}}</td>
-      <td><img src="{{t.pictures[0]}}" alt="" class="card-img-top img-fluid"></td>
-      <td>{{t.publicationDate}}</td>
-      <td *ngIf="t.cancelReason">{{t.cancelReason}}</td>
+    <tr *ngIf="getPublicationDate(i) < today">
+      <td class="border px-4 py-2 text-center">
+        <p *ngIf="t.cancelReason" class="text-red-400 font-bold">{{'trip.cancelled' | translate}}</p>
+      </td>
+      <td class="border px-4 py-2 text-center">{{t.ticker}}</td>
+      <td class="border px-4 py-2 text-center"><img src="{{t.pictures[0]}}" class="object-contain h-32"></td>
+      <td class="border px-4 py-2 text-center">{{t.title}}</td>
+      <td class="border px-4 py-2 text-center">{{t.price}}€</td>
+      <td class="border px-4 py-2 text-center">{{t.startDate | date}}</td>
+      <td class="border px-4 py-2 text-center">{{t.endDate | date}}</td>
+      <td class="border text-center"><a routerLink="/trip-display/{{t.id}}" class="flex items-center px-4 py-2 hover:bg-green-100">{{'trip.details' | translate}} <img src="../../../assets/leaf.png" class="object-contain h-10"></a></td>
     </tr>
   </tbody>
 </table>
