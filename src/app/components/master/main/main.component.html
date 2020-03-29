@@ -4,13 +4,13 @@
 	<div class="container px-3 mx-auto flex flex-wrap flex-col md:flex-row items-center">
 		<!--Left Col-->
 		<div class="flex flex-col w-full md:w-2/5 justify-center items-start text-center md:text-left">
-			<p class="uppercase tracking-loose w-full">Ready to discover?</p>
-			<h1 class="my-4 text-5xl font-bold leading-tight">Acme-Explorer is here to help you!</h1>
-			<p class="leading-normal text-2xl mb-8">Find the trip that's right for you, sign up and get ready for one of the best experiences of your life!</p>
+			<p class="uppercase tracking-loose w-full">{{'main.title1' | translate}}</p>
+			<h1 class="my-4 text-5xl font-bold leading-tight">{{'main.title2' | translate}}</h1>
+			<p class="leading-normal text-2xl mb-8">{{'main.title3' | translate}}</p>
 		
 			
 
-			<button class="mx-auto lg:mx-0 hover:underline bg-white text-gray-800 font-bold rounded-full my-6 py-4 px-8 shadow-lg">Find trips</button>
+			<button routerLink="/trip-list" class="bg-teal-300 text-white mx-auto lg:mx-0 hover:underline  font-bold rounded-full my-6 py-4 px-8 shadow-lg">{{'main.title5' | translate}}</button>
 			
 		</div>
 		<!--Right Col-->
@@ -22,9 +22,9 @@
 
 </div>
 
-<section class="bg-white border-b py-8">
+<section class="border-b py-8">
 	<div class="container max-w-5xl mx-auto m-8">
-		<h1 class="w-full my-2 text-5xl font-bold leading-tight text-center text-gray-800">Why us?</h1>
+		<h1 class="w-full my-2 text-5xl font-bold leading-tight text-center text-gray-800">{{'main.title4' | translate}}</h1>
 		<div class="w-full mb-4">	
 			<div class="h-1 mx-auto gradient w-64 opacity-25 my-0 py-0 rounded-t"></div>
     </div>
@@ -33,11 +33,9 @@
 	
 		<div class="flex flex-wrap">
 			<div class="w-5/6 sm:w-1/2 p-6">
-				<h3 class="text-3xl text-gray-800 font-bold leading-none mb-3">We have the most professional staff to organize your trips</h3>
-				<p class="text-gray-600 mb-8">You can trust the entire team of professionals we have at Acme-Explorer. With years of experience and a large number of clients, they will know your needs and know how to respond to them from the very first moment.<br /><br />
-				
-				"I will do everything in my power to make your journey a unique moment! 🌸" - Isabelle, chief of staff.</p>
-				
+				<h3 class="text-3xl text-gray-800 font-bold leading-none mb-3">{{'main.staff1' | translate}}</h3>
+				<p class="text-gray-600 mb-8">{{'main.staff2' | translate}}<br /><br />
+          {{'main.staff3' | translate}} </p>
 			</div>
       <div class="w-full sm:w-1/2 p-6">
         <img class="w-2 md:w-1/3 z-50" src="../../../assets/pictures/main/isabelle.png">
@@ -51,9 +49,9 @@
       </div>
     <div class="w-full sm:w-2/5 pt-6 mt-6">
       <div class="align-middle">
-        <h3 class="text-3xl text-gray-800 font-bold leading-none mb-3">Adventures everytime!</h3>
-        <p class="text-gray-600 mb-8">Discover new places, new activities, food you've never tried before, make new friends and much more<br /><br />
-        "Catching sea bass has become my new passion 🐟" - Villager, one of our explorers.</p>
+        <h3 class="text-3xl text-gray-800 font-bold leading-none mb-3">{{'main.adventures1' | translate}}</h3>
+        <p class="text-gray-600 mb-8">{{'main.adventures2' | translate}}<br /><br />
+          {{'main.adventures3' | translate}}</p>
       </div>
       </div>
     </div>
@@ -62,9 +60,9 @@
 	
 		<div class="flex flex-wrap pt-12">
 			<div class="w-5/6 sm:w-3/5 pt-6 p-6">
-				<h3 class="text-3xl text-gray-800 font-bold leading-none mb-3">We have the best prices</h3>
-				<p class="text-gray-600 mb-8">At Acme-Explorer you will find the best prices for all destinations. Use our filters to find the most affordable trip on the date you prefer!<br /><br />
-          "I am once again asking you for your bells...💰" - Tom Nook, owner and founder.</p>
+				<h3 class="text-3xl text-gray-800 font-bold leading-none mb-3">{{'main.prices1' | translate}}</h3>
+				<p class="text-gray-600 mb-8">{{'main.prices2' | translate}}<br /><br />
+          {{'main.prices3' | translate}}</p>
         </div>
       <div class="w-full sm:w-2/5 ">
         <img class="w-2 md:w-3/6 z-50" src="../../../assets/pictures/main/nook.png">

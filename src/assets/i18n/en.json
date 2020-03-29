@@ -33,5 +33,21 @@
     "trip": {
         "display": "Display trip",
         "list": "Trip list"
+    },
+    "main": {
+        "title1": "Ready to discover?",
+        "title2": "Acme-Explorer is here to help you!",
+        "title3": "Find the trip that's right for you, sign up and get ready for one of the best experiences of your life!",
+        "title4": "Why us?",
+        "title5": "Find trips",
+        "staff1": "We have the most professional staff to organize your trips",
+        "staff2": "You can trust the entire team of professionals we have at Acme-Explorer. With years of experience and a large number of clients, they will know your needs and know how to respond to them from the very first moment.",
+        "staff3": "\"I will do everything in my power to make your journey a unique moment! 🌸\" - Isabelle, chief of staff.",
+        "adventures1": "Adventures everytime!",
+        "adventures2": "Discover new places, new activities, food you've never tried before, make new friends and much more",
+        "adventures3": "\"Catching sea bass has become my new passion 🐟\" - Villager, one of our explorers.",
+        "prices1": "We have the best prices",
+        "prices2": "At Acme-Explorer you will find the best prices for all destinations. Use our filters to find the most affordable trip on the date you prefer!",
+        "prices3": "\"I am once again asking you for your bells...💰\" - Tom Nook, owner and founder."
     }
 }
