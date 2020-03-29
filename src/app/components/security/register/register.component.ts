@@ -34,7 +34,7 @@ export class RegisterComponent extends TranslatableComponent implements OnInit {
       password: [''],
       address: [''],
       phone: [''],
-      role: [''],
+      role: ['EXPLORER'],
     });
   }
 
