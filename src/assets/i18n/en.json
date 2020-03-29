@@ -40,7 +40,10 @@
         "endDate": "Ending Date",
         "details": "Details",
         "image": "Image",
-        "cancelled": "CANCELLED"
+        "cancelled": "CANCELLED",
+        "requirements": "Requirements",
+        "dates": "Dates",
+        "sorry": "We're sorry! This trip has been cancelled. The cancelation reason is shown below:"
     },
     "main": {
         "title1": "Ready to discover?",
