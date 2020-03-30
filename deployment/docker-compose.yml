@@ -1,0 +1,27 @@
+version: '3'
+
+services:
+  acme-explorer-ui:
+    build: ../
+    environment: 
+      - NODE_ENV=${NODE_ENV}
+      - PORT=${PORT}
+      - VIRTUAL_HOST=${VIRTUAL_HOST}
+      - VIRTUAL_PORT=${PORT}
+    restart: on-failure
+    depends_on:
+      - json-server
+    ports:
+      - "127.0.0.1:${PORT}:${PORT}"
+  json-server:
+    build: .
+    ports:
+      - "127.0.0.1:3000:3000"
+    expose:
+      - "3000"
+    restart: always
+
+networks: 
+  default:
+    external:
+      name: service-tier
