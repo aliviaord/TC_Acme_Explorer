@@ -1,13 +1,23 @@
-<div class="card mx-auto mt-4" style="width: 18 rem;">
-    <img class="card-img-top mx-auto" src="{{trip.pictures[0]}}" style="width: 40%; height: 40%;" alt="Main trip image">
-    <div class="card-body mb-2">
-        <h5 class="card-title text-center">{{trip.title}}</h5>
-        <h6 class="card-subtitle text-center text-muted">{{trip.ticker}}</h6>
-        <p class="card-text ml-2">{{trip.description}}</p>
+<div class="max-w-xl rounded overflow-hidden shadow-lg bg-white">
+  <div *ngIf="trip.cancelReason" class="px-6 py-4 bg-red-200 text-center">
+    <p class="px-3 py-1"><span class="font-bold">{{'trip.sorry' | translate}}</span></p>
+    <p>{{trip.cancelReason}}</p>
+  </div>
+  <div class="container flex items-center justify-center relative">
+    <img *ngIf="trip.pictures[pictureId]" class="w-full" src="{{trip.pictures[pictureId]}}" alt="Main trip image"> 
+    <div class="absolute flex bottom-0 py-4 h-1/2">   
+      <button *ngFor="let p of trip.pictures; let i = index" (click)="setPictureId(i)" class="w-4 h-4 mx-1 bg-gray-400 rounded-full hover:bg-gray-600"></button>
     </div>
-    <div class="card-body">
-        <p class="card-text text-right mr-1 mb-1">
-            <strong>{{'Price:'}}</strong>&nbsp;{{trip.price}}
-        </p>
+  </div>
+  <div class="px-6 py-4">
+    <div class="font-bold text-xl mb-2 text-center">{{trip.title}}&nbsp;<span class="text-gray-500">({{trip.ticker}})</span></div>
+    <p class="text-gray-700 text-base text-center">{{trip.description}}</p>
+    <div class="px-6 pt-4 text-center">
+      <span class="font-bold">{{'trip.dates' | translate}}:&nbsp;</span><span class="inline-block bg-gray-200 rounded-full px-3 py-1 font-bold mr-2">{{trip.startDate | date}} - {{trip.endDate | date}}</span>
+      <span class="font-bold">{{'trip.price' | translate}}:&nbsp;</span><span class="text-right bg-gray-200 rounded-full px-3 py-1 font-bold mr-2">{{trip.price}}&euro;</span>
     </div>
+  </div>
+  <div class="px-6 py-4 bg-gray-200">
+    <p class="px-3 py-1"><span class="font-bold">{{'trip.requirements' | translate}}:</span>&nbsp;{{trip.requirements}}</p>
+  </div>
 </div>

@@ -40,7 +40,10 @@
         "endDate": "Fecha de Fin",
         "details": "Detalles",
         "image": "Imagen",
-        "cancelled": "CANCELADO"
+        "cancelled": "CANCELADO",
+        "requirements": "Requisitos",
+        "dates": "Fechas",
+        "sorry": "¡Lo sentimos! Este viaje ha sido cancelado. La razón de la cancelación se muestra a continuación:"
     },
     "main": {
         "title1": "¿Listo para descubrir?",

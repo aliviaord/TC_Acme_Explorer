@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { Trip } from '../models/trip.model';
 
 import { environment } from 'src/environments/environment';
 import { HttpHeaders, HttpClient } from '@angular/common/http';
@@ -18,5 +17,12 @@ export class TripService {
   getTrips() {
     const url = `${environment.backendApiBaseURL}/trips`;
     return this.http.get(url, httpOptions).toPromise();
+  }
+
+  getTrip(id) {
+    if (id) {
+      const url = `${environment.backendApiBaseURL}/trips/${id}`;
+      return this.http.get(url, httpOptions).toPromise();
+    }
   }
 }

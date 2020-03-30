@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, ParamMap } from '@angular/router';
 import { Trip } from 'src/app/models/trip.model';
+import { TripService } from 'src/app/services/trip.service';
 
 import { TranslateService } from '@ngx-translate/core';
 import { TranslatableComponent } from '../../shared/translatable/translatable.component';
@@ -11,25 +13,36 @@ import { TranslatableComponent } from '../../shared/translatable/translatable.co
 })
 export class TripDisplayComponent extends TranslatableComponent implements OnInit {
   private trip: Trip;
+  private id: number;
+  private pictureId: number;
 
-  constructor(private translateService: TranslateService) {
+  constructor(private tripService: TripService,
+    private translateService: TranslateService,
+    private activeRoute: ActivatedRoute) {
     super(translateService);
-    this.trip = new Trip();
-    this.trip.ticker = '200321-QYUW';
-    this.trip.title = 'Trip to Myst Falls';
-    this.trip.description = 'Visit this magic and desert island with your closest friends. ' +
-      'There you can find and have a taste of its famous world-known fruit: apples.';
-    this.trip.price = 650;
-    this.trip.requirements = 'You must be 18 or older to join this trip. Don\'t forget to bring your shovel.';
-    this.trip.startDate = new Date('2020-05-20');
-    this.trip.endDate = new Date('2020-05-27');
-    this.trip.pictures = ['../../../assets/pictures/mystfalls_1.jpg', '../../../assets/pictures/mystfalls_2.jpg',
-      '../../../assets/pictures/mystfalls_3.jpg'];
-    this.trip.publicationDate = new Date('2020-03-21');
-    this.trip.cancelReason = null;
+  }
+
+  setPictureId(index: number) {
+    this.pictureId = index;
+  }
+
+  getTrip() {
+    this.activeRoute.params.subscribe(params => {
+      if (params['id']) {
+        this.id = params['id'];
+      }
+    });
+    return this.tripService.getTrip(this.id);
   }
 
   ngOnInit() {
-  }
+    this.pictureId = 0;
 
+    this.getTrip()
+      .then((response: Trip) => {
+        this.trip = <Trip>response;
+      }).catch(error => {
+        console.error(error);
+      });
+  }
 }
