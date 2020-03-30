@@ -1,4 +1,4 @@
-BASE_SITE=maialen
+BASE_SITE=acme-explorer
 
 export NODE_ENV=production
 export PORT=4200
