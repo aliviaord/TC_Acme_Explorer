@@ -1,8 +1,6 @@
 <div class="{{cssClass}}" role="alert" *ngIf="infoMessage != null && infoMessage.length > 0 && showMessage">
   <span class="block sm:inline">{{ infoMessage | translate }}</span>
-  <!--
   <span class="absolute top-0 bottom-0 right-0 px-4 py-3">
-    <button class="fa fa-times fill-current h-6 w-6 text-black-500" role="button" viewBox="0 0 20 20"></button>
+    <button (click)="closeMessage()" class="fa fa-times fill-current h-6 w-6 text-black-500" role="button" viewBox="0 0 20 20"></button>
   </span>
-  -->
 </div>
