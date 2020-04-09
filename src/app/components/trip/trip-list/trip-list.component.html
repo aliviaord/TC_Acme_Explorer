@@ -1,29 +1,27 @@
 <h1 class="text-center font-bold text-4xl py-2">{{'trip.list' | translate}}</h1>
-<table class="table-auto">
+<table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="table-auto row-border hover">
   <thead>
     <tr>
-      <th class="px-4 py-2"></th>
       <th class="px-4 py-2">{{'trip.ticker' | translate}}</th>
       <th class="px-4 py-2">{{'trip.image' | translate}}</th>
       <th class="px-4 py-2">{{'trip.title' | translate}}</th>
       <th class="px-4 py-2">{{'trip.price' | translate}}</th>
       <th class="px-4 py-2">{{'trip.startDate' | translate}}</th>
       <th class="px-4 py-2">{{'trip.endDate' | translate}}</th>
-      <th class="px-4 py-2"></th>
+      <th class="px-4 py-2">Details</th>
     </tr>
   </thead>
   <tbody *ngFor="let t of trips; let i = index">
     <tr class="bg-white" *ngIf="getPublicationDate(i) < today">
-      <td class="border px-4 py-2 text-center">
-        <p *ngIf="t.cancelReason" class="text-red-400 font-bold">{{'trip.cancelled' | translate}}</p>
-      </td>
       <td class="border px-4 py-2 text-center">{{t.ticker}}</td>
-      <td class="border px-4 py-2 text-center"><img src="{{t.pictures[0]}}" class="object-contain h-32"></td>
-      <td class="border px-4 py-2 text-center">{{t.title}}</td>
+      <td *ngIf="!t.cancelReason" class="border px-4 py-2 text-center"><img src="{{t.pictures[0]}}" class="picture"></td>
+      <td *ngIf="t.cancelReason" class="border px-4 py-2 text-center"><div class="canceled-img"><img src="{{t.pictures[0]}}" class="picture"><div class="centered">{{'trip.cancelled' | translate}}</div></div></td>
+      <td class="border px-4 py-2 text-center w-40">{{t.title}}</td>
       <td class="border px-4 py-2 text-center">{{t.price}}&euro;</td>
       <td class="border px-4 py-2 text-center">{{t.startDate | date}}</td>
       <td class="border px-4 py-2 text-center">{{t.endDate | date}}</td>
-      <td class="border text-center"><a routerLink="/trips/{{t.id}}" class="flex items-center px-4 py-2 hover:bg-green-100">{{'trip.details' | translate}} <img src="../../../assets/leaf.png" class="object-contain h-10"></a></td>
+      <td class="border text-center w-32"><a routerLink="/trips/{{t.id}}" class="flex items-center px-4 py-2 hover:bg-green-100">{{'trip.details' | translate}} <img src="../../../assets/leaf.png" class="object-contain h-10"></a></td>
     </tr>
   </tbody>
 </table>
+

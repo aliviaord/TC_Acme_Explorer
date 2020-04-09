@@ -9,3 +9,7 @@ body {
     font-family: 'Mali', cursive;
     background-image: linear-gradient(rgba(255,255,255,.9), rgba(255,255,255,.9)), url("./assets/pictures/main/leafs.png");
 }
+.custom-arrow{
+    top: 50%!important;
+    z-index: 1;
+}

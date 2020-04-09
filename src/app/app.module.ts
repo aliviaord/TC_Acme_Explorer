@@ -8,7 +8,7 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { registerLocaleData } from '@angular/common';
 import locales from '@angular/common/locales/es';
-
+import { DataTablesModule } from 'angular-datatables';
 import { AppComponent } from './app.component';
 import { TripListComponent } from './components/trip/trip-list/trip-list.component';
 import { TripDisplayComponent } from './components/trip/trip-display/trip-display.component';
@@ -25,6 +25,7 @@ import { NotFoundPageComponent } from './components/shared/not-found-page/not-fo
 import { TermsAndConditionsComponent } from './components/master/terms-and-conditions/terms-and-conditions.component';
 import { HttpModule } from '@angular/http';
 import { DeniedAccessPageComponent } from './components/security/denied-access-page/denied-access-page.component';
+import { SlickCarouselModule } from 'ngx-slick-carousel';
 
 export const firebaseConfig = {
   apiKey: 'AIzaSyBeyK3jw-oLh1MyZMHrydSJwy0WTxWDZ-0',
@@ -63,6 +64,7 @@ export function HttpLoaderFactory(http: HttpClient) {
   imports: [
     BrowserModule,
     FormsModule,
+    DataTablesModule,
     ReactiveFormsModule,
     HttpClientModule,
     AngularFireModule.initializeApp(firebaseConfig),
@@ -74,7 +76,8 @@ export function HttpLoaderFactory(http: HttpClient) {
       }
     }),
     AppRoutingModule,
-    HttpModule
+    HttpModule,
+    SlickCarouselModule
   ],
   exports: [AppRoutingModule],
   providers: [AngularFireAuth],
