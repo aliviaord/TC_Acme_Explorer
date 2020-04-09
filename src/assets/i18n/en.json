@@ -62,11 +62,19 @@
         "prices3": "\"I am once again asking you for your bells...💰\" - Tom Nook, owner and founder."
     },
     "denied-access-page": {
-        "title": "Denied access",
+        "title": "Halt, denied access!",
         "message-start": "You don't have permission to access",
-        "message-end": "on this server"
+        "message-end": "on this server."
     },
     "messages": {
-        "auth.login.correct": "Successfully logged in"
+        "auth.login.correct": "Successfully logged in.",
+        "auth.user.not.found": "The email entered is not registered in the system.",
+        "auth.wrong.password": "The password entered is incorrect.",
+        "auth.login.failed": "Failed to log in.",
+        "auth.invalid.email": "Invalid email"
+    },
+    "not-found-page": {
+        "title": "Sorry, something went wrong!",
+        "subtitle": "We couldn't find what you are looking for."
     }
 }

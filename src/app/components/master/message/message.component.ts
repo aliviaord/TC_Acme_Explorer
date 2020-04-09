@@ -22,6 +22,10 @@ export class MessageComponent extends TranslatableComponent implements OnInit, O
     super(translateService);
   }
 
+  closeMessage() {
+    this.showMessage = false;
+  }
+
   ngOnInit() {
     this.subscription = this.infoMessageService.infoMessage.subscribe(
       (data: InfoMessage) => {

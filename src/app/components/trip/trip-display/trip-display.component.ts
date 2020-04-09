@@ -23,8 +23,8 @@ export class TripDisplayComponent extends TranslatableComponent implements OnIni
     "fade": true,
     "arrows": true,
     "dots": true,
-    "nextArrow": '<button class="bg-white h-10 w-10 text-teal-400 text-xl rounded-full right-0 absolute custom-arrow"><i class="fa fa-arrow-right"></i></button>',
-    "prevArrow": '<button class="bg-white h-10 w-10 bottom-0 absolute custom-arrow text-teal-400 text-xl rounded-full"><i class="fa fa-arrow-left"></i></button>'
+    "nextArrow": '<button class="bg-white h-10 w-10 text-orange-400 text-xl rounded-full right-0 absolute custom-arrow"><i class="fa fa-arrow-right"></i></button>',
+    "prevArrow": '<button class="bg-white h-10 w-10 bottom-0 absolute custom-arrow text-orange-400 text-xl rounded-full"><i class="fa fa-arrow-left"></i></button>'
   };
   constructor(private tripService: TripService,
     private translateService: TranslateService,

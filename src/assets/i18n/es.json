@@ -62,11 +62,19 @@
         "prices3": "\"Te estoy pidiendo tus bayas una vez más...💰\" - Tom Nook, propietario y fundador."
     },
     "denied-access-page": {
-        "title": "Acceso denegado",
+        "title": "Alto, ¡acceso denegado!",
         "message-start": "No tiene permiso para acceder a",
-        "message-end": "en este servidor"
+        "message-end": "en este servidor."
     },
     "messages": {
-        "auth.login.correct": "Sesión iniciada con éxito"
+        "auth.login.correct": "Sesión iniciada con éxito.",
+        "auth.user.not.found": "El correo electrónico indicado no está registrado en el sistema.",
+        "auth.wrong.password": "La contraseña indicada es incorrecta.",
+        "auth.login.failed": "Error al iniciar sesión.",
+        "auth.invalid.email": "Correo electrónico inválido"
+    },
+    "not-found-page": {
+        "title": "Lo sentimos, ¡algo salió mal!",
+        "subtitle": "No pudimos encontrar lo que está buscando."
     }
 }

@@ -2,7 +2,7 @@ table .picture {
     width: 20em;
 }
 .canceled-img img {
-    filter: grayscale(100%);
+    filter: grayscale(60%);
     opacity: 0.65;
 }
 .centered {
@@ -10,10 +10,10 @@ table .picture {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    color: #D50047;
+    color: #E14264;
     font-weight: bolder;
     font-size: 2vw;
-    -webkit-text-stroke: 0.1px #D50047;
+    -webkit-text-stroke: 0.1px #E14264;
 }
 .canceled-img {
     position: relative;

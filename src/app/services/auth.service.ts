@@ -83,13 +83,15 @@ export class AuthService {
               'text-center bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative');
             resolve(this.currentActor);
           }).catch(error => {
-            this.infoMessageService.notifyMessage('messages.auth.login.failed', 'alert alert-danger');
+            this.infoMessageService.notifyMessage('messages.auth.login.failed',
+              'text-center bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative');
             reject(error);
           });
           resolve();
         }).catch(error => {
           this.infoMessageService.notifyMessage('messages.'
-            + error.code.replace(/\//gi, '.').replace(/\-/gi, '.'), 'alert alert-danger');
+            + error.code.replace(/\//gi, '.').replace(/\-/gi, '.'),
+            'text-center bg-blue-100 border border-blue-400 text-blue-700 px-4 py-3 rounded relative');
           reject(error);
         });
     });
