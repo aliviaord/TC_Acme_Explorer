@@ -3,6 +3,7 @@ import { AuthService } from 'src/app/services/auth.service';
 
 import { TranslateService } from '@ngx-translate/core';
 import { TranslatableComponent } from '../../shared/translatable/translatable.component';
+import { Actor } from 'src/app/models/actor.model';
 
 @Component({
   selector: 'app-header',
@@ -10,6 +11,10 @@ import { TranslatableComponent } from '../../shared/translatable/translatable.co
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent extends TranslatableComponent implements OnInit {
+
+  private currentActor: Actor;
+  private userLoggedIn: boolean;
+  private activeRole = 'anonymous';
 
   constructor(private authService: AuthService,
     private translateService: TranslateService) {
@@ -21,12 +26,22 @@ export class HeaderComponent extends TranslatableComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.authService.userLoggedIn.subscribe((loggedIn: boolean) => {
+      if (loggedIn) {
+        this.currentActor = this.authService.getCurrentActor();
+        this.activeRole = this.currentActor.role.toString();
+      } else {
+        this.currentActor = null;
+        this.activeRole = 'anonymous';
+      }
+    });
   }
 
   logout() {
     this.authService.logout()
       .then(_ => {
-        console.log('Logging out...');
+        this.activeRole = 'anonymous';
+        this.currentActor = null;
       }).catch(error => {
         console.log(error);
       });

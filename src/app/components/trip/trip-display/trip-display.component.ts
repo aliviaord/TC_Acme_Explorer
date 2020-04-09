@@ -12,13 +12,13 @@ import { TranslatableComponent } from '../../shared/translatable/translatable.co
   styleUrls: ['./trip-display.component.css']
 })
 export class TripDisplayComponent extends TranslatableComponent implements OnInit {
-  private trip: Trip;
-  private id: number;
+  trip = new Trip();
+  private id: string;
   private pictureId: number;
 
   constructor(private tripService: TripService,
     private translateService: TranslateService,
-    private activeRoute: ActivatedRoute) {
+    private route: ActivatedRoute) {
     super(translateService);
   }
 
@@ -26,23 +26,15 @@ export class TripDisplayComponent extends TranslatableComponent implements OnIni
     this.pictureId = index;
   }
 
-  getTrip() {
-    this.activeRoute.params.subscribe(params => {
-      if (params['id']) {
-        this.id = params['id'];
-      }
-    });
-    return this.tripService.getTrip(this.id);
-  }
-
   ngOnInit() {
     this.pictureId = 0;
+    this.id = this.route.snapshot.params['id'];
 
-    this.getTrip()
-      .then((response: Trip) => {
-        this.trip = <Trip>response;
-      }).catch(error => {
-        console.error(error);
+    this.tripService.getTrip(this.id)
+      .then((val) => {
+        this.trip = val;
+      }).catch((err) => {
+        console.error(err);
       });
   }
 }

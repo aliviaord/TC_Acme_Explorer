@@ -43,7 +43,7 @@ describe('TripListComponent', () => {
         HttpClientModule
       ],
       providers: [
-        {provide: APP_BASE_HREF, useValue : '/trip-list'}
+        {provide: APP_BASE_HREF, useValue : '/trips'}
       ]
     })
     .compileComponents();

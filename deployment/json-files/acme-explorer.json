@@ -10,9 +10,7 @@
       "phoneNumber": "627629862",
       "address": "C/ Marina, Nº6",
       "banned": false,
-      "actorType": [
-        "MANAGER"
-      ]
+      "role": "MANAGER"
     },
     {
       "id": "5e78bccd99d6d25a34fc6959",
@@ -23,9 +21,7 @@
       "password": "ot2020",
       "phoneNumber": "678624789",
       "banned": false,
-      "actorType": [
-        "MANAGER"
-      ]
+      "role": "MANAGER"
     },
     {
       "id": "5e78bd7713b68995265511a5",
@@ -35,9 +31,7 @@
       "email": "sam@estara.com",
       "password": "ot2020",
       "banned": false,
-      "actorType": [
-        "MANAGER"
-      ]
+      "role": "MANAGER"
     },
     {
       "name": "Hayley",

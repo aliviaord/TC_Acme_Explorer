@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { NgForm } from '@angular/forms';
 
 import { TranslateService } from '@ngx-translate/core';
@@ -13,12 +13,15 @@ import { TranslatableComponent } from '../../shared/translatable/translatable.co
 })
 export class LoginComponent extends TranslatableComponent implements OnInit {
 
+  private returnUrl: string;
+
   constructor(private router: Router, private authService: AuthService,
-    private translateService: TranslateService) {
+    private translateService: TranslateService, private route: ActivatedRoute) {
       super(translateService);
      }
 
   ngOnInit() {
+    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
   }
 
   onLogin(form: NgForm) {
@@ -27,7 +30,7 @@ export class LoginComponent extends TranslatableComponent implements OnInit {
     this.authService.login(email, password)
       .then(_ => {
         form.reset();
-        this.router.navigate(['/trip-list']);
+        this.router.navigateByUrl(this.returnUrl);
       }).catch((error) => {
         console.log(error);
       });

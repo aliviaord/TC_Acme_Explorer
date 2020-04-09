@@ -60,5 +60,13 @@
         "prices1": "We have the best prices",
         "prices2": "At Acme Explorer you will find the best prices for all destinations. Use our filters to find the most affordable trip on the date you prefer!",
         "prices3": "\"I am once again asking you for your bells...💰\" - Tom Nook, owner and founder."
+    },
+    "denied-access-page": {
+        "title": "Denied access",
+        "message-start": "You don't have permission to access",
+        "message-end": "on this server"
+    },
+    "messages": {
+        "auth.login.correct": "Successfully logged in"
     }
 }

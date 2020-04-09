@@ -11,18 +11,18 @@
   </div>
   <div id="main-nav" class="w-full hidden text-center lg:block flex-grow lg:flex lg:items-center lg:w-auto lg:text-justify">
     <div class="text-sm lg:flex-grow">
-      <a routerLink="/trip-list" class="block mt-4 font-bold text-xl px-4 py-2 border-2 rounded border-green-300 lg:inline-block lg:mt-0 text-green-100 hover:text-green-400 hover:border-green-200 hover:bg-green-200 mr-4">
+      <a routerLink="/trips" class="block mt-4 font-bold text-xl px-4 py-2 border-2 rounded border-green-300 lg:inline-block lg:mt-0 text-green-100 hover:text-green-400 hover:border-green-200 hover:bg-green-200 mr-4">
         {{ 'trip.list' | translate }}
       </a>
     </div>
     <div class="text-sm lg:flex-grow-0">
-      <a routerLink="/register" class="block mt-4 font-bold text-xl px-4 py-2 border-2 rounded border-green-300 lg:inline-block lg:mt-0 text-green-100 hover:text-green-400 hover:border-green-200 hover:bg-green-200 mr-4">
+      <a *ngIf="!currentActor" routerLink="/register" class="block mt-4 font-bold text-xl px-4 py-2 border-2 rounded border-green-300 lg:inline-block lg:mt-0 text-green-100 hover:text-green-400 hover:border-green-200 hover:bg-green-200 mr-4">
         {{ 'security.register' | translate }}
       </a>
-      <a routerLink="/login" class="block mt-4 font-bold text-xl px-4 py-2 border-2 rounded border-green-300 lg:inline-block lg:mt-0 text-green-100 hover:text-green-400 hover:border-green-200 hover:bg-green-200 mr-4">
+      <a *ngIf="!currentActor" routerLink="/login" class="block mt-4 font-bold text-xl px-4 py-2 border-2 rounded border-green-300 lg:inline-block lg:mt-0 text-green-100 hover:text-green-400 hover:border-green-200 hover:bg-green-200 mr-4">
         {{ 'security.login' | translate }}
       </a>
-      <a href="/logout" class="block mt-4 font-bold text-xl px-4 py-2 border-2 rounded border-green-300 lg:inline-block lg:mt-0 text-green-100 hover:text-green-400 hover:border-green-200 hover:bg-green-200 mr-4">
+      <a *ngIf="currentActor" href="/" class="block mt-4 font-bold text-xl px-4 py-2 border-2 rounded border-green-300 lg:inline-block lg:mt-0 text-green-100 hover:text-green-400 hover:border-green-200 hover:bg-green-200 mr-4">
         {{ 'security.logout' | translate }}
       </a>
     </div>

@@ -8,7 +8,7 @@ export class Actor extends Entity {
     password: string;
     address: string;
     banned: string;
-    actorType: string;
+    role: string;
 
     constructor() {
         super();

@@ -20,6 +20,11 @@ import { FooterComponent } from './components/master/footer/footer.component';
 import { LocalizedDataPipe } from './components/shared/localized-data.pipe';
 import { AppRoutingModule } from './app-routing.module';
 import { MainComponent } from './components/master/main/main.component';
+import { MessageComponent } from './components/master/message/message.component';
+import { NotFoundPageComponent } from './components/shared/not-found-page/not-found-page.component';
+import { TermsAndConditionsComponent } from './components/master/terms-and-conditions/terms-and-conditions.component';
+import { HttpModule } from '@angular/http';
+import { DeniedAccessPageComponent } from './components/security/denied-access-page/denied-access-page.component';
 
 export const firebaseConfig = {
   apiKey: 'AIzaSyBeyK3jw-oLh1MyZMHrydSJwy0WTxWDZ-0',
@@ -49,7 +54,11 @@ export function HttpLoaderFactory(http: HttpClient) {
     TranslatableComponent,
     FooterComponent,
     LocalizedDataPipe,
-    MainComponent
+    MainComponent,
+    MessageComponent,
+    NotFoundPageComponent,
+    TermsAndConditionsComponent,
+    DeniedAccessPageComponent
   ],
   imports: [
     BrowserModule,
@@ -64,8 +73,10 @@ export function HttpLoaderFactory(http: HttpClient) {
         deps: [HttpClient]
       }
     }),
-    AppRoutingModule
+    AppRoutingModule,
+    HttpModule
   ],
+  exports: [AppRoutingModule],
   providers: [AngularFireAuth],
   bootstrap: [AppComponent]
 })
