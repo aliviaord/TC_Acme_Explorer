@@ -32,17 +32,19 @@
     },
     "common": {
         "create": "Crear",
-        "update": "Actualizar"
+        "update": "Actualizar",
+        "edit": "Editar"
     },
     "stage": {
         "add": "Añadir etapa",
         "stages": "Etapas"
-    },
+     },
     "trip": {
         "display": "Mostrar viaje",
         "list": "Lista de viajes",
         "my-list": "Mis viajes",
         "create": "Crear viaje",
+        "edit": "Editar viaje",
         "ticker": "Identificador",
         "title": "Título",
         "description": "Descripción",

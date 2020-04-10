@@ -5,11 +5,7 @@
   </div>
   <ngx-slick-carousel class="carousel" 
                       #slickModal="slick-carousel" 
-                      [config]="slideConfig" 
-                      (init)="slickInit($event)"
-                      (breakpoint)="breakpoint($event)"
-                      (afterChange)="afterChange($event)"
-                      (beforeChange)="beforeChange($event)">
+                      [config]="slideConfig">
       <div ngxSlickItem *ngFor="let p of trip.pictures" class="slide">
             <img src="{{p}}" class="w-full">
       </div>

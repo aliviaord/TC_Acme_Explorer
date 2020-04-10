@@ -13,18 +13,21 @@ import English from 'flatpickr/dist/l10n/uk.js';
 import { auth } from 'firebase';
 
 @Component({
-  selector: 'app-create-trip',
-  templateUrl: './create-trip.component.html',
-  styleUrls: ['./create-trip.component.css']
+  selector: 'app-edit-trip',
+  templateUrl: './edit-trip.component.html',
+  styleUrls: ['./edit-trip.component.css']
 })
-export class CreateTripComponent extends TranslatableComponent implements OnInit {
+export class EditTripComponent extends TranslatableComponent implements OnInit {
   
+  id: string;
   tripForm: FormGroup;
   flatpickrOptions: FlatpickrOptions = {
     locale: this.getLang() == 'es' ? Spanish.es : English.en,
     dateFormat: 'd/m/Y'
   };
 
+  trip = new Trip();
+  
   constructor(private tripService: TripService,
     private translateService: TranslateService,
     private route: ActivatedRoute, 
@@ -32,7 +35,6 @@ export class CreateTripComponent extends TranslatableComponent implements OnInit
     private router: Router,
     private authService: AuthService) {
       super(translateService);
-      this.createForm();
   }
 
   getLang() {
@@ -42,19 +44,25 @@ export class CreateTripComponent extends TranslatableComponent implements OnInit
     return this.translateService.getBrowserLang();
   }
 
-  createForm() {
+  createForm(trip) {
     this.tripForm = this.fb.group({
-      title: [''],
-      description: [''],
-      price: [''],
-      requirements: [''],
-      startDate: [''],
-      endDate: [''],
-      pictures: [''],
-      publicationDate: [''],
-      stages: this.fb.array([this.createStage()]),
-      manager: [''],
+      id: this.fb.control(trip.id),
+      title: this.fb.control(trip.title),
+      description: this.fb.control(trip.description),
+      price: this.fb.control(trip.price),
+      requirements: this.fb.control(trip.requirements),
+      startDate: this.fb.control(trip.startDate),
+      endDate: this.fb.control(trip.endDate),
+      pictures: this.fb.control(trip.pictures),
+      publicationDate: this.fb.control(trip.publicationDate),
+      stages: this.fb.array(trip.stages.map(stage => this.fb.group({
+        title: this.fb.control(stage.title),
+        description: this.fb.control(stage.description),
+        price: this.fb.control(stage.price)
+      }))),
+      manager: this.fb.control(trip.title),
     });
+    this.trip = trip;
   }
 
   createStage(): FormGroup {
@@ -73,11 +81,11 @@ export class CreateTripComponent extends TranslatableComponent implements OnInit
     (this.tripForm.controls['stages'] as FormArray).removeAt(index)
   }
 
-  onCreateTrip() {
+  onEditTrip() {
     let trip = this.tripForm.value;
     trip.manager = this.authService.getCurrentActor().id;
     trip.price = 500;
-    this.tripService.createTrip(trip)
+    this.tripService.editTrip(trip)
     .then(res => {
       console.log(res); 
       this.router.navigate(['/my-trips']);
@@ -87,5 +95,13 @@ export class CreateTripComponent extends TranslatableComponent implements OnInit
   }
 
   ngOnInit() {
+    this.id = this.route.snapshot.params['id'];
+    this.tripService.getTrip(this.id)
+      .then((trip) => {
+        this.createForm(trip);
+      }).catch((err) => {
+        console.error(err);
+      });
   }
+
 }

@@ -32,7 +32,8 @@
     },
     "common": {
         "create": "Create",
-        "update": "Update"
+        "update": "Update",
+        "edit": "Edit"
     },
     "stage": {
         "add": "Add stage",
@@ -43,6 +44,7 @@
         "list": "Trip list",
         "my-list": "My trips",
         "create": "Create trip",
+        "edit": "Edit trip",
         "ticker": "Ticker",
         "title": "Título",
         "description": "Description",

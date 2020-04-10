@@ -20,7 +20,10 @@
       <td class="border px-4 py-2 text-center">{{t.price}}&euro;</td>
       <td class="border px-4 py-2 text-center">{{t.startDate | date}}</td>
       <td class="border px-4 py-2 text-center">{{t.endDate | date}}</td>
-      <td class="border text-center w-32"><a routerLink="/trips/{{t.id}}" class="flex items-center px-4 py-2 hover:bg-green-100">{{'trip.details' | translate}} <img src="../../../assets/leaf.png" class="object-contain h-10"></a></td>
+      <td class="border text-center w-32">
+        <a routerLink="/trips/{{t.id}}" class="flex items-center px-4 py-2 hover:bg-green-100">{{'trip.details' | translate}} <img src="../../../assets/leaf.png" class="object-contain h-10"></a>
+        <a routerLink="/trips/{{t.id}}/edit" class="flex items-center px-4 py-2 hover:bg-green-100">{{'common.edit' | translate}} <img src="../../../assets/leaf.png" class="object-contain h-10"></a>
+      </td>
     </tr>
   </tbody>
 </table>

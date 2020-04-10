@@ -12,9 +12,10 @@ import { TranslatableComponent } from '../../shared/translatable/translatable.co
   styleUrls: ['./trip-display.component.css']
 })
 export class TripDisplayComponent extends TranslatableComponent implements OnInit {
+
+  id: string;
+
   trip = new Trip();
-  private id: string;
-  private pictureId: number;
   slideConfig = {
     "slidesToShow": 1,
     "slidesToScroll": 1,
@@ -26,18 +27,14 @@ export class TripDisplayComponent extends TranslatableComponent implements OnIni
     "nextArrow": '<button class="bg-white h-10 w-10 text-orange-400 text-xl rounded-full right-0 absolute custom-arrow"><i class="fa fa-arrow-right"></i></button>',
     "prevArrow": '<button class="bg-white h-10 w-10 bottom-0 absolute custom-arrow text-orange-400 text-xl rounded-full"><i class="fa fa-arrow-left"></i></button>'
   };
+
   constructor(private tripService: TripService,
     private translateService: TranslateService,
     private route: ActivatedRoute) {
     super(translateService);
   }
 
-  setPictureId(index: number) {
-    this.pictureId = index;
-  }
-
   ngOnInit() {
-    this.pictureId = 0;
     this.id = this.route.snapshot.params['id'];
 
     this.tripService.getTrip(this.id)
@@ -46,21 +43,5 @@ export class TripDisplayComponent extends TranslatableComponent implements OnIni
       }).catch((err) => {
         console.error(err);
       });
-  }
-  
-  slickInit(e) {
-    console.log('slick initialized');
-  }
-  
-  breakpoint(e) {
-    console.log('breakpoint');
-  }
-  
-  afterChange(e) {
-    console.log('afterChange');
-  }
-  
-  beforeChange(e) {
-    console.log('beforeChange');
   }
 }

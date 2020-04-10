@@ -40,4 +40,10 @@ export class TripService {
     const url = `${this.tripsUrl}`;
     return this.http.post<Trip[]>(url, trip, httpOptions).toPromise();
   }
+
+  editTrip(trip) {
+    console.log(trip)
+    const url = `${this.tripsUrl}/${trip.id}`;
+    return this.http.put<Trip[]>(url, trip, httpOptions).toPromise();
+  }
 }
