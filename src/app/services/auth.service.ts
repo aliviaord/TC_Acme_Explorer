@@ -20,7 +20,20 @@ export class AuthService {
   userLoggedIn = new Subject();
 
   constructor(private fireAuth: AngularFireAuth, private http: HttpClient,
-    private infoMessageService: InfoMessageService) { }
+    private infoMessageService: InfoMessageService) {
+      this.fireAuth.auth.onAuthStateChanged((authState) => {
+        if (authState) {
+          const url = `${environment.backendApiBaseURL}/actors?email=${authState.email}`;
+          this.http.get(url, httpOptions).toPromise()
+          .then(actor => {
+            this.currentActor = actor[0] as Actor;
+            this.userLoggedIn.next(true);
+          }, err => {
+            console.log(err);
+          });
+        } 
+      });
+    }
 
   registerUser(actor: Actor) {
     return new Promise<any>((resolve, reject) => {
