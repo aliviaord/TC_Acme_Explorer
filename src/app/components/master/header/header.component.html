@@ -15,7 +15,14 @@
         {{ 'trip.list' | translate }}
       </a>
     </div>
+
     <div class="text-sm lg:flex-grow-0">
+      <a *ngIf="activeRole == 'MANAGER'" routerLink="/my-trips" class="block mt-4 font-bold text-xl px-4 py-2 border-2 rounded border-green-300 lg:inline-block lg:mt-0 text-green-100 hover:text-green-400 hover:border-green-200 hover:bg-green-200 mr-4">
+        {{ 'trip.my-list' | translate }}
+      </a>
+      <a *ngIf="activeRole == 'MANAGER'" routerLink="/new-trip" class="block mt-4 font-bold text-xl px-4 py-2 border-2 rounded border-green-300 lg:inline-block lg:mt-0 text-green-100 hover:text-green-400 hover:border-green-200 hover:bg-green-200 mr-4">
+        {{ 'trip.create' | translate }}
+      </a>
       <a *ngIf="!currentActor" routerLink="/register" class="block mt-4 font-bold text-xl px-4 py-2 border-2 rounded border-green-300 lg:inline-block lg:mt-0 text-green-100 hover:text-green-400 hover:border-green-200 hover:bg-green-200 mr-4">
         {{ 'security.register' | translate }}
       </a>

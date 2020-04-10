@@ -14,11 +14,12 @@ const httpOptions = {
 export class TripService {
 
   private tripsUrl = environment.backendApiBaseURL + '/trips';
+  private actorsUrl = environment.backendApiBaseURL + '/actors';
 
   constructor(private http: HttpClient) { }
 
   getTrips() {
-    const url = `${this.tripsUrl}`;
+    const url = `${this.tripsUrl}` //?publicationDate_lte${new Date()}`;
     return this.http.get<Trip[]>(url, httpOptions).toPromise();
   }
 
@@ -27,5 +28,16 @@ export class TripService {
       const url = `${this.tripsUrl}/${id}`;
       return this.http.get<Trip>(url, httpOptions).toPromise();
     }
+  }
+
+  getManagerTrips(id) {
+    const url = `${this.actorsUrl}/${id}/trips`;
+    return this.http.get<Trip[]>(url, httpOptions).toPromise();
+  }
+
+  createTrip(trip) {
+    console.log(trip)
+    const url = `${this.tripsUrl}`;
+    return this.http.post<Trip[]>(url, trip, httpOptions).toPromise();
   }
 }

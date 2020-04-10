@@ -30,14 +30,26 @@
         "register": "Registro",
         "login": "Iniciar sesión"
     },
+    "common": {
+        "create": "Crear",
+        "update": "Actualizar"
+    },
+    "stage": {
+        "add": "Añadir etapa",
+        "stages": "Etapas"
+    },
     "trip": {
         "display": "Mostrar viaje",
         "list": "Lista de viajes",
+        "my-list": "Mis viajes",
+        "create": "Crear viaje",
         "ticker": "Identificador",
         "title": "Título",
+        "description": "Descripción",
         "price": "Precio",
-        "startDate": "Fecha de Inicio",
-        "endDate": "Fecha de Fin",
+        "startDate": "Fecha de inicio",
+        "endDate": "Fecha de fin",
+        "publicationDate": "Fecha de publicación",
         "details": "Detalles",
         "image": "Imagen",
         "cancelled": "CANCELADO",

@@ -30,14 +30,26 @@
         "register": "Register",
         "login": "Log In"
     },
+    "common": {
+        "create": "Create",
+        "update": "Update"
+    },
+    "stage": {
+        "add": "Add stage",
+        "stages": "Stages"
+    },
     "trip": {
         "display": "Display trip",
         "list": "Trip list",
+        "my-list": "My trips",
+        "create": "Create trip",
         "ticker": "Ticker",
-        "title": "Title",
+        "title": "Título",
+        "description": "Description",
         "price": "Price",
-        "startDate": "Starting Date",
-        "endDate": "Ending Date",
+        "startDate": "Starting date",
+        "endDate": "Ending date",
+        "publicationDate": "Publication date",
         "details": "Details",
         "image": "Image",
         "cancelled": "CANCELLED",

@@ -1,2 +1,3 @@
 {
+    "/actors/:id/trips": "/trips?q=:id&attr=manager"
 }

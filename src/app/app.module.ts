@@ -26,6 +26,8 @@ import { TermsAndConditionsComponent } from './components/master/terms-and-condi
 import { HttpModule } from '@angular/http';
 import { DeniedAccessPageComponent } from './components/security/denied-access-page/denied-access-page.component';
 import { SlickCarouselModule } from 'ngx-slick-carousel';
+import { CreateTripComponent } from './components/trip/create-trip/create-trip.component';
+import { Ng2FlatpickrModule } from 'ng2-flatpickr';
 
 export const firebaseConfig = {
   apiKey: 'AIzaSyBeyK3jw-oLh1MyZMHrydSJwy0WTxWDZ-0',
@@ -59,7 +61,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     MessageComponent,
     NotFoundPageComponent,
     TermsAndConditionsComponent,
-    DeniedAccessPageComponent
+    DeniedAccessPageComponent,
+    CreateTripComponent
   ],
   imports: [
     BrowserModule,
@@ -77,7 +80,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     }),
     AppRoutingModule,
     HttpModule,
-    SlickCarouselModule
+    SlickCarouselModule,
+    Ng2FlatpickrModule
   ],
   exports: [AppRoutingModule],
   providers: [AngularFireAuth],

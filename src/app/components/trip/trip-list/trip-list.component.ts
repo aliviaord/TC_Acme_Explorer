@@ -1,7 +1,7 @@
 import { Component, OnInit, OnDestroy, ViewChild } from '@angular/core';
 import { Trip } from 'src/app/models/trip.model';
 import { TripService } from 'src/app/services/trip.service';
-
+import { ActivatedRoute, ParamMap } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { TranslatableComponent } from '../../shared/translatable/translatable.component';
 import { DataTableDirective } from 'angular-datatables';
@@ -22,7 +22,8 @@ export class TripListComponent extends TranslatableComponent implements OnInit {
   table: any = $('#trips-table');
 
   constructor(private tripService: TripService,
-    private translateService: TranslateService) {
+    private translateService: TranslateService,
+    private route: ActivatedRoute) {
       super(translateService);
   }
 
@@ -35,6 +36,9 @@ export class TripListComponent extends TranslatableComponent implements OnInit {
   }
 
   getTrips() {
+    if (this.route.snapshot.url.length > 0 && this.route.snapshot.url[0].path == 'my-trips') { 
+      return this.tripService.getManagerTrips('5e78bd7713b68995265511a5');
+    }
     return this.tripService.getTrips();
   }
   
@@ -46,7 +50,6 @@ export class TripListComponent extends TranslatableComponent implements OnInit {
     this.getTrips()
       .then((response: Trip[]) => {
         this.trips = <Trip[]>response;
-        console.log(this.trips)
         this.dtTrigger.next();
       }).catch(error => {
         console.error(error);

@@ -1,0 +1,100 @@
+<div class="w-48c content-center text-center">
+  <form [formGroup]="tripForm" (ngSubmit)="onCreateTrip()" class="text-base bg-white shadow-2xl rounded px-8 pt-6 pb-8">
+    <h1 class="text-5xl">{{'trip.create' | translate}}</h1><br/>
+    <div class="mb-4">
+      <label class="block text-gray-700 text-md font-bold mb-2" for="title">
+        {{'trip.title' | translate}}
+      </label>
+      <input class="appearance-none border-2 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="title" formControlName="title" type="text" placeholder="{{'trip.title' | translate}}">
+    </div>
+
+    <div class="mb-4">
+      <label class="block text-gray-700 text-md font-bold mb-2" for="description">
+        {{'trip.description' | translate}}
+      </label>
+      <input class="appearance-none border-2 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="description" formControlName="description" type="text" placeholder="{{'trip.description' | translate}}">
+    </div>
+
+    <div class="mb-4">
+      <label class="block text-gray-700 text-md font-bold mb-2" for="requirements">
+        {{'trip.requirements' | translate}}
+      </label>
+      <input class="appearance-none border-2 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="requirements" formControlName="requirements" type="text" placeholder="{{'trip.requirements' | translate}}">
+    </div>
+
+    <div class="mb-4">
+      <label class="block text-gray-700 text-md font-bold mb-2" for="startDate">
+        {{'trip.startDate' | translate}}
+      </label>
+      <ng2-flatpickr class="text-center" [config]="flatpickrOptions" id="startDate" placeholder="{{'trip.startDate' | translate}}" formControlName="startDate"></ng2-flatpickr>
+    </div>
+
+    <div class="mb-4">
+      <label class="block text-gray-700 text-md font-bold mb-2" for="endDate">
+        {{'trip.endDate' | translate}}
+      </label>
+      <input class="appearance-none border-2 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="endDate" formControlName="endDate" type="date" placeholder="{{'trip.endDate' | translate}}">
+    </div>
+
+    <div class="mb-4">
+      <label class="block text-gray-700 text-md font-bold mb-2" for="publicationDate">
+        {{'trip.publicationDate' | translate}}
+      </label>
+      <input class="appearance-none border-2 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="publicationDate" formControlName="publicationDate" type="date" placeholder="{{'trip.publicationDate' | translate}}">
+    </div>
+
+    <div class="border-2 p-5 mb-4">
+      <h2 class="text-xl mb-4 font-bold text-gray-900">{{'stage.stages' | translate}}</h2>
+      <div class="flex flex-wrap -mx-3 mb-2">
+        <div class="w-full md:w-3/12 px-3 mb-6 md:mb-0">
+          <label class="block tracking-wide text-gray-700 font-bold mb-2">
+            {{'trip.title' | translate}}
+          </label>
+        </div>
+        <div class="w-full md:w-5/12 px-3 mb-6 md:mb-0">
+          <label class="block tracking-wide text-gray-700 font-bold mb-2">
+            {{'trip.description' | translate}}
+          </label>
+        </div>
+        <div class="w-full md:w-3/12 px-3 mb-6 md:mb-0">
+          <label class="block tracking-wide text-gray-700 font-bold mb-2">
+            {{'trip.price' | translate}}
+          </label>
+        </div>
+        <div class="w-full md:w-1/12 px-3 mb-6 md:mb-0">
+        </div>
+      </div>
+    <div formArrayName="stages"
+      *ngFor="let stage of tripForm.controls['stages'].controls; let i = index;">
+      <div [formGroupName]="i">
+        <div class="flex flex-wrap -mx-3 mb-2">
+          <div class="w-full md:w-3/12 px-3 mb-6 md:mb-0">
+            <input class="appearance-none border-2 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="title" formControlName="title" type="text" placeholder="{{'trip.title' | translate}}">
+          </div>
+          <div class="w-full md:w-5/12 px-3 mb-6 md:mb-0">
+            <textarea class="appearance-none border-2 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="description" formControlName="description" type="text" placeholder="{{'trip.description' | translate}}"></textarea>
+          </div>
+          <div class="w-full md:w-3/12 px-3 mb-6 md:mb-0">
+            <input class="appearance-none border-2 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="price" formControlName="price" type="number" placeholder="{{'trip.price' | translate}}">
+          </div>
+          <div class="md:w-1/12 text-md items-center">
+            <button class="text-red-900 h-8 w-8 m-2 bg-red-300 hover:bg-red-400 rounded-full focus:outline-none focus:shadow-outline" type="button" (click)="deleteStage(i)">
+              <i class="fa fa-trash"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <button class="m-2 bg-blue-300 hover:bg-blue-400 py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="button" (click)="addStage()">
+      <i class="fa fa-plus-circle"></i>
+      {{'stage.add' | translate}}
+    </button>
+    </div>
+    <div class="flex items-center justify-center">
+      <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit">
+        {{'common.create' | translate}}
+      </button>
+    </div>
+
+  </form>
+</div>

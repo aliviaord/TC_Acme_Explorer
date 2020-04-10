@@ -32,8 +32,9 @@
       "version": 0,
       "name": "Samantha",
       "surname": "Gilabert",
+      "address": "Academia OT",
       "email": "sam@estara.com",
-      "password": "ot2020",
+      "password": "SamanthaOT2020",
       "banned": false,
       "role": [
         "MANAGER"
@@ -66,9 +67,9 @@
         "../../../assets/pictures/mystfalls_2.jpg",
         "../../../assets/pictures/mystfalls_3.jpg"
       ],
-      "publicationDate": "2020-03-21 22:00:00.000Z",
+      "publicationDate": "2021-03-21 22:00:00.000Z",
       "cancelReason": null,
-      "manager": null,
+      "manager": "5e78bd7713b68995265511a5",
       "stages": [
         {
           "title": "Into the woods",
@@ -108,7 +109,7 @@
       ],
       "publicationDate": "2020-02-10 19:35:00.000Z",
       "cancelReason": null,
-      "manager": null,
+      "manager": "5e78bd7713b68995265511a5",
       "stages": [
         {
           "title": "Socrate's Museum",
