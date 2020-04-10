@@ -46,4 +46,9 @@ export class TripService {
     const url = `${this.tripsUrl}/${trip.id}`;
     return this.http.put<Trip[]>(url, trip, httpOptions).toPromise();
   }
+
+  removeTrip(id) {
+    const url = `${this.tripsUrl}/${id}`;
+    return this.http.delete<Trip[]>(url, httpOptions).toPromise();
+  }
 }

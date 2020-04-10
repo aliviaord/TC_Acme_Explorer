@@ -33,7 +33,8 @@
     "common": {
         "create": "Create",
         "update": "Update",
-        "edit": "Edit"
+        "edit": "Edit",
+        "remove": "Remove"
     },
     "stage": {
         "add": "Add stage",
@@ -85,7 +86,12 @@
         "auth.user.not.found": "The email entered is not registered in the system.",
         "auth.wrong.password": "The password entered is incorrect.",
         "auth.login.failed": "Failed to log in.",
-        "auth.invalid.email": "Invalid email"
+        "auth.invalid.email": "Invalid email",
+        "trip.edit.correct": "Trip edited successfully.",
+        "trip.edit.failed": "Failed to edit trip.",
+        "trip.remove": "Are you sure you want to remove the trip?",
+        "trip.removed.correct": "Trip removed succesfully.",
+        "trip.removed.failed": "Failed to remove trip."
     },
     "not-found-page": {
         "title": "Sorry, something went wrong!",

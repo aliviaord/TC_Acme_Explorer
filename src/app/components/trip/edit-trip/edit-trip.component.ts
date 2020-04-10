@@ -7,10 +7,9 @@ import { TranslatableComponent } from '../../shared/translatable/translatable.co
 import { FormGroup, FormBuilder, FormArray } from '@angular/forms';
 import { FlatpickrOptions } from 'ng2-flatpickr';
 import { AuthService } from 'src/app/services/auth.service';
-import { Actor } from 'src/app/models/actor.model';
 import Spanish from 'flatpickr/dist/l10n/es.js';
 import English from 'flatpickr/dist/l10n/uk.js';
-import { auth } from 'firebase';
+import { InfoMessageService } from '../../../services/info-message.service';
 
 @Component({
   selector: 'app-edit-trip',
@@ -33,7 +32,8 @@ export class EditTripComponent extends TranslatableComponent implements OnInit {
     private route: ActivatedRoute, 
     private fb: FormBuilder,
     private router: Router,
-    private authService: AuthService) {
+    private authService: AuthService,
+    private infoMessageService: InfoMessageService) {
       super(translateService);
   }
 
@@ -88,10 +88,27 @@ export class EditTripComponent extends TranslatableComponent implements OnInit {
     this.tripService.editTrip(trip)
     .then(res => {
       console.log(res); 
+      this.infoMessageService.notifyMessage('messages.trip.edit.correct',
+              'text-center bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative');
       this.router.navigate(['/my-trips']);
     }, err => {
       console.log(err);
+      this.infoMessageService.notifyMessage('messages.trip.edit.failed',
+              'text-center bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative');
     });
+  }
+
+  removeTrip() {
+    let alertMsg = 'Are you sure you want to remove the trip?'
+    if (this.getLang() == 'es') {
+      alertMsg = '¿Estás seguro de que quieres eliminar el viaje?';
+    }
+    if(confirm(alertMsg)) {
+      this.tripService.removeTrip(this.trip.id);
+      this.infoMessageService.notifyMessage('messages.trip.removed.correct',
+              'text-center bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative');
+      this.router.navigate(['/my-trips']);
+    }
   }
 
   ngOnInit() {

@@ -33,7 +33,8 @@
     "common": {
         "create": "Crear",
         "update": "Actualizar",
-        "edit": "Editar"
+        "edit": "Editar",
+        "remove": "Eliminar"
     },
     "stage": {
         "add": "Añadir etapa",
@@ -85,7 +86,12 @@
         "auth.user.not.found": "El correo electrónico indicado no está registrado en el sistema.",
         "auth.wrong.password": "La contraseña indicada es incorrecta.",
         "auth.login.failed": "Error al iniciar sesión.",
-        "auth.invalid.email": "Correo electrónico inválido"
+        "auth.invalid.email": "Correo electrónico inválido",
+        "trip.edit.correct": "Viaje editado correctamente.",
+        "trip.edit.failed": "Error al editar el viaje.",
+        "trip.remove": "¿Estás seguro de que quieres eliminar el viaje?",
+        "trip.removed.correct": "Viaje borrado correctamente.",
+        "trip.removed.failed": "Error al eliminar el viaje."
     },
     "not-found-page": {
         "title": "Lo sentimos, ¡algo salió mal!",
