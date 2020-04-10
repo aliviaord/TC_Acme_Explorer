@@ -41,6 +41,19 @@
       ]
     },
     {
+      "id": "5e78bd7713b68995265511f8",
+      "version": 0,
+      "name": "Amaia",
+      "surname": "Romero",
+      "address": "Pamplona",
+      "email": "nopasa@nada.com",
+      "password": "AmaiaOT2017",
+      "banned": false,
+      "role": [
+        "AUDITOR"
+      ]
+    },
+    {
       "name": "Maialen",
       "surname": "Gurbindo",
       "email": "mai@mai.com",
@@ -222,6 +235,24 @@
           "order": 2
         }
       ]
+    }
+  ],
+  "audits": [
+    {
+      "title": "Beautiful island",
+      "description": "Myst Falls is a beautiful place everyone should visit!",
+      "trip": "5e78ac3cf6f9577fd149c9ba",
+      "attachments": "some_file.pdf",
+      "auditor": "5e78bd7713b68995265511f8",
+      "createdAt": "08/04/2020"
+    },
+    {
+      "title": "Apples are amazing!!",
+      "description": "There's no doubt that apples are the best thing on the island. I still remember the taste...",
+      "trip": "5e78ac3cf6f9577fd149c9ba",
+      "attachments": "some_file.pdf",
+      "auditor": "5e78bd7713b68995265511f8",
+      "createdAt": "08/04/2020"
     }
   ]
 }

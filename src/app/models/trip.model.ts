@@ -11,7 +11,8 @@ export class Trip extends Entity {
     pictures: string[];
     publicationDate: Date;
     cancelReason: String;
-
+    manager: String;
+    
     constructor() {
         super();
     }

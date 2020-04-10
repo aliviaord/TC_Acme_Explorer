@@ -1,3 +1,4 @@
+<div class="flex">
 <div class="max-w-xl rounded overflow-hidden shadow-lg bg-white">
   <div *ngIf="trip.cancelReason" class="px-6 py-4 bg-red-200 text-center">
     <p class="px-3 py-1"><span class="font-bold">{{'trip.sorry' | translate}}</span></p>
@@ -21,4 +22,23 @@
   <div class="px-6 py-4 bg-orange-200">
     <p class="px-3 py-1"><span class="font-bold">{{'trip.requirements' | translate}}:</span>&nbsp;{{trip.requirements}}</p>
   </div>
+</div>
+
+<div *ngIf="audits.length" class="ml-10">
+  <div class="bg-orange-200 rounded font-bold text-xl mb-2 text-center">{{'trip.audits' | translate}}</div>
+  <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="table-auto row-border hover">
+    <thead>
+      <tr>
+        <th class="px-4 py-2">{{'trip.publicationDate' | translate}}</th>
+        <th class="px-4 py-2">{{'trip.title' | translate}}</th>
+      </tr>
+    </thead>
+    <tbody *ngFor="let audit of audits; let i = index">
+      <tr class="bg-white">
+        <td class="border px-4 py-2 text-center">{{audit.createdAt}}</td>
+        <td class="border px-4 py-2 text-center">{{audit.title}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
 </div>

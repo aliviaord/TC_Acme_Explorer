@@ -13,3 +13,8 @@ body {
     top: 50%!important;
     z-index: 1;
 }
+.paginate_button.current{
+    background: transparent!important;
+    border: 0!important;
+    border-radius: 9999px!important;
+}

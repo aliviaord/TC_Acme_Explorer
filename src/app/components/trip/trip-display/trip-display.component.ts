@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, ParamMap } from '@angular/router';
 import { Trip } from 'src/app/models/trip.model';
+import { Audit } from 'src/app/models/audit.model';
 import { TripService } from 'src/app/services/trip.service';
 
 import { TranslateService } from '@ngx-translate/core';
@@ -12,10 +13,11 @@ import { TranslatableComponent } from '../../shared/translatable/translatable.co
   styleUrls: ['./trip-display.component.css']
 })
 export class TripDisplayComponent extends TranslatableComponent implements OnInit {
-
+  
+  dtOptions: DataTables.Settings = {};
   id: string;
-
   trip = new Trip();
+  audits = [];
   slideConfig = {
     "slidesToShow": 1,
     "slidesToScroll": 1,
@@ -40,8 +42,20 @@ export class TripDisplayComponent extends TranslatableComponent implements OnIni
     this.tripService.getTrip(this.id)
       .then((val) => {
         this.trip = val;
+        this.tripService.getTripAudits(this.id)
+          .then((audits) => {
+            this.audits = audits;
+          }).catch((err) => {
+            console.error(err);
+          });
       }).catch((err) => {
         console.error(err);
       });
+      this.dtOptions = {
+        searching: false,
+        lengthChange: false,
+        info: false,
+        ordering: false
+      };
   }
 }
