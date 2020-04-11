@@ -14,13 +14,25 @@ const httpOptions = {
 export class AuditService {
 
   private auditsUrl = environment.backendApiBaseURL + '/audits';
+  private actorsUrl = environment.backendApiBaseURL + '/actors';
 
   constructor(private http: HttpClient) { }
 
   getAudit(id) {
     if (id) {
       const url = `${this.auditsUrl}/${id}`;
-      return this.http.get<Trip>(url, httpOptions).toPromise();
+      return this.http.get<Audit>(url, httpOptions).toPromise();
     }
+  }
+
+  getAuditorAudits(id) {
+    const url = `${this.actorsUrl}/${id}/audits`;
+    return this.http.get<Audit[]>(url, httpOptions).toPromise();
+  }
+
+  createAudit(audit) {
+    console.log(audit)
+    const url = `${this.auditsUrl}`;
+    return this.http.post<Audit>(url, audit, httpOptions).toPromise();
   }
 }

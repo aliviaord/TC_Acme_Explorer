@@ -13,6 +13,8 @@ import { TermsAndConditionsComponent } from './components/master/terms-and-condi
 import { ActorRoleGuard } from './guards/actor-role.guard';
 import { DeniedAccessPageComponent } from './components/security/denied-access-page/denied-access-page.component';
 import { DisplayAuditComponent } from './components/audit/display-audit/display-audit.component';
+import { AuditListComponent } from './components/audit/audit-list/audit-list.component';
+import { CreateAuditComponent } from './components/audit/create-audit/create-audit.component';
 
 const appRoutes: Routes = [
   {path: '', component: MainComponent, pathMatch: 'full'},
@@ -36,9 +38,12 @@ const appRoutes: Routes = [
   canActivate: [ActorRoleGuard], data: {expectedRole: 'MANAGER'}
   },
   {path: 'audits', children: [
-    {path: ':id', component: DisplayAuditComponent}
-    // {path: '', component: TripListComponent},
+    {path: ':id', component: DisplayAuditComponent},
+    {path: '', component: AuditListComponent, canActivate: [ActorRoleGuard], data: {expectedRole: 'AUDITOR'}},
   ]},
+  {path: 'new-audit', component: CreateAuditComponent,
+  canActivate: [ActorRoleGuard], data: {expectedRole: 'AUDITOR'}
+  },
   {path: 'not-found', component: NotFoundPageComponent},
   {path: 'terms-and-conditions', component: TermsAndConditionsComponent},
   {path: 'denied-access', component: DeniedAccessPageComponent},

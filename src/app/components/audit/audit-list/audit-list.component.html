@@ -1,0 +1,27 @@
+<h1 class="text-center font-bold text-4xl py-2">{{'audit.list' | translate}}</h1>
+<table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="table-auto row-border hover">
+  <thead>
+    <tr>
+      <th class="px-4 py-2">{{'trip.publicationDate' | translate}}</th>
+      <th class="px-4 py-2">{{'trip.title' | translate}}</th>
+      <th class="px-4 py-2">{{'trip.description' | translate}}</th>
+      <th class="px-4 py-2">{{'common.trip' | translate}}</th>
+      <th class="px-4 py-2">Details</th>
+    </tr>
+  </thead>
+  <tbody *ngFor="let audit of audits; let i = index">
+    <tr class="bg-white">
+      <td class="border px-4 py-2 text-center">{{audit.createdAt | date}}</td>
+      <!-- <td *ngIf="!t.cancelReason" class="border px-4 py-2 text-center"><img src="{{t.pictures[0]}}" class="picture"></td> -->
+      <!-- <td *ngIf="t.cancelReason" class="border px-4 py-2 text-center"><div class="canceled-img"><img src="{{t.pictures[0]}}" class="picture"><div class="centered">{{'trip.cancelled' | translate}}</div></div></td> -->
+      <td class="border px-4 py-2 text-center w-40">{{audit.title}}</td>
+      <td class="border px-4 py-2 text-center">{{audit.description}}</td>
+      <td class="border px-4 py-2 text-center">{{audit.trip}}</td>
+      <!-- <td class="border px-4 py-2 text-center">{{t.endDate | date}}</td> -->
+      <td class="border text-center w-32">
+        <a routerLink="/audits/{{audit.id}}" class="flex items-center px-4 py-2 hover:bg-green-100">{{'trip.details' | translate}} <img src="../../../assets/leaf.png" class="object-contain h-10"></a>
+      </td>
+    </tr>
+  </tbody>
+</table>
+

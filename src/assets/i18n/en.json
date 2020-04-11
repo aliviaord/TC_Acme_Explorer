@@ -42,6 +42,11 @@
         "add": "Add stage",
         "stages": "Stages"
     },
+    "audit": {
+        "my-list": "My audits",
+        "list": "Audit list",
+        "create": "Create audit"
+    },
     "trip": {
         "display": "Display trip",
         "list": "Trip list",

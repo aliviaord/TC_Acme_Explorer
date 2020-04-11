@@ -42,6 +42,11 @@
         "add": "Añadir etapa",
         "stages": "Etapas"
      },
+     "audit": {
+        "my-list": "Mis auditorías",
+        "list": "Lista de auditorías",
+        "create": "Crear auditoría"
+    },
     "trip": {
         "display": "Mostrar viaje",
         "list": "Lista de viajes",

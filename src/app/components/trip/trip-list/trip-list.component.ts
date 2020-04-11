@@ -27,10 +27,6 @@ export class TripListComponent extends TranslatableComponent implements OnInit {
       super(translateService);
   }
 
-  getPictures(index: number) {
-    return this.trips[index].pictures;
-  }
-
   getPublicationDate(index: number) {
     return new Date(this.trips[index].publicationDate);
   }
