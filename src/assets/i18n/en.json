@@ -34,7 +34,9 @@
         "create": "Create",
         "update": "Update",
         "edit": "Edit",
-        "remove": "Remove"
+        "remove": "Remove",
+        "trip": "Trip",
+        "author": "Author"
     },
     "stage": {
         "add": "Add stage",

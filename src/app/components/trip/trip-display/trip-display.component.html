@@ -36,7 +36,7 @@
     <tbody *ngFor="let audit of audits; let i = index">
       <tr class="bg-white">
         <td class="border px-4 py-2 text-center">{{audit.createdAt}}</td>
-        <td class="border px-4 py-2 text-center">{{audit.title}}</td>
+        <td class="border px-4 py-2 text-center"><a href="/audits/{{audit.id}}">{{audit.title}}</a></td>
       </tr>
     </tbody>
   </table>

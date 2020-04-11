@@ -1,0 +1,20 @@
+<div class="flex">
+  <div class="max-w-xl rounded overflow-hidden shadow-lg bg-white">
+    <!-- <ngx-slick-carousel class="carousel" 
+                        #slickModal="slick-carousel" 
+                        [config]="slideConfig">
+        <div ngxSlickItem *ngFor="let p of trip.pictures" class="slide">
+              <img src="{{p}}" class="w-full">
+        </div>
+    </ngx-slick-carousel>  -->
+    <div class="px-6 py-4">
+      <div class="font-bold text-xl mb-2 text-center">{{audit.title}}</div>
+      <p class="text-gray-700 text-base text-center">{{audit.description}}</p>
+      <div class="px-6 pt-4 text-center">
+        <span class="font-bold">{{'trip.publicationDate' | translate}}:&nbsp;</span><span class="inline-block bg-orange-200 rounded-full px-3 py-1 font-bold mr-2">{{audit.createdAt | date}}</span><br/><br/>
+        <span class="font-bold">{{'common.trip' | translate}}:&nbsp;</span><span class="text-right bg-orange-200 rounded-full px-3 py-1 font-bold mr-2"><a href="/trips/{{trip.id}}">{{trip.title}}</a></span><br/><br/>
+        <span class="font-bold">{{'common.author' | translate}}:&nbsp;</span><span class="text-right bg-orange-200 rounded-full px-3 py-1 font-bold mr-2">{{auditor.name}} {{auditor.surname}}</span>
+      </div>
+    </div>
+  </div>
+</div>

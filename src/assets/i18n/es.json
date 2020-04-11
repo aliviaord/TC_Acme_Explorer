@@ -34,7 +34,9 @@
         "create": "Crear",
         "update": "Actualizar",
         "edit": "Editar",
-        "remove": "Eliminar"
+        "remove": "Eliminar",
+        "trip": "Viaje",
+        "author": "Autor"
     },
     "stage": {
         "add": "Añadir etapa",

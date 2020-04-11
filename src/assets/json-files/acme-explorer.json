@@ -239,6 +239,7 @@
   ],
   "audits": [
     {
+      "id": "123123",
       "title": "Beautiful island",
       "description": "Myst Falls is a beautiful place everyone should visit!",
       "trip": "5e78ac3cf6f9577fd149c9ba",
@@ -247,6 +248,7 @@
       "createdAt": "08/04/2020"
     },
     {
+      "id": "123233",
       "title": "Apples are amazing!!",
       "description": "There's no doubt that apples are the best thing on the island. I still remember the taste...",
       "trip": "5e78ac3cf6f9577fd149c9ba",

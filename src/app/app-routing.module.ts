@@ -12,6 +12,7 @@ import { NotFoundPageComponent } from './components/shared/not-found-page/not-fo
 import { TermsAndConditionsComponent } from './components/master/terms-and-conditions/terms-and-conditions.component';
 import { ActorRoleGuard } from './guards/actor-role.guard';
 import { DeniedAccessPageComponent } from './components/security/denied-access-page/denied-access-page.component';
+import { DisplayAuditComponent } from './components/audit/display-audit/display-audit.component';
 
 const appRoutes: Routes = [
   {path: '', component: MainComponent, pathMatch: 'full'},
@@ -34,10 +35,14 @@ const appRoutes: Routes = [
   {path: 'new-trip', component: CreateTripComponent,
   canActivate: [ActorRoleGuard], data: {expectedRole: 'MANAGER'}
   },
+  {path: 'audits', children: [
+    {path: ':id', component: DisplayAuditComponent}
+    // {path: '', component: TripListComponent},
+  ]},
   {path: 'not-found', component: NotFoundPageComponent},
   {path: 'terms-and-conditions', component: TermsAndConditionsComponent},
   {path: 'denied-access', component: DeniedAccessPageComponent},
-  {path: '**', redirectTo: '/not-found'}
+  {path: '**', redirectTo: '/not-found'},
 ];
 
 @NgModule({

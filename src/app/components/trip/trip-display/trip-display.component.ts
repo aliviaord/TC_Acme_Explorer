@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, ParamMap } from '@angular/router';
 import { Trip } from 'src/app/models/trip.model';
-import { Audit } from 'src/app/models/audit.model';
 import { TripService } from 'src/app/services/trip.service';
-
 import { TranslateService } from '@ngx-translate/core';
 import { TranslatableComponent } from '../../shared/translatable/translatable.component';
 

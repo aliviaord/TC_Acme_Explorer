@@ -29,6 +29,7 @@ import { SlickCarouselModule } from 'ngx-slick-carousel';
 import { CreateTripComponent } from './components/trip/create-trip/create-trip.component';
 import { Ng2FlatpickrModule } from 'ng2-flatpickr';
 import { EditTripComponent } from './components/trip/edit-trip/edit-trip.component';
+import { DisplayAuditComponent } from './components/audit/display-audit/display-audit.component';
 
 export const firebaseConfig = {
   apiKey: 'AIzaSyBeyK3jw-oLh1MyZMHrydSJwy0WTxWDZ-0',
@@ -64,7 +65,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     TermsAndConditionsComponent,
     DeniedAccessPageComponent,
     CreateTripComponent,
-    EditTripComponent
+    EditTripComponent,
+    DisplayAuditComponent
   ],
   imports: [
     BrowserModule,
