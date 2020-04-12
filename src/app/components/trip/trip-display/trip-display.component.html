@@ -1,4 +1,38 @@
 <div class="flex">
+  <div class="flex flex-col mr-10">
+    <div class="bg-orange-200 rounded font-bold text-xl mb-2 text-center">{{'stage.stages' | translate}}</div>
+    <div class="flex max-w-xl m-0 pb-4">	
+      <div class="flex flex-col pb-3">
+        <div class="flex-1">
+        </div>
+        
+        <div *ngFor="let s of trip.stages; let i = index">
+          <div class="flex">
+            <div class="w-10 h-10 bg-pink-200 rounded-full text-lg text-white flex items-center">
+              <span class="text-white text-center w-full">{{i+1}}</span>
+            </div>
+            <p class="font-bold text-base my-2 ml-2">{{s.title}}</p>
+          </div>
+          <div class="flex">
+          <div class="align-center items-center mx-5 my-2 align-middle content-center flex flex-col">
+            <div class="w-full bg-grey-200 rounded items-center align-middle align-center flex-1">
+              <div class="bg-pink-200 text-xs leading-none py-1 text-center text-grey-darkest rounded h-20 w-2"></div>
+            </div>
+          </div>
+          <p class="break-all text-sm">{{s.description}}<br>
+          <b>{{'trip.price' | translate}}:</b> {{s.price}}€</p>
+          </div>
+        </div>
+        <div class="w-10 h-10 bg-pink-200 rounded-full text-lg text-white flex items-center">
+          <span class="text-white text-center w-full"><i class="fa fa-flag"></i></span>
+        </div>
+        <div class="flex-1">
+        </div>		
+      </div>
+    </div>
+  </div>
+
+
 <div class="max-w-xl rounded overflow-hidden shadow-lg bg-white">
   <div *ngIf="trip.cancelReason" class="px-6 py-4 bg-red-200 text-center">
     <p class="px-3 py-1"><span class="font-bold">{{'trip.sorry' | translate}}</span></p>
