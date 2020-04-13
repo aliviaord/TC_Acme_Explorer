@@ -104,5 +104,22 @@
     "not-found-page": {
         "title": "Lo sentimos, ¡algo salió mal!",
         "subtitle": "No pudimos encontrar lo que está buscando."
+    },
+    "tripApplication": {
+        "list": "Lista de aplicaciones",
+        "status": "Estado",
+        "comments": "Comentarios",
+        "explorer": "Explorador",
+        "trip": "Viaje",
+        "paidDate": "Fecha de pago",
+        "rejectedReason": "Razón del rechazo"
+    },
+    "sponsorship": {
+        "list": "Lista de patrocinios",
+        "paid": "Pagado",
+        "trip": "Viaje",
+        "banner": "Pancarta",
+        "landingPage": "Página de inicio",
+        "notPaid": "No pagado"
     }
 }

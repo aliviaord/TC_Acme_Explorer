@@ -1,0 +1,21 @@
+<table datatable [dtOptions]="dtOptions" class="row-border hover" dt-columns="dtColumns" width="100%">
+  <thead>
+    <tr>
+      <th></th>
+      <th>{{'sponsorship.trip' | translate}}</th>
+      <th>{{'sponsorship.banner' | translate}}</th>
+      <th>{{'sponsorship.landingPage' | translate}}</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let s of sponsorships">
+      <td>
+        <p *ngIf="s.paid" class="text-green-400 font-bold">{{'sponsorship.paid' | translate}}</p>
+        <p *ngIf="!s.paid" class="text-red-400 font-bold">{{'sponsorship.notPaid' | translate}}</p>
+      </td>
+      <td><a routerLink="/trips/{{s.trip}}" class="flex items-center px-4 py-2 hover:bg-green-100">{{tripsTitles.get(s.id)}}</a></td>
+      <td><img class="object-cover h-40 w-full" src="{{s.banner}}"></td>
+      <td><a href="{{s.landingPage}}">{{s.landingPage}}</a></td>
+    </tr>
+  </tbody>
+</table>

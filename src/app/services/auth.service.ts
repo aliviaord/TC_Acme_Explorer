@@ -31,7 +31,7 @@ export class AuthService {
           }, err => {
             console.log(err);
           });
-        } 
+        }
       });
     }
 

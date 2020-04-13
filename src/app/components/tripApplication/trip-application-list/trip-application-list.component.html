@@ -1,0 +1,25 @@
+  <table datatable [dtOptions]="dtOptions" class="row-border hover" dt-columns="dtColumns" width="100%">
+    <thead>
+      <tr>
+        <th>{{'tripApplication.status' | translate}}</th>
+        <th>{{'tripApplication.explorer' | translate}}</th>
+        <th>{{'tripApplication.trip' | translate}}</th>
+        <th>{{'tripApplication.comments' | translate}}</th>
+        <th>{{'tripApplication.paidDate' | translate}}</th>
+        <th>{{'tripApplication.rejectedReason' | translate}}</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let a of tripApplications" [style.background-color]=backgroundColor.get(a.id)>
+        <td>{{a.status}}</td>
+        <td>{{explorersNames.get(a.id)}}</td>
+        <td><a routerLink="/trips/{{a.trip}}" class="flex items-center px-4 py-2 hover:bg-green-100">{{tripsTitles.get(a.id)}}</a></td>
+        <td *ngIf="a.comments !== ''">{{a.comments}}</td>
+        <td *ngIf="a.comments === ''">-</td>
+        <td *ngIf="a.paidDate !== ''">{{a.paidDate | date}}</td>
+        <td *ngIf="a.paidDate === ''">-</td>
+        <td *ngIf="a.rejectedReason !== ''">{{a.rejectedReason}}</td>
+        <td *ngIf="a.rejectedReason === ''">-</td>
+      </tr>
+    </tbody>
+  </table>

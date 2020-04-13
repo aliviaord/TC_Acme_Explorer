@@ -49,7 +49,7 @@
     },
     "trip": {
         "display": "Display trip",
-        "list": "Trip list",
+        "list": "Trips list",
         "my-list": "My trips",
         "create": "Create trip",
         "edit": "Edit trip",
@@ -104,5 +104,22 @@
     "not-found-page": {
         "title": "Sorry, something went wrong!",
         "subtitle": "We couldn't find what you are looking for."
+    },
+    "tripApplication": {
+        "list": "Applications list",
+        "status": "Status",
+        "comments": "Comments",
+        "explorer": "Explorer",
+        "trip": "Trip",
+        "paidDate": "Paid date",
+        "rejectedReason": "Rejected reason"
+    },
+    "sponsorship": {
+        "list": "Sponsorships list",
+        "paid": "Paid",
+        "trip": "Trip",
+        "banner": "Banner",
+        "landingPage": "Landing page",
+        "notPaid": "Not paid"
     }
 }

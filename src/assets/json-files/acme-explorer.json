@@ -1,67 +1,88 @@
 {
   "actors": [
     {
-      "id": "5e78bbd524b1296d559096fb",
-      "version": 0,
       "name": "Maialen",
       "surname": "Gurbindo",
       "email": "chicasobresalto@murphy.com",
       "password": "ot2020",
-      "phoneNumber": "627629862",
       "address": "C/ Marina, Nº6",
+      "phoneNumber": "627629862",
+      "role": "MANAGER",
       "banned": false,
-      "role": [
-        "MANAGER"
-      ]
+      "id": "5e78bbd524b1296d559096fb",
+      "version": 0
     },
     {
-      "id": "5e78bccd99d6d25a34fc6959",
-      "version": 0,
       "name": "Ana Julieta",
       "surname": "Calavia",
       "email": "anawho@palomitas.com",
       "password": "ot2020",
+      "address": "",
       "phoneNumber": "678624789",
+      "role": "MANAGER",
       "banned": false,
-      "role": [
-        "MANAGER"
-      ]
+      "id": "5e78bccd99d6d25a34fc6959",
+      "version": 0
     },
     {
-      "id": "5e78bd7713b68995265511a5",
-      "version": 0,
       "name": "Samantha",
       "surname": "Gilabert",
-      "address": "Academia OT",
       "email": "sam@estara.com",
       "password": "SamanthaOT2020",
+      "address": "Academia OT",
+      "phoneNumber": "",
+      "role": "MANAGER",
       "banned": false,
-      "role": [
-        "MANAGER"
-      ]
+      "id": "5e78bd7713b68995265511a5",
+      "version": 0
     },
     {
-      "id": "5e78bd7713b68995265511f8",
-      "version": 0,
       "name": "Amaia",
       "surname": "Romero",
-      "address": "Pamplona",
       "email": "nopasa@nada.com",
       "password": "AmaiaOT2017",
+      "address": "Pamplona",
+      "phoneNumber": "",
+      "role": "AUDITOR",
       "banned": false,
-      "role": [
-        "AUDITOR"
-      ]
+      "id": "5e78bd7713b68995265511f8",
+      "version": 0
     },
     {
-      "name": "Maialen",
-      "surname": "Gurbindo",
-      "email": "mai@mai.com",
-      "password": "maimai",
-      "address": "",
-      "phone": "",
+      "name": "Aitana",
+      "surname": "Ocaña",
+      "email": "aitana@war.com",
+      "password": "AitanaOT2017",
+      "address": "Barcelona",
+      "phoneNumber": "678393285",
       "role": "EXPLORER",
-      "id": "t~BzoYw"
+      "banned": false,
+      "id": "5e92f37b97143f63865aed61",
+      "version": 0
+    },
+    {
+      "name": "Noemí",
+      "surname": "Galera",
+      "email": "noemi@directora.com",
+      "password": "ot2020",
+      "address": "Tarrasa",
+      "phoneNumber": "652556542",
+      "role": "EXPLORER",
+      "banned": false,
+      "id": "5e933a87690ef1ca07d86667",
+      "version": 0
+    },
+    {
+      "name": "Sabela",
+      "surname": "Ramil",
+      "email": "sabela@ravera.com",
+      "password": "SabelaOT2018",
+      "address": "",
+      "phoneNumber": "",
+      "role": "SPONSOR",
+      "banned": false,
+      "id": "5e938c9e9f78e625809e7051",
+      "version": 0
     }
   ],
   "trips": [
@@ -237,24 +258,119 @@
       ]
     }
   ],
-  "audits": [
+  "tripApplications": [
     {
-      "id": "123123",
-      "title": "Beautiful island",
-      "description": "Myst Falls is a beautiful place everyone should visit!",
-      "trip": "5e78ac3cf6f9577fd149c9ba",
-      "attachments": "some_file.pdf",
-      "auditor": "5e78bd7713b68995265511f8",
-      "createdAt": "08/04/2020"
+      "id": "5e9099a7f830b159356f9f8e",
+      "version": 0,
+      "status": "CANCELLED",
+      "comments": "",
+      "paidDate": "2020-03-23 20:56:45.000Z",
+      "rejectedReason": "",
+      "trip": "5e78b57774fbc89346a17500",
+      "explorer": "5e92f37b97143f63865aed61",
+      "manager": "5e78bbd524b1296d559096fb"
     },
     {
-      "id": "123233",
-      "title": "Apples are amazing!!",
-      "description": "There's no doubt that apples are the best thing on the island. I still remember the taste...",
+      "id": "5e9307796b58997360c40453",
+      "version": 0,
+      "status": "DUE",
+      "comments": "",
+      "paidDate": "",
+      "rejectedReason": "",
+      "trip": "5e78b4abd54f14f0beb474e6",
+      "explorer": "5e92f37b97143f63865aed61",
+      "manager": "5e78bbd524b1296d559096fb"
+    },
+    {
+      "id": "5e931dc0f75d67370149a5bc",
+      "version": 0,
+      "status": "REJECTED",
+      "comments": "",
+      "paidDate": "",
+      "rejectedReason": "Fails to meet the requirements",
+      "trip": "5e78b4abd54f14f0beb474e6",
+      "explorer": "5e92f37b97143f63865aed61",
+      "manager": "5e78bbd524b1296d559096fb"
+    },
+    {
+      "id": "5e93265e38f069bcad2638ca",
+      "version": 0,
+      "status": "ACCEPTED",
+      "comments": "",
+      "paidDate": "2020-03-27 18:32:23.000Z",
+      "rejectedReason": "",
       "trip": "5e78ac3cf6f9577fd149c9ba",
-      "attachments": "some_file.pdf",
-      "auditor": "5e78bd7713b68995265511f8",
-      "createdAt": "08/04/2020"
+      "explorer": "5e92f37b97143f63865aed61",
+      "manager": "5e78bbd524b1296d559096fb"
+    },
+    {
+      "id": "5e93277e4e1ed477d39d456d",
+      "version": 0,
+      "status": "PENDING",
+      "comments": "",
+      "paidDate": "",
+      "rejectedReason": "",
+      "trip": "5e78b57774fbc89346a17500",
+      "explorer": "5e92f37b97143f63865aed61",
+      "manager": "5e78bbd524b1296d559096fb"
+    },
+    {
+      "id": "5e933b07b5ca9ba01ea2e97e",
+      "version": 0,
+      "status": "PENDING",
+      "comments": "",
+      "paidDate": "",
+      "rejectedReason": "",
+      "trip": "5e78b57774fbc89346a17500",
+      "explorer": "5e933a87690ef1ca07d86667",
+      "manager": "5e78bbd524b1296d559096fb"
+    }
+  ],
+  "sponsorships": [
+    {
+      "landingPage": "https://www.taylorswift.com/",
+      "banner": "../../../assets/pictures/sponsorships/taylor_swift.jpg",
+      "paid": true,
+      "sponsor": "5e938c9e9f78e625809e7051",
+      "trip": "5e78b29a52a97bcf87ed3e20",
+      "id": "5e9391261fb9ceb3d4cd7004",
+      "version": 0
+    },
+    {
+      "landingPage": "https://www.avamax.com/",
+      "banner": "../../../assets/pictures/sponsorships/ava_max.png",
+      "paid": false,
+      "sponsor": "5e938c9e9f78e625809e7051",
+      "trip": "5e78b29a52a97bcf87ed3e20",
+      "id": "5e93aa06542dcfc01e5d1a8b",
+      "version": 0
+    },
+    {
+      "landingPage": "https://www.billieeilish.com/",
+      "banner": "../../../assets/pictures/sponsorships/billie_eilish.png",
+      "paid": true,
+      "sponsor": "5e938c9e9f78e625809e7051",
+      "trip": "5e78b29a52a97bcf87ed3e20",
+      "id": "5e93aa52c00e1e0709dd9952",
+      "version": 0
+    },
+    {
+      "landingPage": "https://lanadelrey.com/",
+      "banner": "../../../assets/pictures/sponsorships/lana_del_rey.jpg",
+      "paid": true,
+      "sponsor": "5e938c9e9f78e625809e7051",
+      "trip": "5e78b29a52a97bcf87ed3e20",
+      "id": "5e93aa8666172fd7460a7444",
+      "version": 0
+    },
+    {
+      "landingPage": "https://www.rosalia.com/",
+      "banner": "../../../assets/pictures/sponsorships/rosalia.jpg",
+      "paid": true,
+      "sponsor": "5e938c9e9f78e625809e7051",
+      "trip": "5e78b29a52a97bcf87ed3e20",
+      "id": "5e93aac3a0e5dd7d45c5bc5b",
+      "version": 0
     }
   ]
 }
