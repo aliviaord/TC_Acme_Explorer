@@ -20,4 +20,9 @@ export class SponsorshipService {
     const url = `${this.sponsorshipsUrl}?sponsor=${sponsorId}`;
     return this.http.get<Sponsorship[]>(url, httpOptions).toPromise();
   }
+
+  getTripSponsorships(tripId) {
+    const url = `${this.sponsorshipsUrl}?trip=${tripId}`;
+    return this.http.get<Sponsorship[]>(url, httpOptions).toPromise();
+  }
 }

@@ -67,13 +67,18 @@ export class TripDisplayComponent extends TranslatableComponent implements OnIni
       };
 
     this.currentActor = this.authService.getCurrentActor();
-    this.sponsorshipService.getSponsorships(this.currentActor.id).then((data: any) => {
+    this.sponsorshipService.getTripSponsorships(this.id).then((data: any) => {
 
       let sponsorship = null;
-      while (sponsorship == null || sponsorship.paid === false) {
-        sponsorship = data[Math.floor(Math.random() * data.length)];
+
+      if (data.length > 0) {
+        while (sponsorship == null || sponsorship.paid === false) {
+          sponsorship = data[Math.floor(Math.random() * data.length)];
+        }
       }
+
       this.randomSponsorship = sponsorship;
+
     }).catch(
       error => {
         console.log(error);
