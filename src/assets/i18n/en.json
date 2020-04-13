@@ -121,5 +121,25 @@
         "banner": "Banner",
         "landingPage": "Landing page",
         "notPaid": "Not paid"
+    },
+    "dashboard": {
+        "title": "Dashboard",
+        "tripsPerManager": "Number of trips managed per manager",
+        "avg": "Average",
+        "max": "Maximum",
+        "min": "Minimum",
+        "std": "Standard deviation",
+        "applicationsPerTrip": "Number of applications per trip",
+        "tripsPrice": "Price of the trips",
+        "applicationsRatio": "Ratio of applications grouped by status",
+        "pending": "Pending",
+        "rejected": "Rejected",
+        "due": "Due",
+        "accepted": "Accepted",
+        "cancelled": "Cancelled",
+        "priceRangeFinders": "Average price range that explorers indicate in their finders",
+        "minPrice": "Minimum price",
+        "maxPrice": "Maximum price",
+        "topKeywords": "Top 10 keywords that the explorers indicate in their finders"
     }
 }

@@ -34,6 +34,7 @@ import { AuditListComponent } from './components/audit/audit-list/audit-list.com
 import { CreateAuditComponent } from './components/audit/create-audit/create-audit.component';
 import { TripApplicationListComponent } from './components/tripApplication/trip-application-list/trip-application-list.component';
 import { SponsorshipListComponent } from './components/sponsorship/sponsorship-list/sponsorship-list.component';
+import { DashboardDisplayComponent } from './components/dashboard/dashboard-display/dashboard-display.component';
 
 export const firebaseConfig = {
   apiKey: 'AIzaSyBeyK3jw-oLh1MyZMHrydSJwy0WTxWDZ-0',
@@ -74,7 +75,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     AuditListComponent,
     CreateAuditComponent,
     TripApplicationListComponent,
-    SponsorshipListComponent
+    SponsorshipListComponent,
+    DashboardDisplayComponent
   ],
   imports: [
     BrowserModule,

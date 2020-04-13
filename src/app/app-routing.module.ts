@@ -17,6 +17,7 @@ import { AuditListComponent } from './components/audit/audit-list/audit-list.com
 import { CreateAuditComponent } from './components/audit/create-audit/create-audit.component';
 import { TripApplicationListComponent } from './components/tripApplication/trip-application-list/trip-application-list.component';
 import { SponsorshipListComponent } from './components/sponsorship/sponsorship-list/sponsorship-list.component';
+import { DashboardDisplayComponent } from './components/dashboard/dashboard-display/dashboard-display.component';
 
 const appRoutes: Routes = [
   {path: '', component: MainComponent, pathMatch: 'full'},
@@ -49,6 +50,7 @@ const appRoutes: Routes = [
   {path: 'tripApplications', component: TripApplicationListComponent, canActivate: [ActorRoleGuard],
     data: {expectedRole: 'MANAGER|EXPLORER'}},
   {path: 'sponsorships', component: SponsorshipListComponent, canActivate: [ActorRoleGuard], data: {expectedRole: 'SPONSOR'}},
+  {path: 'dashboard', component: DashboardDisplayComponent, canActivate: [ActorRoleGuard], data: {expectedRole: 'ADMINISTRATOR'}},
   {path: 'not-found', component: NotFoundPageComponent},
   {path: 'terms-and-conditions', component: TermsAndConditionsComponent},
   {path: 'denied-access', component: DeniedAccessPageComponent},

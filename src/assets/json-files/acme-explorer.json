@@ -83,6 +83,17 @@
       "banned": false,
       "id": "5e938c9e9f78e625809e7051",
       "version": 0
+    },
+    {
+      "name": "Admin",
+      "surname": "Admin",
+      "email": "admin@admin.com",
+      "password": "adminadmin",
+      "address": "",
+      "phoneNumber": "",
+      "role": "ADMINISTRATOR",
+      "banned": false,
+      "id": "5e945cdb79dbd80b7677f373"
     }
   ],
   "trips": [
@@ -371,6 +382,19 @@
       "trip": "5e78b29a52a97bcf87ed3e20",
       "id": "5e93aac3a0e5dd7d45c5bc5b",
       "version": 0
+    }
+  ],
+  "dashboards": [
+    {
+      "avgMinMaxStdTripsPerManager": [3, 2, 4, 1],
+      "avgMinMaxStdApplicationsPerTrip": [7, 6, 8, 1],
+      "avgMinMaxStdTripsPrice": [800, 700, 900, 100],
+      "ratioApplicationsByStatus": [0.1, 0.5, 0.2, 0.1, 0.1],
+      "avgPriceRangeFinders": [0, 750],
+      "topFinderKeywords": [
+        "Maialen", "Apples", "Broccoli", "Cornelia", "Museum",
+        "Summer", "Cold", "Relaxing", "Family", "Kids"
+      ]
     }
   ]
 }

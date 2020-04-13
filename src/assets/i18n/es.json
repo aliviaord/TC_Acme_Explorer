@@ -121,5 +121,25 @@
         "banner": "Pancarta",
         "landingPage": "Página de inicio",
         "notPaid": "No pagado"
+    },
+    "dashboard": {
+        "title": "Tablero",
+        "tripsPerManager": "Número de viajes gestionados por gestor",
+        "avg": "Media",
+        "max": "Máximo",
+        "min": "Mínimo",
+        "std": "Desviación típica",
+        "applicationsPerTrip": "Número de aplicaciones por viaje",
+        "tripsPrice": "Precio de los viajes",
+        "applicationsRatio": "Ratio de aplicaciones agrupadas por estado",
+        "pending": "Pendientes",
+        "rejected": "Rechazadas",
+        "due": "En espera",
+        "accepted": "Aceptadas",
+        "cancelled": "Canceladas",
+        "priceRangeFinders": "Rango de precios medio que los exploradores indican en sus buscadores",
+        "minPrice": "Precio mínimo",
+        "maxPrice": "Precio máximo",
+        "topKeywords": "Top 10 palabras que los exploradores indican en sus buscadores"
     }
 }

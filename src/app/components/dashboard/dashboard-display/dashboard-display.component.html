@@ -1,0 +1,133 @@
+<div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3">
+  <div class="max-w-sm rounded-lg overflow-hidden shadow-lg bg-white m-4">
+    <div class="flex flex-col min-h-full">
+      <div class="px-6 py-4 border-b">
+        <div class="text-xl text-center font-bold">{{'dashboard.tripsPerManager' | translate}}</div>
+      </div>
+      <div class="px-6 py-10 flex-grow">
+        <p class="text-gray-700 text-base">
+          - {{'dashboard.avg' | translate}}: {{dashboard.avgMinMaxStdTripsPerManager[0]}}
+        </p>
+        <p class="text-gray-700 text-base">
+          - {{'dashboard.max' | translate}}: {{dashboard.avgMinMaxStdTripsPerManager[1]}}
+        </p>
+        <p class="text-gray-700 text-base">
+          - {{'dashboard.min' | translate}}: {{dashboard.avgMinMaxStdTripsPerManager[2]}}
+        </p>
+        <p class="text-gray-700 text-base">
+          - {{'dashboard.std' | translate}}: {{dashboard.avgMinMaxStdTripsPerManager[3]}}
+        </p>
+      </div>
+      <div class="px-5 py-3 border-t bg-gray-100 flex justify-end">
+      </div>
+    </div>
+  </div>
+  
+  <div class="max-w-sm rounded-lg overflow-hidden shadow-lg bg-white m-4">
+    <div class="flex flex-col min-h-full">
+      <div class="px-6 py-4 border-b">
+        <div class="text-xl text-center font-bold">{{'dashboard.applicationsPerTrip' | translate}}</div>
+      </div>
+      <div class="px-6 py-10 flex-grow">
+        <p class="text-gray-700 text-base">
+          - {{'dashboard.avg' | translate}}: {{dashboard.avgMinMaxStdApplicationsPerTrip[0]}}
+        </p>
+        <p class="text-gray-700 text-base">
+          - {{'dashboard.max' | translate}}: {{dashboard.avgMinMaxStdApplicationsPerTrip[1]}}
+        </p>
+        <p class="text-gray-700 text-base">
+          - {{'dashboard.min' | translate}}: {{dashboard.avgMinMaxStdApplicationsPerTrip[2]}}
+        </p>
+        <p class="text-gray-700 text-base">
+          - {{'dashboard.std' | translate}}: {{dashboard.avgMinMaxStdApplicationsPerTrip[3]}}
+        </p>
+      </div>
+      <div class="px-5 py-3 border-t bg-gray-100 flex justify-end">
+      </div>
+    </div>
+  </div>
+  
+  <div class="max-w-sm rounded-lg overflow-hidden shadow-lg bg-white m-4">
+    <div class="flex flex-col min-h-full">
+      <div class="px-6 py-4 border-b">
+        <div class="text-xl text-center font-bold">{{'dashboard.tripsPrice' | translate}}</div>
+      </div>
+      <div class="px-6 py-10 flex-grow">
+        <p class="text-gray-700 text-base">
+          - {{'dashboard.avg' | translate}}: {{dashboard.avgMinMaxStdTripsPrice[0]}}&euro;
+        </p>
+        <p class="text-gray-700 text-base">
+          - {{'dashboard.max' | translate}}: {{dashboard.avgMinMaxStdTripsPrice[1]}}&euro;
+        </p>
+        <p class="text-gray-700 text-base">
+          - {{'dashboard.min' | translate}}: {{dashboard.avgMinMaxStdTripsPrice[2]}}&euro;
+        </p>
+        <p class="text-gray-700 text-base">
+          - {{'dashboard.std' | translate}}: {{dashboard.avgMinMaxStdTripsPrice[3]}}&euro;
+        </p>
+      </div>
+      <div class="px-5 py-3 border-t bg-gray-100 flex justify-end">
+      </div>
+    </div>
+  </div>
+
+  <div class="max-w-sm rounded-lg overflow-hidden shadow-lg bg-white m-4">
+    <div class="flex flex-col min-h-full">
+      <div class="px-6 py-4 border-b">
+        <div class="text-xl text-center font-bold">{{'dashboard.applicationsRatio' | translate}}</div>
+      </div>
+      <div class="px-6 py-10 flex-grow">
+        <p class="text-gray-700 text-base">
+          - {{'dashboard.pending' | translate}}: {{dashboard.ratioApplicationsByStatus[0]}}
+        </p>
+        <p class="text-gray-700 text-base">
+          - {{'dashboard.rejected' | translate}}: {{dashboard.ratioApplicationsByStatus[1]}}
+        </p>
+        <p class="text-gray-700 text-base">
+          - {{'dashboard.due' | translate}}: {{dashboard.ratioApplicationsByStatus[2]}}
+        </p>
+        <p class="text-gray-700 text-base">
+          - {{'dashboard.accepted' | translate}}: {{dashboard.ratioApplicationsByStatus[3]}}
+        </p>
+        <p class="text-gray-700 text-base">
+          - {{'dashboard.cancelled' | translate}}: {{dashboard.ratioApplicationsByStatus[4]}}
+        </p>
+      </div>
+      <div class="px-5 py-3 border-t bg-gray-100 flex justify-end">
+      </div>
+    </div>
+  </div>
+
+  <div class="max-w-sm rounded-lg overflow-hidden shadow-lg bg-white m-4">
+    <div class="flex flex-col min-h-full">
+      <div class="px-6 py-4 border-b">
+        <div class="text-xl text-center font-bold">{{'dashboard.priceRangeFinders' | translate}}</div>
+      </div>
+      <div class="px-6 py-10 flex-grow">
+        <p class="text-gray-700 text-base">
+          - {{'dashboard.minPrice' | translate}}: {{dashboard.avgPriceRangeFinders[0]}}&euro;
+        </p>
+        <p class="text-gray-700 text-base">
+          - {{'dashboard.maxPrice' | translate}}: {{dashboard.avgPriceRangeFinders[1]}}&euro;
+        </p>
+      </div>
+      <div class="px-5 py-3 border-t bg-gray-100 flex justify-end">
+      </div>
+    </div>
+  </div>
+
+  <div class="max-w-sm rounded-lg overflow-hidden shadow-lg bg-white m-4">
+    <div class="flex flex-col min-h-full">
+      <div class="px-6 py-4 border-b">
+        <div class="text-xl text-center font-bold">{{'dashboard.topKeywords' | translate}}</div>
+      </div>
+      <div class="px-6 py-10 flex-grow">
+        <p *ngFor="let k of dashboard.topFinderKeywords; let i = index" class="text-gray-700 text-base">
+          {{i + 1}}.- {{k}}
+        </p>
+      </div>
+      <div class="px-5 py-3 border-t bg-gray-100 flex justify-end">
+      </div>
+    </div>
+  </div>
+</div>
