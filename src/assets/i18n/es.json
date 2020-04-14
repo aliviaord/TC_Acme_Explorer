@@ -36,7 +36,8 @@
         "edit": "Editar",
         "remove": "Eliminar",
         "trip": "Viaje",
-        "author": "Autor"
+        "author": "Autor",
+        "search": "Buscar"
     },
     "stage": {
         "add": "Añadir etapa",

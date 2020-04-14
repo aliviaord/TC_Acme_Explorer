@@ -6,6 +6,8 @@ import { TranslateService } from '@ngx-translate/core';
 import { TranslatableComponent } from '../../shared/translatable/translatable.component';
 import { DataTableDirective } from 'angular-datatables';
 import { Subject } from 'rxjs';
+import { FormGroup, FormBuilder, FormArray } from '@angular/forms';
+import { Options, ChangeContext } from 'ng5-slider';
 
 @Component({
   selector: 'app-trip-list',
@@ -14,17 +16,24 @@ import { Subject } from 'rxjs';
 })
 
 export class TripListComponent extends TranslatableComponent implements OnInit {
-  dtOptions: DataTables.Settings = {};
-  dtTrigger: Subject<any> = new Subject();
+  searchForm: FormGroup;
 
   private trips: Trip[];
   today: number;
-  table: any = $('#trips-table');
+  options: Options = {
+    floor: 0,
+    ceil: 1000,
+    animate:false
+  };
+  maxValue = 1000;
+  minValue = 0;
 
   constructor(private tripService: TripService,
     private translateService: TranslateService,
+    private fb: FormBuilder,
     private route: ActivatedRoute) {
       super(translateService);
+      this.createForm();
   }
 
   getPublicationDate(index: number) {
@@ -39,21 +48,30 @@ export class TripListComponent extends TranslatableComponent implements OnInit {
   }
   
   ngOnInit() {
-    this.today = Date.now();
-    this.dtOptions = {
-      pagingType: 'full_numbers'
-    };
     this.getTrips()
       .then((response: Trip[]) => {
         this.trips = <Trip[]>response;
-        this.dtTrigger.next();
       }).catch(error => {
         console.error(error);
       });
   }
 
-  ngOnDestroy(): void {
-    this.dtTrigger.unsubscribe();
+  createForm() {
+    this.searchForm = this.fb.group({
+      text: [''],
+    });
+  }
+
+  searchTrips(changeContext: ChangeContext) {
+    let search = this.searchForm.value;
+    let minValue = changeContext ? changeContext.value : this.minValue
+    let maxValue = changeContext ? changeContext.highValue : this.maxValue
+    this.tripService.searchTrips(search.text, minValue, maxValue)
+      .then((response: Trip[]) => {
+        this.trips = <Trip[]>response;
+      }).catch(error => {
+        console.error(error);
+    });
   }
 
 }

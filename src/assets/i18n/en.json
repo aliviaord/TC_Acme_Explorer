@@ -36,7 +36,8 @@
         "edit": "Edit",
         "remove": "Remove",
         "trip": "Trip",
-        "author": "Author"
+        "author": "Author",
+        "search": "Search"
     },
     "stage": {
         "add": "Add stage",
