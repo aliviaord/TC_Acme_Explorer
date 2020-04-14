@@ -16,8 +16,8 @@ export class TripApplicationService {
 
   constructor(private http: HttpClient) { }
 
-  getTripApplications(role, actorId) {
-    const url = `${this.tripApplicationsUrl}?${role}=${actorId}&_sort=status&_order=DESC`;
+  getTripApplications(start, limit, role, actorId) {
+    const url = `${this.tripApplicationsUrl}?${role}=${actorId}&_sort=status&_order=ASC&_start=${start}&_limit=${limit}`;
     return this.http.get<TripApplication[]>(url, httpOptions).toPromise();
   }
 }

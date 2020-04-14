@@ -112,7 +112,13 @@
         "explorer": "Explorer",
         "trip": "Trip",
         "paidDate": "Paid date",
-        "rejectedReason": "Rejected reason"
+        "rejectedReason": "Rejected reason",
+        "moment": "Application date",
+        "pending": "PENDING",
+        "rejected": "REJECTED",
+        "due": "DUE",
+        "accepted": "ACCEPTED",
+        "cancelled": "CANCELLED"
     },
     "sponsorship": {
         "list": "Sponsorships list",

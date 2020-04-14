@@ -112,7 +112,13 @@
         "explorer": "Explorador",
         "trip": "Viaje",
         "paidDate": "Fecha de pago",
-        "rejectedReason": "Razón del rechazo"
+        "rejectedReason": "Razón del rechazo",
+        "moment": "Fecha de aplicación",
+        "pending": "PENDIENTE",
+        "rejected": "RECHAZADA",
+        "due": "EN ESPERA",
+        "accepted": "ACEPTADA",
+        "cancelled": "CANCELADA"
     },
     "sponsorship": {
         "list": "Lista de patrocinios",

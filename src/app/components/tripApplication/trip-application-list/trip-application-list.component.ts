@@ -9,6 +9,8 @@ import { Actor } from 'src/app/models/actor.model';
 import { ActorService } from 'src/app/services/actor.service';
 import { TripService } from 'src/app/services/trip.service';
 
+const MAX_ITEMS = 9;
+
 @Component({
   selector: 'app-trip-application-list',
   templateUrl: './trip-application-list.component.html',
@@ -16,6 +18,7 @@ import { TripService } from 'src/app/services/trip.service';
 })
 export class TripApplicationListComponent extends TranslatableComponent implements OnInit {
 
+  private numObjects = MAX_ITEMS;
   private currentActor: Actor;
   private tripApplications: TripApplication[];
   private tripsTitles = new Map();
@@ -33,65 +36,51 @@ export class TripApplicationListComponent extends TranslatableComponent implemen
     super(translateService);
   }
 
-  getExplorer(explorerId: string) {
-    let explorer;
-    this.actorService.getActor(explorerId).then((data: any) => {
-      explorer = data;
-    }).catch(
-      error => {
-        console.log(error);
-      }
-    );
-
-    console.log(explorer);
-    return explorer;
-  }
-
   ngOnInit() {
-    this.dtOptions = {
-      pagingType: 'full_numbers',
-      responsive: true,
-      lengthMenu: [[2, 4, 6, -1], [2, 4, 6, 'All']],
-      data: this.tripApplications
-    };
-
     this.currentActor = this.authService.getCurrentActor();
     this.tripApplications = [];
 
-    this.tripApplicationService.getTripApplications(this.currentActor.role.toLowerCase(), this.currentActor.id).then((data: any) => {
+    this.tripApplicationService.getTripApplications(0, MAX_ITEMS, this.currentActor.role.toLowerCase(),
+      this.currentActor.id).then((data: any) => {
       this.tripApplications = data;
+      console.log(data);
 
-      for (let i = 0; i < this.tripApplications.length; i++) {
-        this.tripService.getTrip(this.tripApplications[i].trip)
+      for (let i = 0; i < data.length; i++) {
+        this.tripService.getTrip(data[i].trip)
           .then((trip) => {
-            this.tripsTitles.set(this.tripApplications[i].id, trip.title);
 
-            if (this.tripApplications[i].status === 'PENDING') {
+            if (data[i].status === 'PENDING') {
               const currentDate = new Date();
               const futureDate = new Date(trip.startDate);
               const daysDifference = Math.ceil((futureDate.getTime() - currentDate.getTime()) / (1000 * 3600 * 24));
 
               if (daysDifference < 30) {
-                this.backgroundColor.set(this.tripApplications[i].id, '#fc8181');
+                this.backgroundColor.set(data[i].id, ['#fc8181', '#fed7d7']);
               } else {
-                this.backgroundColor.set(this.tripApplications[i].id, '#fff');
+                this.backgroundColor.set(data[i].id, ['#fff', '#fff']);
               }
-            } else if (this.tripApplications[i].status === 'REJECTED') {
-              this.backgroundColor.set(this.tripApplications[i].id, '#cbd5e0');
-            } else if (this.tripApplications[i]. status === 'DUE') {
-              this.backgroundColor.set(this.tripApplications[i].id, '#f6e05e');
-            } else if (this.tripApplications[i]. status === 'ACCEPTED') {
-              this.backgroundColor.set(this.tripApplications[i].id, '#68d391');
-            } else if (this.tripApplications[i]. status === 'CANCELLED') {
-              this.backgroundColor.set(this.tripApplications[i].id, '#81e6d9');
+            } else if (data[i].status === 'REJECTED') {
+              this.backgroundColor.set(data[i].id, ['#cbd5e0', '#edf2f7']);
+            } else if (data[i]. status === 'DUE') {
+              this.backgroundColor.set(data[i].id, ['#f6e05e', '#fefcbf']);
+            } else if (data[i]. status === 'ACCEPTED') {
+              this.backgroundColor.set(data[i].id, ['#68d391', '#c6f6d5']);
+            } else if (data[i]. status === 'CANCELLED') {
+              this.backgroundColor.set(data[i].id, ['#4fd1c5', '#b2f5ea']);
             }
 
-            this.actorService.getActor(this.tripApplications[i].explorer)
-              .then((explorer) => {
-                this.explorersNames.set(this.tripApplications[i].id, explorer.name + ' ' + explorer.surname);
-              }).catch((err) => {
-                console.error(err);
-              });
+            if (!this.tripsTitles.has(data[i].trip)) {
+              this.tripsTitles.set(data[i].trip, trip.title);
+            }
+
+            if (!this.explorersNames.has(data[i].explorer)) {
+              this.actorService.getActor(data[i].explorer)
+                .then((explorer) => {
+                  this.explorersNames.set(data[i].explorer, explorer.name + ' ' + explorer.surname);
+                }).catch((err) => {
+                  console.error(err);
+                });
+            }
           }).catch((err) => {
             console.error(err);
           });
@@ -102,5 +91,82 @@ export class TripApplicationListComponent extends TranslatableComponent implemen
         console.log(error);
       }
     );
+  }
+
+  getInternationalCode(status) {
+    return 'tripApplication.' + status.toLowerCase();
+  }
+
+  addItems(startIndex, endIndex, _method) {
+    this.tripApplicationService.getTripApplications(startIndex, MAX_ITEMS, this.currentActor.role.toLowerCase(),
+      this.currentActor.id).then((data: any) => {
+      this.tripApplications = this.tripApplications.concat(data);
+
+      for (let i = 0; i < data.length; i++) {
+        this.tripService.getTrip(data[i].trip)
+          .then((trip) => {
+
+            if (data[i].status === 'PENDING') {
+              const currentDate = new Date();
+              const futureDate = new Date(trip.startDate);
+              const daysDifference = Math.ceil((futureDate.getTime() - currentDate.getTime()) / (1000 * 3600 * 24));
+
+              if (daysDifference < 30) {
+                this.backgroundColor.set(data[i].id, ['#fc8181', '#fed7d7']);
+              } else {
+                this.backgroundColor.set(data[i].id, ['#fff', '#fff']);
+              }
+            } else if (data[i].status === 'REJECTED') {
+              this.backgroundColor.set(data[i].id, ['#cbd5e0', '#edf2f7']);
+            } else if (data[i]. status === 'DUE') {
+              this.backgroundColor.set(data[i].id, ['#f6e05e', '#fefcbf']);
+            } else if (data[i]. status === 'ACCEPTED') {
+              this.backgroundColor.set(data[i].id, ['#68d391', '#c6f6d5']);
+            } else if (data[i]. status === 'CANCELLED') {
+              this.backgroundColor.set(data[i].id, ['#4fd1c5', '#b2f5ea']);
+            }
+
+            if (!this.tripsTitles.has(data[i].trip)) {
+              this.tripsTitles.set(data[i].trip, trip.title);
+            }
+
+            if (!this.explorersNames.has(data[i].explorer)) {
+              this.actorService.getActor(data[i].explorer)
+                .then((explorer) => {
+                  this.explorersNames.set(data[i].explorer, explorer.name + ' ' + explorer.surname);
+                }).catch((err) => {
+                  console.error(err);
+                });
+            }
+          }).catch((err) => {
+            console.error(err);
+          });
+      }
+
+    }).catch(
+      error => {
+        console.log(error);
+      }
+    );
+  }
+
+  appendItems(startIndex, endIndex) {
+    this.addItems(startIndex, endIndex, 'push');
+  }
+
+  prependItems(startIndex, endIndex) {
+    this.addItems(startIndex, endIndex, 'unshift');
+  }
+
+  onScrollDown(ev) {
+    const start = this.numObjects;
+    this.numObjects += MAX_ITEMS;
+    this.appendItems(start, this.numObjects);
+  }
+
+  onScrollUp(ev) {
+    const start = this.numObjects;
+    this.numObjects += MAX_ITEMS;
+    this.prependItems(start, this.numObjects);
   }
 }
