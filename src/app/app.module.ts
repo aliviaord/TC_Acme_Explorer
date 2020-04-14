@@ -36,6 +36,7 @@ import { TripApplicationListComponent } from './components/tripApplication/trip-
 import { SponsorshipListComponent } from './components/sponsorship/sponsorship-list/sponsorship-list.component';
 import { DashboardDisplayComponent } from './components/dashboard/dashboard-display/dashboard-display.component';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
+import { Ng5SliderModule } from 'ng5-slider';
 
 export const firebaseConfig = {
   apiKey: 'AIzaSyBeyK3jw-oLh1MyZMHrydSJwy0WTxWDZ-0',
@@ -97,7 +98,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     HttpModule,
     SlickCarouselModule,
     Ng2FlatpickrModule,
-    InfiniteScrollModule
+    InfiniteScrollModule,
+    Ng5SliderModule
   ],
   exports: [AppRoutingModule],
   providers: [AngularFireAuth],

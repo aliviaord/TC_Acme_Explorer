@@ -32,6 +32,14 @@ export class TripService {
     }
   }
 
+  searchTrips(text, minPrice, maxPrice) {
+    let url = `${this.tripsUrl}?price_lte=${maxPrice}&price_gte=${minPrice}`;
+    if (text) {
+      url += `&q=${text}`;
+    }
+      return this.http.get<Trip[]>(url, httpOptions).toPromise();
+  }
+
   getManagerTrips(id) {
     const url = `${this.actorsUrl}/${id}/trips`;
     return this.http.get<Trip[]>(url, httpOptions).toPromise();
