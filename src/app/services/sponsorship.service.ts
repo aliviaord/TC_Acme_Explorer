@@ -16,8 +16,8 @@ export class SponsorshipService {
 
   constructor(private http: HttpClient) { }
 
-  getSponsorships(sponsorId) {
-    const url = `${this.sponsorshipsUrl}?sponsor=${sponsorId}`;
+  getSponsorships(start, limit, sponsorId) {
+    const url = `${this.sponsorshipsUrl}?sponsor=${sponsorId}&_start=${start}&_limit=${limit}`;
     return this.http.get<Sponsorship[]>(url, httpOptions).toPromise();
   }
 

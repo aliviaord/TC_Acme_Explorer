@@ -7,6 +7,8 @@ import { Sponsorship } from 'src/app/models/sponsorship.model';
 import { SponsorshipService } from 'src/app/services/sponsorship.service';
 import { TripService } from 'src/app/services/trip.service';
 
+const MAX_ITEMS = 10;
+
 @Component({
   selector: 'app-sponsorship-list',
   templateUrl: './sponsorship-list.component.html',
@@ -14,11 +16,10 @@ import { TripService } from 'src/app/services/trip.service';
 })
 export class SponsorshipListComponent extends TranslatableComponent implements OnInit {
 
+  private numObjects = MAX_ITEMS;
   private currentActor: Actor;
   private sponsorships: Sponsorship[];
   private tripsTitles = new Map();
-
-  dtOptions: any = {};
 
   constructor(private translateService: TranslateService,
     private authService: AuthService,
@@ -28,23 +29,18 @@ export class SponsorshipListComponent extends TranslatableComponent implements O
   }
 
   ngOnInit() {
-    this.dtOptions = {
-      pagingType: 'full_numbers',
-      responsive: true,
-      lengthMenu: [[2, 4, 6, -1], [2, 4, 6, 'All']],
-      data: this.sponsorships
-    };
-
     this.currentActor = this.authService.getCurrentActor();
     this.sponsorships = [];
 
-    this.sponsorshipService.getSponsorships(this.currentActor.id).then((data: any) => {
+    this.sponsorshipService.getSponsorships(0, MAX_ITEMS, this.currentActor.id).then((data: any) => {
       this.sponsorships = data;
 
-      for (let i = 0; i < this.sponsorships.length; i++) {
-        this.tripService.getTrip(this.sponsorships[i].trip)
+      for (let i = 0; i < data.length; i++) {
+        this.tripService.getTrip(data[i].trip)
           .then((trip) => {
-            this.tripsTitles.set(this.sponsorships[i].id, trip.title);
+            if (!this.tripsTitles.has(data[i].trip)) {
+              this.tripsTitles.set(data[i].trip, trip.title);
+            }
           }).catch((err) => {
             console.log(err);
           });
@@ -56,4 +52,44 @@ export class SponsorshipListComponent extends TranslatableComponent implements O
     });
   }
 
+  addItems(startIndex, endIndex, _method) {
+    this.sponsorshipService.getSponsorships(startIndex, MAX_ITEMS, this.currentActor.id).then((data: any) => {
+      this.sponsorships = this.sponsorships.concat(data);
+
+      for (let i = 0; i < data.length; i++) {
+        this.tripService.getTrip(data[i].trip)
+          .then((trip) => {
+            if (!this.tripsTitles.has(data[i].trip)) {
+              this.tripsTitles.set(data[i].trip, trip.title);
+            }
+          }).catch((err) => {
+            console.log(err);
+          });
+      }
+
+    }).catch(
+      error => {
+        console.log(error);
+    });
+  }
+
+  appendItems(startIndex, endIndex) {
+    this.addItems(startIndex, endIndex, 'push');
+  }
+
+  prependItems(startIndex, endIndex) {
+    this.addItems(startIndex, endIndex, 'unshift');
+  }
+
+  onScrollDown(ev) {
+    const start = this.numObjects;
+    this.numObjects += MAX_ITEMS;
+    this.appendItems(start, this.numObjects);
+  }
+
+  onScrollUp(ev) {
+    const start = this.numObjects;
+    this.numObjects += MAX_ITEMS;
+    this.prependItems(start, this.numObjects);
+  }
 }
