@@ -1,132 +1,161 @@
 <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3">
+
   <div class="max-w-sm rounded-lg overflow-hidden shadow-lg bg-white m-4">
-    <div class="flex flex-col min-h-full">
-      <div class="px-6 py-4 border-b">
-        <div class="text-xl text-center font-bold">{{'dashboard.tripsPerManager' | translate}}</div>
-      </div>
-      <div class="px-6 py-10 flex-grow">
-        <p class="text-gray-700 text-base">
-          - {{'dashboard.avg' | translate}}: {{dashboard.avgMinMaxStdTripsPerManager[0]}}
-        </p>
-        <p class="text-gray-700 text-base">
-          - {{'dashboard.max' | translate}}: {{dashboard.avgMinMaxStdTripsPerManager[1]}}
-        </p>
-        <p class="text-gray-700 text-base">
-          - {{'dashboard.min' | translate}}: {{dashboard.avgMinMaxStdTripsPerManager[2]}}
-        </p>
-        <p class="text-gray-700 text-base">
-          - {{'dashboard.std' | translate}}: {{dashboard.avgMinMaxStdTripsPerManager[3]}}
-        </p>
-      </div>
-      <div class="px-5 py-3 border-t bg-gray-100 flex justify-end">
-      </div>
+    <div class="flex flex-col">
+      <table class="bg-white table-auto">
+        <thead class="bg-gray-800 text-white">
+          <tr>
+            <th colspan="2" class="font-semibold uppercase text-sm py-3 px-12">{{'dashboard.tripsPerManager' | translate}}</th>
+          </tr>
+        </thead>
+        <tbody class="text-gray-700 py-6">
+          <tr>
+            <td class="py-3 px-12 border font-semibold">{{'dashboard.avg' | translate}}</td>
+            <td class="py-3 px-12 border text-center">{{dashboard.avgMinMaxStdTripsPerManager[0]}}</td>
+          </tr>
+          <tr>
+            <td class="py-3 px-12 border font-semibold">{{'dashboard.min' | translate}}</td>
+            <td class="py-3 px-12 border text-center">{{dashboard.avgMinMaxStdTripsPerManager[1]}}</td>
+          </tr>
+          <tr>
+            <td class="py-3 px-12 border font-semibold">{{'dashboard.max' | translate}}</td>
+            <td class="py-3 px-12 border text-center">{{dashboard.avgMinMaxStdTripsPerManager[2]}}</td>
+          </tr>
+          <tr>
+            <td class="py-3 px-12 border border-b-0 font-semibold">{{'dashboard.std' | translate}}</td>
+            <td class="py-3 px-12 border border-b-0 text-center">{{dashboard.avgMinMaxStdTripsPerManager[3]}}</td>
+          </tr>
+        </tbody>
+      </table>
     </div>
   </div>
-  
+
   <div class="max-w-sm rounded-lg overflow-hidden shadow-lg bg-white m-4">
-    <div class="flex flex-col min-h-full">
-      <div class="px-6 py-4 border-b">
-        <div class="text-xl text-center font-bold">{{'dashboard.applicationsPerTrip' | translate}}</div>
-      </div>
-      <div class="px-6 py-10 flex-grow">
-        <p class="text-gray-700 text-base">
-          - {{'dashboard.avg' | translate}}: {{dashboard.avgMinMaxStdApplicationsPerTrip[0]}}
-        </p>
-        <p class="text-gray-700 text-base">
-          - {{'dashboard.max' | translate}}: {{dashboard.avgMinMaxStdApplicationsPerTrip[1]}}
-        </p>
-        <p class="text-gray-700 text-base">
-          - {{'dashboard.min' | translate}}: {{dashboard.avgMinMaxStdApplicationsPerTrip[2]}}
-        </p>
-        <p class="text-gray-700 text-base">
-          - {{'dashboard.std' | translate}}: {{dashboard.avgMinMaxStdApplicationsPerTrip[3]}}
-        </p>
-      </div>
-      <div class="px-5 py-3 border-t bg-gray-100 flex justify-end">
-      </div>
+    <div class="flex flex-col">
+      <table class="bg-white table-auto">
+        <thead class="bg-gray-800 text-white">
+          <tr>
+            <th colspan="2" class="font-semibold uppercase text-sm py-6 px-12">{{'dashboard.applicationsPerTrip' | translate}}</th>
+          </tr>
+        </thead>
+        <tbody class="text-gray-700 py-6">
+          <tr>
+            <td class="py-3 px-12 border font-semibold">{{'dashboard.avg' | translate}}</td>
+            <td class="py-3 px-12 border text-center">{{dashboard.avgMinMaxStdApplicationsPerTrip[0]}}</td>
+          </tr>
+          <tr>
+            <td class="py-3 px-12 border font-semibold">{{'dashboard.min' | translate}}</td>
+            <td class="py-3 px-12 border text-center">{{dashboard.avgMinMaxStdApplicationsPerTrip[1]}}</td>
+          </tr>
+          <tr>
+            <td class="py-3 px-12 border font-semibold">{{'dashboard.max' | translate}}</td>
+            <td class="py-3 px-12 border text-center">{{dashboard.avgMinMaxStdApplicationsPerTrip[2]}}</td>
+          </tr>
+          <tr>
+            <td class="py-3 px-12 border border-b-0 font-semibold">{{'dashboard.std' | translate}}</td>
+            <td class="py-3 px-12 border border-b-0 text-center">{{dashboard.avgMinMaxStdApplicationsPerTrip[3]}}</td>
+          </tr>
+        </tbody>
+      </table>
     </div>
   </div>
-  
+
   <div class="max-w-sm rounded-lg overflow-hidden shadow-lg bg-white m-4">
-    <div class="flex flex-col min-h-full">
-      <div class="px-6 py-4 border-b">
-        <div class="text-xl text-center font-bold">{{'dashboard.tripsPrice' | translate}}</div>
-      </div>
-      <div class="px-6 py-10 flex-grow">
-        <p class="text-gray-700 text-base">
-          - {{'dashboard.avg' | translate}}: {{dashboard.avgMinMaxStdTripsPrice[0]}}&euro;
-        </p>
-        <p class="text-gray-700 text-base">
-          - {{'dashboard.max' | translate}}: {{dashboard.avgMinMaxStdTripsPrice[1]}}&euro;
-        </p>
-        <p class="text-gray-700 text-base">
-          - {{'dashboard.min' | translate}}: {{dashboard.avgMinMaxStdTripsPrice[2]}}&euro;
-        </p>
-        <p class="text-gray-700 text-base">
-          - {{'dashboard.std' | translate}}: {{dashboard.avgMinMaxStdTripsPrice[3]}}&euro;
-        </p>
-      </div>
-      <div class="px-5 py-3 border-t bg-gray-100 flex justify-end">
-      </div>
+    <div class="flex flex-col">
+      <table class="bg-white">
+        <thead class="bg-gray-800 text-white">
+          <tr>
+            <th colspan="2" class="font-semibold uppercase text-sm py-6 px-12">{{'dashboard.tripsPrice' | translate}}</th>
+          </tr>
+        </thead>
+        <tbody class="text-gray-700 py-6">
+          <tr>
+            <td class="py-3 px-12 border font-semibold">{{'dashboard.avg' | translate}}</td>
+            <td class="py-3 px-12 border text-center">{{dashboard.avgMinMaxStdTripsPrice[0]}}&euro;</td>
+          </tr>
+          <tr>
+            <td class="py-3 px-12 border font-semibold">{{'dashboard.min' | translate}}</td>
+            <td class="py-3 px-12 border text-center">{{dashboard.avgMinMaxStdTripsPrice[1]}}&euro;</td>
+          </tr>
+          <tr>
+            <td class="py-3 px-12 border font-semibold">{{'dashboard.max' | translate}}</td>
+            <td class="py-3 px-12 border text-center">{{dashboard.avgMinMaxStdTripsPrice[2]}}&euro;</td>
+          </tr>
+          <tr>
+            <td class="py-3 px-12 border border-b-0 font-semibold">{{'dashboard.std' | translate}}</td>
+            <td class="py-3 px-12 border border-b-0 text-center">{{dashboard.avgMinMaxStdTripsPrice[3]}}&euro;</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="max-w-sm rounded-lg overflow-hidden shadow-lg bg-white m-4">
+    <div class="flex flex-col">
+      <table class="bg-white table-auto">
+        <thead class="bg-gray-800 text-white">
+          <tr>
+            <th colspan="2" class="font-semibold uppercase text-sm py-3 px-12">{{'dashboard.applicationsRatio' | translate}}</th>
+          </tr>
+        </thead>
+        <tbody class="text-gray-700 py-6">
+          <tr>
+            <td class="py-3 px-12 border font-semibold">{{'dashboard.pending' | translate}}</td>
+            <td class="py-3 px-12 border text-center">{{dashboard.ratioApplicationsByStatus[0] * 100}}%</td>
+          </tr>
+          <tr>
+            <td class="py-3 px-12 border font-semibold">{{'dashboard.rejected' | translate}}</td>
+            <td class="py-3 px-12 border text-center">{{dashboard.ratioApplicationsByStatus[1] * 100}}%</td>
+          </tr>
+          <tr>
+            <td class="py-3 px-12 border font-semibold">{{'dashboard.due' | translate}}</td>
+            <td class="py-3 px-12 border text-center">{{dashboard.ratioApplicationsByStatus[2] * 100}}%</td>
+          </tr>
+          <tr>
+            <td class="py-3 px-12 border font-semibold">{{'dashboard.accepted' | translate}}</td>
+            <td class="py-3 px-12 border text-center">{{dashboard.ratioApplicationsByStatus[3] * 100}}%</td>
+          </tr>
+          <tr>
+            <td class="py-3 px-12 border border-b-0 font-semibold">{{'dashboard.cancelled' | translate}}</td>
+            <td class="py-3 px-12 border border-b-0 text-center">{{dashboard.ratioApplicationsByStatus[4] * 100}}%</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="max-w-sm rounded-lg overflow-hidden shadow-lg bg-white m-4">
+    <div class="flex flex-col">
+      <table class="bg-white table-auto">
+        <thead class="bg-gray-800 text-white">
+          <tr>
+            <th colspan="2" class="font-semibold uppercase text-sm py-3 px-12">{{'dashboard.priceRangeFinders' | translate}}</th>
+          </tr>
+        </thead>
+        <tbody class="text-gray-700 mt-12 text-center">
+          <tr>
+            <td class="py-6 px-12 border font-semibold">{{'dashboard.minPrice' | translate}}</td>
+            <td class="py-6 px-12 border font-semibold">{{'dashboard.maxPrice' | translate}}</td>
+          </tr>
+          <tr>
+            <td class="py-8 px-12 border border-b-0">{{dashboard.avgPriceRangeFinders[0]}}&euro;</td>
+            <td class="py-8 px-12 border border-b-0">{{dashboard.avgPriceRangeFinders[1]}}&euro;</td>
+          </tr>
+        </tbody>
+      </table>
     </div>
   </div>
 
   <div class="max-w-sm rounded-lg overflow-hidden shadow-lg bg-white m-4">
     <div class="flex flex-col min-h-full">
-      <div class="px-6 py-4 border-b">
-        <div class="text-xl text-center font-bold">{{'dashboard.applicationsRatio' | translate}}</div>
+      <div class="bg-gray-800 text-white">
+        <div class="font-semibold uppercase text-sm text-center py-3 px-12">{{'dashboard.topKeywords' | translate}}</div>
       </div>
       <div class="px-6 py-10 flex-grow">
-        <p class="text-gray-700 text-base">
-          - {{'dashboard.pending' | translate}}: {{dashboard.ratioApplicationsByStatus[0]}}
-        </p>
-        <p class="text-gray-700 text-base">
-          - {{'dashboard.rejected' | translate}}: {{dashboard.ratioApplicationsByStatus[1]}}
-        </p>
-        <p class="text-gray-700 text-base">
-          - {{'dashboard.due' | translate}}: {{dashboard.ratioApplicationsByStatus[2]}}
-        </p>
-        <p class="text-gray-700 text-base">
-          - {{'dashboard.accepted' | translate}}: {{dashboard.ratioApplicationsByStatus[3]}}
-        </p>
-        <p class="text-gray-700 text-base">
-          - {{'dashboard.cancelled' | translate}}: {{dashboard.ratioApplicationsByStatus[4]}}
-        </p>
-      </div>
-      <div class="px-5 py-3 border-t bg-gray-100 flex justify-end">
-      </div>
-    </div>
-  </div>
-
-  <div class="max-w-sm rounded-lg overflow-hidden shadow-lg bg-white m-4">
-    <div class="flex flex-col min-h-full">
-      <div class="px-6 py-4 border-b">
-        <div class="text-xl text-center font-bold">{{'dashboard.priceRangeFinders' | translate}}</div>
-      </div>
-      <div class="px-6 py-10 flex-grow">
-        <p class="text-gray-700 text-base">
-          - {{'dashboard.minPrice' | translate}}: {{dashboard.avgPriceRangeFinders[0]}}&euro;
-        </p>
-        <p class="text-gray-700 text-base">
-          - {{'dashboard.maxPrice' | translate}}: {{dashboard.avgPriceRangeFinders[1]}}&euro;
-        </p>
-      </div>
-      <div class="px-5 py-3 border-t bg-gray-100 flex justify-end">
-      </div>
-    </div>
-  </div>
-
-  <div class="max-w-sm rounded-lg overflow-hidden shadow-lg bg-white m-4">
-    <div class="flex flex-col min-h-full">
-      <div class="px-6 py-4 border-b">
-        <div class="text-xl text-center font-bold">{{'dashboard.topKeywords' | translate}}</div>
-      </div>
-      <div class="px-6 py-10 flex-grow">
-        <p *ngFor="let k of dashboard.topFinderKeywords; let i = index" class="text-gray-700 text-base">
-          {{i + 1}}.- {{k}}
-        </p>
-      </div>
-      <div class="px-5 py-3 border-t bg-gray-100 flex justify-end">
+        <span *ngFor="let k of dashboard.topFinderKeywords; let i = index;" class="text-gray-700 text-base">
+          <span *ngIf="i % 2 === 0"><span *ngIf="i > 0"><br/></span><strong>{{i + 1}}.-</strong> {{k}}</span>
+          <span *ngIf="i % 2 !== 0" class="float-right"><strong>{{i + 1}}.-</strong> {{k}}</span>
+        </span>
       </div>
     </div>
   </div>
