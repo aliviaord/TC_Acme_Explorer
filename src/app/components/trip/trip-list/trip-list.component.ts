@@ -1,12 +1,10 @@
 import { Component, OnInit, OnDestroy, ViewChild } from '@angular/core';
 import { Trip } from 'src/app/models/trip.model';
 import { TripService } from 'src/app/services/trip.service';
-import { ActivatedRoute, ParamMap } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { TranslatableComponent } from '../../shared/translatable/translatable.component';
-import { DataTableDirective } from 'angular-datatables';
-import { Subject } from 'rxjs';
-import { FormGroup, FormBuilder, FormArray } from '@angular/forms';
+import { FormGroup, FormBuilder, FormControl } from '@angular/forms';
 import { Options, ChangeContext } from 'ng5-slider';
 import * as moment from 'moment';
 
@@ -19,22 +17,20 @@ import * as moment from 'moment';
 export class TripListComponent extends TranslatableComponent implements OnInit {
   searchForm: FormGroup;
 
-  private trips: Trip[];
+  public trips: Trip[];
   today: number;
   options: Options = {
     floor: 0,
     ceil: 1000,
     animate: false
   };
-  maxValue = 1000;
-  minValue = 0;
   locale = {
     applyLabel: this.getLang() == 'es' ? 'Aplicar' : 'Apply',
     format: this.getLang() == 'es' ? 'DD/MM/YYYY' : 'MM/DD/YYYY',
   };
   dates = {
     startDate: moment(),
-    endDate: moment().add(3, 'years')
+    endDate: moment().add(3, 'months')
   }
   moment: any = moment;
 
@@ -78,15 +74,16 @@ export class TripListComponent extends TranslatableComponent implements OnInit {
       text: [''],
       dates: [{
           startDate: moment(),
-          endDate: moment().add(3, 'years')
-        }]
+          endDate: moment().add(1, 'months')
+        }],
+      prices: new FormControl([0, 1000])
     });
   }
 
   searchTrips(changeContext: ChangeContext) {
     let search = this.searchForm.value;
-    let minValue = changeContext ? changeContext.value : this.minValue
-    let maxValue = changeContext ? changeContext.highValue : this.maxValue
+    let minValue = changeContext ? changeContext.value : 0;
+    let maxValue = changeContext ? changeContext.highValue : 1000;
     this.dates.startDate = search.dates.startDate.toDate();
     this.dates.endDate = search.dates.endDate.toDate();
     

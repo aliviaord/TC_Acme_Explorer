@@ -9,7 +9,7 @@
           type="text" name="text" formControlName="text" placeholder="{{'common.search' | translate}}">
       </div>
       <div>
-        <ng5-slider (userChange)="searchTrips($event)" [(highValue)]="maxValue" [(value)]="minValue"
+        <ng5-slider (userChange)="searchTrips($event)" formControlName="prices"
           [options]="options"></ng5-slider>
       </div>
       <div>
