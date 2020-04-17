@@ -19,3 +19,7 @@ table .picture {
     position: relative;
     text-align: center;
 }
+
+.md-drppicker .btn{
+    background-color:pink!important;
+}

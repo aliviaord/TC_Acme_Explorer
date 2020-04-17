@@ -21,3 +21,21 @@ body {
 a:hover {
     text-decoration: underline;
 }
+.md-drppicker .btn{
+    background-color:#fbd38d!important;
+    box-shadow: none!important;
+    border-radius: 5px!important;
+    color: white!important;
+}
+
+.md-drppicker td.active, .md-drppicker td.active {
+    background-color:#fbd38d!important;
+}
+
+.md-drppicker td.in-range {
+    background-color:#feebc8!important;
+}
+
+.md-drppicker td.end-date {
+    background-color:#fbd38d!important;
+}

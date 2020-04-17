@@ -8,6 +8,7 @@ import { DataTableDirective } from 'angular-datatables';
 import { Subject } from 'rxjs';
 import { FormGroup, FormBuilder, FormArray } from '@angular/forms';
 import { Options, ChangeContext } from 'ng5-slider';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-trip-list',
@@ -23,17 +24,33 @@ export class TripListComponent extends TranslatableComponent implements OnInit {
   options: Options = {
     floor: 0,
     ceil: 1000,
-    animate:false
+    animate: false
   };
   maxValue = 1000;
   minValue = 0;
+  locale = {
+    applyLabel: this.getLang() == 'es' ? 'Aplicar' : 'Apply',
+    format: this.getLang() == 'es' ? 'DD/MM/YYYY' : 'MM/DD/YYYY',
+  };
+  dates = {
+    startDate: moment(),
+    endDate: moment().add(3, 'years')
+  }
+  moment: any = moment;
 
   constructor(private tripService: TripService,
     private translateService: TranslateService,
     private fb: FormBuilder,
     private route: ActivatedRoute) {
-      super(translateService);
-      this.createForm();
+    super(translateService);
+    this.createForm();
+  }
+
+  getLang() {
+    if (localStorage.getItem('language') !== null) {
+      return localStorage.getItem('language');
+    }
+    return this.translateService.getBrowserLang();
   }
 
   getPublicationDate(index: number) {
@@ -41,12 +58,12 @@ export class TripListComponent extends TranslatableComponent implements OnInit {
   }
 
   getTrips() {
-    if (this.route.snapshot.url.length > 0 && this.route.snapshot.url[0].path == 'my-trips') { 
+    if (this.route.snapshot.url.length > 0 && this.route.snapshot.url[0].path == 'my-trips') {
       return this.tripService.getManagerTrips('5e78bd7713b68995265511a5');
     }
     return this.tripService.getTrips();
   }
-  
+
   ngOnInit() {
     this.getTrips()
       .then((response: Trip[]) => {
@@ -59,6 +76,10 @@ export class TripListComponent extends TranslatableComponent implements OnInit {
   createForm() {
     this.searchForm = this.fb.group({
       text: [''],
+      dates: [{
+          startDate: moment(),
+          endDate: moment().add(3, 'years')
+        }]
     });
   }
 
@@ -66,10 +87,12 @@ export class TripListComponent extends TranslatableComponent implements OnInit {
     let search = this.searchForm.value;
     let minValue = changeContext ? changeContext.value : this.minValue
     let maxValue = changeContext ? changeContext.highValue : this.maxValue
-    this.tripService.searchTrips(search.text, minValue, maxValue)
-      .then((response: Trip[]) => {
-        this.trips = <Trip[]>response;
-      }).catch(error => {
+    this.dates.startDate = search.dates.startDate.toDate();
+    this.dates.endDate = search.dates.endDate.toDate();
+    
+    this.tripService.searchTrips(search.text, minValue, maxValue).then(trips => {
+      this.trips = trips;
+    }).catch(error => {
         console.error(error);
     });
   }

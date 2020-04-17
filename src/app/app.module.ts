@@ -37,6 +37,7 @@ import { SponsorshipListComponent } from './components/sponsorship/sponsorship-l
 import { DashboardDisplayComponent } from './components/dashboard/dashboard-display/dashboard-display.component';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import { Ng5SliderModule } from 'ng5-slider';
+import { NgxDaterangepickerMd } from 'ngx-daterangepicker-material';
 
 export const firebaseConfig = {
   apiKey: 'AIzaSyBeyK3jw-oLh1MyZMHrydSJwy0WTxWDZ-0',
@@ -99,7 +100,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     SlickCarouselModule,
     Ng2FlatpickrModule,
     InfiniteScrollModule,
-    Ng5SliderModule
+    Ng5SliderModule,
+    NgxDaterangepickerMd.forRoot()
   ],
   exports: [AppRoutingModule],
   providers: [AngularFireAuth],
