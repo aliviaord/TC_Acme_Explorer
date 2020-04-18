@@ -30,7 +30,7 @@ export class TripListComponent extends TranslatableComponent implements OnInit {
   };
   dates = {
     startDate: moment(),
-    endDate: moment().add(3, 'months')
+    endDate: moment().add(1, 'years')
   }
   moment: any = moment;
 
@@ -74,7 +74,7 @@ export class TripListComponent extends TranslatableComponent implements OnInit {
       text: [''],
       dates: [{
           startDate: moment(),
-          endDate: moment().add(1, 'months')
+          endDate: moment().add(1, 'years')
         }],
       prices: new FormControl([0, 1000])
     });

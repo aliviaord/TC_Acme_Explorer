@@ -349,7 +349,7 @@
   "sponsorships": [
     {
       "landingPage": "https://www.taylorswift.com/",
-      "banner": "../../../assets/pictures/sponsorships/taylor_swift.jpg",
+      "banner": "../../../assets/pictures/sponsorships/isabelle.png",
       "paid": true,
       "sponsor": "5e938c9e9f78e625809e7051",
       "trip": "5e78ac3cf6f9577fd149c9ba",
@@ -358,7 +358,7 @@
     },
     {
       "landingPage": "https://www.avamax.com/",
-      "banner": "../../../assets/pictures/sponsorships/ava_max.png",
+      "banner": "../../../assets/pictures/sponsorships/acnh.jpg",
       "paid": false,
       "sponsor": "5e938c9e9f78e625809e7051",
       "trip": "5e78ac3cf6f9577fd149c9ba",
@@ -367,7 +367,7 @@
     },
     {
       "landingPage": "https://www.billieeilish.com/",
-      "banner": "../../../assets/pictures/sponsorships/billie_eilish.png",
+      "banner": "../../../assets/pictures/sponsorships/tom_nook.jpg",
       "paid": true,
       "sponsor": "5e938c9e9f78e625809e7051",
       "trip": "5e78ac3cf6f9577fd149c9ba",
@@ -385,7 +385,7 @@
     },
     {
       "landingPage": "https://www.rosalia.com/",
-      "banner": "../../../assets/pictures/sponsorships/rosalia.jpg",
+      "banner": "../../../assets/pictures/sponsorships/stonks.jpg",
       "paid": true,
       "sponsor": "5e938c9e9f78e625809e7051",
       "trip": "5e78ac3cf6f9577fd149c9ba",
