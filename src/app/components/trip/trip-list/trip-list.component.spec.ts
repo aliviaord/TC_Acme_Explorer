@@ -35,7 +35,18 @@ export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
 }
 
-describe('TripListComponent', () => {
+export const firebaseConfig = {
+  apiKey: 'AIzaSyBeyK3jw-oLh1MyZMHrydSJwy0WTxWDZ-0',
+  authDomain: 'acme-explorer-84e09.firebaseapp.com',
+  databaseURL: 'https://acme-explorer-84e09.firebaseio.com',
+  projectId: 'acme-explorer-84e09',
+  storageBucket: 'acme-explorer-84e09.appspot.com',
+  messagingSenderId: '28765984031',
+  appId: '1:28765984031:web:1c91ac9bcbd27999e2cc2a',
+  measurementId: 'G-HPY17ELML2'
+};
+
+fdescribe('TripListComponent', () => {
   let component: TripListComponent;
   let fixture: ComponentFixture<TripListComponent>;
   let tripService: TripService;
@@ -70,6 +81,7 @@ describe('TripListComponent', () => {
         }),
         FormsModule,
         ReactiveFormsModule,
+        AngularFireModule.initializeApp(firebaseConfig),
         AppRoutingModule,
         HttpClientModule,
         Ng5SliderModule,
@@ -80,7 +92,8 @@ describe('TripListComponent', () => {
         InfiniteScrollModule,
       ],
       providers: [
-        {provide: APP_BASE_HREF, useValue : '/trips'}
+        {provide: APP_BASE_HREF, useValue : '/trips'},
+        AngularFireAuth,
       ]
     })
     .compileComponents();
@@ -98,13 +111,13 @@ describe('TripListComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should be five items in the collection', async(done) => {
+  it('should be six items in the collection', async(done) => {
     component.ngOnInit();
     fixture.detectChanges();
-    spyOn(tripService, 'getTrips').and.returnValue(Promise.resolve(true));
+    spyOn(tripService, 'getTripsPage').and.returnValue(Promise.resolve(true));
 
     fixture.whenStable().then(() => {
-      expect(component.trips.length).toEqual(5);
+      expect(component.trips.length).toEqual(6);
       done();
     })
   });
