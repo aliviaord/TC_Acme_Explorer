@@ -11,7 +11,7 @@ import { Dashboard } from 'src/app/models/dashboard.model';
 })
 export class DashboardDisplayComponent extends TranslatableComponent implements OnInit {
 
-  private dashboard: Dashboard;
+  dashboard = new Dashboard();
 
   constructor(private translateService: TranslateService,
     private dashboardService: DashboardService) {

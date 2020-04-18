@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { TranslateService, LangChangeEvent } from '@ngx-translate/core';
 import { DomSanitizer } from '@angular/platform-browser';
-import { Http } from '@angular/http';
-import { Router } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-terms-and-conditions',
@@ -16,13 +15,12 @@ export class TermsAndConditionsComponent implements OnInit {
     + this.translateService.currentLang + '.html';
 
   constructor(private translateService: TranslateService,
-    private http: Http, private sanitizer: DomSanitizer,
-    private router: Router) {
+    private http: HttpClient, private sanitizer: DomSanitizer) {
     this.translateService.onLangChange.subscribe((event: LangChangeEvent) => {
       this.htmlFile = 'assets/terms-and-conditions/terms-and-conditions_'
         + event.lang + '.html';
-      this.http.get(this.htmlFile).subscribe((html) => {
-        this.myTemplate = sanitizer.bypassSecurityTrustHtml(html.text());
+      this.http.get(this.htmlFile, {responseType: 'text'}).subscribe((html) => {
+        this.myTemplate = sanitizer.bypassSecurityTrustHtml(html);
       });
     });
   }

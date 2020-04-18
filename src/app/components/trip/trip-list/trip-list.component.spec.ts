@@ -46,7 +46,7 @@ export const firebaseConfig = {
   measurementId: 'G-HPY17ELML2'
 };
 
-fdescribe('TripListComponent', () => {
+describe('TripListComponent', () => {
   let component: TripListComponent;
   let fixture: ComponentFixture<TripListComponent>;
   let tripService: TripService;
