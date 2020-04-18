@@ -21,18 +21,18 @@ export class AuthService {
 
   constructor(private fireAuth: AngularFireAuth, private http: HttpClient,
     private infoMessageService: InfoMessageService) {
-      this.fireAuth.auth.onAuthStateChanged((authState) => {
-        if (authState) {
-          const url = `${environment.backendApiBaseURL}/actors?email=${authState.email}`;
-          this.http.get(url, httpOptions).toPromise()
-          .then(actor => {
-            this.currentActor = actor[0] as Actor;
-            this.userLoggedIn.next(true);
-          }, err => {
-            console.log(err);
-          });
-        }
-      });
+      // this.fireAuth.auth.onAuthStateChanged((authState) => {
+      //   if (authState) {
+      //     const url = `${environment.backendApiBaseURL}/actors?email=${authState.email}`;
+      //     this.http.get(url, httpOptions).toPromise()
+      //     .then(actor => {
+      //       this.currentActor = actor[0] as Actor;
+      //       this.userLoggedIn.next(true);
+      //     }, err => {
+      //       console.log(err);
+      //     });
+      //   }
+      // });
     }
 
   registerUser(actor: Actor) {

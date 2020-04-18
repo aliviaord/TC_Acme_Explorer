@@ -147,8 +147,8 @@
       "description": "Thinking about new beginnings? Cornelia might be your place. You'll get mystified by how this city screams your name.",
       "price": 253,
       "requirements": "Buy lover by Taylor Swift on iTunes.",
-      "startDate": "2020-03-10 07:10:00.000Z",
-      "endDate": "2020-04-10 07:30:00.000Z",
+      "startDate": "2020-05-10 07:10:00.000Z",
+      "endDate": "2020-06-10 07:30:00.000Z",
       "pictures": [
         "../../../assets/pictures/cornelia_1.jpg",
         "../../../assets/pictures/cornelia_2.jpg",
@@ -268,6 +268,135 @@
           "description": "You can pray for Alicia.",
           "price": 300,
           "order": 2
+        }
+      ]
+    },
+    {
+      "id": "5e78b57774fbc34346a17500",
+      "version": 0,
+      "ticker": "200322-LCNER",
+      "title": "Hamel island",
+      "description": "Enjoy Hamel Island, known for its turtle-based religion. You can visit the shrine to the supreme turtle and see the origins of the place in the museum.",
+      "price": 700,
+      "requirements": "Don't be afraid of turtles.",
+      "startDate": "2020-05-27 10:10:00.000Z",
+      "endDate": "2020-06-27 12:20:00.000Z",
+      "pictures": [
+        "../../../assets/pictures/hamel_1.jfif",
+        "../../../assets/pictures/hamel_2.jfif"
+      ],
+      "publicationDate": "2020-03-15 22:25:00.000Z",
+      "cancelReason": null,
+      "manager": "5e78bbd524b1296d559096fb",
+      "stages": [
+        {
+          "title": "Shrine of the supreme turtle",
+          "description": "Praying to the supreme turtle is the island's greatest tradition.",
+          "price": 400,
+          "order": 1
+        },
+        {
+          "title": "Museum",
+          "description": "Learn about the origins of this island and its peculiar fanaticism for turtles...",
+          "price": 300,
+          "order": 2
+        }
+      ]
+    },
+    {
+      "id": "5e78b57774fbc34346a17512",
+      "version": 0,
+      "ticker": "200322-STARS",
+      "title": "Shooting stars",
+      "description": "Take an unforgettable trip to islands with shooting stars every night. Don't forget to make your wish. Maybe you are lucky and it becomes real...",
+      "price": 400,
+      "requirements": "You have to be patient.",
+      "startDate": "2020-05-27 10:10:00.000Z",
+      "endDate": "2020-06-27 12:20:00.000Z",
+      "pictures": [
+        "../../../assets/pictures/stars_1.jpg",
+        "../../../assets/pictures/stars_2.png",
+        "../../../assets/pictures/stars_3.jpg"
+      ],
+      "publicationDate": "2020-03-15 22:25:00.000Z",
+      "cancelReason": null,
+      "manager": "5e78bbd524b1296d559096fb",
+      "stages": [
+        {
+          "title": "Campsite",
+          "description": "Time to switch off looking at the sky as you watch the stars go by.",
+          "price": 400,
+          "order": 1
+        }
+      ]
+    },
+    {
+      "id": "5e78b57774fbc34346a17519",
+      "version": 0,
+      "ticker": "200322-THABC",
+      "title": "Let's go to the mall",
+      "description": "Let's go to the mall, you won't be sorry. Put on your jelly bracelet's and your cool graffiti coat. At the mall, having fun is what it's all about. Everybody come and play, throw every last care away.",
+      "price": 400,
+      "requirements": "You have to be patient.",
+      "startDate": "2020-05-27 10:10:00.000Z",
+      "endDate": "2020-06-27 12:20:00.000Z",
+      "pictures": [
+        "../../../assets/pictures/mall_1.jpg",
+        "../../../assets/pictures/mall_3.jpg"
+      ],
+      "publicationDate": "2020-03-15 22:25:00.000Z",
+      "cancelReason": null,
+      "manager": "5e78bbd524b1296d559096fb",
+      "stages": [
+        {
+          "title": "Able Sisters",
+          "description": "Dress in the latest fashions with the clothes and accessories you will find at Able Sisters.",
+          "price": 300,
+          "order": 1
+        },
+        {
+          "title": "Nook's Cranny",
+          "description": "At Nook's Cranny you'll find the items you've always wanted at the best price...or not.",
+          "price": 100,
+          "order": 1
+        }
+      ]
+    },
+    {
+      "id": "5e78b56664fbc34346a17519",
+      "version": 0,
+      "ticker": "200322-THABC",
+      "title": "Visit to Town Halls",
+      "description": "Join this tour to visit the most famous city halls in the world. You can even talk to the mayor of some of them!",
+      "price": 400,
+      "requirements": "You have to be patient.",
+      "startDate": "2020-05-27 10:10:00.000Z",
+      "endDate": "2020-06-27 12:20:00.000Z",
+      "pictures": [
+        "../../../assets/pictures/townhall_1.jpg",
+        "../../../assets/pictures/townhall_2.jfif"
+      ],
+      "publicationDate": "2020-03-15 22:25:00.000Z",
+      "cancelReason": null,
+      "manager": "5e78bbd524b1296d559096fb",
+      "stages": [
+        {
+          "title": "Myst Falls Town Hall",
+          "description": "The Town Hall of Myst Falls is known for its communist ideology.",
+          "price": 300,
+          "order": 1
+        },
+        {
+          "title": "Oxytocin Town Hall",
+          "description": "At the Oxytocin Town Hall you can talk to Isabelle and tell her about your concerns about the well-being of the trees.",
+          "price": 100,
+          "order": 1
+        },
+        {
+          "title": "Cornelia Town Hall",
+          "description": "At Cornelia Town Hall you can talk to the mayor and convince him to change the tune to some Taylor Swift song.",
+          "price": 100,
+          "order": 1
         }
       ]
     }

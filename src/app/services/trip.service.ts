@@ -40,13 +40,7 @@ export class TripService {
       return this.http.get<Trip[]>(url, httpOptions).toPromise();
   }
 
-  getManagerTrips(id) {
-    const url = `${this.actorsUrl}/${id}/trips`;
-    return this.http.get<Trip[]>(url, httpOptions).toPromise();
-  }
-
   createTrip(trip) {
-    console.log(trip)
     const url = `${this.tripsUrl}`;
     return this.http.post<Trip>(url, trip, httpOptions).toPromise();
   }
@@ -65,5 +59,18 @@ export class TripService {
   getTripAudits(id) {
     const url = `${this.auditsUrl}?trip=${id}` //?publicationDate_lte${new Date()}`;
     return this.http.get<Audit[]>(url, httpOptions).toPromise();
+  }
+
+  getTripsPage(start: number, psize: number, text: string, minPrice: number, maxPrice: number) {
+    let url = `${this.tripsUrl}?price_lte=${maxPrice}&price_gte=${minPrice}&_start=${start}&_limit=${psize}`;
+    if (text) {
+      url += `&q=${text}`;
+    }
+      return this.http.get<Trip[]>(url, httpOptions).toPromise();
+  }
+
+  getManagerTrips(start, psize, id) {
+    const url = `${this.tripsUrl}?manager=${id}&_start=${start}&_limit=${psize}`;
+    return this.http.get<Trip[]>(url, httpOptions).toPromise();
   }
 }

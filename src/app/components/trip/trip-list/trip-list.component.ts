@@ -7,7 +7,9 @@ import { TranslatableComponent } from '../../shared/translatable/translatable.co
 import { FormGroup, FormBuilder, FormControl } from '@angular/forms';
 import { Options, ChangeContext } from 'ng5-slider';
 import * as moment from 'moment';
+import { AuthService } from 'src/app/services/auth.service';
 
+const MAX_TRIPS = 6
 @Component({
   selector: 'app-trip-list',
   templateUrl: './trip-list.component.html',
@@ -33,11 +35,16 @@ export class TripListComponent extends TranslatableComponent implements OnInit {
     endDate: moment().add(1, 'years')
   }
   moment: any = moment;
+  numTrips = MAX_TRIPS;
+  minPrice = 0;
+  maxPrice = 1000;
+  managerView = false;
 
   constructor(private tripService: TripService,
     private translateService: TranslateService,
     private fb: FormBuilder,
-    private route: ActivatedRoute) {
+    private route: ActivatedRoute,
+    private authService: AuthService) {
     super(translateService);
     this.createForm();
   }
@@ -55,9 +62,12 @@ export class TripListComponent extends TranslatableComponent implements OnInit {
 
   getTrips() {
     if (this.route.snapshot.url.length > 0 && this.route.snapshot.url[0].path == 'my-trips') {
-      return this.tripService.getManagerTrips('5e78bd7713b68995265511a5');
+      var managerId = this.authService.getCurrentActor().id;
+      this.managerView = true;
+      return this.tripService.getManagerTrips(0, MAX_TRIPS, managerId);
     }
-    return this.tripService.getTrips();
+    this.managerView = false;
+    return this.tripService.getTripsPage(0, MAX_TRIPS, null, this.minPrice, this.maxPrice);
   }
 
   ngOnInit() {
@@ -82,16 +92,30 @@ export class TripListComponent extends TranslatableComponent implements OnInit {
 
   searchTrips(changeContext: ChangeContext) {
     let search = this.searchForm.value;
-    let minValue = changeContext ? changeContext.value : 0;
-    let maxValue = changeContext ? changeContext.highValue : 1000;
+    this.minPrice = changeContext ? changeContext.value : 0;
+    this.maxPrice = changeContext ? changeContext.highValue : 1000;
     this.dates.startDate = search.dates.startDate.toDate();
     this.dates.endDate = search.dates.endDate.toDate();
     
-    this.tripService.searchTrips(search.text, minValue, maxValue).then(trips => {
+    this.tripService.getTripsPage(0, MAX_TRIPS, search.text, this.minPrice, this.maxPrice).then(trips => {
       this.trips = trips;
     }).catch(error => {
         console.error(error);
     });
   }
 
+  onScrollDown(ev) {
+    const startIndex = this.trips.length;
+    if (this.route.snapshot.url.length > 0 && this.route.snapshot.url[0].path == 'my-trips') {
+      var managerId = this.authService.getCurrentActor().id;
+      this.tripService.getManagerTrips(startIndex, MAX_TRIPS, managerId)
+      .then(val => { this.trips = this.trips.concat(val); })
+      .catch(err => { console.log(err); });
+    } else {
+      this.tripService.getTripsPage(startIndex, MAX_TRIPS, 
+      null, this.minPrice, this.maxPrice)
+      .then(val => { this.trips = this.trips.concat(val); })
+      .catch(err => { console.log(err); });
+    }
+  }
 }
