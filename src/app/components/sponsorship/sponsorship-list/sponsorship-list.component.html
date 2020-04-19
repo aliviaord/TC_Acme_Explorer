@@ -1,7 +1,7 @@
-<div *ngIf="sponsorships.length === 0">
+<div *ngIf="sponsorships.length === 0" class="text-center m-auto">
   <p class="text-gray-500 text-base text-5xl font-bold">Nothing to show ☹</p>
 </div>
-<div *ngIf="sponsorships.length !== 0" class="max-w-full" style="width: 80vw;">
+<div *ngIf="sponsorships.length !== 0" class="max-w-full m-auto" style="width: 80vw;">
   <div *ngFor="let s of sponsorships" class="h-48 border border-white rounded p-4 flex flex-col justify-between leading-normal m-6" 
     [ngStyle]="{ 'background-image': 'url(' + s.banner + ')'}" style="background-size: cover; background-position: center;"
     infiniteScroll [infiniteScrollDistance]="2" [infiniteScrollThrottle]="50" (scrolled)="onScrollDown()" (scrolledUp)="onScrollUp()">
