@@ -57,6 +57,7 @@
       "phoneNumber": "678393285",
       "role": "EXPLORER",
       "banned": false,
+      "finder": "5e95e429bb1a53dae887ae82",
       "id": "5e92f37b97143f63865aed61",
       "version": 0
     },
@@ -69,6 +70,7 @@
       "phoneNumber": "652556542",
       "role": "EXPLORER",
       "banned": false,
+      "finder": "5e95e4448575bb366694255b",
       "id": "5e933a87690ef1ca07d86667",
       "version": 0
     },
@@ -82,6 +84,18 @@
       "role": "SPONSOR",
       "banned": false,
       "id": "5e938c9e9f78e625809e7051",
+      "version": 0
+    },
+    {
+      "name": "Admin",
+      "surname": "Admin",
+      "email": "admin@admin.com",
+      "password": "adminadmin",
+      "address": "",
+      "phoneNumber": "",
+      "role": "ADMINISTRATOR",
+      "banned": false,
+      "id": "5e945cdb79dbd80b7677f373",
       "version": 0
     }
   ],
@@ -101,7 +115,7 @@
         "../../../assets/pictures/mystfalls_2.jpg",
         "../../../assets/pictures/mystfalls_3.jpg"
       ],
-      "publicationDate": "2021-03-21 22:00:00.000Z",
+      "publicationDate": "2020-03-21 22:00:00.000Z",
       "cancelReason": null,
       "manager": "5e78bd7713b68995265511a5",
       "stages": [
@@ -131,10 +145,10 @@
       "ticker": "200321-AJSF",
       "title": "Visit Cornelia!",
       "description": "Thinking about new beginnings? Cornelia might be your place. You'll get mystified by how this city screams your name.",
-      "price": 2530,
+      "price": 253,
       "requirements": "Buy lover by Taylor Swift on iTunes.",
-      "startDate": "2020-03-10 07:10:00.000Z",
-      "endDate": "2020-04-10 07:30:00.000Z",
+      "startDate": "2020-05-10 07:10:00.000Z",
+      "endDate": "2020-06-10 07:30:00.000Z",
       "pictures": [
         "../../../assets/pictures/cornelia_1.jpg",
         "../../../assets/pictures/cornelia_2.jpg",
@@ -239,7 +253,7 @@
         "../../../assets/pictures/oxytocin_2.jpg",
         "../../../assets/pictures/oxytocin_3.jpg"
       ],
-      "publicationDate": "2020-03-15 22:25:00.000Z",
+      "publicationDate": "2020-06-15 22:25:00.000Z",
       "cancelReason": null,
       "manager": "5e78bbd524b1296d559096fb",
       "stages": [
@@ -256,14 +270,144 @@
           "order": 2
         }
       ]
+    },
+    {
+      "id": "5e78b57774fbc34346a17500",
+      "version": 0,
+      "ticker": "200322-LCNER",
+      "title": "Hamel island",
+      "description": "Enjoy Hamel Island, known for its turtle-based religion. You can visit the shrine to the supreme turtle and see the origins of the place in the museum.",
+      "price": 700,
+      "requirements": "Don't be afraid of turtles.",
+      "startDate": "2020-05-27 10:10:00.000Z",
+      "endDate": "2020-06-27 12:20:00.000Z",
+      "pictures": [
+        "../../../assets/pictures/hamel_1.jfif",
+        "../../../assets/pictures/hamel_2.jfif"
+      ],
+      "publicationDate": "2020-03-15 22:25:00.000Z",
+      "cancelReason": null,
+      "manager": "5e78bbd524b1296d559096fb",
+      "stages": [
+        {
+          "title": "Shrine of the supreme turtle",
+          "description": "Praying to the supreme turtle is the island's greatest tradition.",
+          "price": 400,
+          "order": 1
+        },
+        {
+          "title": "Museum",
+          "description": "Learn about the origins of this island and its peculiar fanaticism for turtles...",
+          "price": 300,
+          "order": 2
+        }
+      ]
+    },
+    {
+      "id": "5e78b57774fbc34346a17512",
+      "version": 0,
+      "ticker": "200322-STARS",
+      "title": "Shooting stars",
+      "description": "Take an unforgettable trip to islands with shooting stars every night. Don't forget to make your wish. Maybe you are lucky and it becomes real...",
+      "price": 400,
+      "requirements": "You have to be patient.",
+      "startDate": "2020-05-27 10:10:00.000Z",
+      "endDate": "2020-06-27 12:20:00.000Z",
+      "pictures": [
+        "../../../assets/pictures/stars_1.jpg",
+        "../../../assets/pictures/stars_2.png",
+        "../../../assets/pictures/stars_3.jpg"
+      ],
+      "publicationDate": "2020-03-15 22:25:00.000Z",
+      "cancelReason": null,
+      "manager": "5e78bbd524b1296d559096fb",
+      "stages": [
+        {
+          "title": "Campsite",
+          "description": "Time to switch off looking at the sky as you watch the stars go by.",
+          "price": 400,
+          "order": 1
+        }
+      ]
+    },
+    {
+      "id": "5e78b57774fbc34346a17519",
+      "version": 0,
+      "ticker": "200322-THABC",
+      "title": "Let's go to the mall",
+      "description": "Let's go to the mall, you won't be sorry. Put on your jelly bracelet's and your cool graffiti coat. At the mall, having fun is what it's all about. Everybody come and play, throw every last care away.",
+      "price": 400,
+      "requirements": "You have to be patient.",
+      "startDate": "2020-05-27 10:10:00.000Z",
+      "endDate": "2020-06-27 12:20:00.000Z",
+      "pictures": [
+        "../../../assets/pictures/mall_1.jpg",
+        "../../../assets/pictures/mall_3.jpg"
+      ],
+      "publicationDate": "2020-03-15 22:25:00.000Z",
+      "cancelReason": null,
+      "manager": "5e78bbd524b1296d559096fb",
+      "stages": [
+        {
+          "title": "Able Sisters",
+          "description": "Dress in the latest fashions with the clothes and accessories you will find at Able Sisters.",
+          "price": 300,
+          "order": 1
+        },
+        {
+          "title": "Nook's Cranny",
+          "description": "At Nook's Cranny you'll find the items you've always wanted at the best price...or not.",
+          "price": 100,
+          "order": 1
+        }
+      ]
+    },
+    {
+      "id": "5e78b56664fbc34346a17519",
+      "version": 0,
+      "ticker": "200322-THABC",
+      "title": "Visit to Town Halls",
+      "description": "Join this tour to visit the most famous city halls in the world. You can even talk to the mayor of some of them!",
+      "price": 400,
+      "requirements": "You have to be patient.",
+      "startDate": "2020-05-27 10:10:00.000Z",
+      "endDate": "2020-06-27 12:20:00.000Z",
+      "pictures": [
+        "../../../assets/pictures/townhall_1.jpg",
+        "../../../assets/pictures/townhall_2.jfif"
+      ],
+      "publicationDate": "2020-03-15 22:25:00.000Z",
+      "cancelReason": null,
+      "manager": "5e78bbd524b1296d559096fb",
+      "stages": [
+        {
+          "title": "Myst Falls Town Hall",
+          "description": "The Town Hall of Myst Falls is known for its communist ideology.",
+          "price": 300,
+          "order": 1
+        },
+        {
+          "title": "Oxytocin Town Hall",
+          "description": "At the Oxytocin Town Hall you can talk to Isabelle and tell her about your concerns about the well-being of the trees.",
+          "price": 100,
+          "order": 1
+        },
+        {
+          "title": "Cornelia Town Hall",
+          "description": "At Cornelia Town Hall you can talk to the mayor and convince him to change the tune to some Taylor Swift song.",
+          "price": 100,
+          "order": 1
+        }
+      ]
     }
   ],
   "tripApplications": [
     {
       "id": "5e9099a7f830b159356f9f8e",
       "version": 0,
+      "moment": "2020-03-20 12:14:42.000Z",
       "status": "CANCELLED",
-      "comments": "",
+      "comments": "It's my first trip.",
       "paidDate": "2020-03-23 20:56:45.000Z",
       "rejectedReason": "",
       "trip": "5e78b57774fbc89346a17500",
@@ -273,6 +417,7 @@
     {
       "id": "5e9307796b58997360c40453",
       "version": 0,
+      "moment": "2020-04-14 18:36:23.000Z",
       "status": "DUE",
       "comments": "",
       "paidDate": "",
@@ -284,6 +429,7 @@
     {
       "id": "5e931dc0f75d67370149a5bc",
       "version": 0,
+      "moment": "2020-04-10 23:34:23.000Z",
       "status": "REJECTED",
       "comments": "",
       "paidDate": "",
@@ -295,6 +441,7 @@
     {
       "id": "5e93265e38f069bcad2638ca",
       "version": 0,
+      "moment": "2020-03-25 16:30:21.000Z",
       "status": "ACCEPTED",
       "comments": "",
       "paidDate": "2020-03-27 18:32:23.000Z",
@@ -306,6 +453,7 @@
     {
       "id": "5e93277e4e1ed477d39d456d",
       "version": 0,
+      "moment": "2020-03-29 20:34:25.000Z",
       "status": "PENDING",
       "comments": "",
       "paidDate": "",
@@ -317,6 +465,7 @@
     {
       "id": "5e933b07b5ca9ba01ea2e97e",
       "version": 0,
+      "moment": "2020-03-31 22:36:27.000Z",
       "status": "PENDING",
       "comments": "",
       "paidDate": "",
@@ -329,28 +478,28 @@
   "sponsorships": [
     {
       "landingPage": "https://www.taylorswift.com/",
-      "banner": "../../../assets/pictures/sponsorships/taylor_swift.jpg",
+      "banner": "../../../assets/pictures/sponsorships/isabelle.png",
       "paid": true,
       "sponsor": "5e938c9e9f78e625809e7051",
-      "trip": "5e78b29a52a97bcf87ed3e20",
+      "trip": "5e78ac3cf6f9577fd149c9ba",
       "id": "5e9391261fb9ceb3d4cd7004",
       "version": 0
     },
     {
       "landingPage": "https://www.avamax.com/",
-      "banner": "../../../assets/pictures/sponsorships/ava_max.png",
+      "banner": "../../../assets/pictures/sponsorships/acnh.jpg",
       "paid": false,
       "sponsor": "5e938c9e9f78e625809e7051",
-      "trip": "5e78b29a52a97bcf87ed3e20",
+      "trip": "5e78ac3cf6f9577fd149c9ba",
       "id": "5e93aa06542dcfc01e5d1a8b",
       "version": 0
     },
     {
       "landingPage": "https://www.billieeilish.com/",
-      "banner": "../../../assets/pictures/sponsorships/billie_eilish.png",
+      "banner": "../../../assets/pictures/sponsorships/tom_nook.jpg",
       "paid": true,
       "sponsor": "5e938c9e9f78e625809e7051",
-      "trip": "5e78b29a52a97bcf87ed3e20",
+      "trip": "5e78ac3cf6f9577fd149c9ba",
       "id": "5e93aa52c00e1e0709dd9952",
       "version": 0
     },
@@ -359,18 +508,79 @@
       "banner": "../../../assets/pictures/sponsorships/lana_del_rey.jpg",
       "paid": true,
       "sponsor": "5e938c9e9f78e625809e7051",
-      "trip": "5e78b29a52a97bcf87ed3e20",
+      "trip": "5e78ac3cf6f9577fd149c9ba",
       "id": "5e93aa8666172fd7460a7444",
       "version": 0
     },
     {
       "landingPage": "https://www.rosalia.com/",
-      "banner": "../../../assets/pictures/sponsorships/rosalia.jpg",
+      "banner": "../../../assets/pictures/sponsorships/stonks.jpg",
       "paid": true,
       "sponsor": "5e938c9e9f78e625809e7051",
-      "trip": "5e78b29a52a97bcf87ed3e20",
+      "trip": "5e78ac3cf6f9577fd149c9ba",
       "id": "5e93aac3a0e5dd7d45c5bc5b",
       "version": 0
+    }
+  ],
+  "dashboards": [
+    {
+      "avgMinMaxStdTripsPerManager": [3, 2, 4, 1],
+      "avgMinMaxStdApplicationsPerTrip": [7, 6, 8, 1],
+      "avgMinMaxStdTripsPrice": [800, 700, 900, 100],
+      "ratioApplicationsByStatus": [0.1, 0.5, 0.2, 0.1, 0.1],
+      "avgPriceRangeFinders": [0, 750],
+      "topFinderKeywords": [
+        "Maialen", "Apples", "Broccoli", "Cornelia", "Museum",
+        "Summer", "Cold", "Relaxing", "Family", "Kids"
+      ]
+    }
+  ],
+  "audits": [
+    {
+      "id": "123123",
+      "version": 0,
+      "title": "Beautiful island",
+      "description": "Myst Falls is a beautiful place everyone should visit!",
+      "trip": "5e78ac3cf6f9577fd149c9ba",
+      "auditor": "5e78bd7713b68995265511f8",
+      "createdAt": "08/04/2020"
+    },
+    {
+      "id": "123233",
+      "version": 0,
+      "title": "Apples are amazing!!",
+      "description": "There's no doubt that apples are the best thing on the island. I still remember the taste...",
+      "trip": "5e78ac3cf6f9577fd149c9ba",
+      "attachments": [
+        "https://www.researchgate.net/profile/Gustavo_Lobos/publication/257826786_Apples/links/00463525ecc3db3dd4000000/Apples.pdf",
+        "https://vignette.wikia.nocookie.net/animalcrossingnewleaf/images/7/7b/Images_%283%29.jpg"
+      ],
+      "auditor": "5e78bd7713b68995265511f8",
+      "createdAt": "08/04/2020"
+    }
+  ],
+  "finders": [
+    {
+      "id": "5e95e429bb1a53dae887ae82",
+      "version": 0,
+      "keyWord": null,
+      "minPrice": null,
+      "maxPrice": null,
+      "startDate": null,
+      "endDate": null,
+      "lastSearchDate": null,
+      "explorer": "5e92f37b97143f63865aed61"
+    },
+    {
+      "id": "5e95e4448575bb366694255b",
+      "version": 0,
+      "keyWord": null,
+      "minPrice": null,
+      "maxPrice": null,
+      "startDate": null,
+      "endDate": null,
+      "lastSearchDate": null,
+      "explorer": "5e933a87690ef1ca07d86667"
     }
   ]
 }
