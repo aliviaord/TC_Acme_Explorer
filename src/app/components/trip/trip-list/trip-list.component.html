@@ -22,7 +22,7 @@
 <div infiniteScroll (scrolled)="onScrollDown()" [infiniteScrollThrottle]="1000" [infiniteScrollDistance]="2">
 <div class="grid grid-cols-2 gap-4">
     <ng-container class="trip-list-card" *ngFor="let t of trips; let i = index">
-    <div *ngIf="moment(t.startDate).isSameOrAfter(dates.startDate) && moment(t.endDate).isSameOrBefore(dates.endDate)" routerLink="/trips/{{t.id}}" class="transition duration-100 ease-in-out transform hover:-translate-y-1 hover:scale-105 hover:z-40 cursor-pointer rounded mb-10 lg:max-w-full lg:flex flex">
+    <div *ngIf="managerView || (!managerView && moment(t.publicationDate).isSameOrBefore(moment()) && moment(t.startDate).isSameOrAfter(dates.startDate) && moment(t.endDate).isSameOrBefore(dates.endDate))" routerLink="/trips/{{t.id}}" class="transition duration-100 ease-in-out transform hover:-translate-y-1 hover:scale-105 hover:z-40 cursor-pointer rounded mb-10 lg:max-w-full lg:flex flex">
       <div *ngIf="!t.cancelReason" [ngStyle]="{'background-image': 'url(' + t.pictures[0] + ')'}"
         class="trip-img h-48 lg:h-auto lg:w-64 flex-none bg-cover rounded-t lg:rounded-t-none lg:rounded-l text-center overflow-hidden">
       </div>
