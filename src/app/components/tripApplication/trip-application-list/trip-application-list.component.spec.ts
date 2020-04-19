@@ -160,7 +160,6 @@ describe('TripApplicationListComponent', () => {
       spyOn(tripApplicationService, 'getTripApplications').and.returnValue(Promise.resolve(true));
 
       fixture.whenStable().then(() => {
-        console.log(component.tripApplications);
         expect(component.tripApplications.filter(tripApplication => tripApplication.comments != null))
         .toContain(component.tripApplications[0]);
         done();
