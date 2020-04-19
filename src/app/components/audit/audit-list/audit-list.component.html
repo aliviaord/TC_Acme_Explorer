@@ -1,27 +1,20 @@
 <h1 class="text-center font-bold text-4xl py-2">{{'audit.list' | translate}}</h1>
-<table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="table-auto row-border hover">
-  <thead>
-    <tr>
-      <th class="px-4 py-2">{{'trip.publicationDate' | translate}}</th>
-      <th class="px-4 py-2">{{'trip.title' | translate}}</th>
-      <th class="px-4 py-2">{{'trip.description' | translate}}</th>
-      <th class="px-4 py-2">{{'common.trip' | translate}}</th>
-      <th class="px-4 py-2">Details</th>
-    </tr>
-  </thead>
-  <tbody *ngFor="let audit of audits; let i = index">
-    <tr class="bg-white">
-      <td class="border px-4 py-2 text-center">{{audit.createdAt | date}}</td>
-      <!-- <td *ngIf="!t.cancelReason" class="border px-4 py-2 text-center"><img src="{{t.pictures[0]}}" class="picture"></td> -->
-      <!-- <td *ngIf="t.cancelReason" class="border px-4 py-2 text-center"><div class="canceled-img"><img src="{{t.pictures[0]}}" class="picture"><div class="centered">{{'trip.cancelled' | translate}}</div></div></td> -->
-      <td class="border px-4 py-2 text-center w-40">{{audit.title}}</td>
-      <td class="border px-4 py-2 text-center">{{audit.description}}</td>
-      <td class="border px-4 py-2 text-center">{{audit.trip}}</td>
-      <!-- <td class="border px-4 py-2 text-center">{{t.endDate | date}}</td> -->
-      <td class="border text-center w-32">
-        <a routerLink="/audits/{{audit.id}}" class="flex items-center px-4 py-2 hover:bg-green-100">{{'trip.details' | translate}} <img src="../../../assets/leaf.png" class="object-contain h-10"></a>
-      </td>
-    </tr>
-  </tbody>
-</table>
 
+<div infiniteScroll (scrolled)="onScrollDown()" [infiniteScrollThrottle]="1000" [infiniteScrollDistance]="2">
+  <div class="grid grid-cols-2 gap-10">
+      <ng-container class="trip-list-card" *ngFor="let audit of audits;">
+        <div routerLink="/audits/{{audit.id}}" class="transition duration-100 ease-in-out transform hover:-translate-y-1 hover:scale-105 hover:z-40  bg-white border-2 text-center cursor-pointer rounded-r-md flex flex-col justify-between leading-normal">
+          <div class="mb-5 mt-5">
+            <div class="text-gray-900 font-bold text-xl mb-2"><a routerLink="/audits/{{audit.id}}">{{audit.title}}</a></div>
+            <p class="text-gray-700 text-base">{{audit.description}}</p>
+            <span class="inline-block bg-orange-200 mt-5 rounded-full px-3 py-1 mr-2">
+              <i class="fa fa-clock-o mr-1" aria-hidden="true"></i>{{audit.createdAt | date}}
+            </span>
+            <span *ngIf="audit.attachments" class="inline-block bg-orange-200 mt-5 rounded-full px-3 py-1 mr-2">
+              <i class="fa fa-paperclip mr-1" aria-hidden="true"></i>{{'audit.attachments' | translate}}
+            </span>
+          </div>
+      </div>
+    </ng-container>
+  </div>
+  </div>

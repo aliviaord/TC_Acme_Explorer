@@ -46,7 +46,8 @@
     "audit": {
         "my-list": "My audits",
         "list": "Audit list",
-        "create": "Create audit"
+        "create": "Create audit",
+        "attachments": "Attachments"
     },
     "trip": {
         "display": "Display trip",

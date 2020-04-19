@@ -542,7 +542,6 @@
       "title": "Beautiful island",
       "description": "Myst Falls is a beautiful place everyone should visit!",
       "trip": "5e78ac3cf6f9577fd149c9ba",
-      "attachments": "some_file.pdf",
       "auditor": "5e78bd7713b68995265511f8",
       "createdAt": "08/04/2020"
     },
@@ -552,7 +551,10 @@
       "title": "Apples are amazing!!",
       "description": "There's no doubt that apples are the best thing on the island. I still remember the taste...",
       "trip": "5e78ac3cf6f9577fd149c9ba",
-      "attachments": "some_file.pdf",
+      "attachments": [
+        "https://www.researchgate.net/profile/Gustavo_Lobos/publication/257826786_Apples/links/00463525ecc3db3dd4000000/Apples.pdf",
+        "https://vignette.wikia.nocookie.net/animalcrossingnewleaf/images/7/7b/Images_%283%29.jpg"
+      ],
       "auditor": "5e78bd7713b68995265511f8",
       "createdAt": "08/04/2020"
     }

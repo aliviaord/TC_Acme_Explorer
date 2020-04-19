@@ -20,6 +20,7 @@ export class DisplayAuditComponent extends TranslatableComponent implements OnIn
   audit = new Audit();
   trip = new Trip();
   auditor = new Actor();
+  attachments = [];
 
   constructor(private auditService: AuditService,
     private translateService: TranslateService,
@@ -35,6 +36,19 @@ export class DisplayAuditComponent extends TranslatableComponent implements OnIn
     this.auditService.getAudit(this.id)
       .then((audit) => {
         this.audit = audit;
+        for(var i in audit.attachments) {
+          console.log("olaa")
+          var att = audit.attachments[i];
+          var new_att = {}
+          new_att['url'] = att;
+          new_att['type'] = att.split('.').pop(); 
+          if (att.length > 40) {
+            new_att['name'] = att.substr(0, 40) + '...' + att.substr(att.length-10, att.length);
+          } else {
+            new_att['name'] = att;
+          }
+          this.attachments.push(new_att);
+        }
         this.tripService.getTrip(audit.trip)
           .then((trip) => {
             this.trip = trip;

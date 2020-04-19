@@ -1,20 +1,30 @@
-<div class="flex">
-  <div class="max-w-xl rounded overflow-hidden shadow-lg bg-white">
-    <!-- <ngx-slick-carousel class="carousel" 
-                        #slickModal="slick-carousel" 
-                        [config]="slideConfig">
-        <div ngxSlickItem *ngFor="let p of trip.pictures" class="slide">
-              <img src="{{p}}" class="w-full">
-        </div>
-    </ngx-slick-carousel>  -->
+  <div class="flex justify-center">
+  <div class="max-w-xl rounded border-2 overflow-hidden bg-white mr-10">
     <div class="px-6 py-4">
-      <div class="font-bold text-xl mb-2 text-center">{{audit.title}}</div>
+      <div class="mb-2 text-center"><span class="font-bold text-xl">{{audit.title}}</span>
+        <span class="float-right text-gray-600 inline-block">
+          <i class="fa fa-user-circle mr-1" aria-hidden="true"></i>{{auditor.name}} {{auditor.surname}}
+        </span>
+      </div>
       <p class="text-gray-700 text-base text-center">{{audit.description}}</p>
       <div class="px-6 pt-4 text-center">
-        <span class="font-bold">{{'trip.publicationDate' | translate}}:&nbsp;</span><span class="inline-block bg-orange-200 rounded-full px-3 py-1 font-bold mr-2">{{audit.createdAt | date}}</span><br/><br/>
-        <span class="font-bold">{{'common.trip' | translate}}:&nbsp;</span><span class="text-right bg-orange-200 rounded-full px-3 py-1 font-bold mr-2"><a href="/trips/{{trip.id}}">{{trip.title}}</a></span><br/><br/>
-        <span class="font-bold">{{'common.author' | translate}}:&nbsp;</span><span class="text-right bg-orange-200 rounded-full px-3 py-1 font-bold mr-2">{{auditor.name}} {{auditor.surname}}</span>
+        <span class="inline-block bg-orange-200 rounded-full px-3 py-1 mr-2">
+          <i class="fa fa-clock-o mr-1" aria-hidden="true"></i>{{audit.createdAt | date}}
+        </span>
+        <span class="inline-block bg-orange-200 rounded-full px-3 py-1 mr-2">
+          <i class="fa fa-plane mr-1" aria-hidden="true"></i><a href="/trips/{{trip.id}}">{{trip.title}}</a>
+        </span>
       </div>
+    </div>
+  </div>
+  <div *ngIf="audit.attachments" class="max-w-xl rounded overflow-hidden border-2 bg-white">
+    <div class="font-bold text-xl mb-1 text-center pt-4">{{'audit.attachments' | translate}}</div>
+    <div class="px-6 py-2" *ngFor="let att of attachments">
+      <span>
+        <i *ngIf="att.type != 'pdf' && att.type != 'jpg' && att.type != 'png' && att.type != 'jpeg'" class="fa fa-file"></i>
+        <i *ngIf="att.type == 'pdf'" class="fa fa-file-pdf-o"></i>
+        <i *ngIf="att.type == 'jpg' || att.type == 'png' || att.type == 'jpeg'" class="fa fa-picture-o"></i>
+        &nbsp;<a target="_blank" href={{att.url}}>{{att.name}}</a></span>
     </div>
   </div>
 </div>

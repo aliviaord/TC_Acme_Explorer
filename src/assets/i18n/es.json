@@ -46,7 +46,8 @@
      "audit": {
         "my-list": "Mis auditorías",
         "list": "Lista de auditorías",
-        "create": "Crear auditoría"
+        "create": "Crear auditoría",
+        "attachments": "Adjuntos"
     },
     "trip": {
         "display": "Mostrar viaje",

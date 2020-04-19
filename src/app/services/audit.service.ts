@@ -35,4 +35,9 @@ export class AuditService {
     const url = `${this.auditsUrl}`;
     return this.http.post<Audit>(url, audit, httpOptions).toPromise();
   }
+
+  getAuditorAuditsPage(start, psize, id) {
+    const url = `${this.auditsUrl}?auditor=${id}&_start=${start}&_limit=${psize}`;
+    return this.http.get<Audit[]>(url, httpOptions).toPromise();
+  }
 }

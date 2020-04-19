@@ -6,7 +6,9 @@ import { TranslateService } from '@ngx-translate/core';
 import { TranslatableComponent } from '../../shared/translatable/translatable.component';
 import { DataTableDirective } from 'angular-datatables';
 import { Subject } from 'rxjs';
+import { AuthService } from 'src/app/services/auth.service';
 
+const MAX_AUDITS = 6;
 @Component({
   selector: 'app-audit-list',
   templateUrl: './audit-list.component.html',
@@ -14,32 +16,34 @@ import { Subject } from 'rxjs';
 })
 export class AuditListComponent extends TranslatableComponent implements OnInit {
   
-  dtOptions: DataTables.Settings = {};
-  dtTrigger: Subject<any> = new Subject();
-
   private audits: Audit[];
 
   constructor(private auditService: AuditService,
     private translateService: TranslateService,
-    private route: ActivatedRoute) {
+    private route: ActivatedRoute,
+    private authService: AuthService) {
       super(translateService);
   }
 
-  getAuditorAudits() {
-    return this.auditService.getAuditorAudits('5e78bd7713b68995265511f8');
+  getAuditorAudits(start, psize) {
+    var auditorId = this.authService.getCurrentActor().id;
+    return this.auditService.getAuditorAuditsPage(start, psize, auditorId);
   }
 
   ngOnInit() {
-    this.dtOptions = {
-      pagingType: 'full_numbers'
-    };
-    this.getAuditorAudits()
+    this.getAuditorAudits(0, MAX_AUDITS)
       .then((response) => {
         this.audits = <Audit[]>response;
-        this.dtTrigger.next();
       }).catch(error => {
         console.error(error);
       });
   }
+
+  onScrollDown(ev) {
+    const startIndex = this.audits.length;
+    this.getAuditorAudits(startIndex, MAX_AUDITS)
+    .then(val => { this.audits = this.audits.concat(val); })
+    .catch(err => { console.log(err); });
+    }
 
 }
