@@ -26,6 +26,9 @@ export class TermsAndConditionsComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.http.get(this.htmlFile, {responseType: 'text'}).subscribe((html) => {
+      this.myTemplate = this.sanitizer.bypassSecurityTrustHtml(html);
+    });
   }
 
 }
