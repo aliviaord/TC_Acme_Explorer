@@ -16,7 +16,7 @@ const MAX_AUDITS = 6;
 })
 export class AuditListComponent extends TranslatableComponent implements OnInit {
   
-  private audits: Audit[];
+  public audits: Audit[];
 
   constructor(private auditService: AuditService,
     private translateService: TranslateService,
