@@ -2,7 +2,7 @@ import { Component, OnInit, OnDestroy, ViewChild } from '@angular/core';
 import { Trip } from 'src/app/models/trip.model';
 import { TripService } from 'src/app/services/trip.service';
 import { ActivatedRoute } from '@angular/router';
-import { TranslateService } from '@ngx-translate/core';
+import { TranslateService, LangChangeEvent } from '@ngx-translate/core';
 import { TranslatableComponent } from '../../shared/translatable/translatable.component';
 import { FormGroup, FormBuilder, FormControl } from '@angular/forms';
 import { Options, ChangeContext } from 'ng5-slider';
@@ -47,6 +47,12 @@ export class TripListComponent extends TranslatableComponent implements OnInit {
     private authService: AuthService) {
     super(translateService);
     this.createForm();
+    this.translateService.onLangChange.subscribe((event: LangChangeEvent) => {
+      this.locale = {
+        applyLabel: event.lang == 'es' ? 'Aplicar' : 'Apply',
+        format: event.lang == 'es' ? 'DD/MM/YYYY' : 'MM/DD/YYYY',
+      };
+    });
   }
 
   getLang() {
