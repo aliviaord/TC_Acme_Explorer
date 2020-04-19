@@ -32,6 +32,7 @@ import { AngularFireAuth } from 'angularfire2/auth';
 import { AngularFireModule } from 'angularfire2';
 import { AuthService } from 'src/app/services/auth.service';
 import { Actor } from 'src/app/models/actor.model';
+import { TripApplicationService } from 'src/app/services/trip-application.service';
 
 export const firebaseConfig = {
   apiKey: 'AIzaSyBeyK3jw-oLh1MyZMHrydSJwy0WTxWDZ-0',
@@ -52,6 +53,7 @@ describe('TripApplicationListComponent', () => {
   let component: TripApplicationListComponent;
   let fixture: ComponentFixture<TripApplicationListComponent>;
   let authService: AuthService;
+  let tripApplicationService: TripApplicationService;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -104,6 +106,7 @@ describe('TripApplicationListComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(TripApplicationListComponent);
     component = fixture.componentInstance;
+    tripApplicationService = TestBed.get(TripApplicationService);
 
     authService = TestBed.get(AuthService);
     const manager = new Actor();
@@ -118,10 +121,49 @@ describe('TripApplicationListComponent', () => {
     manager.version = 0;
     authService.currentActor = manager;
 
+    component.ngOnInit();
     fixture.detectChanges();
   });
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('should be six items in the collection', async(done) => {
+    component.ngOnInit();
+    fixture.detectChanges();
+    spyOn(tripApplicationService, 'getTripApplications').and.returnValue(Promise.resolve(true));
+
+    fixture.whenStable().then(() => {
+      expect(component.tripApplications.length).toEqual(6);
+      done();
+    });
+  });
+
+  it('should retrieve the fifth application since it is the ' +
+    'only one containing a rejected reason', async(done) => {
+      component.ngOnInit();
+      fixture.detectChanges();
+      spyOn(tripApplicationService, 'getTripApplications').and.returnValue(Promise.resolve(true));
+
+      fixture.whenStable().then(() => {
+        expect(component.tripApplications.filter(tripApplication => tripApplication.rejectedReason != null))
+        .toContain(component.tripApplications[5]);
+        done();
+      });
+  });
+
+  it('should retrieve the first application since it is the ' +
+    'only one containing comments', async(done) => {
+      component.ngOnInit();
+      fixture.detectChanges();
+      spyOn(tripApplicationService, 'getTripApplications').and.returnValue(Promise.resolve(true));
+
+      fixture.whenStable().then(() => {
+        console.log(component.tripApplications);
+        expect(component.tripApplications.filter(tripApplication => tripApplication.comments != null))
+        .toContain(component.tripApplications[0]);
+        done();
+      });
   });
 });

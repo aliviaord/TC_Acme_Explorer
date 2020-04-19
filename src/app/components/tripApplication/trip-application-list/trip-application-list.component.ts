@@ -20,7 +20,7 @@ export class TripApplicationListComponent extends TranslatableComponent implemen
 
   private numObjects = MAX_ITEMS;
   private currentActor: Actor;
-  private tripApplications: TripApplication[];
+  tripApplications: TripApplication[];
   private tripsTitles = new Map();
   private explorersNames = new Map();
   private backgroundColor = new Map();
@@ -43,7 +43,6 @@ export class TripApplicationListComponent extends TranslatableComponent implemen
     this.tripApplicationService.getTripApplications(0, MAX_ITEMS, this.currentActor.role.toLowerCase(),
       this.currentActor.id).then((data: any) => {
       this.tripApplications = data;
-      console.log(data);
 
       for (let i = 0; i < data.length; i++) {
         this.tripService.getTrip(data[i].trip)

@@ -41,7 +41,9 @@ export class MessageComponent extends TranslatableComponent implements OnInit, O
   }
 
   ngOnDestroy() {
-    this.subscription.unsubscribe();
+    if (this.subscription) {
+      this.subscription.unsubscribe();
+    }
   }
 
 }
