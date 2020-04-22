@@ -20,4 +20,19 @@ export class TripApplicationService {
     const url = `${this.tripApplicationsUrl}?${role}=${actorId}&_sort=status&_order=ASC&_start=${start}&_limit=${limit}`;
     return this.http.get<TripApplication[]>(url, httpOptions).toPromise();
   }
+
+  updateTripApplication(tripApplication: TripApplication) {
+    const url = `${this.tripApplicationsUrl}/${tripApplication.id}`;
+    const body = JSON.stringify(tripApplication);
+
+    return new Promise<any>((resolve, reject) => {
+      this.http.put(url, body, httpOptions).toPromise()
+        .then(res => {
+          resolve(res);
+        }, err => {
+          console.log(err);
+          reject(err);
+        });
+    });
+  }
 }

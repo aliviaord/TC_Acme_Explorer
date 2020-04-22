@@ -524,14 +524,46 @@
   ],
   "dashboards": [
     {
-      "avgMinMaxStdTripsPerManager": [3, 2, 4, 1],
-      "avgMinMaxStdApplicationsPerTrip": [7, 6, 8, 1],
-      "avgMinMaxStdTripsPrice": [800, 700, 900, 100],
-      "ratioApplicationsByStatus": [0.1, 0.5, 0.2, 0.1, 0.1],
-      "avgPriceRangeFinders": [0, 750],
+      "avgMinMaxStdTripsPerManager": [
+        3,
+        2,
+        4,
+        1
+      ],
+      "avgMinMaxStdApplicationsPerTrip": [
+        7,
+        6,
+        8,
+        1
+      ],
+      "avgMinMaxStdTripsPrice": [
+        800,
+        700,
+        900,
+        100
+      ],
+      "ratioApplicationsByStatus": [
+        0.1,
+        0.5,
+        0.2,
+        0.1,
+        0.1
+      ],
+      "avgPriceRangeFinders": [
+        0,
+        750
+      ],
       "topFinderKeywords": [
-        "Maialen", "Apples", "Broccoli", "Cornelia", "Museum",
-        "Summer", "Cold", "Relaxing", "Family", "Kids"
+        "Maialen",
+        "Apples",
+        "Broccoli",
+        "Cornelia",
+        "Museum",
+        "Summer",
+        "Cold",
+        "Relaxing",
+        "Family",
+        "Kids"
       ]
     }
   ],

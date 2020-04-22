@@ -8,6 +8,7 @@ import { TripApplicationService } from 'src/app/services/trip-application.servic
 import { Actor } from 'src/app/models/actor.model';
 import { ActorService } from 'src/app/services/actor.service';
 import { TripService } from 'src/app/services/trip.service';
+import { NgForm } from '@angular/forms';
 
 const MAX_ITEMS = 9;
 
@@ -24,8 +25,6 @@ export class TripApplicationListComponent extends TranslatableComponent implemen
   private tripsTitles = new Map();
   private explorersNames = new Map();
   private backgroundColor = new Map();
-
-  dtOptions: any = {};
 
   constructor(private authService: AuthService,
     private tripApplicationService: TripApplicationService,
@@ -94,6 +93,40 @@ export class TripApplicationListComponent extends TranslatableComponent implemen
 
   getInternationalCode(status) {
     return 'tripApplication.' + status.toLowerCase();
+  }
+
+  changeStatus(tripApplication, newStatus) {
+    if (tripApplication) {
+      tripApplication.status = newStatus;
+      this.tripApplicationService.updateTripApplication(tripApplication)
+        .then((val) => {
+          console.log(val);
+          this.router.navigate(['/tripApplications']);
+        }).catch((err) => {
+          console.error(err);
+        });
+    }
+  }
+
+  toggleModal () {
+    const body = document.querySelector('body');
+    const modal = document.querySelector('.modal');
+    modal.classList.toggle('opacity-0');
+    modal.classList.toggle('pointer-events-none');
+    body.classList.toggle('modal-active');
+  }
+
+  onReject(form: NgForm, tripApplication: TripApplication) {
+    tripApplication.status = 'REJECTED';
+    tripApplication.rejectedReason = form.value.rejectedReason;
+
+    this.tripApplicationService.updateTripApplication(tripApplication)
+      .then((val) => {
+        console.log(val);
+        this.router.navigate(['/tripApplications']);
+      }).catch((err) => {
+        console.error(err);
+      });
   }
 
   addItems(startIndex, endIndex, _method) {

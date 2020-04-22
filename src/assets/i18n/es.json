@@ -120,7 +120,13 @@
         "rejected": "RECHAZADA",
         "due": "EN ESPERA",
         "accepted": "ACEPTADA",
-        "cancelled": "CANCELADA"
+        "cancelled": "CANCELADA",
+        "changeStatus": "Cambiar estado a",
+        "rejectTitle": "Rechazar una aplicación",
+        "rejectSubtitle1": "Para rechazar una aplicación, debe indicar la",
+        "rejectSubtitle2": "razón del rechazo",
+        "accept": "Aceptar",
+        "cancel": "Cancelar"
     },
     "sponsorship": {
         "list": "Lista de patrocinios",

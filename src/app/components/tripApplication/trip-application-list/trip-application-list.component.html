@@ -1,4 +1,4 @@
-<div *ngIf="tripApplications.length === 0">
+<div *ngIf="tripApplications.length === 0" class="text-center m-auto">
   <p class="text-gray-500 text-base text-5xl font-bold">Nothing to show ☹</p>
 </div>
 <div *ngIf="tripApplications.length !== 0" class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3">
@@ -23,8 +23,45 @@
           <span class="font-bold">{{'tripApplication.comments' | translate}}:</span> {{a.comments}}
         </p>
       </div>
-      <div class="px-5 py-3 border-t bg-gray-100 flex justify-end" [style.background-color]=backgroundColor.get(a.id)[1]>
-        <p *ngIf="a.rejectedReason"><span class="font-bold">{{'tripApplication.rejectedReason' | translate}}:</span> {{a.rejectedReason}}</p>
+      <div class="px-5 py-3 border-t bg-gray-100 flex" [style.background-color]=backgroundColor.get(a.id)[1]>
+        <p *ngIf="a.rejectedReason" class="text-left"><span class="font-bold">{{'tripApplication.rejectedReason' | translate}}:</span> {{a.rejectedReason}}</p>
+        <div *ngIf="currentActor.role === 'MANAGER' && a.status === 'PENDING'" class="flex justify-center m-auto">
+          <span class="my-auto mr-4">{{'tripApplication.changeStatus' | translate}}:</span>
+          <button class="bg-green-300 text-white mx-1 hover:underline font-bold rounded-full my-2 py-2 px-2" type="button" (click)="toggleModal()">{{'tripApplication.rejected' | translate}}</button>
+          <button class="bg-green-300 text-white mx-1 hover:underline font-bold rounded-full my-2 py-2 px-2" type="button" (click)="changeStatus(a, 'DUE')">{{'tripApplication.due' | translate}}</button>`
+
+          <!--Modal-->
+          <div class="modal opacity-0 pointer-events-none fixed w-full h-full top-0 left-0 flex items-center justify-center">
+            <div class="modal-overlay absolute w-full h-full bg-gray-900 opacity-50"></div>
+            
+            <div class="modal-container bg-white w-11/12 md:max-w-md mx-auto rounded shadow-lg z-50 overflow-y-auto">
+
+              <!-- Add margin if you want to see some of the overlay behind the modal-->
+              <div class="modal-content py-4 text-left px-6">
+                <!--Title-->
+                <div class="flex justify-between items-center pb-3">
+                  <p class="text-2xl font-bold">{{'tripApplication.rejectTitle' | translate}}</p>
+                  <div class="modal-close cursor-pointer z-50" (click)="toggleModal()">
+                    <i class="fa fa-times mr-1" aria-hidden="true"></i>
+                  </div>
+                </div>
+
+                <!--Body-->
+                <p>{{'tripApplication.rejectSubtitle1' | translate}} <span class="font-bold">{{'tripApplication.rejectSubtitle2' | translate}}</span>:</p>
+
+                <form (ngSubmit)="onReject(f, a)" #f="ngForm" id="a.id">
+                  <textarea ngModel name="rejectedReason" form="a.id" class="resize-none border rounded focus:outline-none focus:shadow-outline w-full h-32 my-4" required></textarea>
+                  <!--Footer-->
+                  <div class="flex justify-center">
+                    <button *ngIf="f.value.rejectedReason === ''" type="submit" class="bg-green-300 text-white mx-1 font-bold rounded-full py-2 px-2 cursor-not-allowed" [disabled]="f.value.rejectedReason === ''">{{'tripApplication.accept' | translate}}</button>
+                    <button *ngIf="f.value.rejectedReason !== ''" type="submit" class="bg-green-300 text-white mx-1 hover:underline font-bold rounded-full py-2 px-2" [disabled]="f.value.rejectedReason === ''">{{'tripApplication.accept' | translate}}</button>
+                    <button class="bg-red-300 text-white mx-1 hover:underline font-bold rounded-full py-2 px-2" (click)="toggleModal()">{{'tripApplication.cancel' | translate}}</button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>

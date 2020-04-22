@@ -120,7 +120,13 @@
         "rejected": "REJECTED",
         "due": "DUE",
         "accepted": "ACCEPTED",
-        "cancelled": "CANCELLED"
+        "cancelled": "CANCELLED",
+        "changeStatus": "Change status to",
+        "rejectTitle": "Reject an application",
+        "rejectSubtitle1": "In order to reject an application you must introduce the",
+        "rejectSubtitle2": "rejection reason",
+        "accept": "Accept",
+        "cancel": "Cancel"
     },
     "sponsorship": {
         "list": "Sponsorships list",
