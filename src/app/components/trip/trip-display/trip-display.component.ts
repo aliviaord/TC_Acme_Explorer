@@ -9,6 +9,9 @@ import { SponsorshipService } from 'src/app/services/sponsorship.service';
 import { Actor } from 'src/app/models/actor.model';
 import { AuthService } from 'src/app/services/auth.service';
 import * as moment from 'moment';
+import { NgForm } from '@angular/forms';
+import { TripApplication } from 'src/app/models/trip-application.model';
+import { TripApplicationService } from 'src/app/services/trip-application.service';
 
 @Component({
   selector: 'app-trip-display',
@@ -42,7 +45,8 @@ export class TripDisplayComponent extends TranslatableComponent implements OnIni
     private router: Router,
     private route: ActivatedRoute,
     private sponsorshipService: SponsorshipService,
-    private authService: AuthService) {
+    private authService: AuthService,
+    private tripApplicationService: TripApplicationService) {
     super(translateService);
   }
 
@@ -51,8 +55,8 @@ export class TripDisplayComponent extends TranslatableComponent implements OnIni
     this.id = this.route.snapshot.params['id'];
     this.tripService.getTrip(this.id)
       .then((val) => {
-        if((!this.currentActor || (val.manager != this.currentActor.id)) && moment(val.publicationDate).isAfter(moment())) {
-          this.router.navigate(['/denied-access'])
+        if ((!this.currentActor || (val.manager !== this.currentActor.id)) && moment(val.publicationDate).isAfter(moment())) {
+          this.router.navigate(['/denied-access']);
         }
         this.trip = val;
         this.tripService.getTripAudits(this.id)
@@ -83,5 +87,34 @@ export class TripDisplayComponent extends TranslatableComponent implements OnIni
       error => {
         console.log(error);
     });
+  }
+
+  toggleModal () {
+    const body = document.querySelector('body');
+    const modal = document.querySelector('.modal');
+    modal.classList.toggle('opacity-0');
+    modal.classList.toggle('pointer-events-none');
+    body.classList.toggle('modal-active');
+  }
+
+  onAccept(form: NgForm) {
+    const newTripApplication = new TripApplication();
+
+    newTripApplication.moment = new Date();
+    newTripApplication.status = 'PENDING';
+    newTripApplication.comments = form.value.comments;
+    newTripApplication.paidDate = null;
+    newTripApplication.rejectedReason = null;
+    newTripApplication.trip = this.trip.id;
+    newTripApplication.explorer = this.currentActor.id;
+    newTripApplication.manager = this.trip.manager;
+
+    this.tripApplicationService.createTripApplication(newTripApplication)
+      .then((val) => {
+        console.log(val);
+        this.router.navigate(['/trips/' + this.trip.id]);
+      }).catch((err) => {
+        console.error(err);
+      });
   }
 }

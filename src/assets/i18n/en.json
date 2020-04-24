@@ -68,7 +68,10 @@
         "cancelled": "CANCELLED",
         "requirements": "Requirements",
         "dates": "Dates",
-        "sorry": "We're sorry! This trip has been cancelled. The cancelation reason is shown below:"
+        "sorry": "We're sorry! This trip has been cancelled. The cancelation reason is shown below:",
+        "apply": "Apply for this trip",
+        "applicationTitle": "Make an application",
+        "optionalComments": "Optionally, you can leave some comments for the manager"
     },
     "main": {
         "title1": "Ready to discover?",

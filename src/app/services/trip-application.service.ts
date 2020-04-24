@@ -35,4 +35,19 @@ export class TripApplicationService {
         });
     });
   }
+
+  createTripApplication(tripApplication: TripApplication) {
+    const url = `${this.tripApplicationsUrl}`;
+    const body = JSON.stringify(tripApplication);
+
+    return new Promise<any>((resolve, reject) => {
+      this.http.post(url, body, httpOptions).toPromise()
+        .then(res => {
+          resolve(res);
+        }, err => {
+          console.log(err);
+          reject(err);
+        });
+    });
+  }
 }

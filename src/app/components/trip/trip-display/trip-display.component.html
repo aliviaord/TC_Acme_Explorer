@@ -84,5 +84,45 @@
     {{'common.edit' | translate}}
   </button>
 </div>
+<div class="ml-10">
+  <div class="mx-10">
+    <button *ngIf="!currentActor" routerLink="/login" class="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 hover:border-blue-500 rounded">
+      {{'trip.apply' | translate}}
+    </button>
+    <button *ngIf="currentActor && currentActor.role === 'EXPLORER'" class="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 hover:border-blue-500 rounded" type="button" (click)="toggleModal()">
+      {{'trip.apply' | translate}}
+    </button>
+  </div>
+</div>
+<!--Modal-->
+<div class="modal opacity-0 pointer-events-none fixed w-full h-full top-0 left-0 flex items-center justify-center" style="z-index: 2;">
+  <div class="modal-overlay absolute w-full h-full bg-gray-900 opacity-50"></div>
+  
+  <div class="modal-container bg-white w-11/12 md:max-w-md mx-auto rounded shadow-lg z-50 overflow-y-auto">
+
+    <!-- Add margin if you want to see some of the overlay behind the modal-->
+    <div class="modal-content py-4 text-left px-6">
+      <!--Title-->
+      <div class="flex justify-between items-center pb-3">
+        <p class="text-2xl font-bold">{{'trip.applicationTitle' | translate}}</p>
+        <div class="modal-close cursor-pointer z-50" (click)="toggleModal()">
+          <i class="fa fa-times mr-1" aria-hidden="true"></i>
+        </div>
+      </div>
+
+      <!--Body-->
+      <p>{{'trip.optionalComments' | translate}}:</p>
+
+      <form (ngSubmit)="onAccept(f)" #f="ngForm" id="application">
+        <textarea ngModel name="comments" form="application" class="resize-none border rounded focus:outline-none focus:shadow-outline w-full h-32 my-4"></textarea>
+        <!--Footer-->
+        <div class="flex justify-center">
+          <button type="submit" class="bg-green-300 text-white mx-1 hover:underline font-bold rounded-full py-2 px-2">{{'tripApplication.accept' | translate}}</button>
+          <button class="bg-red-300 text-white mx-1 hover:underline font-bold rounded-full py-2 px-2" (click)="toggleModal()">{{'tripApplication.cancel' | translate}}</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
 </div>
 </div>
