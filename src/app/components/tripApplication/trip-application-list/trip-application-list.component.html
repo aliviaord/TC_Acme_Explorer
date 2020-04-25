@@ -32,7 +32,7 @@
         <div *ngIf="currentActor.role === 'MANAGER' && a.status === 'PENDING'" class="flex justify-center m-auto">
           <span class="my-auto mr-4">{{'tripApplication.changeStatus' | translate}}:</span>
           <button class="bg-green-300 text-white mx-1 hover:underline font-bold rounded-full my-2 py-2 px-2" type="button" (click)="toggleModal()">{{'tripApplication.rejected' | translate}}</button>
-          <button class="bg-green-300 text-white mx-1 hover:underline font-bold rounded-full my-2 py-2 px-2" type="button" (click)="changeStatus(a, 'DUE')">{{'tripApplication.due' | translate}}</button>`
+          <button *ngIf="explorerCancel.get(a.id)" class="bg-green-300 text-white mx-1 hover:underline font-bold rounded-full my-2 py-2 px-2" type="button" (click)="changeStatus(a, 'DUE')">{{'tripApplication.due' | translate}}</button>
 
           <!--Modal-->
           <div class="modal opacity-0 pointer-events-none fixed w-full h-full top-0 left-0 flex items-center justify-center">

@@ -39,6 +39,7 @@ export class TripDisplayComponent extends TranslatableComponent implements OnIni
   };
   private randomSponsorship: Sponsorship;
   private currentActor: Actor;
+  private hasStarted: Boolean;
 
   constructor(private tripService: TripService,
     private translateService: TranslateService,
@@ -59,6 +60,11 @@ export class TripDisplayComponent extends TranslatableComponent implements OnIni
           this.router.navigate(['/denied-access']);
         }
         this.trip = val;
+
+        const currentDate = new Date();
+        const startingDate = new Date(val.startDate);
+        this.hasStarted = currentDate > startingDate;
+
         this.tripService.getTripAudits(this.id)
           .then((audits) => {
             this.audits = audits;

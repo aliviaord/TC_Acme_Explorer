@@ -86,10 +86,10 @@
 </div>
 <div class="ml-10">
   <div class="mx-10">
-    <button *ngIf="!currentActor" routerLink="/login" class="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 hover:border-blue-500 rounded">
+    <button *ngIf="!currentActor && !hasStarted" routerLink="/login" class="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 hover:border-blue-500 rounded">
       {{'trip.apply' | translate}}
     </button>
-    <button *ngIf="currentActor && currentActor.role === 'EXPLORER'" class="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 hover:border-blue-500 rounded" type="button" (click)="toggleModal()">
+    <button *ngIf="currentActor && currentActor.role === 'EXPLORER' && !hasStarted" class="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 hover:border-blue-500 rounded" type="button" (click)="toggleModal()">
       {{'trip.apply' | translate}}
     </button>
   </div>
