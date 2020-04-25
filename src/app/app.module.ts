@@ -38,6 +38,7 @@ import { DashboardDisplayComponent } from './components/dashboard/dashboard-disp
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import { Ng5SliderModule } from 'ng5-slider';
 import { NgxDaterangepickerMd } from 'ngx-daterangepicker-material';
+import {FileUploadModule} from 'primeng/fileupload';
 
 export const firebaseConfig = {
   apiKey: 'AIzaSyBeyK3jw-oLh1MyZMHrydSJwy0WTxWDZ-0',
@@ -84,6 +85,7 @@ export function HttpLoaderFactory(http: HttpClient) {
   imports: [
     BrowserModule,
     FormsModule,
+    FileUploadModule,
     DataTablesModule,
     ReactiveFormsModule,
     HttpClientModule,
