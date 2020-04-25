@@ -26,6 +26,7 @@ export class TripApplicationListComponent extends TranslatableComponent implemen
   private explorersNames = new Map();
   private backgroundColor = new Map();
   private explorerCancel = new Map();
+  private applicationPrice = new Map();
 
   constructor(private authService: AuthService,
     private tripApplicationService: TripApplicationService,
@@ -51,6 +52,8 @@ export class TripApplicationListComponent extends TranslatableComponent implemen
             const currentDate = new Date();
             const futureDate = new Date(trip.startDate);
             this.explorerCancel.set(data[i].id, ((data[i].status === 'PENDING' || data[i].status === 'DUE') && (futureDate > currentDate)));
+
+            this.applicationPrice.set(data[i].id, trip.price);
 
             if (data[i].status === 'PENDING') {
               const daysDifference = Math.ceil((futureDate.getTime() - currentDate.getTime()) / (1000 * 3600 * 24));

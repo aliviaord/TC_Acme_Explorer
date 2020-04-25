@@ -38,6 +38,8 @@ import { DashboardDisplayComponent } from './components/dashboard/dashboard-disp
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import { Ng5SliderModule } from 'ng5-slider';
 import { NgxDaterangepickerMd } from 'ngx-daterangepicker-material';
+import { TripApplicationPaymentComponent } from './components/tripApplication/trip-application-payment/trip-application-payment.component';
+import { NgxPayPalModule } from 'ngx-paypal';
 
 export const firebaseConfig = {
   apiKey: 'AIzaSyBeyK3jw-oLh1MyZMHrydSJwy0WTxWDZ-0',
@@ -79,7 +81,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     CreateAuditComponent,
     TripApplicationListComponent,
     SponsorshipListComponent,
-    DashboardDisplayComponent
+    DashboardDisplayComponent,
+    TripApplicationPaymentComponent
   ],
   imports: [
     BrowserModule,
@@ -101,7 +104,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     Ng2FlatpickrModule,
     InfiniteScrollModule,
     Ng5SliderModule,
-    NgxDaterangepickerMd.forRoot()
+    NgxDaterangepickerMd.forRoot(),
+    NgxPayPalModule
   ],
   exports: [AppRoutingModule],
   providers: [AngularFireAuth],

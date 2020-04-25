@@ -129,7 +129,8 @@
         "rejectSubtitle1": "In order to reject an application you must introduce the",
         "rejectSubtitle2": "rejection reason",
         "accept": "Accept",
-        "cancel": "Cancel"
+        "cancel": "Cancel",
+        "pay": "PAY FOR IT"
     },
     "sponsorship": {
         "list": "Sponsorships list",

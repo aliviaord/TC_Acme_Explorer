@@ -129,7 +129,8 @@
         "rejectSubtitle1": "Para rechazar una aplicación, debe indicar la",
         "rejectSubtitle2": "razón del rechazo",
         "accept": "Aceptar",
-        "cancel": "Cancelar"
+        "cancel": "Cancelar",
+        "pay": "PAGARLA"
     },
     "sponsorship": {
         "list": "Lista de patrocinios",

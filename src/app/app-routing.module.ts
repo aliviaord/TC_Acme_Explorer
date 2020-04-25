@@ -18,6 +18,7 @@ import { CreateAuditComponent } from './components/audit/create-audit/create-aud
 import { TripApplicationListComponent } from './components/tripApplication/trip-application-list/trip-application-list.component';
 import { SponsorshipListComponent } from './components/sponsorship/sponsorship-list/sponsorship-list.component';
 import { DashboardDisplayComponent } from './components/dashboard/dashboard-display/dashboard-display.component';
+import { TripApplicationPaymentComponent } from './components/tripApplication/trip-application-payment/trip-application-payment.component';
 
 const appRoutes: Routes = [
   {path: '', component: MainComponent, pathMatch: 'full'},
@@ -54,6 +55,8 @@ const appRoutes: Routes = [
   {path: 'not-found', component: NotFoundPageComponent},
   {path: 'terms-and-conditions', component: TermsAndConditionsComponent},
   {path: 'denied-access', component: DeniedAccessPageComponent},
+  {path: 'application-payment', component: TripApplicationPaymentComponent,
+    canActivate: [ActorRoleGuard], data: {expectedRole: 'EXPLORER'}},
   {path: '**', redirectTo: '/not-found'},
 ];
 

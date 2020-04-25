@@ -27,6 +27,9 @@
         <p *ngIf="a.rejectedReason" class="text-left"><span class="font-bold">{{'tripApplication.rejectedReason' | translate}}:</span> {{a.rejectedReason}}</p>
         <div *ngIf="currentActor && currentActor.id === a.explorer && explorerCancel.get(a.id)" class="flex justify-center m-auto">
           <span class="my-auto mr-4">{{'tripApplication.changeStatus' | translate}}:</span>
+          <a *ngIf="a.status === 'DUE'" routerLink="/application-payment" [queryParams]="{'total': applicationPrice.get(a.id), 'application': a.id}">
+            <button class="bg-green-300 text-white mx-1 hover:underline font-bold rounded-full my-2 py-2 px-2">{{'tripApplication.pay' | translate}}</button>
+          </a>
           <button class="bg-green-300 text-white mx-1 hover:underline font-bold rounded-full my-2 py-2 px-2" type="button" (click)="changeStatus(a, 'CANCELLED')">{{'tripApplication.cancelled' | translate}}</button>
         </div>
         <div *ngIf="currentActor.role === 'MANAGER' && a.status === 'PENDING'" class="flex justify-center m-auto">
