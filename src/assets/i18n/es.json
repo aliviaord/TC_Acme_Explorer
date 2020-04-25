@@ -37,7 +37,10 @@
         "remove": "Eliminar",
         "trip": "Viaje",
         "author": "Autor",
-        "search": "Buscar"
+        "search": "Buscar",
+        "upload": "Subir",
+        "clear": "Eliminar",
+        "choose": "Seleccionar archivos"
     },
     "stage": {
         "add": "Añadir etapa",
@@ -56,6 +59,7 @@
         "create": "Crear viaje",
         "edit": "Editar viaje",
         "ticker": "Identificador",
+        "pictures": "Fotos",
         "title": "Título",
         "audits": "Auditorías",
         "description": "Descripción",

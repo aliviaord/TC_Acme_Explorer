@@ -21,7 +21,7 @@ export class TripService {
   constructor(private http: HttpClient) { }
 
   getTrips() {
-    const url = `${this.tripsUrl}` //?publicationDate_lte${new Date()}`;
+    const url = `${this.tripsUrl}`
     return this.http.get<Trip[]>(url, httpOptions).toPromise();
   }
 

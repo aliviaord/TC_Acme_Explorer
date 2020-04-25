@@ -37,7 +37,10 @@
         "remove": "Remove",
         "trip": "Trip",
         "author": "Author",
-        "search": "Search"
+        "search": "Search",
+        "upload": "Upload",
+        "clear": "Clear",
+        "choose": "Select files"
     },
     "stage": {
         "add": "Add stage",
@@ -56,6 +59,7 @@
         "create": "Create trip",
         "edit": "Edit trip",
         "ticker": "Ticker",
+        "pictures": "Pictures",
         "title": "Title",
         "audits": "Audits",
         "description": "Description",

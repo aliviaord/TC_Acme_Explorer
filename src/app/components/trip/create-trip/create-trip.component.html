@@ -1,4 +1,4 @@
-<div class="w-48c content-center text-center">
+<div class="w-48c content-center text-center mx-auto">
   <form [formGroup]="tripForm" (ngSubmit)="onCreateTrip()" class="text-base bg-white shadow-2xl rounded px-8 pt-6 pb-8">
     <h1 class="text-5xl">{{'trip.create' | translate}}</h1><br/>
     <div class="mb-4">
@@ -90,6 +90,22 @@
       {{'stage.add' | translate}}
     </button>
     </div>
+
+    <h2 class="text-xl mb-4 font-bold text-gray-900">{{'trip.pictures' | translate}}</h2>
+    <p-fileUpload 
+      customUpload="true" 
+      multiple="multiple" 
+      accept="image/*" 
+      (uploadHandler)="onPictureUpload($event)" 
+      (onRemove)="onPictureRemove($event)" 
+      (onClear)="onPictureClear($event)" 
+      name="myfile[]"
+      uploadLabel="{{'common.upload' | translate}}"
+      cancelLabel="{{'common.clear' | translate}}"
+      chooseLabel="{{'common.choose' | translate}}"
+      styleClass="uploader"
+      ></p-fileUpload><br/>
+
     <div class="flex items-center justify-center">
       <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit">
         {{'common.create' | translate}}
