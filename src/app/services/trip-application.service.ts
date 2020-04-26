@@ -50,4 +50,9 @@ export class TripApplicationService {
         });
     });
   }
+
+  getTripApplication(tripApplicationId) {
+    const url = `${this.tripApplicationsUrl}/${tripApplicationId}`;
+    return this.http.get<TripApplication>(url, httpOptions).toPromise();
+  }
 }
