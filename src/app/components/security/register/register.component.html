@@ -33,6 +33,7 @@
       <label class="block text-gray-700 text-md font-bold mb-2" for="address">
         {{'actor.address' | translate}}
       </label>
+      <div id="map" (click)="getCoord($event)" class="map"></div>
       <input class="appearance-none border-2 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="address" formControlName="address" type="text" placeholder="{{'actor.address' | translate}}">
     </div>
 

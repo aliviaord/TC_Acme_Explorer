@@ -39,3 +39,8 @@ a:hover {
 .md-drppicker td.end-date {
     background-color:#fbd38d!important;
 }
+
+.map {
+    width: 100%;
+    height: 40vh;
+  }
