@@ -79,7 +79,7 @@ export class CreateTripComponent extends TranslatableComponent implements OnInit
     let trip = this.tripForm.value;
     trip.manager = this.authService.getCurrentActor().id;
     trip.price = 500;
-    trip.pictures = this.pictures.length > 0 ? this.pictures : [environment.defaultTripImage];
+    trip.pictures = this.pictures;
     this.tripService.createTrip(trip)
       .then(res => {
         console.log(res);
