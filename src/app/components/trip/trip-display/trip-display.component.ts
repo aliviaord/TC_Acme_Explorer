@@ -106,6 +106,7 @@ export class TripDisplayComponent extends TranslatableComponent implements OnIni
   onAccept(form: NgForm) {
     const newTripApplication = new TripApplication();
 
+    newTripApplication.id = null;
     newTripApplication.moment = new Date();
     newTripApplication.status = 'PENDING';
     newTripApplication.comments = form.value.comments;
