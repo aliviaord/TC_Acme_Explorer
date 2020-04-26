@@ -1,0 +1,12 @@
+.trip-img-container {
+    position: relative;
+    width: 100%;
+}
+  
+.trip-img-container button {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(100%, -200%);
+    -ms-transform: translate(100%, -200%);
+}

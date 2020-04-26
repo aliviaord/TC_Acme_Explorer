@@ -108,7 +108,15 @@
         "trip.edit.failed": "Error al editar el viaje.",
         "trip.remove": "¿Estás seguro de que quieres eliminar el viaje?",
         "trip.removed.correct": "Viaje borrado correctamente.",
-        "trip.removed.failed": "Error al eliminar el viaje."
+        "trip.removed.failed": "Error al eliminar el viaje.",
+        "validation": {
+            "required": "Debes introducir un valor, gilipollas.",
+            "number.valid": "Debes introducir un número válido.",
+            "number.positive": "Debes introducir un número positivo.",
+            "number.max": "Sólo los números menores que {{maxValue}} son permitidos.",
+            "number.min": "Sólo los números mayores que {{minValue}} son permitidos.",
+            "email.valid": "Debes introducir un email válido."
+        }
     },
     "not-found-page": {
         "title": "Lo sentimos, ¡algo salió mal!",

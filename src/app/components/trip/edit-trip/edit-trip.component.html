@@ -1,4 +1,4 @@
-<div class="w-48c content-center text-center">
+<div class="w-48c content-center text-center mx-auto">
   <form *ngIf="trip.id != 0" [formGroup]="tripForm" (ngSubmit)="onEditTrip()" class="text-base bg-white shadow-2xl rounded px-8 pt-6 pb-8">
     <h1 class="text-5xl">{{'trip.edit' | translate}}</h1><br/>
     <div class="mb-4">
@@ -6,6 +6,9 @@
         {{'trip.title' | translate}}
       </label>
       <input class="appearance-none border-2 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="title" formControlName="title" type="text" placeholder="{{'trip.title' | translate}}">
+      <div *ngIf="tripForm.get('title').errors && tripForm.get('title').touched && tripForm.get('title').errors.required" class="text-red-700 text-sm mt-1 rounded relative" role="alert">
+        <span class="block sm:inline">{{'messages.validation.required' | translate}}</span>
+      </div>
     </div>
 
     <div class="mb-4">
@@ -13,6 +16,9 @@
         {{'trip.description' | translate}}
       </label>
       <textarea class="appearance-none border-2 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="description" formControlName="description" type="text" placeholder="{{'trip.description' | translate}}"></textarea>
+      <div *ngIf="tripForm.get('description').errors && tripForm.get('description').touched && tripForm.get('description').errors.required" class="text-red-700 text-sm mt-1 rounded relative" role="alert">
+        <span class="block sm:inline">{{'messages.validation.required' | translate}}</span>
+      </div>
     </div>
 
     <div class="mb-4">
@@ -20,6 +26,9 @@
         {{'trip.requirements' | translate}}
       </label>
       <input class="appearance-none border-2 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="requirements" formControlName="requirements" type="text" placeholder="{{'trip.requirements' | translate}}">
+      <div *ngIf="tripForm.get('requirements').errors && tripForm.get('requirements').touched && tripForm.get('requirements').errors.required" class="text-red-700 text-sm mt-1 rounded relative" role="alert">
+        <span class="block sm:inline">{{'messages.validation.required' | translate}}</span>
+      </div>
     </div>
 
     <div class="mb-4">
@@ -27,6 +36,9 @@
         {{'trip.startDate' | translate}}
       </label>
       <ng2-flatpickr class="text-center" [config]="flatpickrOptions" id="startDate" placeholder="{{'trip.startDate' | translate}}" formControlName="startDate"></ng2-flatpickr>
+      <div *ngIf="tripForm.get('startDate').errors && tripForm.get('startDate').touched && tripForm.get('startDate').errors.required" class="text-red-700 text-sm mt-1 rounded relative" role="alert">
+        <span class="block sm:inline">{{'messages.validation.required' | translate}}</span>
+      </div>
     </div>
 
     <div class="mb-4">
@@ -34,12 +46,18 @@
         {{'trip.endDate' | translate}}
       </label>
       <input class="appearance-none border-2 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="endDate" formControlName="endDate" type="date" placeholder="{{'trip.endDate' | translate}}">
+      <div *ngIf="tripForm.get('endDate').errors && tripForm.get('endDate').touched && tripForm.get('endDate').errors.required" class="text-red-700 text-sm mt-1 rounded relative" role="alert">
+        <span class="block sm:inline">{{'messages.validation.required' | translate}}</span>
+      </div>
     </div>
 
     <div class="mb-4">
       <label class="block text-gray-700 text-md font-bold mb-2" for="publicationDate">
         {{'trip.publicationDate' | translate}}
       </label>
+      <div *ngIf="tripForm.get('publicationDate').errors && tripForm.get('publicationDate').touched && tripForm.get('publicationDate').errors.required" class="text-red-700 text-sm mt-1 rounded relative" role="alert">
+        <span class="block sm:inline">{{'messages.validation.required' | translate}}</span>
+      </div>
       <input class="appearance-none border-2 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="publicationDate" formControlName="publicationDate" type="date" placeholder="{{'trip.publicationDate' | translate}}">
     </div>
 
@@ -70,12 +88,21 @@
         <div class="flex flex-wrap -mx-3 mb-2">
           <div class="w-full md:w-3/12 px-3 mb-6 md:mb-0">
             <input class="appearance-none border-2 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="stage-title" formControlName="title" type="text" placeholder="{{'trip.title' | translate}}">
+            <div *ngIf="tripForm.controls['stages'].controls[i].get('title').errors && tripForm.controls['stages'].controls[i].get('title').touched && tripForm.controls['stages'].controls[i].get('title').errors.required" class="text-red-700 text-sm mt-1 rounded relative" role="alert">
+              <span class="block sm:inline">{{'messages.validation.required' | translate}}</span>
+            </div>
           </div>
           <div class="w-full md:w-5/12 px-3 mb-6 md:mb-0">
             <textarea class="appearance-none border-2 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="stage-description" formControlName="description" type="text" placeholder="{{'trip.description' | translate}}"></textarea>
+            <div *ngIf="tripForm.controls['stages'].controls[i].get('description').errors && tripForm.controls['stages'].controls[i].get('description').touched && tripForm.controls['stages'].controls[i].get('description').errors.required" class="text-red-700 text-sm mt-1 rounded relative" role="alert">
+              <span class="block sm:inline">{{'messages.validation.required' | translate}}</span>
+            </div>
           </div>
           <div class="w-full md:w-3/12 px-3 mb-6 md:mb-0">
             <input class="appearance-none border-2 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="price" formControlName="price" type="number" placeholder="{{'trip.price' | translate}}">
+            <div *ngIf="tripForm.controls['stages'].controls[i].get('price').errors && tripForm.controls['stages'].controls[i].get('price').touched && tripForm.controls['stages'].controls[i].get('price').errors.required" class="text-red-700 text-sm mt-1 rounded relative" role="alert">
+              <span class="block sm:inline">{{'messages.validation.required' | translate}}</span>
+            </div>
           </div>
           <div class="md:w-1/12 text-md items-center">
             <button class="text-red-900 h-8 w-8 m-2 bg-red-300 hover:bg-red-400 rounded-full focus:outline-none focus:shadow-outline" type="button" (click)="deleteStage(i)">
@@ -90,6 +117,35 @@
       {{'stage.add' | translate}}
     </button>
     </div>
+
+    <h2 class="text-xl mb-4 font-bold text-gray-900">{{'trip.pictures' | translate}}</h2>
+    <div *ngIf="trip.pictures.length>0" class="border-2 grid grid-cols-4 gap-4 mb-4 p-5">
+      <div *ngFor="let p of trip.pictures; let i = index">
+        <div class="trip-img-container">
+          <img class="w-40" src="{{p}}">
+          <button type="button" class="rounded-full h-8 w-8 border-red-700 border-2 bg-red-500 hover:bg-red-700 text-white text-xs font-bold rounded focus:outline-none focus:shadow-outline" (click)="removePicture(p)">
+            <i class="fa fa-times" aria-hidden="true"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+    <p-fileUpload 
+      customUpload="true" 
+      multiple="multiple" 
+      accept="image/*" 
+      (uploadHandler)="onPictureUpload($event)" 
+      (onRemove)="onPictureRemove($event)" 
+      (onClear)="onPictureClear($event)" 
+      name="myfile[]"
+      uploadLabel="{{'common.upload' | translate}}"
+      cancelLabel="{{'common.clear' | translate}}"
+      chooseLabel="{{'common.choose' | translate}}"
+      styleClass="uploader"
+      [showCancelButton]="false"
+      [auto]="true"
+      [showUploadButton]="false"
+      ></p-fileUpload><br/>
+
     <div class="flex items-center justify-center">
       <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit">
         {{'common.update' | translate}}

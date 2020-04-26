@@ -1,17 +1,17 @@
 import { Component, OnInit } from '@angular/core';
 import { Trip } from 'src/app/models/trip.model';
 import { TripService } from 'src/app/services/trip.service';
-import { FileUploadService } from 'src/app/services/file-upload.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { TranslatableComponent } from '../../shared/translatable/translatable.component';
-import { FormGroup, FormBuilder, FormArray } from '@angular/forms';
+import { FormGroup, FormBuilder, FormArray, Validators } from '@angular/forms';
 import { FlatpickrOptions } from 'ng2-flatpickr';
 import { AuthService } from 'src/app/services/auth.service';
 import { Actor } from 'src/app/models/actor.model';
 import Spanish from 'flatpickr/dist/l10n/es.js';
 import English from 'flatpickr/dist/l10n/uk.js';
 import { auth } from 'firebase';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-create-trip',
@@ -29,7 +29,6 @@ export class CreateTripComponent extends TranslatableComponent implements OnInit
 
   constructor(private tripService: TripService,
     private translateService: TranslateService,
-    private fileUploadService: FileUploadService,
     private route: ActivatedRoute,
     private fb: FormBuilder,
     private router: Router,
@@ -47,14 +46,14 @@ export class CreateTripComponent extends TranslatableComponent implements OnInit
 
   createForm() {
     this.tripForm = this.fb.group({
-      title: [''],
-      description: [''],
+      title: ['', Validators.required],
+      description: ['', Validators.required],
       price: [''],
-      requirements: [''],
-      startDate: [''],
-      endDate: [''],
+      requirements: ['', Validators.required],
+      startDate: ['', Validators.required],
+      endDate: ['', Validators.required],
       pictures: [''],
-      publicationDate: [''],
+      publicationDate: ['', Validators.required],
       stages: this.fb.array([this.createStage()]),
       manager: [''],
     });
@@ -62,9 +61,9 @@ export class CreateTripComponent extends TranslatableComponent implements OnInit
 
   createStage(): FormGroup {
     return this.fb.group({
-      title: [''],
-      description: [''],
-      price: ['']
+      title: ['', Validators.required],
+      description: ['', Validators.required],
+      price: ['', Validators.required]
     });
   }
 
@@ -80,7 +79,7 @@ export class CreateTripComponent extends TranslatableComponent implements OnInit
     let trip = this.tripForm.value;
     trip.manager = this.authService.getCurrentActor().id;
     trip.price = 500;
-    trip.pictures = this.pictures;
+    trip.pictures = this.pictures.length > 0 ? this.pictures : [environment.defaultTripImage];
     this.tripService.createTrip(trip)
       .then(res => {
         console.log(res);
@@ -94,33 +93,28 @@ export class CreateTripComponent extends TranslatableComponent implements OnInit
     return new Promise( resolve => setTimeout(resolve, ms) );
   }
 
-  async onPictureUpload(event) { //TODO: Comprobar que si el user es tonto y ha subido ya el fichero
+  async onPictureUpload(event) {
     let fileReader = new FileReader();
     let that = this;
     for (let file of event.files) {
       await this.delay(1000);
       fileReader.readAsDataURL(file);
       fileReader.onload = function () {
-        that.fileUploadService.uploadFile({ "data": fileReader.result }).then((res) => {
-          that.pictures.push({ "name": file.name, "id": res['id'] })
+          that.pictures.push(fileReader.result)
           console.log(that.pictures)
-        })
       };
     }
   }
 
   onPictureRemove(event) {
     if (this.pictures.length > 0) {
-      let obj = this.pictures.find(p => p.name === event.file.name);
-      let picture_id = obj['id'];
-      this.fileUploadService.getFile(picture_id).then((res) => {
-        this.pictures.splice(this.pictures.indexOf(obj), 1);
-        if (res) {
-          this.fileUploadService.removeFile(picture_id).then((res) => {
-            console.log(this.pictures)
-          })
-        }
-      })
+    let fileReader = new FileReader();
+    let that = this;
+    fileReader.readAsDataURL(event.file);
+    fileReader.onload = function () {
+        that.pictures.splice(that.pictures.indexOf(fileReader.result), 1);
+        console.log(that.pictures)
+      };
     }
   }
 
