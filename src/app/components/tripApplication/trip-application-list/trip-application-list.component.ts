@@ -25,7 +25,7 @@ export class TripApplicationListComponent extends TranslatableComponent implemen
   private tripsTitles = new Map();
   private explorersNames = new Map();
   private backgroundColor = new Map();
-  private explorerCancel = new Map();
+  private hasStarted = new Map();
   private applicationPrice = new Map();
 
   constructor(private authService: AuthService,
@@ -51,7 +51,9 @@ export class TripApplicationListComponent extends TranslatableComponent implemen
 
             const currentDate = new Date();
             const futureDate = new Date(trip.startDate);
-            this.explorerCancel.set(data[i].id, ((data[i].status === 'PENDING' || data[i].status === 'DUE') && (futureDate > currentDate)));
+            if (!this.hasStarted.has(data[i].trip)) {
+              this.hasStarted.set(data[i].trip, (currentDate > futureDate));
+            }
 
             this.applicationPrice.set(data[i].id, trip.price);
 

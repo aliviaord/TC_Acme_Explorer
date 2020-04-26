@@ -25,17 +25,17 @@
       </div>
       <div class="px-5 py-3 border-t bg-gray-100 flex" [style.background-color]=backgroundColor.get(a.id)[1]>
         <p *ngIf="a.rejectedReason" class="text-left"><span class="font-bold">{{'tripApplication.rejectedReason' | translate}}:</span> {{a.rejectedReason}}</p>
-        <div *ngIf="currentActor && currentActor.id === a.explorer && explorerCancel.get(a.id)" class="flex justify-center m-auto">
+        <div *ngIf="currentActor && currentActor.id === a.explorer && !hasStarted.get(a.trip) && (a.status === 'DUE' || a.status === 'ACCEPTED')" class="flex justify-center m-auto">
           <span class="my-auto mr-4">{{'tripApplication.changeStatus' | translate}}:</span>
           <a *ngIf="a.status === 'DUE'" routerLink="/application-payment" [queryParams]="{'total': applicationPrice.get(a.id), 'application': a.id}">
             <button class="bg-green-300 text-white mx-1 hover:underline font-bold rounded-full my-2 py-2 px-2">{{'tripApplication.pay' | translate}}</button>
           </a>
-          <button class="bg-green-300 text-white mx-1 hover:underline font-bold rounded-full my-2 py-2 px-2" type="button" (click)="changeStatus(a, 'CANCELLED')">{{'tripApplication.cancelled' | translate}}</button>
+          <button *ngIf="a.status === 'ACCEPTED'" class="bg-green-300 text-white mx-1 hover:underline font-bold rounded-full my-2 py-2 px-2" type="button" (click)="changeStatus(a, 'CANCELLED')">{{'tripApplication.cancelled' | translate}}</button>
         </div>
         <div *ngIf="currentActor.role === 'MANAGER' && a.status === 'PENDING'" class="flex justify-center m-auto">
           <span class="my-auto mr-4">{{'tripApplication.changeStatus' | translate}}:</span>
           <button class="bg-green-300 text-white mx-1 hover:underline font-bold rounded-full my-2 py-2 px-2" type="button" (click)="toggleModal()">{{'tripApplication.rejected' | translate}}</button>
-          <button *ngIf="explorerCancel.get(a.id)" class="bg-green-300 text-white mx-1 hover:underline font-bold rounded-full my-2 py-2 px-2" type="button" (click)="changeStatus(a, 'DUE')">{{'tripApplication.due' | translate}}</button>
+          <button *ngIf="!hasStarted.get(a.trip)" class="bg-green-300 text-white mx-1 hover:underline font-bold rounded-full my-2 py-2 px-2" type="button" (click)="changeStatus(a, 'DUE')">{{'tripApplication.due' | translate}}</button>
 
           <!--Modal-->
           <div class="modal opacity-0 pointer-events-none fixed w-full h-full top-0 left-0 flex items-center justify-center">
