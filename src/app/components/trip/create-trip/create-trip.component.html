@@ -21,42 +21,42 @@
       </div>
     </div>
 
-    <div class="mb-4">
+    <div class="flex flex-wrap -mx-3 mb-5">
+      <div class="w-full md:w-4/12 px-3 mb-6 md:mb-0">
+      <label class="block text-gray-700 text-md font-bold mb-2" for="startDate">
+          {{'trip.startDate' | translate}}
+        </label>
+        <p-calendar placeholder="{{'trip.startDate' | translate}}" formControlName="startDate"></p-calendar>
+        <div *ngIf="tripForm.get('startDate').errors && tripForm.get('startDate').touched && tripForm.get('startDate').errors.required" class="text-red-700 text-sm mt-1 rounded relative" role="alert">
+          <span class="block sm:inline">{{'messages.validation.required' | translate}}</span>
+        </div>
+      </div>
+      <div class="w-full md:w-4/12 px-3 mb-6 md:mb-0">
+        <label class="block text-gray-700 text-md font-bold mb-2" for="endDate">
+          {{'trip.endDate' | translate}}
+        </label>
+        <p-calendar placeholder="{{'trip.endDate' | translate}}" formControlName="endDate"></p-calendar>
+        <div *ngIf="tripForm.get('endDate').errors && tripForm.get('endDate').touched && tripForm.get('endDate').errors.required" class="text-red-700 text-sm mt-1 rounded relative" role="alert">
+          <span class="block sm:inline">{{'messages.validation.required' | translate}}</span>
+        </div>
+      </div>
+      <div class="w-full md:w-4/12 px-3 mb-6 md:mb-0">
+        <label class="block text-gray-700 text-md font-bold mb-2" for="startDate">
+          {{'trip.publicationDate' | translate}}
+        </label>
+        <p-calendar placeholder="{{'trip.startDate' | translate}}" formControlName="publicationDate"></p-calendar>
+        <div *ngIf="tripForm.get('publicationDate').errors && tripForm.get('publicationDate').touched && tripForm.get('publicationDate').errors.required" class="text-red-700 text-sm mt-1 rounded relative" role="alert">
+          <span class="block sm:inline">{{'messages.validation.required' | translate}}</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="mb-5">
       <label class="block text-gray-700 text-md font-bold mb-2" for="requirements">
         {{'trip.requirements' | translate}}
       </label>
       <input class="appearance-none border-2 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="requirements" formControlName="requirements" type="text" placeholder="{{'trip.requirements' | translate}}">
       <div *ngIf="tripForm.get('requirements').errors && tripForm.get('requirements').touched && tripForm.get('requirements').errors.required" class="text-red-700 text-sm mt-1 rounded relative" role="alert">
-        <span class="block sm:inline">{{'messages.validation.required' | translate}}</span>
-      </div>
-    </div>
-
-    <div class="mb-4">
-      <label class="block text-gray-700 text-md font-bold mb-2" for="startDate">
-        {{'trip.startDate' | translate}}
-      </label>
-      <ng2-flatpickr class="text-center" [config]="flatpickrOptions" id="startDate" placeholder="{{'trip.startDate' | translate}}" formControlName="startDate"></ng2-flatpickr>
-      <div *ngIf="tripForm.get('startDate').errors && tripForm.get('startDate').touched && tripForm.get('startDate').errors.required" class="text-red-700 text-sm mt-1 rounded relative" role="alert">
-        <span class="block sm:inline">{{'messages.validation.required' | translate}}</span>
-      </div>
-    </div>
-
-    <div class="mb-4">
-      <label class="block text-gray-700 text-md font-bold mb-2" for="endDate">
-        {{'trip.endDate' | translate}}
-      </label>
-      <input class="appearance-none border-2 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="endDate" formControlName="endDate" type="date" placeholder="{{'trip.endDate' | translate}}">
-      <div *ngIf="tripForm.get('endDate').errors && tripForm.get('endDate').touched && tripForm.get('endDate').errors.required" class="text-red-700 text-sm mt-1 rounded relative" role="alert">
-        <span class="block sm:inline">{{'messages.validation.required' | translate}}</span>
-      </div>
-    </div>
-
-    <div class="mb-4">
-      <label class="block text-gray-700 text-md font-bold mb-2" for="publicationDate">
-        {{'trip.publicationDate' | translate}}
-      </label>
-      <input class="appearance-none border-2 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="publicationDate" formControlName="publicationDate" type="date" placeholder="{{'trip.publicationDate' | translate}}">
-      <div *ngIf="tripForm.get('publicationDate').errors && tripForm.get('publicationDate').touched && tripForm.get('publicationDate').errors.required" class="text-red-700 text-sm mt-1 rounded relative" role="alert">
         <span class="block sm:inline">{{'messages.validation.required' | translate}}</span>
       </div>
     </div>
@@ -112,7 +112,7 @@
         </div>
       </div>
     </div>
-    <button class="m-2 bg-blue-300 hover:bg-blue-400 py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="button" (click)="addStage()">
+    <button class="text-sm text-purple-800 m-2 bg-purple-300 hover:bg-purple-300 py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="button" (click)="addStage()">
       <i class="fa fa-plus-circle"></i>
       {{'stage.add' | translate}}
     </button>

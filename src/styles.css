@@ -43,4 +43,26 @@ a:hover {
 .map {
     width: 100%;
     height: 40vh;
-  }
+}
+
+body .ui-inputtext {
+    border: 2px solid #e2e8f0;
+    color: #4a5568;
+    padding-left: .75rem;
+    padding-right: .75rem;
+    padding-top: .5rem;
+    padding-bottom: .5rem;
+    line-height: 1.25;
+    border-radius: .25rem;
+    width: 100%!important;
+    font-family: inherit;
+    font-size: inherit;
+}
+
+.ui-calendar {
+    display: initial;
+}
+
+body .ui-inputtext:hover {
+    border-color: #4a5568!important;
+}

@@ -5,7 +5,6 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { TranslatableComponent } from '../../shared/translatable/translatable.component';
 import { FormGroup, FormBuilder, FormArray, Validators } from '@angular/forms';
-import { FlatpickrOptions } from 'ng2-flatpickr';
 import { AuthService } from 'src/app/services/auth.service';
 import Spanish from 'flatpickr/dist/l10n/es.js';
 import English from 'flatpickr/dist/l10n/uk.js';
@@ -20,10 +19,6 @@ export class EditTripComponent extends TranslatableComponent implements OnInit {
   
   id: string;
   tripForm: FormGroup;
-  flatpickrOptions: FlatpickrOptions = {
-    locale: this.getLang() == 'es' ? Spanish.es : English.en,
-    dateFormat: 'd/m/Y'
-  };
 
   trip = new Trip();
   pictures = [];

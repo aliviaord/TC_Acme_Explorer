@@ -27,7 +27,6 @@ import { HttpModule } from '@angular/http';
 import { DeniedAccessPageComponent } from './components/security/denied-access-page/denied-access-page.component';
 import { SlickCarouselModule } from 'ngx-slick-carousel';
 import { CreateTripComponent } from './components/trip/create-trip/create-trip.component';
-import { Ng2FlatpickrModule } from 'ng2-flatpickr';
 import { EditTripComponent } from './components/trip/edit-trip/edit-trip.component';
 import { DisplayAuditComponent } from './components/audit/display-audit/display-audit.component';
 import { AuditListComponent } from './components/audit/audit-list/audit-list.component';
@@ -41,6 +40,8 @@ import { NgxDaterangepickerMd } from 'ngx-daterangepicker-material';
 import { TripApplicationPaymentComponent } from './components/tripApplication/trip-application-payment/trip-application-payment.component';
 import { NgxPayPalModule } from 'ngx-paypal';
 import {FileUploadModule} from 'primeng/fileupload';
+import {CalendarModule} from 'primeng/calendar';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 export const firebaseConfig = {
   apiKey: 'AIzaSyBeyK3jw-oLh1MyZMHrydSJwy0WTxWDZ-0',
@@ -88,6 +89,8 @@ export function HttpLoaderFactory(http: HttpClient) {
   imports: [
     BrowserModule,
     FormsModule,
+    CalendarModule,
+    BrowserAnimationsModule,
     FileUploadModule,
     DataTablesModule,
     ReactiveFormsModule,
@@ -103,7 +106,6 @@ export function HttpLoaderFactory(http: HttpClient) {
     AppRoutingModule,
     HttpModule,
     SlickCarouselModule,
-    Ng2FlatpickrModule,
     InfiniteScrollModule,
     Ng5SliderModule,
     NgxDaterangepickerMd.forRoot(),

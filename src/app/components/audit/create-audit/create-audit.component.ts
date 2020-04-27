@@ -7,7 +7,6 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { TranslatableComponent } from '../../shared/translatable/translatable.component';
 import { FormGroup, FormBuilder, FormArray } from '@angular/forms';
-import { FlatpickrOptions } from 'ng2-flatpickr';
 import { AuthService } from 'src/app/services/auth.service';
 import { Actor } from 'src/app/models/actor.model';
 import Spanish from 'flatpickr/dist/l10n/es.js';
@@ -22,10 +21,6 @@ import { auth } from 'firebase';
 export class CreateAuditComponent extends TranslatableComponent implements OnInit {
   
   auditForm: FormGroup;
-  flatpickrOptions: FlatpickrOptions = {
-    locale: this.getLang() == 'es' ? Spanish.es : English.en,
-    dateFormat: 'd/m/Y'
-  };
   trips: Trip[];
 
   constructor(private auditService: AuditService,
