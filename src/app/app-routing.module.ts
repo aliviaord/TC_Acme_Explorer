@@ -19,6 +19,7 @@ import { TripApplicationListComponent } from './components/tripApplication/trip-
 import { SponsorshipListComponent } from './components/sponsorship/sponsorship-list/sponsorship-list.component';
 import { DashboardDisplayComponent } from './components/dashboard/dashboard-display/dashboard-display.component';
 import { TripApplicationPaymentComponent } from './components/tripApplication/trip-application-payment/trip-application-payment.component';
+import { FinderDisplayComponent } from './components/finder/finder-display/finder-display.component';
 
 const appRoutes: Routes = [
   {path: '', component: MainComponent, pathMatch: 'full'},
@@ -52,6 +53,7 @@ const appRoutes: Routes = [
     data: {expectedRole: 'MANAGER|EXPLORER'}},
   {path: 'sponsorships', component: SponsorshipListComponent, canActivate: [ActorRoleGuard], data: {expectedRole: 'SPONSOR'}},
   {path: 'dashboard', component: DashboardDisplayComponent, canActivate: [ActorRoleGuard], data: {expectedRole: 'ADMINISTRATOR'}},
+  {path: 'finder', component: FinderDisplayComponent, canActivate: [ActorRoleGuard], data: {expectedRole: 'EXPLORER'}},
   {path: 'not-found', component: NotFoundPageComponent},
   {path: 'terms-and-conditions', component: TermsAndConditionsComponent},
   {path: 'denied-access', component: DeniedAccessPageComponent},

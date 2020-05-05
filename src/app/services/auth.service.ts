@@ -6,6 +6,8 @@ import { environment } from 'src/environments/environment';
 import { HttpHeaders, HttpClient } from '@angular/common/http';
 import { Subject } from 'rxjs';
 import { InfoMessageService } from './info-message.service';
+import { FinderService } from './finder.service';
+import { Finder } from '../models/finder.model';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -20,7 +22,8 @@ export class AuthService {
   userLoggedIn = new Subject();
 
   constructor(private fireAuth: AngularFireAuth, private http: HttpClient,
-    private infoMessageService: InfoMessageService) {
+    private infoMessageService: InfoMessageService,
+    private finderService: FinderService) {
       // this.fireAuth.auth.onAuthStateChanged((authState) => {
       //   if (authState) {
       //     const url = `${environment.backendApiBaseURL}/actors?email=${authState.email}`;
@@ -43,12 +46,27 @@ export class AuthService {
         headers.append('Content-type', 'application/json');
         const url = `${environment.backendApiBaseURL}/actors`;
         const body = JSON.stringify(actor);
-        this.http.post(url, body, httpOptions).toPromise()
-          .then(res => {
-            resolve(res);
-          }, err => {
-            reject(err);
-          });
+        httpOptions.headers.append('observe', 'response');
+        this.http.post<Actor>(url, body, httpOptions).subscribe(createdActor => {
+          if (createdActor.role === 'EXPLORER') {
+            const newFinder = new Finder();
+
+            newFinder.id = null;
+            newFinder.keyword = null;
+            newFinder.minPrice = null;
+            newFinder.maxPrice = null;
+            newFinder.startDate = null;
+            newFinder.endDate = null;
+            newFinder.explorer = createdActor.id;
+
+            this.finderService.createFinder(newFinder)
+            .then(res => {
+              resolve(res);
+            }, err => {
+              reject(err);
+            });
+          }
+        });
       }).catch(err => {
         reject(err);
       });

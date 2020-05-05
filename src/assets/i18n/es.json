@@ -171,5 +171,8 @@
         "minPrice": "Precio mínimo",
         "maxPrice": "Precio máximo",
         "topKeywords": "Top 10 palabras que los exploradores indican en sus buscadores"
+    },
+    "finder": {
+        "title": "Buscador"
     }
 }
