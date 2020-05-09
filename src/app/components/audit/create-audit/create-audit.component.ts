@@ -6,12 +6,8 @@ import { TripService } from 'src/app/services/trip.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { TranslatableComponent } from '../../shared/translatable/translatable.component';
-import { FormGroup, FormBuilder, FormArray } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { AuthService } from 'src/app/services/auth.service';
-import { Actor } from 'src/app/models/actor.model';
-import Spanish from 'flatpickr/dist/l10n/es.js';
-import English from 'flatpickr/dist/l10n/uk.js';
-import { auth } from 'firebase';
 
 @Component({
   selector: 'app-create-audit',
@@ -43,10 +39,11 @@ export class CreateAuditComponent extends TranslatableComponent implements OnIni
 
   createForm() {
     this.auditForm = this.fb.group({
-      title: [''],
-      description: [''],
-      trip: [''],
+      title: ['', Validators.required],
+      description: ['', Validators.required],
+      trip: ['', Validators.required],
       auditor: [''],
+      attachments: [''],
     });
   }
 
@@ -54,10 +51,11 @@ export class CreateAuditComponent extends TranslatableComponent implements OnIni
     let audit = this.auditForm.value;
     audit.auditor = this.authService.getCurrentActor().id;
     audit.createdAt = new Date();
+    audit.attachments = audit.attachments.split("\n")
     this.auditService.createAudit(audit)
     .then(res => {
       console.log(res); 
-      this.router.navigate(['/my-audits']);
+      this.router.navigate(['/audits']);
     }, err => {
       console.log(err);
     });

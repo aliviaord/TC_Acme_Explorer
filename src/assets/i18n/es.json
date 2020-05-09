@@ -53,7 +53,8 @@
         "my-list": "Mis auditorías",
         "list": "Lista de auditorías",
         "create": "Crear auditoría",
-        "attachments": "Adjuntos"
+        "attachments": "Adjuntos",
+        "attachments.format": "Por favor introduce tus enlaces separados por saltos de línea."
     },
     "trip": {
         "display": "Mostrar viaje",

@@ -53,7 +53,8 @@
         "my-list": "My audits",
         "list": "Audit list",
         "create": "Create audit",
-        "attachments": "Attachments"
+        "attachments": "Attachments",
+        "attachments.format": "Please input your urls separated by break lines"
     },
     "trip": {
         "display": "Display trip",

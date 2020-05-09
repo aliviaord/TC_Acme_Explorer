@@ -1,20 +1,6 @@
-<div class="w-48c content-center text-center">
+<div class="w-full mx-auto sm:w-7/12 md:w-7/12 lg:w-7/12 content-center text-center flex flex-col">
   <form [formGroup]="auditForm" (ngSubmit)="onCreateAudit()" class="text-base bg-white shadow-2xl rounded px-8 pt-6 pb-8">
     <h1 class="text-5xl">{{'audit.create' | translate}}</h1><br/>
-    <div class="mb-4">
-      <label class="block text-gray-700 text-md font-bold mb-2" for="title">
-        {{'trip.title' | translate}}
-      </label>
-      <input class="appearance-none border-2 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="title" formControlName="title" type="text" placeholder="{{'trip.title' | translate}}">
-    </div>
-
-    <div class="mb-4">
-      <label class="block text-gray-700 text-md font-bold mb-2" for="description">
-        {{'trip.description' | translate}}
-      </label>
-      <textarea class="appearance-none border-2 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="description" formControlName="description" type="text" placeholder="{{'trip.description' | translate}}"></textarea>
-    </div>
-
     <div class="mb-4">
       <label class="block text-gray-700 text-md font-bold mb-2" for="trip">
         {{'common.trip' | translate}}
@@ -22,9 +8,43 @@
       <select class="text-gray-700 block appearance-none w-full bg-white border-2 px-4 py-2 pr-8 rounded leading-tight focus:outline-none focus:shadow-outline" id="trip" formControlName="trip">
         <option *ngFor="let trip of trips;" value="{{trip.id}}">{{trip.title}}</option>
       </select>
+      <div *ngIf="auditForm.get('trip').errors && auditForm.get('trip').touched && auditForm.get('trip').errors.required" class="text-red-700 text-sm mt-1 rounded relative" role="alert">
+        <span class="block sm:inline">{{'messages.validation.required' | translate}}</span>
+      </div>
     </div>
+
+    <div class="mb-4">
+      <label class="block text-gray-700 text-md font-bold mb-2" for="title">
+        {{'trip.title' | translate}}
+      </label>
+      <input class="appearance-none border-2 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="title" formControlName="title" type="text" placeholder="{{'trip.title' | translate}}">
+      <div *ngIf="auditForm.get('title').errors && auditForm.get('title').touched && auditForm.get('title').errors.required" class="text-red-700 text-sm mt-1 rounded relative" role="alert">
+        <span class="block sm:inline">{{'messages.validation.required' | translate}}</span>
+      </div>
+    </div>
+
+    <div class="mb-4">
+      <label class="block text-gray-700 text-md font-bold mb-2" for="description">
+        {{'trip.description' | translate}}
+      </label>
+      <textarea class="appearance-none border-2 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="description" formControlName="description" type="text" placeholder="{{'trip.description' | translate}}"></textarea>
+      <div *ngIf="auditForm.get('description').errors && auditForm.get('description').touched && auditForm.get('description').errors.required" class="text-red-700 text-sm mt-1 rounded relative" role="alert">
+        <span class="block sm:inline">{{'messages.validation.required' | translate}}</span>
+      </div>
+    </div>
+
+    <div class="mb-4">
+      <label class="block text-gray-700 text-md font-bold mb-2" for="attachments">
+        {{'audit.attachments' | translate}}
+      </label>
+      <textarea class="appearance-none border-2 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="description" formControlName="attachments" type="text" placeholder="{{'audit.attachments.format' | translate}}"></textarea>
+      <div *ngIf="auditForm.get('attachments').errors && auditForm.get('attachments').touched && auditForm.get('attachments').errors.required" class="text-red-700 text-sm mt-1 rounded relative" role="alert">
+        <span class="block sm:inline">{{'messages.validation.required' | translate}}</span>
+      </div>
+    </div>
+
     <div class="flex items-center justify-center">
-      <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit">
+      <button [ngClass]="{'opacity-50 cursor-not-allowed': auditForm.invalid}" [disabled]="auditForm.invalid" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit">
         {{'common.create' | translate}}
       </button>
     </div>
