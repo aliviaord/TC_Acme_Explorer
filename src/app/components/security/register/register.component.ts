@@ -1,14 +1,19 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { FormGroup, FormBuilder } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { AuthService } from '../../../services/auth.service';
 import { TranslateService } from '@ngx-translate/core';
 import { TranslatableComponent } from '../../shared/translatable/translatable.component';
 import Map from 'ol/Map';
+import Feature from 'ol/Feature';
 import View from 'ol/View';
 import TileLayer from 'ol/layer/Tile';
 import XYZ from 'ol/source/XYZ';
-
+import Point from 'ol/geom/Point';
+import {Icon, Style} from 'ol/style';
+import VectorSource from 'ol/source/Vector';
+import VectorLayer from 'ol/layer/Vector';
+import {fromLonLat} from 'ol/proj';
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -19,6 +24,7 @@ export class RegisterComponent extends TranslatableComponent implements OnInit {
   registrationForm: FormGroup;
   roleList: string[];
   map: Map;
+  markerLayer: VectorLayer;
 
   constructor(private router: Router,
     private authService: AuthService,
@@ -50,25 +56,54 @@ export class RegisterComponent extends TranslatableComponent implements OnInit {
   }
 
   getCoord(event: any){
-    var coordinate = this.map.getEventCoordinate(event);
-    console.log(coordinate)
+    var coordinates = this.map.getEventCoordinate(event);
+    var iconFeature = new Feature({
+      geometry: new Point(coordinates),
+    });
+    
+    var iconStyle = new Style({
+      image: new Icon({
+        src: 'src/favicon.ico'
+      })
+    });
+    
+    iconFeature.setStyle(iconStyle);
+
+    var vectorSource = new VectorSource({
+      features: [iconFeature]
+    });
+    var vectorLayer = new VectorLayer({
+        source: vectorSource
+    });
+
+    if (this.markerLayer) {
+      this.map.removeLayer(this.markerLayer)
+    }
+
+    this.markerLayer = vectorLayer;
+    this.map.addLayer(vectorLayer);
+    
+    this.registrationForm.get('address').setValue(coordinates)
   }
 
   createForm() {
     this.registrationForm = this.fb.group({
-      name: [''],
-      surname: [''],
-      email: [''],
-      password: [''],
-      address: [''],
-      phoneNumber: [''],
+      name: ['', Validators.required],
+      surname: ['', Validators.required],
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', [Validators.required, Validators.minLength(6)]],
+      repeatPassword: ['', Validators.required],
+      address: ['', Validators.required],
+      phoneNumber: ['', [Validators.required, Validators.pattern('^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s\./0-9]*$')]],
       role: ['EXPLORER'],
       banned: [false]
     });
   }
 
   onRegister() {
-    this.authService.registerUser(this.registrationForm.value)
+    var actor = this.registrationForm.value;
+    delete actor['repeatPassword'];
+    this.authService.registerUser(actor)
     .then(res => {
       console.log(res);
       this.router.navigate(['/login']);

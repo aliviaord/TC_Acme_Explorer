@@ -2,6 +2,7 @@
     "actor": {
         "email": "Correo electrónico",
         "password": "Contraseña",
+        "password.repeat": "Repite la contraseña",
         "name": "Nombre",
         "surname": "Apellido",
         "phone": "Teléfono",
@@ -116,7 +117,10 @@
             "number.positive": "Debes introducir un número positivo.",
             "number.max": "Sólo los números menores que {{maxValue}} son permitidos.",
             "number.min": "Sólo los números mayores que {{minValue}} son permitidos.",
-            "email.valid": "Debes introducir un email válido."
+            "email.valid": "Debes introducir un email válido.",
+            "phone.valid": "Debes introducir un número de teléfono válido.",
+            "password.match": "Las contraseñas no coinciden.",
+            "password.min": "La contraseña debe tener al menos 6 carácteres."
         }
     },
     "not-found-page": {

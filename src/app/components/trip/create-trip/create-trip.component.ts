@@ -6,11 +6,6 @@ import { TranslateService } from '@ngx-translate/core';
 import { TranslatableComponent } from '../../shared/translatable/translatable.component';
 import { FormGroup, FormBuilder, FormArray, Validators } from '@angular/forms';
 import { AuthService } from 'src/app/services/auth.service';
-import { Actor } from 'src/app/models/actor.model';
-import Spanish from 'flatpickr/dist/l10n/es.js';
-import English from 'flatpickr/dist/l10n/uk.js';
-import { auth } from 'firebase';
-import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-create-trip',

@@ -1,25 +1,37 @@
-<div class="w-48c content-center text-center mx-auto">
+<div class="w-full mx-auto sm:w-7/12 md:w-7/12 lg:w-7/12 content-center text-center flex flex-col">
   <form [formGroup]="registrationForm" (ngSubmit)="onRegister()" class="text-base bg-white shadow-2xl rounded px-8 pt-6 pb-8">
-    <h1 class="text-5xl">{{'titles.register' | translate}}</h1><br/>
-    <div class="mb-4">
-      <label class="block text-gray-700 text-md font-bold mb-2" for="name">
-        {{'actor.name' | translate}}
-      </label>
-      <input class="appearance-none border-2 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="name" formControlName="name" type="text" placeholder="{{'actor.name' | translate}}">
+    <h1 class="sm:text-5xl md:text-5xl text-3xl">{{'titles.register' | translate}}</h1><br/>
+    <div class="flex flex-wrap -mx-3 mb-5">
+      <div class="w-full md:w-6/12 px-3 mb-6 md:mb-0">
+        <label class="block text-gray-700 text-md font-bold mb-2" for="name">
+          {{'actor.name' | translate}}
+        </label>
+        <input class="appearance-none border-2 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="name" formControlName="name" type="text" placeholder="{{'actor.name' | translate}}">
+      <div *ngIf="registrationForm.get('name').errors && registrationForm.get('name').touched && registrationForm.get('name').errors.required" class="text-red-700 text-sm mt-1 rounded relative" role="alert">
+          <span class="block sm:inline">{{'messages.validation.required' | translate}}</span>
+        </div>
+      </div>
+      <div class="w-full md:w-6/12 px-3 mb-6 md:mb-0">
+        <label class="block text-gray-700 text-md font-bold mb-2" for="surname">
+          {{'actor.surname' | translate}}
+        </label>
+        <input class="appearance-none border-2 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="surname" formControlName="surname" type="text" placeholder="{{'actor.surname' | translate}}">
+        <div *ngIf="registrationForm.get('surname').errors && registrationForm.get('surname').touched && registrationForm.get('surname').errors.required" class="text-red-700 text-sm mt-1 rounded relative" role="alert">
+          <span class="block sm:inline">{{'messages.validation.required' | translate}}</span>
+        </div>
+      </div>
     </div>
-
-    <div class="mb-4">
-      <label class="block text-gray-700 text-md font-bold mb-2" for="surname">
-        {{'actor.surname' | translate}}
-      </label>
-      <input class="appearance-none border-2 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="surname" formControlName="surname" type="text" placeholder="{{'actor.surname' | translate}}">
-    </div>
-
     <div class="mb-4">
       <label class="block text-gray-700 text-md font-bold mb-2" for="email">
         {{'actor.email' | translate}}
       </label>
       <input class="appearance-none border-2 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="email" formControlName="email" type="text" placeholder="{{'actor.email' | translate}}">
+      <div *ngIf="registrationForm.get('email').errors && registrationForm.get('email').touched && registrationForm.get('email').errors.required" class="text-red-700 text-sm mt-1 rounded relative" role="alert">
+        <span class="block sm:inline">{{'messages.validation.required' | translate}}</span>
+      </div>
+      <div *ngIf="registrationForm.get('email').errors && registrationForm.get('email').touched && registrationForm.get('email').errors.email" class="text-red-700 text-sm mt-1 rounded relative" role="alert">
+        <span class="block sm:inline">{{'messages.validation.email.valid' | translate}}</span>
+      </div>
     </div>
 
     <div class="mb-4">
@@ -27,37 +39,55 @@
         {{'actor.phone' | translate}}
       </label>
       <input class="appearance-none border-2 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="phoneNumber" formControlName="phoneNumber" type="text" placeholder="{{'actor.phone' | translate}}">
+      <div *ngIf="registrationForm.get('phoneNumber').errors && registrationForm.get('phoneNumber').touched && registrationForm.get('phoneNumber').errors.required" class="text-red-700 text-sm mt-1 rounded relative" role="alert">
+        <span class="block sm:inline">{{'messages.validation.required' | translate}}</span>
+      </div>
+      <div *ngIf="registrationForm.get('phoneNumber').errors && registrationForm.get('phoneNumber').touched && registrationForm.get('phoneNumber').errors.pattern" class="text-red-700 text-sm mt-1 rounded relative" role="alert">
+        <span class="block sm:inline">{{'messages.validation.phone.valid' | translate}}</span>
+      </div>
     </div>
 
     <div class="mb-4">
       <label class="block text-gray-700 text-md font-bold mb-2" for="address">
         {{'actor.address' | translate}}
       </label>
-      <div id="map" (click)="getCoord($event)" class="map"></div>
+      <div id="map" (click)="getCoord($event)" class="map"></div><br/>
       <input class="appearance-none border-2 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="address" formControlName="address" type="text" placeholder="{{'actor.address' | translate}}">
+      <div *ngIf="registrationForm.get('address').errors && registrationForm.get('address').touched && registrationForm.get('address').errors.required" class="text-red-700 text-sm mt-1 rounded relative" role="alert">
+        <span class="block sm:inline">{{'messages.validation.required' | translate}}</span>
+      </div>
     </div>
-
-    <!-- According to requirements, users can only be registered as explorers -->
-    <!-- <div class="mb-4">
-      <label class="block text-gray-700 text-md font-bold mb-2" for="role">
-        {{'actor.role' | translate}}
-      </label>
-      <input class="appearance-none border-2 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="role" formControlName="role" type="text" placeholder="{{'actor.role' | translate}}">
-    </div> -->
 
     <div class="mb-6">
       <label class="block text-gray-700 text-md font-bold mb-2" for="password">
         {{'actor.password' | translate}}
       </label>
       <input class="appearance-none border-2 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" id="password" formControlName="password" type="password" placeholder="{{'actor.password' | translate}}">
+      <div *ngIf="registrationForm.get('password').errors && registrationForm.get('password').touched && registrationForm.get('password').errors.required" class="text-red-700 text-sm mt-1 rounded relative" role="alert">
+        <span class="block sm:inline">{{'messages.validation.required' | translate}}</span>
+      </div>
+      <div *ngIf="registrationForm.get('password').errors && registrationForm.get('password').touched && registrationForm.get('password').errors.minlength" class="text-red-700 text-sm mt-1 rounded relative" role="alert">
+        <span class="block sm:inline">{{'messages.validation.password.min' | translate}}</span>
+      </div>
     </div>
+
+    <div class="mb-6">
+      <label class="block text-gray-700 text-md font-bold mb-2" for="password">
+        {{'actor.password.repeat' | translate}}
+      </label>
+      <input class="appearance-none border-2 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" id="repeatPassword" formControlName="repeatPassword" type="password" pattern="{{ registrationForm.get('password').value }}" placeholder="{{'actor.password.repeat' | translate}}">
+      <div *ngIf="registrationForm.get('repeatPassword').errors && registrationForm.get('repeatPassword').touched && registrationForm.get('repeatPassword').errors.pattern" class="text-red-700 text-sm mt-1 rounded relative" role="alert">
+        <span class="block sm:inline">{{'messages.validation.password.match' | translate}}</span>
+      </div>
+      <div *ngIf="registrationForm.get('repeatPassword').errors && registrationForm.get('repeatPassword').touched && registrationForm.get('repeatPassword').errors.required" class="text-red-700 text-sm mt-1 rounded relative" role="alert">
+        <span class="block sm:inline">{{'messages.validation.required' | translate}}</span>
+      </div>
+    </div>
+
     <div class="flex items-center justify-center">
-      <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit">
+      <button [ngClass]="{'opacity-50 cursor-not-allowed': registrationForm.invalid}" [disabled]="registrationForm.invalid" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit">
         {{'security.signin' | translate}}
       </button>
-      <!-- <a class="inline-block align-baseline font-bold text-md text-blue-500 hover:text-blue-800" href="#">
-        Forgot Password?
-      </a> -->
     </div>
   </form>
 </div>

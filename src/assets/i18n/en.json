@@ -2,6 +2,7 @@
     "actor": {
         "email": "Email",
         "password": "Password",
+        "password.repeat": "Repeat password",
         "name": "Name",
         "surname": "Surname",
         "phone": "Phone",
@@ -116,7 +117,10 @@
             "number.positive": "You must introduce a positive number.",
             "number.max": "Only numbers lower than {{maxValue}} are allowed.",
             "number.min": "Only numbers higher than {{minValue}} are allowed.",
-            "email.valid": "You must provide a valid email."
+            "email.valid": "You must provide a valid email.",
+            "phone.valid": "You must provide a valid phone number.",
+            "password.match": "Passwords don't match.",
+            "password.min": "Password must have at least 6 characters."
         }
     },
     "not-found-page": {
