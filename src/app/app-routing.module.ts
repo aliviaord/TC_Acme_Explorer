@@ -20,6 +20,7 @@ import { SponsorshipListComponent } from './components/sponsorship/sponsorship-l
 import { DashboardDisplayComponent } from './components/dashboard/dashboard-display/dashboard-display.component';
 import { TripApplicationPaymentComponent } from './components/tripApplication/trip-application-payment/trip-application-payment.component';
 import { FinderDisplayComponent } from './components/finder/finder-display/finder-display.component';
+import { EditActorComponent } from './components/actor/edit-actor/edit-actor.component';
 
 const appRoutes: Routes = [
   {path: '', component: MainComponent, pathMatch: 'full'},
@@ -38,6 +39,9 @@ const appRoutes: Routes = [
   ]},
   {path: 'my-trips', component: TripListComponent,
   canActivate: [ActorRoleGuard], data: {expectedRole: 'MANAGER'}
+  },
+  {path: 'edit-profile', component: EditActorComponent,
+  canActivate: [ActorRoleGuard], data: {expectedRole: 'MANAGER|EXPLORER|AUDITOR|SPONSOR|ADMINISTRATOR'}
   },
   {path: 'new-trip', component: CreateTripComponent,
   canActivate: [ActorRoleGuard], data: {expectedRole: 'MANAGER'}

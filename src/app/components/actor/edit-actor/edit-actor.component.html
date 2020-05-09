@@ -1,0 +1,54 @@
+<div class="w-full mx-auto sm:w-7/12 md:w-7/12 lg:w-7/12 content-center text-center flex flex-col">
+  <form [formGroup]="editForm" (ngSubmit)="onEdit()" class="text-base bg-white shadow-2xl rounded px-8 pt-6 pb-8">
+    <h1 class="sm:text-5xl md:text-5xl text-3xl">{{'actor.edit' | translate}}</h1><br/>
+    <div class="flex flex-wrap -mx-3 mb-5">
+      <div class="w-full md:w-6/12 px-3 mb-6 md:mb-0">
+        <label class="block text-gray-700 text-md font-bold mb-2" for="name">
+          {{'actor.name' | translate}}
+        </label>
+        <input class="appearance-none border-2 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="name" formControlName="name" type="text" placeholder="{{'actor.name' | translate}}">
+      <div *ngIf="editForm.get('name').errors && editForm.get('name').touched && editForm.get('name').errors.required" class="text-red-700 text-sm mt-1 rounded relative" role="alert">
+          <span class="block sm:inline">{{'messages.validation.required' | translate}}</span>
+        </div>
+      </div>
+      <div class="w-full md:w-6/12 px-3 mb-6 md:mb-0">
+        <label class="block text-gray-700 text-md font-bold mb-2" for="surname">
+          {{'actor.surname' | translate}}
+        </label>
+        <input class="appearance-none border-2 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="surname" formControlName="surname" type="text" placeholder="{{'actor.surname' | translate}}">
+        <div *ngIf="editForm.get('surname').errors && editForm.get('surname').touched && editForm.get('surname').errors.required" class="text-red-700 text-sm mt-1 rounded relative" role="alert">
+          <span class="block sm:inline">{{'messages.validation.required' | translate}}</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="mb-4">
+      <label class="block text-gray-700 text-md font-bold mb-2" for="phoneNumber">
+        {{'actor.phone' | translate}}
+      </label>
+      <input class="appearance-none border-2 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="phoneNumber" formControlName="phoneNumber" type="text" placeholder="{{'actor.phone' | translate}}">
+      <div *ngIf="editForm.get('phoneNumber').errors && editForm.get('phoneNumber').touched && editForm.get('phoneNumber').errors.required" class="text-red-700 text-sm mt-1 rounded relative" role="alert">
+        <span class="block sm:inline">{{'messages.validation.required' | translate}}</span>
+      </div>
+      <div *ngIf="editForm.get('phoneNumber').errors && editForm.get('phoneNumber').touched && editForm.get('phoneNumber').errors.pattern" class="text-red-700 text-sm mt-1 rounded relative" role="alert">
+        <span class="block sm:inline">{{'messages.validation.phone.valid' | translate}}</span>
+      </div>
+    </div>
+
+    <div class="mb-4">
+      <label class="block text-gray-700 text-md font-bold mb-2" for="address">
+        {{'actor.address' | translate}}
+      </label>
+      <div id="map" (click)="getCoord($event)" class="map"></div><br/>
+      <input class="appearance-none border-2 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="address" formControlName="address" type="text" placeholder="{{'actor.address' | translate}}">
+      <div *ngIf="editForm.get('address').errors && editForm.get('address').touched && editForm.get('address').errors.required" class="text-red-700 text-sm mt-1 rounded relative" role="alert">
+        <span class="block sm:inline">{{'messages.validation.required' | translate}}</span>
+      </div>
+    </div>
+    <div class="flex items-center justify-center">
+      <button [ngClass]="{'opacity-50 cursor-not-allowed': editForm.invalid}" [disabled]="editForm.invalid" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit">
+        {{'common.update' | translate}}
+      </button>
+    </div>
+  </form>
+</div>

@@ -23,4 +23,10 @@ export class ActorService {
       return this.http.get<Actor>(url, httpOptions).toPromise();
     }
   }
+
+  editActor(actor) {
+    console.log(actor)
+    const url = `${this.actorsUrl}/${actor.id}`;
+    return this.http.put<Actor>(url, actor, httpOptions).toPromise();
+  }
 }

@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { AuthService } from '../../../services/auth.service';
+import { ActorService } from '../../../services/actor.service';
 import { TranslateService } from '@ngx-translate/core';
 import { TranslatableComponent } from '../../shared/translatable/translatable.component';
 import Map from 'ol/Map';
@@ -14,26 +15,40 @@ import {Icon, Style} from 'ol/style';
 import VectorSource from 'ol/source/Vector';
 import VectorLayer from 'ol/layer/Vector';
 import {fromLonLat} from 'ol/proj';
-@Component({
-  selector: 'app-register',
-  templateUrl: './register.component.html',
-  styleUrls: ['./register.component.css']
-})
-export class RegisterComponent extends TranslatableComponent implements OnInit {
+import { InfoMessageService } from '../../../services/info-message.service';
 
-  registrationForm: FormGroup;
+@Component({
+  selector: 'app-edit-actor',
+  templateUrl: './edit-actor.component.html',
+  styleUrls: ['./edit-actor.component.css']
+})
+export class EditActorComponent extends TranslatableComponent implements OnInit {
+
+  editForm: FormGroup;
+  roleList: string[];
   map: Map;
   markerLayer: VectorLayer;
+  actor;
 
   constructor(private router: Router,
     private authService: AuthService,
+    private actorService: ActorService,
+    private route: ActivatedRoute,
     private fb: FormBuilder,
+    private infoMessageService: InfoMessageService,
     private translateService: TranslateService) {
     super(translateService);
-    this.createForm();
   }
 
   ngOnInit() {
+    var id = this.authService.currentActor.id;
+    this.actorService.getActor(id)
+      .then((actor) => {
+        this.actor = actor;
+        this.createEditForm(actor);
+      }).catch((err) => {
+        console.error(err);
+      });
   }
 
   ngAfterViewInit() {
@@ -50,6 +65,15 @@ export class RegisterComponent extends TranslatableComponent implements OnInit {
         center: [213079.7791264898, 4929220.284081122],
         zoom: 5
       }),
+    });
+  }
+
+  createEditForm(actor) {
+    this.editForm = this.fb.group({
+      name: [actor.name, Validators.required],
+      surname: [actor.surname, Validators.required],
+      address: [actor.address, Validators.required],
+      phoneNumber: [actor.phoneNumber, [Validators.required, Validators.pattern('^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s\./0-9]*$')]],
     });
   }
 
@@ -78,33 +102,29 @@ export class RegisterComponent extends TranslatableComponent implements OnInit {
     }
     this.markerLayer = vectorLayer;
     this.map.addLayer(vectorLayer);
-    this.registrationForm.get('address').setValue(coordinates)
+    this.editForm.get('address').setValue(coordinates)
   }
 
-  createForm() {
-    this.registrationForm = this.fb.group({
-      name: ['', Validators.required],
-      surname: ['', Validators.required],
-      email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required, Validators.minLength(6)]],
-      repeatPassword: ['', Validators.required],
-      address: ['', Validators.required],
-      phoneNumber: ['', [Validators.required, Validators.pattern('^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s\./0-9]*$')]],
-      role: ['EXPLORER'],
-      banned: [false]
-    });
-  }
-
-  onRegister() {
-    var actor = this.registrationForm.value;
-    delete actor['repeatPassword'];
-    this.authService.registerUser(actor)
+  onEdit() {
+    var actor = this.editForm.value;
+    actor.id = this.actor.id;
+    actor.password = this.actor.password;
+    actor.email = this.actor.email;
+    actor.role = this.actor.role;
+    actor.banned = this.actor.banned;
+    actor.version = this.actor.version;
+    this.actorService.editActor(actor)
     .then(res => {
       console.log(res);
-      this.router.navigate(['/login']);
+      this.infoMessageService.notifyMessage('messages.profile.edit.correct',
+              'text-center bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative');
+      this.router.navigate(['/edit-profile']);
     }, err => {
       console.log(err);
+      this.infoMessageService.notifyMessage('messages.profile.edit.failed',
+              'text-center bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative');
     });
   }
+
 
 }
