@@ -37,6 +37,8 @@ export class TripDisplayComponent extends TranslatableComponent implements OnIni
     'prevArrow': '<button class="bg-white h-10 w-10 bottom-0 absolute custom-arrow text-orange-400 text-xl rounded-full">'
       + '<i class="fa fa-arrow-left"></i></button>'
   };
+  moment = moment;
+  
   private randomSponsorship: Sponsorship;
   private currentActor: Actor;
   private hasStarted: Boolean;

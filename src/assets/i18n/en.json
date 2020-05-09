@@ -110,6 +110,7 @@
         "trip.edit.correct": "Trip edited successfully.",
         "profile.edit.correct": "Profile edited successfully.",
         "trip.edit.failed": "Failed to edit trip.",
+        "trip.edit.failed.date": "This trip can't be edited since will start in a week or before.",
         "profile.edit.failed": "Failed to edit profile.",
         "trip.remove": "Are you sure you want to remove the trip?",
         "trip.removed.correct": "Trip removed succesfully.",

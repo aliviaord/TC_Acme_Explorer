@@ -1,4 +1,4 @@
-<div class="w-48c content-center text-center mx-auto">
+<div class="w-full mx-auto sm:w-7/12 md:w-7/12 lg:w-7/12 content-center text-center flex flex-col">
   <form *ngIf="trip.id != 0" [formGroup]="tripForm" (ngSubmit)="onEditTrip()" class="text-base bg-white shadow-2xl rounded px-8 pt-6 pb-8">
     <h1 class="text-5xl">{{'trip.edit' | translate}}</h1><br/>
     <div class="mb-4">
@@ -30,6 +30,9 @@
         <div *ngIf="tripForm.get('startDate').errors && tripForm.get('startDate').touched && tripForm.get('startDate').errors.required" class="text-red-700 text-sm mt-1 rounded relative" role="alert">
           <span class="block sm:inline">{{'messages.validation.required' | translate}}</span>
         </div>
+        <div *ngIf="tripForm.get('startDate').touched && tripForm.get('startDate').value && tripForm.errors?.startDate" class="text-red-700 text-sm mt-1 rounded relative" role="alert">
+          <span class="block sm:inline">{{'messages.validation.startDate' | translate}}</span>
+        </div>
       </div>
       <div class="w-full md:w-4/12 px-3 mb-6 md:mb-0">
         <label class="block text-gray-700 text-md font-bold mb-2" for="endDate">
@@ -39,14 +42,20 @@
         <div *ngIf="tripForm.get('endDate').errors && tripForm.get('endDate').touched && tripForm.get('endDate').errors.required" class="text-red-700 text-sm mt-1 rounded relative" role="alert">
           <span class="block sm:inline">{{'messages.validation.required' | translate}}</span>
         </div>
+        <div *ngIf="tripForm.get('endDate').touched && tripForm.get('endDate').value && tripForm.get('startDate').value && tripForm.errors?.endDate" class="text-red-700 text-sm mt-1 rounded relative" role="alert">
+          <span class="block sm:inline">{{'messages.validation.endDate' | translate}}</span>
+        </div>
       </div>
       <div class="w-full md:w-4/12 px-3 mb-6 md:mb-0">
         <label class="block text-gray-700 text-md font-bold mb-2" for="startDate">
           {{'trip.publicationDate' | translate}}
         </label>
-        <p-calendar placeholder="{{'trip.startDate' | translate}}" formControlName="publicationDate"></p-calendar>
+        <p-calendar placeholder="{{'trip.publicationDate' | translate}}" formControlName="publicationDate"></p-calendar>
         <div *ngIf="tripForm.get('publicationDate').errors && tripForm.get('publicationDate').touched && tripForm.get('publicationDate').errors.required" class="text-red-700 text-sm mt-1 rounded relative" role="alert">
           <span class="block sm:inline">{{'messages.validation.required' | translate}}</span>
+        </div>
+        <div *ngIf="tripForm.get('publicationDate').touched && tripForm.get('startDate').value && tripForm.get('publicationDate').value && tripForm.errors?.publicationDate" class="text-red-700 text-sm mt-1 rounded relative" role="alert">
+          <span class="block sm:inline">{{'messages.validation.publicationDate' | translate}}</span>
         </div>
       </div>
     </div>
@@ -116,15 +125,18 @@
       <i class="fa fa-plus-circle"></i>
       {{'stage.add' | translate}}
     </button>
+    <div class="bg-teal-100 border-teal-200 border-2 m-2 p-1 inline-block rounded">
+      {{'trip.price' | translate}}: {{totalPrice}}
+    </div>
     </div>
 
     <h2 class="text-xl mb-4 font-bold text-gray-900">{{'trip.pictures' | translate}}</h2>
-    <div *ngIf="trip.pictures.length>0" class="border-2 grid grid-cols-4 gap-4 mb-4 p-5">
+    <div *ngIf="trip.pictures.length>0" class="border-2 grid grid-cols-1 md:grid-cols-4 xl:grid-cols-4 gap-4 mb-4 p-5">
       <div *ngFor="let p of trip.pictures; let i = index">
-        <div class="trip-img-container">
-          <img class="w-40" src="{{p}}">
-          <button type="button" class="rounded-full h-8 w-8 border-red-700 border-2 bg-red-500 hover:bg-red-700 text-white text-xs font-bold rounded focus:outline-none focus:shadow-outline" (click)="removePicture(p)">
-            <i class="fa fa-times" aria-hidden="true"></i>
+        <div>
+          <img class="" src="{{p}}">
+          <button type="button" class="border-red-500 border-1 bg-red-400 px-2 py-1 hover:bg-red-500 text-white rounded focus:outline-none focus:shadow-outline" (click)="removePicture(p)">
+            {{'common.remove' | translate}}
           </button>
         </div>
       </div>
@@ -134,7 +146,7 @@
       multiple="multiple" 
       accept="image/*"
       (onRemove)="onPictureRemove($event)" 
-      (onClear)="onPictureClear($event)" 
+      (uploadHandler)="onPictureUpload($event)"  
       name="myfile[]"
       uploadLabel="{{'common.upload' | translate}}"
       cancelLabel="{{'common.clear' | translate}}"

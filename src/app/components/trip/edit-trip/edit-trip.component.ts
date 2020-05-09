@@ -9,6 +9,8 @@ import { AuthService } from 'src/app/services/auth.service';
 import Spanish from 'flatpickr/dist/l10n/es.js';
 import English from 'flatpickr/dist/l10n/uk.js';
 import { InfoMessageService } from '../../../services/info-message.service';
+import { ValidateStartDate, ValidateEndDate, ValidatePublicationDate } from 'src/app/validators/trip.validator';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-edit-trip',
@@ -19,7 +21,7 @@ export class EditTripComponent extends TranslatableComponent implements OnInit {
   
   id: string;
   tripForm: FormGroup;
-
+  totalPrice = 0;
   trip = new Trip();
   pictures = [];
 
@@ -47,18 +49,29 @@ export class EditTripComponent extends TranslatableComponent implements OnInit {
       description: [trip.description, Validators.required],
       price: this.fb.control(trip.price),
       requirements: [trip.requirements, Validators.required],
-      startDate: [trip.startDate, Validators.required],
-      endDate: [trip.endDate, Validators.required],
+      startDate: [new Date(trip.startDate), Validators.required],
+      endDate: [new Date(trip.endDate), Validators.required],
       pictures: this.fb.control(trip.pictures),
-      publicationDate: [trip.publicationDate, Validators.required],
+      publicationDate: [new Date(trip.publicationDate), Validators.required],
       stages: this.fb.array(trip.stages.map(stage => this.fb.group({
         title: [stage.title, Validators.required],
         description: [stage.description, Validators.required],
         price: [stage.price, Validators.required],
       }))),
       manager: this.fb.control(trip.title),
-    });
+    }, { validator: [ValidateStartDate(), ValidateEndDate(), ValidatePublicationDate()] });
     this.trip = trip;
+    this.totalPrice = trip.price;
+    this.tripForm.get('stages').valueChanges.subscribe(values => {
+      var stages = this.tripForm.get('stages')['controls'];
+      var price = 0;
+      for (var i in stages) {
+        var stage = stages[i];
+        price += stage['controls']['price'].value;
+      }
+      this.totalPrice = price;
+      console.log(this.totalPrice)
+    }) 
   }
 
   createStage(): FormGroup {
@@ -108,10 +121,15 @@ export class EditTripComponent extends TranslatableComponent implements OnInit {
     }
   }
 
-  ngOnInit() {
+  ngOnInit() { 
     this.id = this.route.snapshot.params['id'];
     this.tripService.getTrip(this.id)
       .then((trip) => {
+        if(moment(trip.startDate).diff(moment(), 'weeks') < 1) {
+          this.infoMessageService.notifyMessage('messages.trip.edit.failed.date',
+              'text-center bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative');
+          this.router.navigate(['/denied-access']);
+        }
         this.pictures = trip.pictures.slice() // slice to avoid same ref
         this.createForm(trip);
       }).catch((err) => {
@@ -149,8 +167,9 @@ export class EditTripComponent extends TranslatableComponent implements OnInit {
   }
 
   removePicture(picture) {
+    console.log(this.pictures.indexOf(picture))
     this.pictures.splice(this.pictures.indexOf(picture), 1);
-    this.trip.pictures.splice(this.pictures.indexOf(picture), 1); // delete here too to avoid display in view
+    this.trip.pictures.splice(this.trip.pictures.indexOf(picture), 1); // delete here too to avoid display in view
     console.log(this.pictures)
   }
 

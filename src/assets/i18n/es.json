@@ -109,6 +109,7 @@
         "auth.invalid.email": "Correo electrónico inválido",
         "trip.edit.correct": "Viaje editado correctamente.",
         "trip.edit.failed": "Error al editar el viaje.",
+        "trip.edit.failed.date": "Este viaje no se puede editar porque empezará en una semana o antes.",
         "trip.remove": "¿Estás seguro de que quieres eliminar el viaje?",
         "trip.removed.correct": "Viaje borrado correctamente.",
         "trip.removed.failed": "Error al eliminar el viaje.",
