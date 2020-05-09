@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Audit } from 'src/app/models/audit.model';
 import { AuditService } from 'src/app/services/audit.service';
-import { ActivatedRoute, ParamMap } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { Trip } from 'src/app/models/trip.model';
 import { Actor } from 'src/app/models/actor.model';
@@ -25,6 +25,7 @@ export class DisplayAuditComponent extends TranslatableComponent implements OnIn
   constructor(private auditService: AuditService,
     private translateService: TranslateService,
     private route: ActivatedRoute,
+    private router: Router,
     private tripService: TripService,
     private actorService: ActorService) {
     super(translateService);
@@ -63,6 +64,7 @@ export class DisplayAuditComponent extends TranslatableComponent implements OnIn
           });
       }).catch((err) => {
         console.error(err);
+        this.router.navigate(['/denied-access']);
       });
   }
 }

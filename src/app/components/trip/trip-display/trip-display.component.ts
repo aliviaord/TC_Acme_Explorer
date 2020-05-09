@@ -75,6 +75,7 @@ export class TripDisplayComponent extends TranslatableComponent implements OnIni
           });
       }).catch((err) => {
         console.error(err);
+        this.router.navigate(['/denied-access']);
       });
       this.dtOptions = {
         searching: false,
