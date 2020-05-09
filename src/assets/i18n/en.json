@@ -172,5 +172,8 @@
         "minPrice": "Minimum price",
         "maxPrice": "Maximum price",
         "topKeywords": "Top 10 keywords that the explorers indicate in their finders"
+    },
+    "finder": {
+        "title": "Finder"
     }
 }

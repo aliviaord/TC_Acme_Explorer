@@ -595,23 +595,21 @@
     {
       "id": "5e95e429bb1a53dae887ae82",
       "version": 0,
-      "keyWord": null,
+      "keyword": "island",
       "minPrice": null,
       "maxPrice": null,
       "startDate": null,
       "endDate": null,
-      "lastSearchDate": null,
       "explorer": "5e92f37b97143f63865aed61"
     },
     {
       "id": "5e95e4448575bb366694255b",
       "version": 0,
-      "keyWord": null,
+      "keyword": null,
       "minPrice": null,
       "maxPrice": null,
       "startDate": null,
       "endDate": null,
-      "lastSearchDate": null,
       "explorer": "5e933a87690ef1ca07d86667"
     }
   ],
