@@ -4,7 +4,7 @@ import { TripService } from 'src/app/services/trip.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { TranslatableComponent } from '../../shared/translatable/translatable.component';
-import { FormGroup, FormBuilder, FormArray, Validators } from '@angular/forms';
+import { FormGroup, FormBuilder, FormArray, Validators, NgForm } from '@angular/forms';
 import { AuthService } from 'src/app/services/auth.service';
 import Spanish from 'flatpickr/dist/l10n/es.js';
 import English from 'flatpickr/dist/l10n/uk.js';
@@ -121,11 +121,34 @@ export class EditTripComponent extends TranslatableComponent implements OnInit {
     }
   }
 
+  toggleModal () {
+    const body = document.querySelector('body');
+    const modal = document.querySelector('.modal');
+    modal.classList.toggle('opacity-0');
+    modal.classList.toggle('pointer-events-none');
+    body.classList.toggle('modal-active');
+  }
+
+  onReject(form: NgForm) {
+    this.trip.cancelReason = form.value.rejectedReason;
+    this.tripService.editTrip(this.trip)
+      .then((val) => {
+        console.log(val);
+        this.router.navigate(['/my-trips']);
+      }).catch((err) => {
+        console.error(err);
+      });
+  }
+
   ngOnInit() { 
     this.id = this.route.snapshot.params['id'];
     this.tripService.getTrip(this.id)
       .then((trip) => {
-        if(moment(trip.startDate).diff(moment(), 'weeks') < 1) {
+        if(trip.cancelReason) {
+          this.infoMessageService.notifyMessage('messages.trip.edit.failed.cancelReason',
+              'text-center bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative');
+          this.router.navigate(['/denied-access']);
+        } else if(moment(trip.startDate).diff(moment(), 'weeks') < 1) {
           this.infoMessageService.notifyMessage('messages.trip.edit.failed.date',
               'text-center bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative');
           this.router.navigate(['/denied-access']);

@@ -57,6 +57,8 @@
     },
     "trip": {
         "display": "Mostrar viaje",
+        "cancel": "Cancelar viaje",
+        "cancelReason": "Por favor, introduce la razón de cancelación",
         "list": "Lista de viajes",
         "my-list": "Mis viajes",
         "create": "Crear viaje",
@@ -110,6 +112,7 @@
         "trip.edit.correct": "Viaje editado correctamente.",
         "trip.edit.failed": "Error al editar el viaje.",
         "trip.edit.failed.date": "Este viaje no se puede editar porque empezará en una semana o antes.",
+        "trip.edit.failed.cancelReason": "El viaje no se puede editar porque está cancelado.",
         "trip.remove": "¿Estás seguro de que quieres eliminar el viaje?",
         "trip.removed.correct": "Viaje borrado correctamente.",
         "trip.removed.failed": "Error al eliminar el viaje.",

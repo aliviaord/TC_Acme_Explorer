@@ -57,6 +57,8 @@
     },
     "trip": {
         "display": "Display trip",
+        "cancel": "Cancel trip",
+        "cancelReason": "Please introduce the cancel reason",
         "list": "Trips list",
         "my-list": "My trips",
         "create": "Create trip",
@@ -111,6 +113,7 @@
         "profile.edit.correct": "Profile edited successfully.",
         "trip.edit.failed": "Failed to edit trip.",
         "trip.edit.failed.date": "This trip can't be edited since will start in a week or before.",
+        "trip.edit.failed.cancelReason": "This trip can't be edited since it's canceled.",
         "profile.edit.failed": "Failed to edit profile.",
         "trip.remove": "Are you sure you want to remove the trip?",
         "trip.removed.correct": "Trip removed succesfully.",
