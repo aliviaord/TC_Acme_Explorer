@@ -40,7 +40,8 @@
         "search": "Buscar",
         "upload": "Subir",
         "clear": "Eliminar",
-        "choose": "Seleccionar archivos"
+        "choose": "Seleccionar archivos",
+        "locale": "es"
     },
     "stage": {
         "add": "Añadir etapa",

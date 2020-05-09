@@ -40,7 +40,8 @@
         "search": "Search",
         "upload": "Upload",
         "clear": "Clear",
-        "choose": "Select files"
+        "choose": "Select files",
+        "locale": "en"
     },
     "stage": {
         "add": "Add stage",

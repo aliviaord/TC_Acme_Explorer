@@ -4,8 +4,7 @@
 
 export const environment = {
   production: false,
-  backendApiBaseURL: 'http://localhost:3000',
-  defaultTripImage: 'https://i.kinja-img.com/gawker-media/image/upload/c_fill,f_auto,fl_progressive,g_center,h_675,pg_1,q_80,w_1200/pn1cjpg4x5fzmb7pstwl.png'
+  backendApiBaseURL: 'http://localhost:3000'
 };
 
 /*
