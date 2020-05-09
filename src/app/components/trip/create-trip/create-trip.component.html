@@ -1,6 +1,6 @@
-<div class="w-48c content-center text-center mx-auto">
+<div class="w-full mx-auto sm:w-7/12 md:w-7/12 lg:w-7/12 content-center text-center flex flex-col">
   <form [formGroup]="tripForm" (ngSubmit)="onCreateTrip()" class="text-base bg-white shadow-2xl rounded px-8 pt-6 pb-8">
-    <h1 class="text-5xl">{{'trip.create' | translate}}</h1><br/>
+    <h1 class="sm:text-5xl md:text-5xl text-3xl">{{'trip.create' | translate}}</h1><br/>
     <div class="mb-4">
       <label class="block text-gray-700 text-md font-bold mb-2" for="title">
         {{'trip.title' | translate}}
@@ -30,6 +30,9 @@
         <div *ngIf="tripForm.get('startDate').errors && tripForm.get('startDate').touched && tripForm.get('startDate').errors.required" class="text-red-700 text-sm mt-1 rounded relative" role="alert">
           <span class="block sm:inline">{{'messages.validation.required' | translate}}</span>
         </div>
+        <div *ngIf="tripForm.get('startDate').touched && tripForm.get('startDate').value && tripForm.errors?.startDate" class="text-red-700 text-sm mt-1 rounded relative" role="alert">
+          <span class="block sm:inline">{{'messages.validation.startDate' | translate}}</span>
+        </div>
       </div>
       <div class="w-full md:w-4/12 px-3 mb-6 md:mb-0">
         <label class="block text-gray-700 text-md font-bold mb-2" for="endDate">
@@ -39,14 +42,20 @@
         <div *ngIf="tripForm.get('endDate').errors && tripForm.get('endDate').touched && tripForm.get('endDate').errors.required" class="text-red-700 text-sm mt-1 rounded relative" role="alert">
           <span class="block sm:inline">{{'messages.validation.required' | translate}}</span>
         </div>
+        <div *ngIf="tripForm.get('endDate').touched && tripForm.get('endDate').value && tripForm.get('startDate').value && tripForm.errors?.endDate" class="text-red-700 text-sm mt-1 rounded relative" role="alert">
+          <span class="block sm:inline">{{'messages.validation.endDate' | translate}}</span>
+        </div>
       </div>
       <div class="w-full md:w-4/12 px-3 mb-6 md:mb-0">
         <label class="block text-gray-700 text-md font-bold mb-2" for="startDate">
           {{'trip.publicationDate' | translate}}
         </label>
-        <p-calendar placeholder="{{'trip.startDate' | translate}}" formControlName="publicationDate"></p-calendar>
+        <p-calendar placeholder="{{'trip.publicationDate' | translate}}" formControlName="publicationDate"></p-calendar>
         <div *ngIf="tripForm.get('publicationDate').errors && tripForm.get('publicationDate').touched && tripForm.get('publicationDate').errors.required" class="text-red-700 text-sm mt-1 rounded relative" role="alert">
           <span class="block sm:inline">{{'messages.validation.required' | translate}}</span>
+        </div>
+        <div *ngIf="tripForm.get('publicationDate').touched && tripForm.get('startDate').value && tripForm.get('publicationDate').value && tripForm.errors?.publicationDate" class="text-red-700 text-sm mt-1 rounded relative" role="alert">
+          <span class="block sm:inline">{{'messages.validation.publicationDate' | translate}}</span>
         </div>
       </div>
     </div>
@@ -105,7 +114,7 @@
             </div>
           </div>
           <div class="md:w-1/12 text-md items-center">
-            <button class="text-red-900 h-8 w-8 m-2 bg-red-300 hover:bg-red-400 rounded-full focus:outline-none focus:shadow-outline" type="button" (click)="deleteStage(i)">
+            <button *ngIf="i!=0" class="text-red-900 h-8 w-8 m-2 bg-red-300 hover:bg-red-400 rounded-full focus:outline-none focus:shadow-outline" type="button" (click)="deleteStage(i)">
               <i class="fa fa-trash"></i>
             </button>
           </div>
@@ -116,6 +125,9 @@
       <i class="fa fa-plus-circle"></i>
       {{'stage.add' | translate}}
     </button>
+    <div class="bg-teal-100 border-teal-200 border-2 m-2 p-1 inline-block rounded">
+      {{'trip.price' | translate}}: {{totalPrice}}
+    </div>
     </div>
 
     <h2 class="text-xl mb-4 font-bold text-gray-900">{{'trip.pictures' | translate}}</h2>

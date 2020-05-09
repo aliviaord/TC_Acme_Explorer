@@ -6,6 +6,7 @@ import { TranslateService } from '@ngx-translate/core';
 import { TranslatableComponent } from '../../shared/translatable/translatable.component';
 import { FormGroup, FormBuilder, FormArray, Validators } from '@angular/forms';
 import { AuthService } from 'src/app/services/auth.service';
+import { ValidateStartDate, ValidateEndDate, ValidatePublicationDate } from 'src/app/validators/trip.validator';
 
 @Component({
   selector: 'app-create-trip',
@@ -15,8 +16,9 @@ import { AuthService } from 'src/app/services/auth.service';
 export class CreateTripComponent extends TranslatableComponent implements OnInit {
 
   tripForm: FormGroup;
-  pictures = [] // Here we store the ids of the pictures for the trip
-  
+  pictures = []; // Here we store the ids of the pictures for the trip
+  totalPrice = 0;
+
   constructor(private tripService: TripService,
     private translateService: TranslateService,
     private route: ActivatedRoute,
@@ -26,6 +28,7 @@ export class CreateTripComponent extends TranslatableComponent implements OnInit
     super(translateService);
     this.createForm();
   }
+
 
   getLang() {
     if (localStorage.getItem('language') !== null) {
@@ -40,13 +43,23 @@ export class CreateTripComponent extends TranslatableComponent implements OnInit
       description: ['', Validators.required],
       price: [''],
       requirements: ['', Validators.required],
-      startDate: ['', Validators.required],
+      startDate: ['', [Validators.required]],
       endDate: ['', Validators.required],
       pictures: [''],
       publicationDate: ['', Validators.required],
       stages: this.fb.array([this.createStage()]),
       manager: [''],
-    });
+    }, { validator: [ValidateStartDate(), ValidateEndDate(), ValidatePublicationDate()] });
+    this.tripForm.get('stages').valueChanges.subscribe(values => {
+      var stages = this.tripForm.get('stages')['controls'];
+      var price = 0;
+      for (var i in stages) {
+        var stage = stages[i];
+        price += stage['controls']['price'].value;
+      }
+      this.totalPrice = price;
+      console.log(this.totalPrice)
+    }) 
   }
 
   createStage(): FormGroup {
@@ -68,8 +81,9 @@ export class CreateTripComponent extends TranslatableComponent implements OnInit
   onCreateTrip() {
     let trip = this.tripForm.value;
     trip.manager = this.authService.getCurrentActor().id;
-    trip.price = 500;
+    trip.price = this.totalPrice;
     trip.pictures = this.pictures;
+    trip.ticker = this.generateTicker(new Date);
     this.tripService.createTrip(trip)
       .then(res => {
         console.log(res);
@@ -79,8 +93,26 @@ export class CreateTripComponent extends TranslatableComponent implements OnInit
       });
   }
 
+  generateTicker(date) {
+    var day = date.getDate();
+    var month = date.getMonth() + 1;
+    var year = date.getFullYear().toString().substr(-2);
+    var chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    var selectedChars = '';
+    for (var i = 0; i < 4; i++) {
+        selectedChars += chars.charAt(Math.floor(Math.random() * chars.length));
+    }
+    if (day < 10) {
+        day = '0' + day
+    }
+    if (month < 10) {
+        month = '0' + month
+    }
+    return year + month + day + '-' + selectedChars;
+}
+
   delay(ms: number) {
-    return new Promise( resolve => setTimeout(resolve, ms) );
+    return new Promise(resolve => setTimeout(resolve, ms));
   }
 
   async onPictureUpload(event) {
@@ -90,18 +122,18 @@ export class CreateTripComponent extends TranslatableComponent implements OnInit
       await this.delay(1000);
       fileReader.readAsDataURL(file);
       fileReader.onload = function () {
-          that.pictures.push(fileReader.result)
-          console.log(that.pictures)
+        that.pictures.push(fileReader.result)
+        console.log(that.pictures)
       };
     }
   }
 
   onPictureRemove(event) {
     if (this.pictures.length > 0) {
-    let fileReader = new FileReader();
-    let that = this;
-    fileReader.readAsDataURL(event.file);
-    fileReader.onload = function () {
+      let fileReader = new FileReader();
+      let that = this;
+      fileReader.readAsDataURL(event.file);
+      fileReader.onload = function () {
         that.pictures.splice(that.pictures.indexOf(fileReader.result), 1);
         console.log(that.pictures)
       };

@@ -65,7 +65,7 @@
         "title": "Título",
         "audits": "Auditorías",
         "description": "Descripción",
-        "price": "Precio",
+        "price": "Precio total",
         "startDate": "Fecha de inicio",
         "endDate": "Fecha de fin",
         "publicationDate": "Fecha de publicación",
@@ -120,7 +120,10 @@
             "email.valid": "Debes introducir un email válido.",
             "phone.valid": "Debes introducir un número de teléfono válido.",
             "password.match": "Las contraseñas no coinciden.",
-            "password.min": "La contraseña debe tener al menos 6 carácteres."
+            "password.min": "La contraseña debe tener al menos 6 carácteres.",
+            "startDate": "La fecha de inicio debe ser después de la fecha de hoy.",
+            "endDate": "La fecha de fin debe ser después de la fecha de inicio.",
+            "publicationDate": "La fecha de publicación debe ser antes de la fecha de inicio y después de la fecha de hoy (incluída)."
         }
     },
     "not-found-page": {
