@@ -2,21 +2,17 @@ import { APP_BASE_HREF } from '@angular/common';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
-
-import { AngularFireModule } from 'angularfire2';
-import { AngularFireAuth } from 'angularfire2/auth';
-
 import { AppRoutingModule } from '../../../app-routing.module';
 import { MainComponent } from '../../master/main/main.component';
-import { TripDisplayComponent } from '../../trip/trip-display/trip-display.component';
-import { TripListComponent } from '../../trip/trip-list/trip-list.component';
-import { LoginComponent } from '../login/login.component';
-
-import { RegisterComponent } from './register.component';
-import { EditTripComponent } from '../../trip/edit-trip/edit-trip.component';
-import { CreateTripComponent } from '../../trip/create-trip/create-trip.component';
+import { LoginComponent } from '../../security/login/login.component';
+import { RegisterComponent } from '../../security/register/register.component';
+import { TripListComponent } from '../trip-list/trip-list.component';
+import { EditTripComponent } from './edit-trip.component';
+import { CreateTripComponent } from '../create-trip/create-trip.component';
+import { TripDisplayComponent } from '../trip-display/trip-display.component';
 import { DisplayAuditComponent } from '../../audit/display-audit/display-audit.component';
 import { AuditListComponent } from '../../audit/audit-list/audit-list.component';
 import { CreateAuditComponent } from '../../audit/create-audit/create-audit.component';
@@ -25,12 +21,15 @@ import { SponsorshipListComponent } from '../../sponsorship/sponsorship-list/spo
 import { DashboardDisplayComponent } from '../../dashboard/dashboard-display/dashboard-display.component';
 import { NotFoundPageComponent } from '../../shared/not-found-page/not-found-page.component';
 import { TermsAndConditionsComponent } from '../../master/terms-and-conditions/terms-and-conditions.component';
-import { DeniedAccessPageComponent } from '../denied-access-page/denied-access-page.component';
-import { SlickCarouselModule } from 'ngx-slick-carousel';
-import { DataTablesModule } from 'angular-datatables';
+import { DeniedAccessPageComponent } from '../../security/denied-access-page/denied-access-page.component';
 import { Ng5SliderModule } from 'ng5-slider';
 import { NgxDaterangepickerMd } from 'ngx-daterangepicker-material';
+import { SlickCarouselModule } from 'ngx-slick-carousel';
+import { DataTablesModule } from 'angular-datatables';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
+import { AngularFireAuth } from 'angularfire2/auth';
+import { AngularFireModule } from 'angularfire2';
+import { TripService } from 'src/app/services/trip.service';
 import { TripApplicationPaymentComponent } from '../../tripApplication/trip-application-payment/trip-application-payment.component';
 import { NgxPayPalModule } from 'ngx-paypal';
 import {FileUploadModule} from 'primeng/fileupload';
@@ -54,9 +53,10 @@ export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
 }
 
-describe('RegisterComponent', () => {
-  let component: RegisterComponent;
-  let fixture: ComponentFixture<RegisterComponent>;
+describe('EditTripComponent', () => {
+  let component: EditTripComponent;
+  let fixture: ComponentFixture<EditTripComponent>;
+  let tripService: TripService;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -64,6 +64,7 @@ describe('RegisterComponent', () => {
         HttpClientModule,
         FormsModule,
         ReactiveFormsModule,
+        AngularFireModule.initializeApp(firebaseConfig),
         TranslateModule.forRoot({
           loader: {
             provide: TranslateLoader,
@@ -71,12 +72,11 @@ describe('RegisterComponent', () => {
             deps: [HttpClient]
           }
         }),
-        AngularFireModule.initializeApp(firebaseConfig),
         AppRoutingModule,
-        SlickCarouselModule,
-        DataTablesModule,
         Ng5SliderModule,
         NgxDaterangepickerMd,
+        DataTablesModule,
+        SlickCarouselModule,
         InfiniteScrollModule,
         NgxPayPalModule,
         FileUploadModule,
@@ -85,10 +85,10 @@ describe('RegisterComponent', () => {
       ],
       declarations: [
         MainComponent,
-        TripDisplayComponent,
-        TripListComponent,
         LoginComponent,
         RegisterComponent,
+        TripListComponent,
+        TripDisplayComponent,
         EditTripComponent,
         CreateTripComponent,
         DisplayAuditComponent,
@@ -105,20 +105,78 @@ describe('RegisterComponent', () => {
         TripApplicationPaymentComponent
       ],
       providers: [
-        {provide: APP_BASE_HREF, useValue : '/register'},
-        AngularFireAuth
-      ],
+        {provide: APP_BASE_HREF, useValue : '/'},
+        AngularFireAuth,
+        {
+          provide: ActivatedRoute,
+          useValue: { 
+            snapshot: {
+              params: {id: '5e78ac3cf6f9577fd149c9ba'}
+            }
+          }
+        }
+      ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(RegisterComponent);
+    fixture = TestBed.createComponent(EditTripComponent);
     component = fixture.componentInstance;
+    tripService = TestBed.get(TripService);
+    component.ngOnInit();
     fixture.detectChanges();
   });
 
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should initialize total price to 0', () => {
+    expect(component.totalPrice).toEqual(0);
+  });
+
+  it('should have initialized item', () => {
+    expect(component.trip).not.toBeUndefined;
+  });
+
+  it('should have initialized pictures array', () => {
+    expect(component.pictures).toEqual([]);
+  });
+
+  it('should have correct price', async(done) => {
+    expect(component.trip.price).toBeUndefined;
+    component.ngOnInit();
+    fixture.detectChanges();
+    spyOn(tripService, 'getTrip').and.returnValue(Promise.resolve(true));
+
+    fixture.whenStable().then(() => {
+      expect(component.trip.price).toBeGreaterThan(600);
+      done();
+    })
+  });
+
+  it('should have correct id', async(done) => {
+    component.ngOnInit();
+    fixture.detectChanges();
+    spyOn(tripService, 'getTrip').and.returnValue(Promise.resolve(true));
+
+    fixture.whenStable().then(() => {
+      expect(component.trip.id).toEqual('5e78ac3cf6f9577fd149c9ba');
+      done();
+    })
+  });
+
+  it('should have correct title', async(done) => {
+    component.ngOnInit();
+    fixture.detectChanges();
+    spyOn(tripService, 'getTrip').and.returnValue(Promise.resolve(true));
+
+    fixture.whenStable().then(() => {
+      expect(component.trip.title).toEqual('Trip to Myst Falls');
+      done();
+    })
+  });
+
+
 });

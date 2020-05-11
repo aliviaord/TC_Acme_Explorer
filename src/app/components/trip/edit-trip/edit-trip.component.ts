@@ -144,6 +144,9 @@ export class EditTripComponent extends TranslatableComponent implements OnInit {
     this.id = this.route.snapshot.params['id'];
     this.tripService.getTrip(this.id)
       .then((trip) => {
+        if(!this.authService.currentActor || trip.manager != this.authService.currentActor.id) {
+          this.router.navigate(['/denied-access']);
+        }
         if(trip.cancelReason) {
           this.infoMessageService.notifyMessage('messages.trip.edit.failed.cancelReason',
               'text-center bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative');

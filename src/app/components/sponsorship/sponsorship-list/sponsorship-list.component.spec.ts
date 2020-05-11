@@ -26,7 +26,6 @@ import { SlickCarouselModule } from 'ngx-slick-carousel';
 import { DataTablesModule } from 'angular-datatables';
 import { Ng5SliderModule } from 'ng5-slider';
 import { NgxDaterangepickerMd } from 'ngx-daterangepicker-material';
-import { Ng2FlatpickrModule } from 'ng2-flatpickr';
 import { APP_BASE_HREF } from '@angular/common';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { AngularFireModule } from 'angularfire2';
@@ -72,7 +71,6 @@ describe('SponsorshipListComponent', () => {
         DataTablesModule,
         Ng5SliderModule,
         NgxDaterangepickerMd,
-        Ng2FlatpickrModule,
         AngularFireModule.initializeApp(firebaseConfig)
       ],
       declarations: [

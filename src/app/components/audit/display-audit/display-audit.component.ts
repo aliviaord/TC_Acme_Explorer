@@ -38,7 +38,6 @@ export class DisplayAuditComponent extends TranslatableComponent implements OnIn
       .then((audit) => {
         this.audit = audit;
         for(var i in audit.attachments) {
-          console.log("olaa")
           var att = audit.attachments[i];
           var new_att = {}
           new_att['url'] = att;

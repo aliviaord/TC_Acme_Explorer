@@ -36,7 +36,7 @@ const appRoutes: Routes = [
   {path: 'trips', children: [
     {path: ':id', component: TripDisplayComponent},
     {path: '', component: TripListComponent},
-    {path: ':id/edit', component: EditTripComponent}
+    {path: ':id/edit', component: EditTripComponent, data: {expectedRole: 'MANAGER'}}
   ]},
   {path: 'my-trips', component: TripListComponent,
   canActivate: [ActorRoleGuard], data: {expectedRole: 'MANAGER'}
