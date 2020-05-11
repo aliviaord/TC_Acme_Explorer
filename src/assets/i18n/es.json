@@ -43,7 +43,8 @@
         "upload": "Subir",
         "clear": "Eliminar",
         "choose": "Seleccionar archivos",
-        "locale": "es"
+        "locale": "es",
+        "nothing": "Nada que mostrar"
     },
     "stage": {
         "add": "Añadir etapa",
@@ -117,6 +118,8 @@
         "trip.remove": "¿Estás seguro de que quieres eliminar el viaje?",
         "trip.removed.correct": "Viaje borrado correctamente.",
         "trip.removed.failed": "Error al eliminar el viaje.",
+        "finder.edit.correct": "Buscador editado correctamente.",
+        "finder.edit.failed": "Error al editar el buscador.",
         "validation": {
             "required": "Debes introducir un valor, gilipollas.",
             "number.valid": "Debes introducir un número válido.",
@@ -187,6 +190,12 @@
         "topKeywords": "Top 10 palabras que los exploradores indican en sus buscadores"
     },
     "finder": {
-        "title": "Buscador"
+        "title": "Buscador",
+        "minDate": "Fecha mínima de inicio",
+        "maxDate": "Fecha máxima de fin",
+        "keyword": "Palabra clave",
+        "results": "Mostrar resultados",
+        "edit": "Editar parámetros",
+        "dateRange": "Rango de fechas"
     }
 }

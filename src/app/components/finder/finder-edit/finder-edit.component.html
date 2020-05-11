@@ -1,0 +1,49 @@
+<div class="bg-white shadow rounded-lg p-6">
+  <form *ngIf="editForm" [formGroup]="editForm" (ngSubmit)="onEdit()" class="grid lg:grid-cols-3 gap-6">
+    <div class="border focus-within:border-blue-500 focus-within:text-blue-500 transition-all duration-500 relative rounded p-1">
+      <div class="-mt-4 absolute tracking-wider px-1 uppercase text-xs">
+        <p>
+          <label for="minPrice" class="bg-white text-gray-600 px-1">{{'dashboard.minPrice' | translate}}</label>
+        </p>
+      </div>
+      <p>
+        <input id="minPrice" formControlName="minPrice" autocomplete="false" tabindex="0" type="number" min="0" class="py-1 px-1 text-gray-900 outline-none block h-full w-full">
+      </p>
+    </div>
+    <div class="border focus-within:border-blue-500 focus-within:text-blue-500 transition-all duration-500 relative rounded p-1">
+      <div class="-mt-4 absolute tracking-wider px-1 uppercase text-xs">
+        <p>
+          <label for="maxPrice" class="bg-white text-gray-600 px-1">{{'dashboard.maxPrice' | translate}}</label>
+        </p>
+      </div>
+      <p>
+        <input id="maxPrice" formControlName="maxPrice" autocomplete="false" tabindex="0" type="number" min="0" class="py-1 px-1 outline-none block h-full w-full">
+      </p>
+    </div>
+    <div class="border focus-within:border-blue-500 focus-within:text-blue-500 transition-all duration-500 relative rounded p-1">
+      <div class="-mt-4 absolute tracking-wider px-1 uppercase text-xs">
+        <p>
+          <label for="keyword" class="bg-white text-gray-600 px-1">{{'finder.keyword' | translate}}</label>
+        </p>
+      </div>
+      <p>
+        <input id="keyword" formControlName="keyword" autocomplete="false" tabindex="0" type="text" class="py-1 px-1 outline-none block h-full w-full">
+      </p>
+    </div>
+    <div class="border focus-within:border-blue-500 focus-within:text-blue-500 transition-all duration-500 relative rounded p-1">
+      <div class="-mt-4 absolute tracking-wider px-1 uppercase text-xs">
+        <p>
+          <label for="dates" class="bg-white text-gray-600 px-1">{{'finder.dateRange' | translate}}</label>
+        </p>
+      </div>
+      <p>
+        <input type="text" [(locale)]="locale" (change)="searchTrips()" ngxDaterangepickerMd id="dates" formControlName="dates" class="w-full border-2 border-gray-300 bg-white h-10 px-5 rounded-lg text-sm focus:outline-none"/>
+      </p>
+    </div>
+    <div class="flex items-center justify-center">
+      <button [ngClass]="{'opacity-50 cursor-not-allowed': editForm.invalid}" [disabled]="editForm.invalid" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit">
+        {{'common.update' | translate}}
+      </button>
+    </div>
+  </form>
+</div>

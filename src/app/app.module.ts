@@ -44,6 +44,7 @@ import {CalendarModule} from 'primeng/calendar';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { FinderDisplayComponent } from './components/finder/finder-display/finder-display.component';
 import { EditActorComponent } from './components/actor/edit-actor/edit-actor.component';
+import { FinderEditComponent } from './components/finder/finder-edit/finder-edit.component';
 
 export const firebaseConfig = {
   apiKey: 'AIzaSyBeyK3jw-oLh1MyZMHrydSJwy0WTxWDZ-0',
@@ -88,7 +89,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     DashboardDisplayComponent,
     TripApplicationPaymentComponent,
     FinderDisplayComponent,
-    EditActorComponent
+    EditActorComponent,
+    FinderEditComponent
   ],
   imports: [
     BrowserModule,

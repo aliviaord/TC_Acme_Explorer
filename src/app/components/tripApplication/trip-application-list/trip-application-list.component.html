@@ -1,5 +1,5 @@
 <div *ngIf="tripApplications.length === 0" class="text-center m-auto">
-  <p class="text-gray-500 text-base text-5xl font-bold">Nothing to show ☹</p>
+  <p class="text-gray-500 text-base text-5xl font-bold">{{'common.nothing' | translate}} ☹</p>
 </div>
 <div *ngIf="tripApplications.length !== 0" class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3">
   <div *ngFor="let a of tripApplications; index as i;" class="max-w-sm rounded-lg overflow-hidden shadow-lg bg-white my-4 mx-auto"

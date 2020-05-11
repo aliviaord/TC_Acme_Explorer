@@ -1,9 +1,102 @@
-<p>
-  finder-display works!
-</p>
-Keyword: {{finder.keyword}}
-Min Price: {{finder.minPrice}}
-Max Price: {{finder.maxPrice}}
-Start Date: {{finder.startDate}}
-End Date: {{finder.endDate}}
-Explorer: {{finder.explorer}}
+<div class="bg-white shadow rounded-lg p-6">
+  <div class="grid lg:grid-cols-3 gap-6">
+    <div class="border focus-within:border-blue-500 focus-within:text-blue-500 transition-all duration-500 relative rounded p-1">
+      <div class="-mt-4 absolute tracking-wider px-1 uppercase text-xs">
+        <p>
+          <label for="minPrice" class="bg-white text-gray-600 px-1">{{'dashboard.minPrice' | translate}}</label>
+        </p>
+      </div>
+      <p>
+        <input id="minPrice" value="{{finder.minPrice}}" autocomplete="false" tabindex="0" type="number" disabled class="py-1 px-1 text-gray-900 outline-none block h-full w-full">
+      </p>
+    </div>
+    <div class="border focus-within:border-blue-500 focus-within:text-blue-500 transition-all duration-500 relative rounded p-1">
+      <div class="-mt-4 absolute tracking-wider px-1 uppercase text-xs">
+        <p>
+          <label for="minDate" class="bg-white text-gray-600 px-1">{{'finder.minDate' | translate}}</label>
+        </p>
+      </div>
+      <p>
+        <input id="minDate" value="{{finder.startDate.substring(0, 10)}}" autocomplete="false" tabindex="0" type="text" disabled class="py-1 px-1 outline-none block h-full w-full">
+      </p>
+    </div>
+    <div class="border focus-within:border-blue-500 focus-within:text-blue-500 transition-all duration-500 relative rounded p-1">
+      <div class="-mt-4 absolute tracking-wider px-1 uppercase text-xs">
+        <p>
+          <label for="keyword" class="bg-white text-gray-600 px-1">{{'finder.keyword' | translate}}</label>
+        </p>
+      </div>
+      <p>
+        <input id="keyword" value="{{finder.keyword}}" autocomplete="false" tabindex="0" type="text" disabled class="py-1 px-1 outline-none block h-full w-full">
+      </p>
+    </div>
+    <div class="border focus-within:border-blue-500 focus-within:text-blue-500 transition-all duration-500 relative rounded p-1">
+      <div class="-mt-4 absolute tracking-wider px-1 uppercase text-xs">
+        <p>
+          <label for="maxPrice" class="bg-white text-gray-600 px-1">{{'dashboard.maxPrice' | translate}}</label>
+        </p>
+      </div>
+      <p>
+        <input id="maxPrice" value="{{finder.maxPrice}}" autocomplete="false" tabindex="0" type="number" disabled class="py-1 px-1 outline-none block h-full w-full">
+      </p>
+    </div>
+    <div class="border focus-within:border-blue-500 focus-within:text-blue-500 transition-all duration-500 relative rounded p-1">
+      <div class="-mt-4 absolute tracking-wider px-1 uppercase text-xs">
+        <p>
+          <label for="maxDate" class="bg-white text-gray-600 px-1">{{'finder.maxDate' | translate}}</label>
+        </p>
+      </div>
+      <p>
+        <input id="maxDate" value="{{finder.endDate.substring(0, 10)}}" autocomplete="false" tabindex="0" type="text" disabled class="py-1 px-1 outline-none block h-full w-full">
+      </p>
+    </div>
+  </div>
+  <div class="flex justify-center border-t mt-6 pt-3">
+    <button id="searchButton" (click)="searchTrips()" class="mr-2 rounded text-gray-100 px-3 py-1 bg-blue-500 hover:shadow-inner hover:bg-blue-700 disabled:opacity-75 transition-all duration-300">
+      {{'finder.results' | translate}}
+    </button>
+    <button routerLink="/finder/edit" class="ml-2 rounded text-gray-100 px-3 py-1 bg-blue-500 hover:shadow-inner hover:bg-blue-700 transition-all duration-300">
+      {{'finder.edit' | translate}}
+    </button>
+  </div>
+</div>
+<div *ngIf="trips">
+  <div class="grid grid-cols-1 gap-4 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-2 xl:grid-cols-2 mt-6">
+      <ng-container class="trip-list-card" *ngFor="let t of trips; let i = index">
+      <div *ngIf="moment(t.publicationDate).isSameOrBefore(moment()) && moment(t.startDate).isSameOrAfter(dates.startDate) && moment(t.endDate).isSameOrBefore(dates.endDate); else nothingToShow" routerLink="/trips/{{t.id}}" class="transition duration-100 ease-in-out transform hover:-translate-y-1 hover:scale-105 hover:z-40 cursor-pointer rounded mb-10 lg:max-w-full lg:flex flex">
+        <div *ngIf="!t.cancelReason && t.pictures.length>0" [ngStyle]="{'background-image': 'url(' + t.pictures[0] + ')'}"
+          class="trip-img w-64 flex-none bg-cover rounded-t lg:rounded-t-none lg:rounded-l text-center overflow-hidden">
+        </div>
+        <div *ngIf="t.cancelReason && t.pictures.length>0" [ngStyle]="{'background-image': 'url(' + t.pictures[0] + ')'}"
+          class="canceled-img trip-img w-64 flex-none bg-cover rounded-t lg:rounded-t-none lg:rounded-l text-center overflow-hidden">
+          <div class="z-50 centered">{{'trip.cancelled' | translate}}</div>
+        </div>
+        <div *ngIf="!t.cancelReason && t.pictures.length==0" [ngStyle]="{'background-image': 'url(https://i.kinja-img.com/gawker-media/image/upload/c_fill,f_auto,fl_progressive,g_center,h_675,pg_1,q_80,w_1200/pn1cjpg4x5fzmb7pstwl.png)'}"
+          class="trip-img h-48 lg:h-auto lg:w-64 flex-none bg-cover rounded-t lg:rounded-t-none lg:rounded-l text-center overflow-hidden">
+        </div>
+        <div *ngIf="t.cancelReason && t.pictures.length==0" [ngStyle]="{'background-image': 'url(https://i.kinja-img.com/gawker-media/image/upload/c_fill,f_auto,fl_progressive,g_center,h_675,pg_1,q_80,w_1200/pn1cjpg4x5fzmb7pstwl.png)'}"
+          class="canceled-img trip-img h-48 lg:h-auto lg:w-64 flex-none bg-cover rounded-t lg:rounded-t-none lg:rounded-l text-center overflow-hidden">
+          <div class="z-50 centered">{{'trip.cancelled' | translate}}</div>
+        </div>
+        <div
+          class="bg-white border-r-2 border-t-2 border-b-2 rounded-r-md p-4 flex flex-col justify-between leading-normal">
+          <div class="mb-8">
+            <div class="text-gray-900 font-bold text-xl mb-2"><a routerLink="/trips/{{t.id}}">{{t.title}}</a></div>
+            <p class="text-gray-700 text-base">{{t.description}}</p>
+          </div>
+          <div class="flex items-center">
+            <div class="text-sm">
+              <span
+                class="text-gray-900 leading-none bg-orange-200 rounded-full px-3 py-1 font-bold mr-2">{{t.startDate | date}}
+                - {{t.endDate | date}}</span>
+              <span class="text-gray-900 leading-none bg-orange-200 rounded-full px-3 py-1 font-bold">{{t.price}}€</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </ng-container>
+  </div>
+</div>
+<div *ngIf="validTrips === 0" class="text-center m-auto">
+  <p id="nothingToShow" class="hidden text-gray-500 text-base text-5xl font-bold">{{'common.nothing' | translate}} ☹</p>
+</div>

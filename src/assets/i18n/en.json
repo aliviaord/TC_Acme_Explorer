@@ -43,7 +43,8 @@
         "upload": "Upload",
         "clear": "Clear",
         "choose": "Select files",
-        "locale": "en"
+        "locale": "en",
+        "nothing": "Nothing to show"
     },
     "stage": {
         "add": "Add stage",
@@ -119,6 +120,8 @@
         "trip.remove": "Are you sure you want to remove the trip?",
         "trip.removed.correct": "Trip removed succesfully.",
         "trip.removed.failed": "Failed to remove trip.",
+        "finder.edit.correct": "Finder edited successfully.",
+        "finder.edit.failed": "Failed to edit finder.",
         "validation": {
             "required": "You must introduce a value, asshole.",
             "number.valid": "You must introduce a valid number.",
@@ -189,6 +192,12 @@
         "topKeywords": "Top 10 keywords that the explorers indicate in their finders"
     },
     "finder": {
-        "title": "Finder"
+        "title": "Finder",
+        "minDate": "Minimum starting date",
+        "maxDate": "Maximum ending date",
+        "keyword": "Keyword",
+        "results": "Show results",
+        "edit": "Edit parameters",
+        "dateRange": "Date range"
     }
 }

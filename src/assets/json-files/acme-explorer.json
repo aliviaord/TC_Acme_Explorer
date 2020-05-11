@@ -596,10 +596,10 @@
       "id": "5e95e429bb1a53dae887ae82",
       "version": 0,
       "keyword": "island",
-      "minPrice": null,
-      "maxPrice": null,
-      "startDate": null,
-      "endDate": null,
+      "minPrice": 100,
+      "maxPrice": 2000,
+      "startDate": "2020-05-01T00:00:00.000Z",
+      "endDate": "2020-12-31T00:00:00.000Z",
       "explorer": "5e92f37b97143f63865aed61"
     },
     {

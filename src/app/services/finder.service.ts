@@ -35,4 +35,9 @@ export class FinderService {
     const url = `${this.findersUrl}?explorer=${explorer}`;
     return this.http.get<Finder[]>(url, httpOptions).toPromise();
   }
+
+  editFinder(finder) {
+    const url = `${this.findersUrl}/${finder.id}`;
+    return this.http.put<Finder>(url, finder, httpOptions).toPromise();
+  }
 }
