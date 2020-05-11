@@ -25,7 +25,6 @@ import { SlickCarouselModule } from 'ngx-slick-carousel';
 import { DataTablesModule } from 'angular-datatables';
 import { Ng5SliderModule } from 'ng5-slider';
 import { NgxDaterangepickerMd } from 'ngx-daterangepicker-material';
-import { Ng2FlatpickrModule } from 'ng2-flatpickr';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import { APP_BASE_HREF } from '@angular/common';
 
@@ -55,7 +54,6 @@ describe('MainComponent', () => {
         DataTablesModule,
         Ng5SliderModule,
         NgxDaterangepickerMd,
-        Ng2FlatpickrModule,
         InfiniteScrollModule
       ],
       declarations: [

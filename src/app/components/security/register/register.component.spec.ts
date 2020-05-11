@@ -30,8 +30,14 @@ import { SlickCarouselModule } from 'ngx-slick-carousel';
 import { DataTablesModule } from 'angular-datatables';
 import { Ng5SliderModule } from 'ng5-slider';
 import { NgxDaterangepickerMd } from 'ngx-daterangepicker-material';
-import { Ng2FlatpickrModule } from 'ng2-flatpickr';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
+import { TripApplicationPaymentComponent } from '../../tripApplication/trip-application-payment/trip-application-payment.component';
+import { NgxPayPalModule } from 'ngx-paypal';
+import {FileUploadModule} from 'primeng/fileupload';
+import {CalendarModule} from 'primeng/calendar';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { FinderDisplayComponent } from '../../finder/finder-display/finder-display.component';
+import { EditActorComponent } from '../../actor/edit-actor/edit-actor.component';
 
 export const firebaseConfig = {
   apiKey: 'AIzaSyBeyK3jw-oLh1MyZMHrydSJwy0WTxWDZ-0',
@@ -48,7 +54,7 @@ export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
 }
 
-describe('RegisterComponent', () => {
+fdescribe('RegisterComponent', () => {
   let component: RegisterComponent;
   let fixture: ComponentFixture<RegisterComponent>;
 
@@ -71,8 +77,11 @@ describe('RegisterComponent', () => {
         DataTablesModule,
         Ng5SliderModule,
         NgxDaterangepickerMd,
-        Ng2FlatpickrModule,
-        InfiniteScrollModule
+        InfiniteScrollModule,
+        NgxPayPalModule,
+        FileUploadModule,
+        CalendarModule,
+        BrowserAnimationsModule
       ],
       declarations: [
         MainComponent,
@@ -90,7 +99,10 @@ describe('RegisterComponent', () => {
         DashboardDisplayComponent,
         NotFoundPageComponent,
         TermsAndConditionsComponent,
-        DeniedAccessPageComponent
+        DeniedAccessPageComponent,
+        FinderDisplayComponent,
+        EditActorComponent,
+        TripApplicationPaymentComponent
       ],
       providers: [
         {provide: APP_BASE_HREF, useValue : '/register'},

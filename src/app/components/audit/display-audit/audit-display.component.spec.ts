@@ -24,13 +24,19 @@ import { Ng5SliderModule } from 'ng5-slider';
 import { NgxDaterangepickerMd } from 'ngx-daterangepicker-material';
 import { SlickCarouselModule } from 'ngx-slick-carousel';
 import { DataTablesModule } from 'angular-datatables';
-import { Ng2FlatpickrModule } from 'ng2-flatpickr';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { AngularFireModule } from 'angularfire2';
 import { TripListComponent } from '../../trip/trip-list/trip-list.component';
 import { TripService } from 'src/app/services/trip.service';
 import { AuditService } from 'src/app/services/audit.service';
+import { TripApplicationPaymentComponent } from '../../tripApplication/trip-application-payment/trip-application-payment.component';
+import { NgxPayPalModule } from 'ngx-paypal';
+import {FileUploadModule} from 'primeng/fileupload';
+import {CalendarModule} from 'primeng/calendar';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { FinderDisplayComponent } from '../../finder/finder-display/finder-display.component';
+import { EditActorComponent } from '../../actor/edit-actor/edit-actor.component';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -70,7 +76,10 @@ describe('AuditDisplayComponent', () => {
         DashboardDisplayComponent,
         NotFoundPageComponent,
         TermsAndConditionsComponent,
-        DeniedAccessPageComponent
+        DeniedAccessPageComponent,
+        FinderDisplayComponent,
+        EditActorComponent,
+        TripApplicationPaymentComponent
       ],
       imports: [
         TranslateModule.forRoot({
@@ -89,8 +98,11 @@ describe('AuditDisplayComponent', () => {
         NgxDaterangepickerMd.forRoot(),
         DataTablesModule,
         SlickCarouselModule,
-        Ng2FlatpickrModule,
         InfiniteScrollModule,
+        NgxPayPalModule,
+        FileUploadModule,
+        CalendarModule,
+        BrowserAnimationsModule
       ],
       providers: [
         {provide: APP_BASE_HREF, useValue : '/trips'},
