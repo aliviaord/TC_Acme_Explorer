@@ -14,7 +14,6 @@ import Point from 'ol/geom/Point';
 import {Icon, Style} from 'ol/style';
 import VectorSource from 'ol/source/Vector';
 import VectorLayer from 'ol/layer/Vector';
-import {fromLonLat} from 'ol/proj';
 import { InfoMessageService } from '../../../services/info-message.service';
 
 @Component({
