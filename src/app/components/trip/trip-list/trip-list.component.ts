@@ -39,6 +39,7 @@ export class TripListComponent extends TranslatableComponent implements OnInit {
   minPrice = 0;
   maxPrice = 1000;
   managerView = false;
+  current_search = '';
 
   constructor(private tripService: TripService,
     private translateService: TranslateService,
@@ -98,6 +99,7 @@ export class TripListComponent extends TranslatableComponent implements OnInit {
 
   searchTrips(changeContext: ChangeContext) {
     let search = this.searchForm.value;
+    this.current_search = search.text;
     this.minPrice = changeContext ? changeContext.value : 0;
     this.maxPrice = changeContext ? changeContext.highValue : 1000;
     this.dates.startDate = search.dates.startDate.toDate();
@@ -119,7 +121,7 @@ export class TripListComponent extends TranslatableComponent implements OnInit {
       .catch(err => { console.log(err); });
     } else {
       this.tripService.getTripsPage(startIndex, MAX_TRIPS, 
-      null, this.minPrice, this.maxPrice)
+        this.current_search, this.minPrice, this.maxPrice)
       .then(val => { this.trips = this.trips.concat(val); })
       .catch(err => { console.log(err); });
     }
