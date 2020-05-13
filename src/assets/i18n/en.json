@@ -82,7 +82,9 @@
         "sorry": "We're sorry! This trip has been cancelled. The cancelation reason is shown below:",
         "apply": "Apply for this trip",
         "applicationTitle": "Make an application",
-        "optionalComments": "Optionally, you can leave some comments for the manager"
+        "optionalComments": "Optionally, you can leave some comments for the manager",
+        "searchPrice": "Price",
+        "searchText": "Text"
     },
     "main": {
         "title1": "Ready to discover?",

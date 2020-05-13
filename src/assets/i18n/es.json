@@ -82,7 +82,9 @@
         "sorry": "¡Lo sentimos! Este viaje ha sido cancelado. La razón de la cancelación se muestra a continuación:",
         "apply": "Solicitar este viaje",
         "applicationTitle": "Enviar una solicitud",
-        "optionalComments": "De manera opcional, puede introducir algún comentario para el gestor del viaje"
+        "optionalComments": "De manera opcional, puede introducir algún comentario para el gestor del viaje",
+        "searchPrice": "Precio",
+        "searchText": "Texto"
     },
     "main": {
         "title1": "¿Listo para descubrir?",

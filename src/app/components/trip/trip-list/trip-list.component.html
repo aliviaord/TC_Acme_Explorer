@@ -3,15 +3,18 @@
   <form [formGroup]="searchForm">
     <div class="content-center text-center flex flex-col sm:flex-row md:flex-row lg:flex-row xl:flex-row">
       <div class="sm:w-full md:w-full lg:w-full xl:w-1/3 mr-5">
+        <label>{{'trip.searchText' | translate}}</label>
         <input (keyup)="searchTrips()"
           class="w-full border-2 border-gray-300 bg-white h-10 px-5 rounded-lg text-sm focus:outline-none"
           type="text" name="text" formControlName="text" placeholder="{{'common.search' | translate}}">
       </div>
       <div class="sm:w-full md:w-full lg:w-full xl:w-1/3 mr-5">
+        <label>{{'trip.searchPrice' | translate}}</label>
         <ng5-slider (userChange)="searchTrips($event)" formControlName="prices"
           [options]="options"></ng5-slider>
       </div>
       <div class="sm:w-full md:w-full lg:w-full xl:w-1/3">
+        <label>{{'trip.dates' | translate}}</label>
         <input type="text" [(locale)]="locale" (change)="searchTrips()" ngxDaterangepickerMd formControlName="dates" class="w-full border-2 border-gray-300 bg-white h-10 px-5 rounded-lg text-sm focus:outline-none"/>
       </div>
     </div>
