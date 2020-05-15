@@ -34,6 +34,14 @@ import { NotFoundPageComponent } from './components/shared/not-found-page/not-fo
 import { TermsAndConditionsComponent } from './components/master/terms-and-conditions/terms-and-conditions.component';
 import { DeniedAccessPageComponent } from './components/security/denied-access-page/denied-access-page.component';
 import { MessageComponent } from './components/master/message/message.component';
+import { EditActorComponent } from './components/actor/edit-actor/edit-actor.component';
+import { FinderEditComponent } from './components/finder/finder-edit/finder-edit.component';
+import { FinderDisplayComponent } from './components/finder/finder-display/finder-display.component';
+import { TripApplicationPaymentComponent } from './components/tripApplication/trip-application-payment/trip-application-payment.component';
+import { CalendarModule } from 'primeng/calendar';
+import { FileUploadModule } from 'primeng/fileupload';
+import { NgxPayPalModule } from 'ngx-paypal';
+import { CookieService } from 'ngx-cookie-service';
 
 
 export const firebaseConfig = {
@@ -72,7 +80,10 @@ describe('AppComponent', () => {
         DataTablesModule,
         Ng5SliderModule,
         NgxDaterangepickerMd,
-        InfiniteScrollModule
+        InfiniteScrollModule,
+        CalendarModule,
+        FileUploadModule,
+        NgxPayPalModule
       ],
       declarations: [
         FooterComponent,
@@ -94,11 +105,16 @@ describe('AppComponent', () => {
         TermsAndConditionsComponent,
         DeniedAccessPageComponent,
         MessageComponent,
+        EditActorComponent,
+        FinderEditComponent,
+        FinderDisplayComponent,
+        TripApplicationPaymentComponent,
         AppComponent
       ],
       providers: [
         {provide: APP_BASE_HREF, useValue : '/'},
-        AngularFireAuth
+        AngularFireAuth,
+        CookieService
       ],
     }).compileComponents();
   }));

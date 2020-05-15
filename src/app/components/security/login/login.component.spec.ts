@@ -31,6 +31,15 @@ import { DataTablesModule } from 'angular-datatables';
 import { Ng5SliderModule } from 'ng5-slider';
 import { NgxDaterangepickerMd } from 'ngx-daterangepicker-material';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
+import { NgxPayPalModule } from 'ngx-paypal';
+import { FileUploadModule } from 'primeng/fileupload';
+import { CalendarModule } from 'primeng/calendar';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { EditActorComponent } from '../../actor/edit-actor/edit-actor.component';
+import { TripApplicationPaymentComponent } from '../../tripApplication/trip-application-payment/trip-application-payment.component';
+import { FinderEditComponent } from '../../finder/finder-edit/finder-edit.component';
+import { FinderDisplayComponent } from '../../finder/finder-display/finder-display.component';
+import { CookieService } from 'ngx-cookie-service';
 
 export const firebaseConfig = {
   apiKey: 'AIzaSyBeyK3jw-oLh1MyZMHrydSJwy0WTxWDZ-0',
@@ -70,7 +79,11 @@ describe('LoginComponent', () => {
         DataTablesModule,
         Ng5SliderModule,
         NgxDaterangepickerMd,
-        InfiniteScrollModule
+        InfiniteScrollModule,
+        NgxPayPalModule,
+        FileUploadModule,
+        CalendarModule,
+        BrowserAnimationsModule
       ],
       declarations: [
         MainComponent,
@@ -88,11 +101,16 @@ describe('LoginComponent', () => {
         DashboardDisplayComponent,
         NotFoundPageComponent,
         TermsAndConditionsComponent,
-        DeniedAccessPageComponent
+        DeniedAccessPageComponent,
+        EditActorComponent,
+        TripApplicationPaymentComponent,
+        FinderEditComponent,
+        FinderDisplayComponent
       ],
       providers: [
         {provide: APP_BASE_HREF, useValue : '/login'},
-        AngularFireAuth
+        AngularFireAuth,
+        CookieService
       ],
     })
     .compileComponents();

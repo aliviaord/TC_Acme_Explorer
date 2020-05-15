@@ -39,6 +39,8 @@ import {CalendarModule} from 'primeng/calendar';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { FinderDisplayComponent } from '../../finder/finder-display/finder-display.component';
 import { EditActorComponent } from '../../actor/edit-actor/edit-actor.component';
+import { FinderEditComponent } from '../../finder/finder-edit/finder-edit.component';
+import { CookieService } from 'ngx-cookie-service';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -82,7 +84,8 @@ describe('AuditListComponent', () => {
         DeniedAccessPageComponent,
         FinderDisplayComponent,
         EditActorComponent,
-        TripApplicationPaymentComponent
+        TripApplicationPaymentComponent,
+        FinderEditComponent
       ],
       imports: [
         TranslateModule.forRoot({
@@ -110,6 +113,7 @@ describe('AuditListComponent', () => {
       providers: [
         {provide: APP_BASE_HREF, useValue : '/trips'},
         AngularFireAuth,
+        CookieService
       ]
     })
     .compileComponents();
@@ -128,7 +132,7 @@ describe('AuditListComponent', () => {
     auditor.role = 'AUDITOR';
     auditor.id = '5e938c9e9f78e625809e7051';
     auditor.version = 0;
-    authService.currentActor = auditor;
+    authService.setCurrentActor(auditor);
     component.ngOnInit();
     fixture.detectChanges();
   });

@@ -4,6 +4,7 @@ import { AngularFireModule } from 'angularfire2';
 import { HttpClientModule } from '@angular/common/http';
 
 import { AuthService } from './auth.service';
+import { CookieService } from 'ngx-cookie-service';
 
 export const firebaseConfig = {
   apiKey: 'AIzaSyBeyK3jw-oLh1MyZMHrydSJwy0WTxWDZ-0',
@@ -25,7 +26,8 @@ describe('AuthService', () => {
         HttpClientModule
       ],
       providers: [
-        AngularFireAuth
+        AngularFireAuth,
+        CookieService
       ],
     }).compileComponents();
   }));

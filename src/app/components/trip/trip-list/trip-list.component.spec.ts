@@ -36,6 +36,8 @@ import {CalendarModule} from 'primeng/calendar';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { FinderDisplayComponent } from '../../finder/finder-display/finder-display.component';
 import { EditActorComponent } from '../../actor/edit-actor/edit-actor.component';
+import { FinderEditComponent } from '../../finder/finder-edit/finder-edit.component';
+import { CookieService } from 'ngx-cookie-service';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -78,7 +80,8 @@ describe('TripListComponent', () => {
         DeniedAccessPageComponent,
         FinderDisplayComponent,
         EditActorComponent,
-        TripApplicationPaymentComponent
+        TripApplicationPaymentComponent,
+        FinderEditComponent
       ],
       imports: [
         TranslateModule.forRoot({
@@ -108,6 +111,7 @@ describe('TripListComponent', () => {
       providers: [
         {provide: APP_BASE_HREF, useValue : '/trips'},
         AngularFireAuth,
+        CookieService
       ]
     })
     .compileComponents();
@@ -133,7 +137,7 @@ describe('TripListComponent', () => {
     fixture.whenStable().then(() => {
       expect(component.trips.length).toEqual(6);
       done();
-    })
+    });
   });
 
   it('should retrieve the third trip since it is the ' +
@@ -144,9 +148,9 @@ describe('TripListComponent', () => {
 
       fixture.whenStable().then(() => {
         expect(component.trips.filter(trip => trip.cancelReason != null))
-        .toContain(component.trips[2])
+        .toContain(component.trips[2]);
         done();
-      })
+      });
   });
 
   it('should retrieve trip with three pictures', async(done) => {
@@ -155,9 +159,9 @@ describe('TripListComponent', () => {
       spyOn(tripService, 'getTrips').and.returnValue(Promise.resolve(true));
 
       fixture.whenStable().then(() => {
-        expect(component.trips.filter(trip => trip.pictures.length == 3))
-        .toContain(component.trips[0])
+        expect(component.trips.filter(trip => trip.pictures.length === 3))
+        .toContain(component.trips[0]);
         done();
-      })
+      });
   });
 });

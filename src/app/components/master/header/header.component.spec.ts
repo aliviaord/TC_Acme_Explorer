@@ -6,6 +6,7 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireAuth } from 'angularfire2/auth';
+import { CookieService } from 'ngx-cookie-service';
 
 export const firebaseConfig = {
   apiKey: 'AIzaSyBeyK3jw-oLh1MyZMHrydSJwy0WTxWDZ-0',
@@ -41,7 +42,8 @@ describe('HeaderComponent', () => {
       ],
       declarations: [ HeaderComponent ],
       providers: [
-        AngularFireAuth
+        AngularFireAuth,
+        CookieService
       ]
     })
     .compileComponents();

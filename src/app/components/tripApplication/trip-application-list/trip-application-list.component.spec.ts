@@ -32,6 +32,15 @@ import { AngularFireModule } from 'angularfire2';
 import { AuthService } from 'src/app/services/auth.service';
 import { Actor } from 'src/app/models/actor.model';
 import { TripApplicationService } from 'src/app/services/trip-application.service';
+import { NgxPayPalModule } from 'ngx-paypal';
+import { FileUploadModule } from 'primeng/fileupload';
+import { CalendarModule } from 'primeng/calendar';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { EditActorComponent } from '../../actor/edit-actor/edit-actor.component';
+import { TripApplicationPaymentComponent } from '../trip-application-payment/trip-application-payment.component';
+import { FinderEditComponent } from '../../finder/finder-edit/finder-edit.component';
+import { FinderDisplayComponent } from '../../finder/finder-display/finder-display.component';
+import { CookieService } from 'ngx-cookie-service';
 
 export const firebaseConfig = {
   apiKey: 'AIzaSyBeyK3jw-oLh1MyZMHrydSJwy0WTxWDZ-0',
@@ -73,7 +82,11 @@ describe('TripApplicationListComponent', () => {
         DataTablesModule,
         Ng5SliderModule,
         NgxDaterangepickerMd,
-        AngularFireModule.initializeApp(firebaseConfig)
+        AngularFireModule.initializeApp(firebaseConfig),
+        NgxPayPalModule,
+        FileUploadModule,
+        CalendarModule,
+        BrowserAnimationsModule
       ],
       declarations: [
         TripApplicationListComponent,
@@ -91,11 +104,16 @@ describe('TripApplicationListComponent', () => {
         NotFoundPageComponent,
         TermsAndConditionsComponent,
         DeniedAccessPageComponent,
-        SponsorshipListComponent
+        SponsorshipListComponent,
+        EditActorComponent,
+        TripApplicationPaymentComponent,
+        FinderEditComponent,
+        FinderDisplayComponent
       ],
       providers: [
         {provide: APP_BASE_HREF, useValue : '/tripApplications'},
-        AngularFireAuth
+        AngularFireAuth,
+        CookieService
       ]
     })
     .compileComponents();
@@ -117,7 +135,7 @@ describe('TripApplicationListComponent', () => {
     manager.role = 'MANAGER';
     manager.id = '5e78bbd524b1296d559096fb';
     manager.version = 0;
-    authService.currentActor = manager;
+    authService.setCurrentActor(manager);
 
     component.ngOnInit();
     fixture.detectChanges();

@@ -37,6 +37,8 @@ import {CalendarModule} from 'primeng/calendar';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { FinderDisplayComponent } from '../../finder/finder-display/finder-display.component';
 import { EditActorComponent } from '../../actor/edit-actor/edit-actor.component';
+import { FinderEditComponent } from '../../finder/finder-edit/finder-edit.component';
+import { CookieService } from 'ngx-cookie-service';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -79,7 +81,8 @@ describe('AuditDisplayComponent', () => {
         DeniedAccessPageComponent,
         FinderDisplayComponent,
         EditActorComponent,
-        TripApplicationPaymentComponent
+        TripApplicationPaymentComponent,
+        FinderEditComponent
       ],
       imports: [
         TranslateModule.forRoot({
@@ -107,6 +110,7 @@ describe('AuditDisplayComponent', () => {
       providers: [
         {provide: APP_BASE_HREF, useValue : '/trips'},
         AngularFireAuth,
+        CookieService
       ]
     })
     .compileComponents();

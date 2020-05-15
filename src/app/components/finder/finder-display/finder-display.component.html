@@ -17,7 +17,7 @@
         </p>
       </div>
       <p>
-        <input id="minDate" value="{{finder.startDate.substring(0, 10)}}" autocomplete="false" tabindex="0" type="text" disabled class="py-1 px-1 outline-none block h-full w-full">
+        <input *ngIf="finder.startDate" id="minDate" value="{{finder.startDate.substring(0, 10)}}" autocomplete="false" tabindex="0" type="text" disabled class="py-1 px-1 outline-none block h-full w-full">
       </p>
     </div>
     <div class="border focus-within:border-blue-500 focus-within:text-blue-500 transition-all duration-500 relative rounded p-1">
@@ -47,7 +47,7 @@
         </p>
       </div>
       <p>
-        <input id="maxDate" value="{{finder.endDate.substring(0, 10)}}" autocomplete="false" tabindex="0" type="text" disabled class="py-1 px-1 outline-none block h-full w-full">
+        <input *ngIf="finder.endDate" id="maxDate" value="{{finder.endDate.substring(0, 10)}}" autocomplete="false" tabindex="0" type="text" disabled class="py-1 px-1 outline-none block h-full w-full">
       </p>
     </div>
   </div>

@@ -38,6 +38,8 @@ import {CalendarModule} from 'primeng/calendar';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { FinderDisplayComponent } from '../../finder/finder-display/finder-display.component';
 import { EditActorComponent } from '../../actor/edit-actor/edit-actor.component';
+import { FinderEditComponent } from '../../finder/finder-edit/finder-edit.component';
+import { CookieService } from 'ngx-cookie-service';
 
 export const firebaseConfig = {
   apiKey: 'AIzaSyBeyK3jw-oLh1MyZMHrydSJwy0WTxWDZ-0',
@@ -102,11 +104,13 @@ describe('RegisterComponent', () => {
         DeniedAccessPageComponent,
         FinderDisplayComponent,
         EditActorComponent,
-        TripApplicationPaymentComponent
+        TripApplicationPaymentComponent,
+        FinderEditComponent
       ],
       providers: [
         {provide: APP_BASE_HREF, useValue : '/register'},
-        AngularFireAuth
+        AngularFireAuth,
+        CookieService
       ],
     })
     .compileComponents();

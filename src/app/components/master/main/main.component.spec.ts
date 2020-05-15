@@ -27,6 +27,14 @@ import { Ng5SliderModule } from 'ng5-slider';
 import { NgxDaterangepickerMd } from 'ngx-daterangepicker-material';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import { APP_BASE_HREF } from '@angular/common';
+import { EditActorComponent } from '../../actor/edit-actor/edit-actor.component';
+import { TripApplicationPaymentComponent } from '../../tripApplication/trip-application-payment/trip-application-payment.component';
+import { FinderEditComponent } from '../../finder/finder-edit/finder-edit.component';
+import { FinderDisplayComponent } from '../../finder/finder-display/finder-display.component';
+import { NgxPayPalModule } from 'ngx-paypal';
+import { FileUploadModule } from 'primeng/fileupload';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { CalendarModule } from 'primeng/calendar';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -54,25 +62,33 @@ describe('MainComponent', () => {
         DataTablesModule,
         Ng5SliderModule,
         NgxDaterangepickerMd,
-        InfiniteScrollModule
+        InfiniteScrollModule,
+        NgxPayPalModule,
+        FileUploadModule,
+        CalendarModule,
+        BrowserAnimationsModule
       ],
       declarations: [
         MainComponent,
         LoginComponent,
         RegisterComponent,
-        TripDisplayComponent,
         TripListComponent,
+        TripDisplayComponent,
         EditTripComponent,
         CreateTripComponent,
         DisplayAuditComponent,
         AuditListComponent,
         CreateAuditComponent,
+        TripApplicationListComponent,
+        SponsorshipListComponent,
         DashboardDisplayComponent,
         NotFoundPageComponent,
         TermsAndConditionsComponent,
         DeniedAccessPageComponent,
-        SponsorshipListComponent,
-        TripApplicationListComponent
+        EditActorComponent,
+        TripApplicationPaymentComponent,
+        FinderEditComponent,
+        FinderDisplayComponent
       ],
       providers: [
         {provide: APP_BASE_HREF, useValue : '/'}

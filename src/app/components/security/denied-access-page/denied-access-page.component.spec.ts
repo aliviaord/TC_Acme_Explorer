@@ -28,6 +28,14 @@ import { NgxDaterangepickerMd } from 'ngx-daterangepicker-material';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import { APP_BASE_HREF } from '@angular/common';
 import { AngularFireAuth } from 'angularfire2/auth';
+import { FileUploadModule } from 'primeng/fileupload';
+import { NgxPayPalModule } from 'ngx-paypal';
+import { CalendarModule } from 'primeng/calendar';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { EditActorComponent } from '../../actor/edit-actor/edit-actor.component';
+import { TripApplicationPaymentComponent } from '../../tripApplication/trip-application-payment/trip-application-payment.component';
+import { FinderEditComponent } from '../../finder/finder-edit/finder-edit.component';
+import { FinderDisplayComponent } from '../../finder/finder-display/finder-display.component';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -55,7 +63,11 @@ describe('DeniedAccessPageComponent', () => {
         DataTablesModule,
         Ng5SliderModule,
         NgxDaterangepickerMd,
-        InfiniteScrollModule
+        InfiniteScrollModule,
+        NgxPayPalModule,
+        FileUploadModule,
+        CalendarModule,
+        BrowserAnimationsModule
       ],
       declarations: [
         DeniedAccessPageComponent,
@@ -73,7 +85,11 @@ describe('DeniedAccessPageComponent', () => {
         SponsorshipListComponent,
         DashboardDisplayComponent,
         NotFoundPageComponent,
-        TermsAndConditionsComponent
+        TermsAndConditionsComponent,
+        EditActorComponent,
+        TripApplicationPaymentComponent,
+        FinderEditComponent,
+        FinderDisplayComponent
       ],
       providers: [
         {provide: APP_BASE_HREF, useValue : '/'}

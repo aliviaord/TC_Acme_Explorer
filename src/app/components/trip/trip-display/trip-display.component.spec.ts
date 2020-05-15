@@ -37,6 +37,8 @@ import {CalendarModule} from 'primeng/calendar';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { FinderDisplayComponent } from '../../finder/finder-display/finder-display.component';
 import { EditActorComponent } from '../../actor/edit-actor/edit-actor.component';
+import { FinderEditComponent } from '../../finder/finder-edit/finder-edit.component';
+import { CookieService } from 'ngx-cookie-service';
 
 export const firebaseConfig = {
   apiKey: 'AIzaSyBeyK3jw-oLh1MyZMHrydSJwy0WTxWDZ-0',
@@ -102,19 +104,21 @@ describe('TripDisplayComponent', () => {
         DeniedAccessPageComponent,
         FinderDisplayComponent,
         EditActorComponent,
-        TripApplicationPaymentComponent
+        TripApplicationPaymentComponent,
+        FinderEditComponent
       ],
       providers: [
         {provide: APP_BASE_HREF, useValue : '/'},
         AngularFireAuth,
         {
           provide: ActivatedRoute,
-          useValue: { 
+          useValue: {
             snapshot: {
               params: {id: '5e78ac3cf6f9577fd149c9ba'}
             }
           }
-        }
+        },
+        CookieService
       ]
     })
     .compileComponents();
@@ -149,7 +153,7 @@ describe('TripDisplayComponent', () => {
     fixture.whenStable().then(() => {
       expect(component.trip.price).toBeGreaterThan(600);
       done();
-    })
+    });
   });
 
   it('should have correct title', async(done) => {
@@ -160,7 +164,7 @@ describe('TripDisplayComponent', () => {
     fixture.whenStable().then(() => {
       expect(component.trip.title).toEqual('Trip to Myst Falls');
       done();
-    })
+    });
   });
 
   it('should have correct number of audits', async(done) => {
@@ -171,6 +175,6 @@ describe('TripDisplayComponent', () => {
     fixture.whenStable().then(() => {
       expect(component.audits.length).toEqual(2);
       done();
-    })
+    });
   });
 });
