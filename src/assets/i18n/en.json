@@ -44,7 +44,8 @@
         "clear": "Clear",
         "choose": "Select files",
         "locale": "en",
-        "nothing": "Nothing to show"
+        "nothing": "Nothing to show",
+        "cancel": "Cancel"
     },
     "stage": {
         "add": "Add stage",
@@ -147,7 +148,8 @@
             "startDate": "Start date must be after today's date.",
             "endDate": "End date must be after start date.",
             "publicationDate": "Publication date must be before start date and after today's date (included)"
-        }
+        },
+        "discard.changes": "Do you want to discard the changes?"
     },
     "not-found-page": {
         "title": "Sorry, something went wrong!",

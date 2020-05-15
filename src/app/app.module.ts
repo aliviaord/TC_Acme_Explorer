@@ -46,6 +46,7 @@ import { FinderDisplayComponent } from './components/finder/finder-display/finde
 import { EditActorComponent } from './components/actor/edit-actor/edit-actor.component';
 import { FinderEditComponent } from './components/finder/finder-edit/finder-edit.component';
 import { CookieService } from 'ngx-cookie-service';
+import { CanDeactivateGuard } from './services/can-deactivate.service';
 
 export const firebaseConfig = {
   apiKey: 'AIzaSyBeyK3jw-oLh1MyZMHrydSJwy0WTxWDZ-0',
@@ -119,7 +120,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     NgxPayPalModule
   ],
   exports: [AppRoutingModule],
-  providers: [AngularFireAuth, CookieService],
+  providers: [AngularFireAuth, CookieService, CanDeactivateGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -22,6 +22,7 @@ import { TripApplicationPaymentComponent } from './components/tripApplication/tr
 import { FinderDisplayComponent } from './components/finder/finder-display/finder-display.component';
 import { EditActorComponent } from './components/actor/edit-actor/edit-actor.component';
 import { FinderEditComponent } from './components/finder/finder-edit/finder-edit.component';
+import { CanDeactivateGuard } from './services/can-deactivate.service';
 
 const appRoutes: Routes = [
   {path: '', component: MainComponent, pathMatch: 'full'},
@@ -59,7 +60,8 @@ const appRoutes: Routes = [
   {path: 'sponsorships', component: SponsorshipListComponent, canActivate: [ActorRoleGuard], data: {expectedRole: 'SPONSOR'}},
   {path: 'dashboard', component: DashboardDisplayComponent, canActivate: [ActorRoleGuard], data: {expectedRole: 'ADMINISTRATOR'}},
   {path: 'finder', children: [
-    {path: 'edit', component: FinderEditComponent, canActivate: [ActorRoleGuard], data: {expectedRole: 'EXPLORER'}},
+    {path: 'edit', component: FinderEditComponent, canDeactivate: [CanDeactivateGuard],
+      canActivate: [ActorRoleGuard], data: {expectedRole: 'EXPLORER'}},
     {path: '', component: FinderDisplayComponent, canActivate: [ActorRoleGuard], data: {expectedRole: 'EXPLORER'}},
   ]},
   {path: 'not-found', component: NotFoundPageComponent},

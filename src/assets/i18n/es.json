@@ -44,7 +44,8 @@
         "clear": "Eliminar",
         "choose": "Seleccionar archivos",
         "locale": "es",
-        "nothing": "Nada que mostrar"
+        "nothing": "Nada que mostrar",
+        "cancel": "Cancelar"
     },
     "stage": {
         "add": "Añadir etapa",
@@ -145,7 +146,8 @@
             "startDate": "La fecha de inicio debe ser después de la fecha de hoy.",
             "endDate": "La fecha de fin debe ser después de la fecha de inicio.",
             "publicationDate": "La fecha de publicación debe ser antes de la fecha de inicio y después de la fecha de hoy (incluída)."
-        }
+        },
+        "discard.changes": "¿Desea descartar los cambios?"
     },
     "not-found-page": {
         "title": "Lo sentimos, ¡algo salió mal!",

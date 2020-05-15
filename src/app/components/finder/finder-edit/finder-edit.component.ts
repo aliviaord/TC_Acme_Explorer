@@ -9,16 +9,19 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 import { InfoMessageService } from 'src/app/services/info-message.service';
 import * as moment from 'moment';
+import { CanComponentDeactivate } from 'src/app/services/can-deactivate.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-finder-edit',
   templateUrl: './finder-edit.component.html',
   styleUrls: ['./finder-edit.component.css']
 })
-export class FinderEditComponent extends TranslatableComponent implements OnInit {
+export class FinderEditComponent extends TranslatableComponent implements OnInit, CanComponentDeactivate {
 
   currentActor: Actor;
   editForm: FormGroup;
+  updated: boolean;
   finder;
   locale = {
     format: this.getLang() === 'es' ? 'DD/MM/YYYY' : 'MM/DD/YYYY'
@@ -45,6 +48,7 @@ export class FinderEditComponent extends TranslatableComponent implements OnInit
   }
 
   ngOnInit() {
+    this.updated = false;
     this.currentActor = this.authService.getCurrentActor();
     this.finderService.getFinder(this.currentActor.id)
       .then((val) => {
@@ -55,6 +59,15 @@ export class FinderEditComponent extends TranslatableComponent implements OnInit
       }).catch((err) => {
         console.error(err);
       });
+  }
+
+  canDeactivate(): Observable<boolean> | Promise<boolean> | boolean {
+    let result = true;
+    const message = this.translateService.instant('messages.discard.changes');
+    if (!this.updated && this.editForm.dirty) {
+      result = confirm(message);
+    }
+    return result;
   }
 
   createEditForm(finder) {
@@ -81,6 +94,7 @@ export class FinderEditComponent extends TranslatableComponent implements OnInit
 
     this.finderService.editFinder(finder)
       .then(res => {
+        this.updated = true;
         this.infoMessageService.notifyMessage('messages.finder.edit.correct',
               'text-center bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative');
         this.router.navigate(['/finder']);
