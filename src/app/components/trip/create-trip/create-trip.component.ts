@@ -58,7 +58,6 @@ export class CreateTripComponent extends TranslatableComponent implements OnInit
         price += stage['controls']['price'].value;
       }
       this.totalPrice = price;
-      console.log(this.totalPrice)
     }) 
   }
 
