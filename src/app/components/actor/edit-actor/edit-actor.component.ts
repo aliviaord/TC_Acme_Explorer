@@ -69,6 +69,7 @@ export class EditActorComponent extends TranslatableComponent implements OnInit,
         zoom: 5
       }),
     });
+    this.addMarker((this.actor.address)
   }
 
   createEditForm(actor) {
@@ -80,8 +81,7 @@ export class EditActorComponent extends TranslatableComponent implements OnInit,
     });
   }
 
-  getCoord(event: any){
-    var coordinates = this.map.getEventCoordinate(event);
+  addMarker(coordinates) {
     var iconFeature = new Feature({
       geometry: new Point(coordinates),
     });
@@ -106,6 +106,11 @@ export class EditActorComponent extends TranslatableComponent implements OnInit,
     this.markerLayer = vectorLayer;
     this.map.addLayer(vectorLayer);
     this.editForm.get('address').setValue(coordinates)
+  }
+
+  getCoord(event: any){
+    var coordinates = this.map.getEventCoordinate(event);
+    this.addMarker(coordinates)
   }
 
   onEdit() {
