@@ -12,6 +12,7 @@ import * as moment from 'moment';
 import { NgForm } from '@angular/forms';
 import { TripApplication } from 'src/app/models/trip-application.model';
 import { TripApplicationService } from 'src/app/services/trip-application.service';
+import { InfoMessageService } from 'src/app/services/info-message.service';
 
 @Component({
   selector: 'app-trip-display',
@@ -49,7 +50,8 @@ export class TripDisplayComponent extends TranslatableComponent implements OnIni
     private route: ActivatedRoute,
     private sponsorshipService: SponsorshipService,
     private authService: AuthService,
-    private tripApplicationService: TripApplicationService) {
+    private tripApplicationService: TripApplicationService,
+    private infoMessageService: InfoMessageService) {
     super(translateService);
   }
 
@@ -121,10 +123,13 @@ export class TripDisplayComponent extends TranslatableComponent implements OnIni
 
     this.tripApplicationService.createTripApplication(newTripApplication)
       .then((val) => {
-        console.log(val);
+        this.infoMessageService.notifyMessage('messages.tripApplication.create.correct',
+          'text-center bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative');
         this.router.navigate(['/trips/' + this.trip.id]);
       }).catch((err) => {
         console.error(err);
+        this.infoMessageService.notifyMessage('messages.tripApplication.create.failed',
+          'text-center bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative');
       });
   }
 }

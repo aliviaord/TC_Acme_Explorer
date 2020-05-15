@@ -4,6 +4,7 @@ import { PayPalConfig, ICreateOrderRequest } from 'ngx-paypal';
 import { TranslateService } from '@ngx-translate/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { TripApplicationService } from 'src/app/services/trip-application.service';
+import { InfoMessageService } from 'src/app/services/info-message.service';
 
 @Component({
   selector: 'app-trip-application-payment',
@@ -17,7 +18,8 @@ export class TripApplicationPaymentComponent extends TranslatableComponent imple
   constructor(private translateService: TranslateService,
     private route: ActivatedRoute,
     private router: Router,
-    private tripApplicationService: TripApplicationService) {
+    private tripApplicationService: TripApplicationService,
+    private infoMessageService: InfoMessageService) {
       super(translateService);
   }
 
@@ -66,10 +68,13 @@ export class TripApplicationPaymentComponent extends TranslatableComponent imple
 
             this.tripApplicationService.updateTripApplication(tripApplication)
               .then((val) => {
-                console.log(val);
+                this.infoMessageService.notifyMessage('messages.tripApplication.payment.correct',
+                  'text-center bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative');
                 this.router.navigate(['/tripApplications']);
               }).catch((err) => {
                 console.error(err);
+                this.infoMessageService.notifyMessage('messages.tripApplication.payment.failed',
+                  'text-center bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative');
               });
           }).catch((err) => {
             console.error(err);
