@@ -62,7 +62,7 @@
                   <div class="flex justify-center">
                     <button *ngIf="f.value.rejectedReason === ''" type="submit" class="bg-green-300 text-white mx-1 font-bold rounded-full py-2 px-2 cursor-not-allowed" [disabled]="f.value.rejectedReason === ''">{{'tripApplication.accept' | translate}}</button>
                     <button *ngIf="f.value.rejectedReason !== ''" type="submit" class="bg-green-300 text-white mx-1 hover:underline font-bold rounded-full py-2 px-2" [disabled]="f.value.rejectedReason === ''">{{'tripApplication.accept' | translate}}</button>
-                    <button class="bg-red-300 text-white mx-1 hover:underline font-bold rounded-full py-2 px-2" (click)="toggleModal()">{{'tripApplication.cancel' | translate}}</button>
+                    <div (click)="toggleModal()" class="bg-red-300 text-white mx-1 hover:underline font-bold rounded-full py-2 px-2">{{'tripApplication.cancel' | translate}}</div>
                   </div>
                 </form>
               </div>

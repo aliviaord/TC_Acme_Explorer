@@ -9,6 +9,7 @@ import { Actor } from 'src/app/models/actor.model';
 import { ActorService } from 'src/app/services/actor.service';
 import { TripService } from 'src/app/services/trip.service';
 import { NgForm } from '@angular/forms';
+import { InfoMessageService } from 'src/app/services/info-message.service';
 
 const MAX_ITEMS = 9;
 
@@ -33,7 +34,8 @@ export class TripApplicationListComponent extends TranslatableComponent implemen
     private router: Router,
     private translateService: TranslateService,
     private actorService: ActorService,
-    private tripService: TripService) {
+    private tripService: TripService,
+    private infoMessageService: InfoMessageService) {
     super(translateService);
   }
 
@@ -108,10 +110,13 @@ export class TripApplicationListComponent extends TranslatableComponent implemen
       tripApplication.status = newStatus;
       this.tripApplicationService.updateTripApplication(tripApplication)
         .then((val) => {
-          console.log(val);
+          this.infoMessageService.notifyMessage('messages.tripApplication.' + newStatus.toString().toLowerCase() + '.correct',
+            'text-center bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative');
           this.router.navigate(['/tripApplications']);
         }).catch((err) => {
           console.error(err);
+          this.infoMessageService.notifyMessage('messages.tripApplication.' + newStatus.toString().toLowerCase() + '.failed',
+            'text-center bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative');
         });
     }
   }
@@ -130,10 +135,13 @@ export class TripApplicationListComponent extends TranslatableComponent implemen
 
     this.tripApplicationService.updateTripApplication(tripApplication)
       .then((val) => {
-        console.log(val);
         this.router.navigate(['/tripApplications']);
+        this.infoMessageService.notifyMessage('messages.tripApplication.reject.correct',
+          'text-center bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative');
       }).catch((err) => {
         console.error(err);
+        this.infoMessageService.notifyMessage('messages.tripApplication.reject.failed',
+          'text-center bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative');
       });
   }
 
