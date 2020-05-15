@@ -69,7 +69,7 @@ export class EditActorComponent extends TranslatableComponent implements OnInit,
         zoom: 5
       }),
     });
-    this.addMarker((this.actor.address)
+    this.addMarker(this.actor.address)
   }
 
   createEditForm(actor) {

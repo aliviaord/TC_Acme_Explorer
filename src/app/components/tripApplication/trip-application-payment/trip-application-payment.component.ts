@@ -5,6 +5,7 @@ import { TranslateService } from '@ngx-translate/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { TripApplicationService } from 'src/app/services/trip-application.service';
 import { InfoMessageService } from 'src/app/services/info-message.service';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-trip-application-payment',
@@ -19,12 +20,21 @@ export class TripApplicationPaymentComponent extends TranslatableComponent imple
     private route: ActivatedRoute,
     private router: Router,
     private tripApplicationService: TripApplicationService,
-    private infoMessageService: InfoMessageService) {
+    private infoMessageService: InfoMessageService,
+    private authService: AuthService) {
       super(translateService);
   }
 
   ngOnInit() {
     this.initConfig();
+    this.tripApplicationService.getTripApplication(this.route.snapshot.queryParams['application'])
+      .then((tripApplication) => {
+        if (!this.authService.getCurrentActor() || tripApplication.explorer !== this.authService.getCurrentActor().id) {
+          this.router.navigate(['/denied-access']);
+        }
+      }).catch((err) => {
+        console.error(err);
+      });
   }
 
   initConfig() {
