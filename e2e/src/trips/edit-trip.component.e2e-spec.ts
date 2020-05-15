@@ -21,19 +21,41 @@ describe('workspace-project App', () => {
     emailInput.sendKeys('sam@estara.com')
     passwordInput.sendKeys('SamanthaOT2020')
     loginBtn.click();
+    browser.driver.sleep(2000);
   });
 
   it('should go to edit page', () => {
-    page.navigateToEdit();
-    browser.driver.sleep(3000);
+    var myTripsBtn = element(by.id('myTrips'));
+    myTripsBtn.click();
+
+    var tripUrl = element(by.linkText('Trip to Myst Falls'))
+    tripUrl.click();
+
+    var editBtn = element(by.id('editBtn'));
+    editBtn.click();
 
     var titleInput = element(by.id('title'));
-    expect(titleInput.getText()).toEqual('Trip to Myst Falls');
+    expect(titleInput.getAttribute('value')).toEqual('Trip to Myst Falls');
   });
 
-  it('should edit title', () => {
+  it('should edit title and submit', () => {
     var titleInput = element(by.id('title'));
+    var editBtn = element(by.id('editBtn'));
 
+    titleInput.clear();
     titleInput.sendKeys('Trip to the best island');
-})
+    editBtn.click();
+    browser.driver.sleep(2000);
+  })
+
+  it('should revert change', () => {
+    page.navigateToEdit();
+    var titleInput = element(by.id('title'));
+    var editBtn = element(by.id('editBtn'));
+
+    titleInput.clear();
+    titleInput.sendKeys('Trip to Myst Falls');
+    editBtn.click();
+    browser.driver.sleep(2000);
+  })
 });
