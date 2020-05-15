@@ -15,19 +15,21 @@ import {Icon, Style} from 'ol/style';
 import VectorSource from 'ol/source/Vector';
 import VectorLayer from 'ol/layer/Vector';
 import { InfoMessageService } from '../../../services/info-message.service';
-
+import { CanComponentDeactivate } from 'src/app/services/can-deactivate.service';
+import { Observable } from 'rxjs';
 @Component({
   selector: 'app-edit-actor',
   templateUrl: './edit-actor.component.html',
   styleUrls: ['./edit-actor.component.css']
 })
-export class EditActorComponent extends TranslatableComponent implements OnInit {
+export class EditActorComponent extends TranslatableComponent implements OnInit, CanComponentDeactivate {
 
   editForm: FormGroup;
   roleList: string[];
   map: Map;
   markerLayer: VectorLayer;
   actor;
+  updated: boolean;
 
   constructor(private router: Router,
     private authService: AuthService,
@@ -125,5 +127,13 @@ export class EditActorComponent extends TranslatableComponent implements OnInit 
     });
   }
 
+  canDeactivate(): Observable<boolean> | Promise<boolean> | boolean {
+    let result = true;
+    const message = this.translateService.instant('messages.discard.changes');
+    if (!this.updated && this.editForm.dirty) {
+      result = confirm(message);
+    }
+    return result;
+  }
 
 }

@@ -32,28 +32,28 @@ const appRoutes: Routes = [
   },
   {
     path: 'register', component: RegisterComponent,
-    canActivate: [ActorRoleGuard], data: {expectedRole: 'anonymous'}
+    canActivate: [ActorRoleGuard], canDeactivate: [CanDeactivateGuard], data: {expectedRole: 'anonymous'}
   },
   {path: 'trips', children: [
     {path: ':id', component: TripDisplayComponent},
     {path: '', component: TripListComponent},
-    {path: ':id/edit', component: EditTripComponent, data: {expectedRole: 'MANAGER'}}
+    {path: ':id/edit', component: EditTripComponent, canDeactivate: [CanDeactivateGuard], data: {expectedRole: 'MANAGER'}}
   ]},
   {path: 'my-trips', component: TripListComponent,
   canActivate: [ActorRoleGuard], data: {expectedRole: 'MANAGER'}
   },
   {path: 'edit-profile', component: EditActorComponent,
-  canActivate: [ActorRoleGuard], data: {expectedRole: 'MANAGER|EXPLORER|AUDITOR|SPONSOR|ADMINISTRATOR'}
+  canActivate: [ActorRoleGuard], canDeactivate: [CanDeactivateGuard], data: {expectedRole: 'MANAGER|EXPLORER|AUDITOR|SPONSOR|ADMINISTRATOR'}
   },
   {path: 'new-trip', component: CreateTripComponent,
-  canActivate: [ActorRoleGuard], data: {expectedRole: 'MANAGER'}
+  canActivate: [ActorRoleGuard], canDeactivate: [CanDeactivateGuard], data: {expectedRole: 'MANAGER'}
   },
   {path: 'audits', children: [
     {path: ':id', component: DisplayAuditComponent},
     {path: '', component: AuditListComponent, canActivate: [ActorRoleGuard], data: {expectedRole: 'AUDITOR'}},
   ]},
   {path: 'new-audit', component: CreateAuditComponent,
-  canActivate: [ActorRoleGuard], data: {expectedRole: 'AUDITOR'}
+  canActivate: [ActorRoleGuard], canDeactivate: [CanDeactivateGuard], data: {expectedRole: 'AUDITOR'}
   },
   {path: 'tripApplications', component: TripApplicationListComponent, canActivate: [ActorRoleGuard],
     data: {expectedRole: 'MANAGER|EXPLORER'}},

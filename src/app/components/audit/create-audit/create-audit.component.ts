@@ -8,16 +8,18 @@ import { TranslateService } from '@ngx-translate/core';
 import { TranslatableComponent } from '../../shared/translatable/translatable.component';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { AuthService } from 'src/app/services/auth.service';
-
+import { CanComponentDeactivate } from 'src/app/services/can-deactivate.service';
+import { Observable } from 'rxjs';
 @Component({
   selector: 'app-create-audit',
   templateUrl: './create-audit.component.html',
   styleUrls: ['./create-audit.component.css']
 })
-export class CreateAuditComponent extends TranslatableComponent implements OnInit {
+export class CreateAuditComponent extends TranslatableComponent implements OnInit, CanComponentDeactivate {
   
   auditForm: FormGroup;
   trips: Trip[];
+  updated: boolean;
 
   constructor(private auditService: AuditService,
     private tripService: TripService,
@@ -68,5 +70,14 @@ export class CreateAuditComponent extends TranslatableComponent implements OnIni
     }, err => {
       console.log(err);
     });
+  }
+
+  canDeactivate(): Observable<boolean> | Promise<boolean> | boolean {
+    let result = true;
+    const message = this.translateService.instant('messages.discard.changes');
+    if (!this.updated && this.auditForm.dirty) {
+      result = confirm(message);
+    }
+    return result;
   }
 }

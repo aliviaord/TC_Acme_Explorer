@@ -7,17 +7,19 @@ import { TranslatableComponent } from '../../shared/translatable/translatable.co
 import { FormGroup, FormBuilder, FormArray, Validators } from '@angular/forms';
 import { AuthService } from 'src/app/services/auth.service';
 import { ValidateStartDate, ValidateEndDate, ValidatePublicationDate } from 'src/app/validators/trip.validator';
-
+import { CanComponentDeactivate } from 'src/app/services/can-deactivate.service';
+import { Observable } from 'rxjs';
 @Component({
   selector: 'app-create-trip',
   templateUrl: './create-trip.component.html',
   styleUrls: ['./create-trip.component.css']
 })
-export class CreateTripComponent extends TranslatableComponent implements OnInit {
+export class CreateTripComponent extends TranslatableComponent implements OnInit, CanComponentDeactivate {
 
   tripForm: FormGroup;
   pictures = []; // Here we store the ids of the pictures for the trip
   totalPrice = 0;
+  updated: boolean;
 
   constructor(private tripService: TripService,
     private translateService: TranslateService,
@@ -25,8 +27,8 @@ export class CreateTripComponent extends TranslatableComponent implements OnInit
     private fb: FormBuilder,
     private router: Router,
     private authService: AuthService) {
-    super(translateService);
-    this.createForm();
+    super(translateService); 
+    this.createForm(); 
   }
 
 
@@ -78,6 +80,7 @@ export class CreateTripComponent extends TranslatableComponent implements OnInit
   }
 
   onCreateTrip() {
+    this.updated = true;
     let trip = this.tripForm.value;
     trip.manager = this.authService.getCurrentActor().id;
     trip.price = this.totalPrice;
@@ -140,6 +143,16 @@ export class CreateTripComponent extends TranslatableComponent implements OnInit
   }
 
   ngOnInit() {
+    this.updated = false;
+  }
+
+  canDeactivate(): Observable<boolean> | Promise<boolean> | boolean {
+    let result = true;
+    const message = this.translateService.instant('messages.discard.changes');
+    if (!this.updated && this.tripForm.dirty) {
+      result = confirm(message);
+    }
+    return result;
   }
 
 

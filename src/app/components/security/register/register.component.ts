@@ -13,17 +13,20 @@ import Point from 'ol/geom/Point';
 import {Icon, Style} from 'ol/style';
 import VectorSource from 'ol/source/Vector';
 import VectorLayer from 'ol/layer/Vector';
-import {fromLonLat} from 'ol/proj';
+import { CanComponentDeactivate } from 'src/app/services/can-deactivate.service';
+import { Observable } from 'rxjs';
+
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.css']
 })
-export class RegisterComponent extends TranslatableComponent implements OnInit {
+export class RegisterComponent extends TranslatableComponent implements OnInit, CanComponentDeactivate {
 
   registrationForm: FormGroup;
   map: Map;
   markerLayer: VectorLayer;
+  updated: boolean;
 
   constructor(private router: Router,
     private authService: AuthService,
@@ -105,6 +108,15 @@ export class RegisterComponent extends TranslatableComponent implements OnInit {
     }, err => {
       console.log(err);
     });
+  }
+
+  canDeactivate(): Observable<boolean> | Promise<boolean> | boolean {
+    let result = true;
+    const message = this.translateService.instant('messages.discard.changes');
+    if (!this.updated && this.registrationForm.dirty) {
+      result = confirm(message);
+    }
+    return result;
   }
 
 }

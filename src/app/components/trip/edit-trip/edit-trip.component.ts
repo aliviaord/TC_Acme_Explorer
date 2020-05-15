@@ -6,24 +6,24 @@ import { TranslateService } from '@ngx-translate/core';
 import { TranslatableComponent } from '../../shared/translatable/translatable.component';
 import { FormGroup, FormBuilder, FormArray, Validators, NgForm } from '@angular/forms';
 import { AuthService } from 'src/app/services/auth.service';
-import Spanish from 'flatpickr/dist/l10n/es.js';
-import English from 'flatpickr/dist/l10n/uk.js';
 import { InfoMessageService } from '../../../services/info-message.service';
 import { ValidateStartDate, ValidateEndDate, ValidatePublicationDate } from 'src/app/validators/trip.validator';
 import * as moment from 'moment';
-
+import { CanComponentDeactivate } from 'src/app/services/can-deactivate.service';
+import { Observable } from 'rxjs';
 @Component({
   selector: 'app-edit-trip',
   templateUrl: './edit-trip.component.html',
   styleUrls: ['./edit-trip.component.css']
 })
-export class EditTripComponent extends TranslatableComponent implements OnInit {
+export class EditTripComponent extends TranslatableComponent implements OnInit, CanComponentDeactivate {
   
   id: string;
   tripForm: FormGroup;
   totalPrice = 0;
   trip = new Trip();
   pictures = [];
+  updated: boolean;
 
   constructor(private tripService: TripService,
     private translateService: TranslateService,
@@ -198,6 +198,15 @@ export class EditTripComponent extends TranslatableComponent implements OnInit {
     this.pictures.splice(this.pictures.indexOf(picture), 1);
     this.trip.pictures.splice(this.trip.pictures.indexOf(picture), 1); // delete here too to avoid display in view
     console.log(this.pictures)
+  }
+
+  canDeactivate(): Observable<boolean> | Promise<boolean> | boolean {
+    let result = true;
+    const message = this.translateService.instant('messages.discard.changes');
+    if (!this.updated && this.tripForm.dirty) {
+      result = confirm(message);
+    }
+    return result;
   }
 
 }
