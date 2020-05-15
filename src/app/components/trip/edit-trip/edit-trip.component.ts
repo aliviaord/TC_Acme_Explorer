@@ -59,6 +59,8 @@ export class EditTripComponent extends TranslatableComponent implements OnInit {
         price: [stage.price, Validators.required],
       }))),
       manager: this.fb.control(trip.title),
+      ticker: this.fb.control(trip.ticker),
+      version: this.fb.control(trip.version),
     }, { validator: [ValidateStartDate(), ValidateEndDate(), ValidatePublicationDate()] });
     this.trip = trip;
     this.totalPrice = trip.price;
@@ -70,7 +72,6 @@ export class EditTripComponent extends TranslatableComponent implements OnInit {
         price += stage['controls']['price'].value;
       }
       this.totalPrice = price;
-      console.log(this.totalPrice)
     }) 
   }
 
@@ -93,7 +94,7 @@ export class EditTripComponent extends TranslatableComponent implements OnInit {
   onEditTrip() {
     let trip = this.tripForm.value;
     trip.manager = this.authService.getCurrentActor().id;
-    trip.price = 500;
+    trip.price = this.totalPrice;
     trip.pictures = this.pictures;
     this.tripService.editTrip(trip)
     .then(res => {

@@ -133,6 +133,8 @@
         "tripApplication.cancelled.failed": "Error al cambiar el estado de la aplicación a cancelada.",
         "finder.edit.correct": "Buscador editado correctamente.",
         "finder.edit.failed": "Error al editar el buscador.",
+        "profile.edit.correct": "Perfil editado correctamente.",
+        "profile.edit.failed": "Error al editar el perfil.",
         "validation": {
             "required": "Debes introducir un valor, gilipollas.",
             "number.valid": "Debes introducir un número válido.",

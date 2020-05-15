@@ -51,6 +51,7 @@ export class EditActorComponent extends TranslatableComponent implements OnInit 
   }
 
   ngAfterViewInit() {
+    console.clear();
     this.map = new Map({
       target: 'map',
       layers: [
@@ -114,10 +115,9 @@ export class EditActorComponent extends TranslatableComponent implements OnInit 
     actor.version = this.actor.version;
     this.actorService.editActor(actor)
     .then(res => {
-      console.log(res);
       this.infoMessageService.notifyMessage('messages.profile.edit.correct',
               'text-center bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative');
-      this.router.navigate(['/edit-profile']);
+      this.router.navigate(['/']);
     }, err => {
       console.log(err);
       this.infoMessageService.notifyMessage('messages.profile.edit.failed',
