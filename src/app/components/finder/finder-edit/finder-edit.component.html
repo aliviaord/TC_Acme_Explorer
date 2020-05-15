@@ -41,9 +41,12 @@
       </p>
     </div>
     <div class="flex items-center justify-center">
-      <button [ngClass]="{'opacity-50 cursor-not-allowed': editForm.invalid}" [disabled]="editForm.invalid" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit">
+      <button [ngClass]="{'opacity-50 cursor-not-allowed': editForm.invalid}" [disabled]="editForm.invalid" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline mr-2" type="submit">
         {{'common.update' | translate}}
       </button>
+      <a routerLink="/finder" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline ml-2">
+        {{ 'common.cancel' | translate }}
+      </a>
     </div>
   </form>
 </div>
