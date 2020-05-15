@@ -35,6 +35,7 @@
     "moment": "^2.24.0",
     "ng5-slider": "^1.2.4",
     "ngx-bootstrap": "^3.0.1",
+    "ngx-cookie-service": "^2.1.0",
     "ngx-daterangepicker-material": "^2.1.5",
     "ngx-infinite-scroll": "^6.0.1",
     "ngx-paypal": "^5.0.0-beta.2",

@@ -144,7 +144,7 @@ export class EditTripComponent extends TranslatableComponent implements OnInit {
     this.id = this.route.snapshot.params['id'];
     this.tripService.getTrip(this.id)
       .then((trip) => {
-        if(!this.authService.currentActor || trip.manager != this.authService.currentActor.id) {
+        if(!this.authService.getCurrentActor() || trip.manager != this.authService.getCurrentActor().id) {
           this.router.navigate(['/denied-access']);
         }
         if(trip.cancelReason) {

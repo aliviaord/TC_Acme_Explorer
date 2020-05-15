@@ -13,7 +13,6 @@ import { Actor } from 'src/app/models/actor.model';
 export class HeaderComponent extends TranslatableComponent implements OnInit {
 
   private currentActor: Actor;
-  private userLoggedIn: boolean;
   private activeRole = 'anonymous';
 
   constructor(private authService: AuthService,
@@ -29,12 +28,16 @@ export class HeaderComponent extends TranslatableComponent implements OnInit {
     this.authService.userLoggedIn.subscribe((loggedIn: boolean) => {
       if (loggedIn) {
         this.currentActor = this.authService.getCurrentActor();
-        this.activeRole = this.currentActor.role.toString();
-      } else {
-        this.currentActor = null;
-        this.activeRole = 'anonymous';
+        if (this.currentActor != null) {
+          this.activeRole = this.currentActor.role.toString();
+        }
       }
     });
+
+    this.currentActor = this.authService.getCurrentActor();
+    if (this.currentActor != null) {
+      this.activeRole = this.currentActor.role.toString();
+    }
   }
 
   logout() {

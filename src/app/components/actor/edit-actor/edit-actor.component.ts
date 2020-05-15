@@ -40,7 +40,7 @@ export class EditActorComponent extends TranslatableComponent implements OnInit 
   }
 
   ngOnInit() {
-    var id = this.authService.currentActor.id;
+    var id = this.authService.getCurrentActor().id;
     this.actorService.getActor(id)
       .then((actor) => {
         this.actor = actor;

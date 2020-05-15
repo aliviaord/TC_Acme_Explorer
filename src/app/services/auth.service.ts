@@ -8,6 +8,7 @@ import { Subject } from 'rxjs';
 import { InfoMessageService } from './info-message.service';
 import { FinderService } from './finder.service';
 import { Finder } from '../models/finder.model';
+import { CookieService } from 'ngx-cookie-service';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -18,12 +19,12 @@ const httpOptions = {
 })
 export class AuthService {
 
-  currentActor: Actor;
   userLoggedIn = new Subject();
 
   constructor(private fireAuth: AngularFireAuth, private http: HttpClient,
     private infoMessageService: InfoMessageService,
-    private finderService: FinderService) {
+    private finderService: FinderService,
+    private cookieService: CookieService) {
       // this.fireAuth.auth.onAuthStateChanged((authState) => {
       //   if (authState) {
       //     const url = `${environment.backendApiBaseURL}/actors?email=${authState.email}`;
@@ -77,15 +78,20 @@ export class AuthService {
     return ['MANAGER', 'ADMINISTRATOR', 'EXPLORER', 'SPONSOR', 'AUDITOR'];
   }
 
-  getCurrentActor(): Actor {
-    return this.currentActor;
+  getCurrentActor() {
+    let result = null;
+    const currentActor = localStorage.getItem('currentActor');
+    if (currentActor) {
+      result = JSON.parse(currentActor);
+    }
+    return result;
   }
 
   checkRole(roles: string): boolean {
     let result = false;
-
-    if (this.currentActor) {
-      if (roles.indexOf(this.currentActor.role.toString()) !== -1) {
+    const currentActor = this.getCurrentActor();
+    if (currentActor) {
+      if (roles.indexOf(currentActor.role.toString()) !== -1) {
         result = true;
       } else {
         result = false;
@@ -108,11 +114,11 @@ export class AuthService {
           const url = environment.backendApiBaseURL + `/actors?email=` + email;
           this.http.get<Actor[]>(url).toPromise()
             .then((actor: Actor[]) => {
-            this.currentActor = actor[0];
+            this.setCurrentActor(actor[0]);
             this.userLoggedIn.next(true);
             this.infoMessageService.notifyMessage('messages.auth.login.correct',
               'text-center bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative');
-            resolve(this.currentActor);
+            resolve(this.getCurrentActor());
           }).catch(error => {
             this.infoMessageService.notifyMessage('messages.auth.login.failed',
               'text-center bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative');
@@ -132,10 +138,32 @@ export class AuthService {
     return new Promise<any>((resolve, reject) => {
       this.fireAuth.auth.signOut()
         .then(_ => {
+          this.setCurrentActor(null);
+          this.userLoggedIn.next(false);
           resolve();
         }).catch(error => {
+          this.infoMessageService.notifyMessage(error.code,
+            'text-center bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative');
           reject(error);
         });
     });
+  }
+
+  setCurrentActor(actor: any, token?: any) {
+    if (actor) {
+      localStorage.setItem('currentActor', JSON.stringify({
+        id: actor.id,
+        name: actor.name,
+        surname: actor.surname,
+        role: actor.role
+      }));
+
+      if (token) {
+        this.cookieService.set('currentToken', token);
+      }
+    } else {
+      localStorage.removeItem('currentActor');
+      this.cookieService.delete('currentToken');
+    }
   }
 }
