@@ -92,6 +92,7 @@ export class EditTripComponent extends TranslatableComponent implements OnInit, 
   }
 
   onEditTrip() {
+    this.updated = true;
     let trip = this.tripForm.value;
     trip.manager = this.authService.getCurrentActor().id;
     trip.price = this.totalPrice;
@@ -142,6 +143,7 @@ export class EditTripComponent extends TranslatableComponent implements OnInit, 
   }
 
   ngOnInit() { 
+    this.updated = false;
     this.id = this.route.snapshot.params['id'];
     this.tripService.getTrip(this.id)
       .then((trip) => {

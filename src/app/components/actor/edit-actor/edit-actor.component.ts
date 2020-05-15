@@ -42,6 +42,7 @@ export class EditActorComponent extends TranslatableComponent implements OnInit,
   }
 
   ngOnInit() {
+    this.updated = false;
     var id = this.authService.getCurrentActor().id;
     this.actorService.getActor(id)
       .then((actor) => {
@@ -108,6 +109,7 @@ export class EditActorComponent extends TranslatableComponent implements OnInit,
   }
 
   onEdit() {
+    this.updated = true;
     var actor = this.editForm.value;
     actor.id = this.actor.id;
     actor.password = this.actor.password;

@@ -37,6 +37,7 @@ export class RegisterComponent extends TranslatableComponent implements OnInit, 
   }
 
   ngOnInit() {
+    this.updated = false;
   }
 
   ngAfterViewInit() {
@@ -99,6 +100,7 @@ export class RegisterComponent extends TranslatableComponent implements OnInit, 
   }
 
   onRegister() {
+    this.updated = true;
     var actor = this.registrationForm.value;
     delete actor['repeatPassword'];
     this.authService.registerUser(actor)

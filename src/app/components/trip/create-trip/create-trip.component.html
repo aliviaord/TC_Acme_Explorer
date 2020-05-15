@@ -108,7 +108,7 @@
             </div>
           </div>
           <div class="w-full md:w-3/12 px-3 mb-6 md:mb-0">
-            <input class="appearance-none border-2 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="price" formControlName="price" type="number" placeholder="{{'trip.price' | translate}}">
+            <input min="0" class="appearance-none border-2 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="price" formControlName="price" type="number" placeholder="{{'trip.price' | translate}}">
             <div *ngIf="tripForm.controls['stages'].controls[i].get('price').errors && tripForm.controls['stages'].controls[i].get('price').touched && tripForm.controls['stages'].controls[i].get('price').errors.required" class="text-red-700 text-sm mt-1 rounded relative" role="alert">
               <span class="block sm:inline">{{'messages.validation.required' | translate}}</span>
             </div>

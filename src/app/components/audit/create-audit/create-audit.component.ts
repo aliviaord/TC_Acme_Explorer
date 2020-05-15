@@ -50,6 +50,7 @@ export class CreateAuditComponent extends TranslatableComponent implements OnIni
   }
 
   onCreateAudit() {
+    this.updated = true;
     let audit = this.auditForm.value;
     audit.auditor = this.authService.getCurrentActor().id;
     audit.createdAt = new Date();
@@ -64,6 +65,7 @@ export class CreateAuditComponent extends TranslatableComponent implements OnIni
   }
 
   ngOnInit() {
+    this.updated = false;
     this.tripService.getTrips()
     .then(trips => {
       this.trips = trips;

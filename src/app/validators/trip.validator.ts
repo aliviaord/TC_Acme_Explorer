@@ -3,9 +3,9 @@ import { FormGroup } from '@angular/forms';
 
 export function ValidateStartDate() {
   return (group: FormGroup): {[key: string]: any} => {
-    let startDate = group.controls['startDate'].value;
+    let startDate = new Date(group.controls['startDate'].value).setHours(0,0,0,0);
 
-    if (startDate > new Date()) {
+    if (startDate > new Date().setHours(0,0,0,0)) {
       return null;
     }
     return { 'startDate': true }
@@ -14,10 +14,10 @@ export function ValidateStartDate() {
 
 export function ValidateEndDate() {
   return (group: FormGroup): {[key: string]: any} => {
-    let startDate = group.controls['startDate'].value;
-    let endDate = group.controls['endDate'].value;
+    let startDate = new Date(group.controls['startDate'].value).setHours(0,0,0,0);
+    let endDate = new Date(group.controls['endDate'].value).setHours(0,0,0,0);
 
-    if (startDate !== '' && startDate < endDate) {
+    if (startDate && startDate < endDate) {
       return null;
     }
     return { endDate: true }
@@ -26,10 +26,10 @@ export function ValidateEndDate() {
 
 export function ValidatePublicationDate() {
   return (group: FormGroup): {[key: string]: any} => {
-    let publicationDate = group.controls['publicationDate'].value;
-    let startDate = group.controls['startDate'].value;
+    let publicationDate = new Date(group.controls['publicationDate'].value).setHours(0,0,0,0);
+    let startDate = new Date(group.controls['startDate'].value).setHours(0,0,0,0);
 
-    if (startDate && startDate !== '' && publicationDate >= new Date() && startDate > publicationDate) {
+    if (startDate && publicationDate >= new Date().setHours(0,0,0,0) && startDate > publicationDate) {
       return null;
     }
     return { publicationDate: true }
