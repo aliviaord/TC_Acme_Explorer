@@ -48,7 +48,7 @@ describe('workspace-project App', () => {
     browser.driver.sleep(2000);
   })
 
-  it('should revert change', () => {
+  it('should revert change and logout', () => {
     page.navigateToEdit();
     var titleInput = element(by.id('title'));
     var editBtn = element(by.id('editBtn'));
@@ -56,6 +56,10 @@ describe('workspace-project App', () => {
     titleInput.clear();
     titleInput.sendKeys('Trip to Myst Falls');
     editBtn.click();
+    browser.driver.sleep(2000);
+
+    const logoutBtn = element(by.id('logoutBtn'));
+    logoutBtn.click();
     browser.driver.sleep(2000);
   })
 });
