@@ -105,6 +105,7 @@
     },
     "denied-access-page": {
         "title": "Alto, ¡acceso denegado!",
+        "message": "No tienes permiso para acceder al recurso solicitado.",
         "message-start": "No tiene permiso para acceder a",
         "message-end": "en este servidor."
     },
