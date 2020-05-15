@@ -60,6 +60,7 @@ export class EditTripComponent extends TranslatableComponent implements OnInit {
       }))),
       manager: this.fb.control(trip.title),
       ticker: this.fb.control(trip.ticker),
+      version: this.fb.control(trip.version),
     }, { validator: [ValidateStartDate(), ValidateEndDate(), ValidatePublicationDate()] });
     this.trip = trip;
     this.totalPrice = trip.price;

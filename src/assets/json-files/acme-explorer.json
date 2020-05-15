@@ -27,13 +27,13 @@
     {
       "name": "Samantha",
       "surname": "Gilabert",
-      "email": "sam@estara.com",
-      "password": "SamanthaOT2020",
       "address": "Academia OT",
-      "phoneNumber": "",
+      "phoneNumber": "1312",
+      "id": "5e78bd7713b68995265511a5",
+      "password": "SamanthaOT2020",
+      "email": "sam@estara.com",
       "role": "MANAGER",
       "banned": false,
-      "id": "5e78bd7713b68995265511a5",
       "version": 0
     },
     {
