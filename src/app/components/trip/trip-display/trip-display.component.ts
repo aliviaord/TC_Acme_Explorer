@@ -125,7 +125,7 @@ export class TripDisplayComponent extends TranslatableComponent implements OnIni
       .then((val) => {
         this.infoMessageService.notifyMessage('messages.tripApplication.create.correct',
           'text-center bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative');
-        this.router.navigate(['/trips/' + this.trip.id]);
+        this.toggleModal();
       }).catch((err) => {
         console.error(err);
         this.infoMessageService.notifyMessage('messages.tripApplication.create.failed',

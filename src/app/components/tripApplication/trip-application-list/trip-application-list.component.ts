@@ -10,6 +10,7 @@ import { ActorService } from 'src/app/services/actor.service';
 import { TripService } from 'src/app/services/trip.service';
 import { NgForm } from '@angular/forms';
 import { InfoMessageService } from 'src/app/services/info-message.service';
+import { Subject } from 'rxjs';
 
 const MAX_ITEMS = 9;
 
@@ -28,6 +29,7 @@ export class TripApplicationListComponent extends TranslatableComponent implemen
   private backgroundColor = new Map();
   private hasStarted = new Map();
   private applicationPrice = new Map();
+  changedStatus = new Subject();
 
   constructor(private authService: AuthService,
     private tripApplicationService: TripApplicationService,
@@ -40,6 +42,75 @@ export class TripApplicationListComponent extends TranslatableComponent implemen
   }
 
   ngOnInit() {
+
+    this.currentActor = this.authService.getCurrentActor();
+    this.tripApplications = [];
+
+    this.changedStatus.subscribe((changed: boolean) => {
+      if (changed) {
+
+        this.currentActor = this.authService.getCurrentActor();
+        this.tripApplications = [];
+
+        this.tripApplicationService.getTripApplications(0, MAX_ITEMS, this.currentActor.role.toLowerCase(),
+        this.currentActor.id).then((data: any) => {
+        this.tripApplications = data;
+
+        for (let i = 0; i < data.length; i++) {
+          this.tripService.getTrip(data[i].trip)
+            .then((trip) => {
+
+              const currentDate = new Date();
+              const futureDate = new Date(trip.startDate);
+              if (!this.hasStarted.has(data[i].trip)) {
+                this.hasStarted.set(data[i].trip, (currentDate > futureDate));
+              }
+
+              this.applicationPrice.set(data[i].id, trip.price);
+
+              if (data[i].status === 'PENDING') {
+                const daysDifference = Math.ceil((futureDate.getTime() - currentDate.getTime()) / (1000 * 3600 * 24));
+
+                if (daysDifference < 30) {
+                  this.backgroundColor.set(data[i].id, ['#fc8181', '#fed7d7']);
+                } else {
+                  this.backgroundColor.set(data[i].id, ['#fff', '#fff']);
+                }
+              } else if (data[i].status === 'REJECTED') {
+                this.backgroundColor.set(data[i].id, ['#cbd5e0', '#edf2f7']);
+              } else if (data[i]. status === 'DUE') {
+                this.backgroundColor.set(data[i].id, ['#f6e05e', '#fefcbf']);
+              } else if (data[i]. status === 'ACCEPTED') {
+                this.backgroundColor.set(data[i].id, ['#68d391', '#c6f6d5']);
+              } else if (data[i]. status === 'CANCELLED') {
+                this.backgroundColor.set(data[i].id, ['#4fd1c5', '#b2f5ea']);
+              }
+
+              if (!this.tripsTitles.has(data[i].trip)) {
+                this.tripsTitles.set(data[i].trip, trip.title);
+              }
+
+              if (!this.explorersNames.has(data[i].explorer)) {
+                this.actorService.getActor(data[i].explorer)
+                  .then((explorer) => {
+                    this.explorersNames.set(data[i].explorer, explorer.name + ' ' + explorer.surname);
+                  }).catch((err) => {
+                    console.error(err);
+                  });
+              }
+            }).catch((err) => {
+              console.error(err);
+            });
+        }
+
+      }).catch(
+        error => {
+          console.log(error);
+        }
+      );
+      }
+    });
+
     this.currentActor = this.authService.getCurrentActor();
     this.tripApplications = [];
 
@@ -112,7 +183,8 @@ export class TripApplicationListComponent extends TranslatableComponent implemen
         .then((val) => {
           this.infoMessageService.notifyMessage('messages.tripApplication.' + newStatus.toString().toLowerCase() + '.correct',
             'text-center bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative');
-          this.router.navigate(['/tripApplications']);
+          this.changedStatus.next(true);
+          //this.router.navigate(['/tripApplications']);
         }).catch((err) => {
           console.error(err);
           this.infoMessageService.notifyMessage('messages.tripApplication.' + newStatus.toString().toLowerCase() + '.failed',
