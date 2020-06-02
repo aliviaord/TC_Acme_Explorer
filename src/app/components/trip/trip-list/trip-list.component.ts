@@ -38,6 +38,7 @@ export class TripListComponent extends TranslatableComponent implements OnInit {
   numTrips = MAX_TRIPS;
   minPrice = 0;
   maxPrice = 1000;
+  showPriceSearh = false;
   managerView = false;
   current_search = '';
 
@@ -47,6 +48,7 @@ export class TripListComponent extends TranslatableComponent implements OnInit {
     private route: ActivatedRoute,
     private authService: AuthService) {
     super(translateService);
+    this.getTripMaxPrice()
     this.createForm();
     this.translateService.onLangChange.subscribe((event: LangChangeEvent) => {
       this.locale = {
@@ -75,6 +77,18 @@ export class TripListComponent extends TranslatableComponent implements OnInit {
     }
     this.managerView = false;
     return this.tripService.getTripsPage(0, MAX_TRIPS, null, this.minPrice, this.maxPrice);
+  }
+
+  getTripMaxPrice() {
+    this.tripService.getTrips().then((response: Trip[]) => {
+      for (var i = 0; i< response.length; i++) {
+        if (response[i].price && response[i].price > this.maxPrice) {
+          this.options.ceil = Number(response[i].price)
+          this.maxPrice = Number(response[i].price)
+        }
+      }
+      this.showPriceSearh = true;
+    })
   }
 
   ngOnInit() {

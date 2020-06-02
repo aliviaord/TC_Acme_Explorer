@@ -137,7 +137,7 @@
         "finder.edit.correct": "Finder edited successfully.",
         "finder.edit.failed": "Failed to edit finder.",
         "validation": {
-            "required": "You must introduce a value, asshole.",
+            "required": "You must introduce a value.",
             "number.valid": "You must introduce a valid number.",
             "number.positive": "You must introduce a positive number.",
             "number.max": "Only numbers lower than {{maxValue}} are allowed.",
@@ -148,7 +148,8 @@
             "password.min": "Password must have at least 6 characters.",
             "startDate": "Start date must be after today's date.",
             "endDate": "End date must be after start date.",
-            "publicationDate": "Publication date must be before start date and after today's date (included)"
+            "publicationDate": "Publication date must be before start date and after today's date (included)",
+            "picturesUploading": "Wait, pictures are being uploaded to the server..."
         },
         "discard.changes": "Do you want to discard the changes?"
     },

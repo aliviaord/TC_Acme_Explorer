@@ -112,6 +112,9 @@
             <div *ngIf="tripForm.controls['stages'].controls[i].get('price').errors && tripForm.controls['stages'].controls[i].get('price').touched && tripForm.controls['stages'].controls[i].get('price').errors.required" class="text-red-700 text-sm mt-1 rounded relative" role="alert">
               <span class="block sm:inline">{{'messages.validation.required' | translate}}</span>
             </div>
+            <div *ngIf="tripForm.controls['stages'].controls[i].get('price').errors && tripForm.controls['stages'].controls[i].get('price').touched && tripForm.controls['stages'].controls[i].get('price').errors.min" class="text-red-700 text-sm mt-1 rounded relative" role="alert">
+              <span class="block sm:inline">{{'messages.validation.number.positive' | translate}}</span>
+            </div>
           </div>
           <div class="md:w-1/12 text-md items-center">
             <button *ngIf="i!=0" class="text-red-900 h-8 w-8 m-2 bg-red-300 hover:bg-red-400 rounded-full focus:outline-none focus:shadow-outline" type="button" (click)="deleteStage(i)">
@@ -147,8 +150,11 @@
       [showUploadButton]="false"
       ></p-fileUpload><br/>
 
+      <div *ngIf="uploadingPictures">
+        {{'messages.validation.picturesUploading' | translate}}
+      </div>
     <div class="flex items-center justify-center">
-      <button [ngClass]="{'opacity-50 cursor-not-allowed': tripForm.invalid}" [disabled]="tripForm.invalid" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit">
+      <button [ngClass]="{'opacity-50 cursor-not-allowed': tripForm.invalid}" [disabled]="uploadingPictures" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit">
         {{'common.create' | translate}}
       </button>
     </div>

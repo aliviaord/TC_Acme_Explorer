@@ -137,7 +137,7 @@
         "profile.edit.correct": "Perfil editado correctamente.",
         "profile.edit.failed": "Error al editar el perfil.",
         "validation": {
-            "required": "Debes introducir un valor, gilipollas.",
+            "required": "Debes introducir un valor.",
             "number.valid": "Debes introducir un número válido.",
             "number.positive": "Debes introducir un número positivo.",
             "number.max": "Sólo los números menores que {{maxValue}} son permitidos.",
@@ -148,7 +148,8 @@
             "password.min": "La contraseña debe tener al menos 6 carácteres.",
             "startDate": "La fecha de inicio debe ser después de la fecha de hoy.",
             "endDate": "La fecha de fin debe ser después de la fecha de inicio.",
-            "publicationDate": "La fecha de publicación debe ser antes de la fecha de inicio y después de la fecha de hoy (incluída)."
+            "publicationDate": "La fecha de publicación debe ser antes de la fecha de inicio y después de la fecha de hoy (incluída).",
+            "picturesUploading": "Espera, las imágenes están siendo subidas al servidor..."
         },
         "discard.changes": "¿Desea descartar los cambios?"
     },

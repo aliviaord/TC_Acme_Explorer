@@ -20,6 +20,7 @@ export class CreateTripComponent extends TranslatableComponent implements OnInit
   pictures = []; // Here we store the ids of the pictures for the trip
   totalPrice = 0;
   updated: boolean;
+  uploadingPictures = false;
 
   constructor(private tripService: TripService,
     private translateService: TranslateService,
@@ -67,7 +68,7 @@ export class CreateTripComponent extends TranslatableComponent implements OnInit
     return this.fb.group({
       title: ['', Validators.required],
       description: ['', Validators.required],
-      price: ['', Validators.required]
+      price: ['', [Validators.required, Validators.min(0)]]
     });
   }
 
@@ -118,6 +119,7 @@ export class CreateTripComponent extends TranslatableComponent implements OnInit
   }
 
   async onPictureUpload(event) {
+    this.uploadingPictures = true;
     let fileReader = new FileReader();
     let that = this;
     for (let file of event.files) {
@@ -128,6 +130,7 @@ export class CreateTripComponent extends TranslatableComponent implements OnInit
         console.log(that.pictures)
       };
     }
+    this.uploadingPictures = false;
   }
 
   onPictureRemove(event) {
